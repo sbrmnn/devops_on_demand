@@ -1,0 +1,49 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  jumbotron_header: "DevOps On Demand!"
+  service_description: "Hire cloud engineers by the hour, day, or sprint."
+  search_label: "What skills are you looking for?"
+  contractor_list_title: "Featured Engineers"
+  signup: "Sign up"
+  login:  "Login"
+  copyright: "Copyright © YumFog 2018"
+  new_to_yumfog: "New to YumFog?"
+  login: "Login"
+  helpers:
+    label:
+      user:
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember me"
+  forgot_password: "Forgot your password?"

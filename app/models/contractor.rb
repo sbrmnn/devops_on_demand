@@ -1,2 +1,0 @@
-class Contractor < ApplicationRecord
-end

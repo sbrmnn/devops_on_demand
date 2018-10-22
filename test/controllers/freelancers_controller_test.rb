@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ContractorTest < ActiveSupport::TestCase
+class FreelancersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

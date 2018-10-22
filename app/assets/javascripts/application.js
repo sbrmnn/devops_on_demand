@@ -16,3 +16,22 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+document.addEventListener("turbolinks:load", function () {
+    makeFooterStickyOnSmallDocumentSizes();
+});
+
+$( window ).resize(function() {
+    makeFooterStickyOnSmallDocumentSizes();
+});
+
+function makeFooterStickyOnSmallDocumentSizes() {
+    var bodyHeight = $('body').height();
+    var windowHeight = $(window).height();
+    if (bodyHeight < windowHeight){
+        $('footer').addClass('fixed-bottom')
+    }else{
+        $('footer').removeClass('fixed-bottom')
+    }
+}

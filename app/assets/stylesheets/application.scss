@@ -1,6 +1,14 @@
 @import "bootstrap";
+@import "font-awesome";
 @import "freelancers";
+@import "users";
+
 //colors
+
+
+.page-container{
+  min-height: 1000px;
+}
 
 .navbar-light{
   background-color: white !important;
@@ -16,4 +24,5 @@ footer{
   color: whitesmoke;
   background-color: rgba(124, 124, 124, 0.85);
 }
+
 

@@ -10,7 +10,7 @@
   <body>
   <% unless login_or_registration_page? %>
 
-      <nav class="navbar navbar-expand-lg navbar-light mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light mb-3">
         <div class="container">
           <a class="navbar-brand" href="#">YumFog</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,8 +50,9 @@
 
 
 
-
+  <div class="container page-container">
   <%= yield %>
+  </div>
 
   <!-- Footer -->
   <% unless login_or_registration_page? %>

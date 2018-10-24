@@ -61,3 +61,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'presenter-rails'
+
+gem "font-awesome-rails"

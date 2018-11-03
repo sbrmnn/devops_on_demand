@@ -69,3 +69,5 @@ gem 'presenter-rails'
 gem "font-awesome-rails"
 
 gem 'js_cookie_rails'
+
+gem 'mini_racer'

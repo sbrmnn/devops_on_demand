@@ -3,54 +3,70 @@
   <head>
     <title>DevopsOnDemand</title>
     <%= csrf_meta_tags %>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <% unless login_or_registration_page? %>
+    <% unless login_or_registration_page? %>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand" href="#">YumFog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <%if user_signed_in? %>
+                <ul class="nav nav-pills ml-2" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-freelancers-tab" data-toggle="pill" href="#pills-freelancers" role="tab" aria-controls="pills-freelancers" aria-selected="false"><%= t("find_freelancers") %></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><%= t("jobs") %></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><%= t("profile") %></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><%= t("contact") %></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><%= t("messages") %></a>
+                  </li>
+                </ul>
+              <%  end %>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <%= link_to( t('signup'), new_registration_path('user'), class: "nav-link")  %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to( t('login'), new_user_session_path, class: "nav-link")  %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    <%end%>
 
-      <nav class="navbar navbar-expand-lg navbar-light mb-3">
-        <div class="container">
-          <a class="navbar-brand" href="#">YumFog</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="nav nav-pills ml-2" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link" id="pills-freelancers-tab" data-toggle="pill" href="#pills-freelancers" role="tab" aria-controls="pills-freelancers" aria-selected="false"><%= t("find_freelancers") %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><%= t("jobs") %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><%= t("profile") %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><%= t("contact") %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><%= t("messages") %></a>
-              </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <%= link_to( t('signup'), new_registration_path('user'), class: "nav-link")  %>
-              </li>
-              <li class="nav-item">
-                <%= link_to( t('login'), new_user_session_path, class: "nav-link")  %>
-              </li>
-            </ul>
+  <% if current_page?('/') %>
+    <header class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 ><%= t('jumbotron_header') %></h1>
+        <h3><small><%= t('service_description') %></small></h3>
+
+        <label class="pt-4" for="contractor-search"><%= t('search_label') %></label>
+        <div class="input-group">
+          <input type="text" id="contractor-search" class="form-control" placeholder="<%= t("search_placeholder") %> " aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"><%= t("search") %></button>
           </div>
         </div>
-      </nav>
 
-  <%end%>
-
-
-
-  <div class="container page-container">
+      </div>
+    </header>
+  <% end %>
+  <div class="container page-container mt-3">
   <%= yield %>
   </div>
 

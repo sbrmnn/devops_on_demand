@@ -17,6 +17,18 @@ module ApplicationHelper
   def login_or_registration_page?
     controller.is_a?(Devise::SessionsController) || controller.is_a?(Devise::RegistrationsController)
   end
+
+  def chatroom_info(chatroom, current_user)
+    ChatroomDecorator.new(chatroom, current_user)
+  end
+
+  def get_chatrooms_with_latest_messages(current_user)
+    OrderedUserChatroomQuery.new(current_user, 'latest_recipient_message').all
+  end
+
+  def new_message?(chatroom, current_user)
+    chatroom_info(chatroom, current_user).new_message?
+  end
 end
 
 

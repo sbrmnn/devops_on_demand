@@ -53,3 +53,6 @@ en:
   search: "Search"
   messages: "Messages"
   search_placeholder: "Eg. (Docker, Puppet, Linux)"
+  chatrooms: "Chatrooms"
+  select_chatroom_msg: "Select a chatroom from the left to view messages."
+  type_message: "Type a message"

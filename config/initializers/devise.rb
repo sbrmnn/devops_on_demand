@@ -1,3 +1,13 @@
+Warden::Manager.after_set_user do |user,auth,opts|
+  scope = opts[:scope]
+  auth.cookies.signed["#{scope}_id"] = user.id
+end
+
+Warden::Manager.before_logout do |user, auth, opts|
+  scope = opts[:scope]
+  auth.cookies.signed["#{scope}_id"] = nil
+end
+
 # frozen_string_literal: true
 
 # Use this hook to configure devise mailer, warden hooks and so forth.

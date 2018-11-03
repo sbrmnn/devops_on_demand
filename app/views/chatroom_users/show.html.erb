@@ -5,18 +5,22 @@
         <div class="recent_heading">
           <h4>Recent</h4>
         </div>
-        <div class="srch_bar">
-          <div class="stylish-input-group">
-            <input type="text" class="search-bar"  placeholder="Search" >
-            <span class="input-group-addon">
-          <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-          </span> </div>
-        </div>
       </div>
       <div class="inbox_chat">
+        <% @chatrooms.each do |chatroom| %>
+          <div class="chat_list active_chat">
+            <div class="chat_people">
+              <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="chat_ib">
+                <h5><% chatroom_recipient(chatroom.id)%> <span class="chat_date">Dec 25</span></h5>
+                <p><% truncate(chatroom.last_message, length: 70) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
         <div class="chat_list active_chat">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -26,7 +30,7 @@
         </div>
         <div class="chat_list">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -36,7 +40,7 @@
         </div>
         <div class="chat_list">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -46,7 +50,7 @@
         </div>
         <div class="chat_list">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -56,7 +60,7 @@
         </div>
         <div class="chat_list">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -66,7 +70,7 @@
         </div>
         <div class="chat_list">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -76,7 +80,7 @@
         </div>
         <div class="chat_list">
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
             <div class="chat_ib">
               <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
               <p>Test, which is a new approach to have all solutions
@@ -89,7 +93,7 @@
     <div class="mesgs">
       <div class="msg_history">
         <div class="incoming_msg">
-          <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+          <div class="incoming_msg_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
           <div class="received_msg">
             <div class="received_withd_msg">
               <p>Test which is a new approach to have all
@@ -104,7 +108,7 @@
             <span class="time_date"> 11:01 AM    |    June 9</span> </div>
         </div>
         <div class="incoming_msg">
-          <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+          <div class="incoming_msg_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
           <div class="received_msg">
             <div class="received_withd_msg">
               <p>Test, which is a new approach to have</p>
@@ -117,7 +121,7 @@
             <span class="time_date"> 11:01 AM    |    Today</span> </div>
         </div>
         <div class="incoming_msg">
-          <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+          <div class="incoming_msg_img"> <img class="chat-image" src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
           <div class="received_msg">
             <div class="received_withd_msg">
               <p>We work directly with our designers and suppliers,
@@ -129,7 +133,9 @@
       </div>
       <div class="type_msg">
         <div class="input_msg_write">
-          <input type="text" class="write_msg" placeholder="Type a message" />
+          <%= form_for [@chatroom, Message.new] do |f| %>
+            <%= f.text_area :body, rows: 1, class: "write_msg" %>
+          <% end %>
           <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </div>
       </div>

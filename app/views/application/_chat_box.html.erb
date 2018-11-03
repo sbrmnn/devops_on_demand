@@ -1,0 +1,37 @@
+<div class="messaging">
+  <div class="inbox_msg">
+    <div class="inbox_people">
+      <div class="headind_srch">
+        <div class="recent_heading">
+          <h4><%= t('chatrooms')%></h4>
+        </div>
+      </div>
+      <div class="inbox_chat">
+        <% get_chatrooms_with_latest_messages(current_user).each do |chatroom| %>
+          <% @chatroom_info = chatroom_info(chatroom, current_user) %>
+          <div class="chat_list <%= @chatroom_info.new_message? ? 'new_msg' : '' %>">
+            <div class="chat_people">
+              <div class="chat_img"> </div>
+              <div class="chat_ib">
+                <div class="chat_room_id" hidden><%= chatroom.id %></div>
+                <h5><%= @chatroom_info.recipient %> <span class="chat_date"><%= @chatroom_info.new_message_time %></span></h5>
+                <p class="last_chat_message"><%= truncate(chatroom.last_message, length: 70) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="mesgs">
+      <div class="msg_history">
+        <p id="select_chat_room_msg"> <%= t('select_chatroom_msg')%></p>
+      </div>
+      <div class="type_msg" style="display: none;">
+        <div class="input_msg_write">
+          <input type="text" class="write_msg" placeholder="<%= t('type_message') %>" />
+          <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

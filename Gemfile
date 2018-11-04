@@ -72,4 +72,6 @@ gem "font-awesome-rails"
 
 gem 'js_cookie_rails'
 
+gem 'redis', '~> 4.0.3'
+
 

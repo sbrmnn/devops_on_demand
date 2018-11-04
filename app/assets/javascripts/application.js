@@ -124,5 +124,5 @@ function outgoingMessageHTML(message, time){
 }
 
 function timeString(time) {
-    return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDay()
+    return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
 }

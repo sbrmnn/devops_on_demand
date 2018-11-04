@@ -2,7 +2,6 @@ class OrderedUserChatroomQuery
   def initialize(curr_user, sort_by= :latest_recipient_message)
     @user = curr_user
     @sort_by = sort_by
-
   end
 
   def all
@@ -12,13 +11,8 @@ class OrderedUserChatroomQuery
   protected
 
   def by_latest_recipient_message
-    # TODO make a join statement in the future.
-    chatroom_ids = @user.chatrooms.pluck(:id)
-    chatroom_id_ordered = Message.where(:chatroom_id => [chatroom_ids]).where.not(user: @user).order("created_at DESC").pluck(:chatroom_id).uniq
-    Chatroom.find([chatroom_id_ordered])
+    Chatroom.joins(:messages)
+            .where("messages.user_id = ?", @user.id)
+            .order("messages.created_at DESC").uniq
   end
-
-
-
-
 end

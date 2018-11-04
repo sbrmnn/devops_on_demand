@@ -130,6 +130,16 @@ function outgoingMessageHTML(message, time){
            </div>'
 }
 
+function errorMessageHTML(){
+    return '<div class="outgoing_msg mb-3">\
+             <div class="sent_msg">\
+               <p>'+message+'</p>\
+               <span class="time_date">' + timeString(time) + '</span> \
+             </div>\
+           </div>'
+
+}
+
 function timeString(time) {
     return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
 }

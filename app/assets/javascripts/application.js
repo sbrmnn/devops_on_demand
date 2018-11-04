@@ -69,10 +69,6 @@ function broadcastMessage(){
     var message = messageInput.val().trim();
     var roomName = 'room' + roomId;
     if (!$.isEmptyObject(message)){
-        if (!isConnectedToSocket(roomName)){
-            // If we lost connection to the socket for any reason, we reconnect here.
-            subscribeToRoom(roomId)
-        }
         App[roomName].speak(message);
         messageInput.val('')
     }
@@ -81,9 +77,7 @@ function broadcastMessage(){
 
 
 
-function isConnectedToSocket(roomName){
-    return App[roomName].consumer.subscriptions.subscriptions.length > 0;
-}
+
 
 function renderChatRoomMessage(chatroomId){
     $('.msg_history').empty();

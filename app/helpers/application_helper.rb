@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def get_chatrooms_with_latest_messages(current_user)
-    OrderedUserChatroomQuery.new(current_user, 'latest_recipient_message').all
+    OrderedUserChatroomQuery.new(current_user, 'id').all
   end
 
   def new_message?(chatroom, current_user)

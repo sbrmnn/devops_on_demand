@@ -10,9 +10,20 @@ class OrderedUserChatroomQuery
 
   protected
 
-  def by_latest_recipient_message
-    Chatroom.joins(:messages)
-            .where("messages.user_id = ?", @user.id)
-            .order("messages.created_at DESC").uniq
+  def by_id
+    user_chatrooms.order(:id)
   end
+
+  def by_latest_recipient_message
+    #TODO
+    # user_chatrooms
+  end
+
+  private
+
+  def user_chatrooms
+    Chatroom.where(user: @user)
+  end
+
+
 end

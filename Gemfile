@@ -71,7 +71,7 @@ gem 'presenter-rails'
 gem "font-awesome-rails"
 
 gem 'js_cookie_rails'
-gem 'em-hiredis'
+
 gem 'redis', '~> 4.0.3'
 
 

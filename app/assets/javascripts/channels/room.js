@@ -4,10 +4,14 @@ function subscribeToRoom(chatroomId){
         received: function(data) {
             return  appendMessageHistroy(data['body'], new Date(data['created_at']), data['user_id']);
         },
+
         speak: function(message) {
             return this.perform('speak', {
                 body: message
             });
+        },
+        rejected: function() {
+            console.log('rejected')
         },
         connected: function(){
            console.log('Subscribed to ' + roomName)

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97f42c02-8fe0-4ba1-a5a9-9add38e2eecf" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/vendor/cache/actioncable-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/actionmailer-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/actionpack-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/actionview-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/activejob-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/activemodel-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/activerecord-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/activesupport-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/addressable-2.5.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/arel-8.0.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/autoprefixer-rails-9.2.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/bcrypt-3.1.12.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/bindex-0.5.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/bootstrap-4.1.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/builder-3.2.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/byebug-10.0.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/capybara-2.18.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/childprocess-0.9.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/coffee-rails-4.2.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/coffee-script-2.4.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/coffee-script-source-1.12.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/concurrent-ruby-1.0.5.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/crass-1.0.4.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/devise-4.5.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/erubi-1.7.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/execjs-2.7.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/ffi-1.9.25.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/font-awesome-rails-4.7.0.4.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/globalid-0.4.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/i18n-1.1.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/jbuilder-2.7.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/jquery-rails-4.3.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/js_cookie_rails-2.2.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/libv8-6.7.288.46.1-x86_64-darwin-17.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/listen-3.1.5.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/loofah-2.2.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/mail-2.7.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/method_source-0.9.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/mini_mime-1.0.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/mini_portile2-2.3.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/mini_racer-0.2.4.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/minitest-5.11.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/multi_json-1.13.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/nio4r-2.3.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/nokogiri-1.8.5.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/orm_adapter-0.5.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/pg-1.1.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/popper_js-1.14.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/presenter-rails-1.0.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/public_suffix-3.0.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/puma-3.12.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rack-2.0.5.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rack-test-1.1.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rails-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rails-dom-testing-2.0.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rails-html-sanitizer-1.0.4.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/railties-5.1.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rake-12.3.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rb-fsevent-0.10.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rb-inotify-0.9.10.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/responders-2.4.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/ruby_dep-1.5.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/rubyzip-1.2.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/sass-3.6.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/sass-listen-4.0.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/sass-rails-5.0.7.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/selenium-webdriver-3.14.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/spring-2.0.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/spring-watcher-listen-2.0.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/sprockets-3.7.2.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/sprockets-rails-3.2.1.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/sqlite3-1.3.13.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/thor-0.20.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/thread_safe-0.3.6.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/tilt-2.0.8.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/turbolinks-5.2.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/turbolinks-source-5.2.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/tzinfo-1.2.5.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/uglifier-4.1.19.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/warden-1.2.7.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/web-console-3.7.0.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/websocket-driver-0.6.5.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/websocket-extensions-0.1.3.gem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/vendor/cache/xpath-3.2.0.gem" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.bundle/" />
+    <ignored path="$PROJECT_DIR$/components/" />
+    <ignored path="$PROJECT_DIR$/public/system/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="$PROJECT_DIR$/vendor/bundle/" />
+    <ignored path="$PROJECT_DIR$/vendor/cache/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="secrets.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/secrets.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/database.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_nginx.config" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.ebextension/01_nginx.config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application_helper.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ordered_user_chatroom_query.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/queries/ordered_user_chatroom_query.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chatroom.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/chatroom.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ruby</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.elasticbeanstalk/config.yml" />
+        <option value="$PROJECT_DIR$/.ebextension/nginx.config" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/queries/ordered_user_chatroom_query.rb" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="114" />
+    <option name="y" value="23" />
+    <option name="width" value="1223" />
+    <option name="height" value="734" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="RailsProjectView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="devops_on_demand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="devops_on_demand" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="devops_on_demand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="devops_on_demand" type="462c0819:PsiDirectoryNode" />
+              <item name=".ebextension" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="devops_on_demand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="devops_on_demand" type="462c0819:PsiDirectoryNode" />
+              <item name=".elasticbeanstalk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="devops_on_demand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="devops_on_demand" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97f42c02-8fe0-4ba1-a5a9-9add38e2eecf" name="Default" comment="" />
+      <created>1541265077092</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1541265077092</updated>
+      <workItem from="1541265078302" duration="20000" />
+      <workItem from="1541265099220" duration="6385000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6405000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="114" y="23" width="1223" height="734" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3736713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/secrets.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/chatroom.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/queries/ordered_user_chatroom_query.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.ebextension/01_nginx.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

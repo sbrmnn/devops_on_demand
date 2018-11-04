@@ -1,6 +1,6 @@
 function subscribeToRoom(chatroomId){
     var roomName = 'room' + chatroomId;
-    App['room' + chatroomId] = App.cable.subscriptions.create({channel: 'RoomChannel', chatroom_id: chatroomId}, {
+    App[roomName] = App.cable.subscriptions.create({channel: 'RoomChannel', chatroom_id: chatroomId}, {
         received: function(data) {
             return  appendMessageHistroy(data['body'], new Date(data['created_at']), data['user_id']);
         },
@@ -8,17 +8,20 @@ function subscribeToRoom(chatroomId){
             return this.perform('speak', {
                 body: message
             });
+        },
+        connected: function(){
+           console.log('Subscribed to ' + roomName)
         }
     });
-    return 'Subscribed to ' + roomName
 }
 
 
 
 $(document).on('turbolinks:load', function() {
+
     if ( $("#chatbox").length ) {
      $('.chat_room_id').each(function( ) {
-        console.log(subscribeToRoom($( this ).text()));
+         subscribeToRoom($( this ).text());
       });
     }
 });

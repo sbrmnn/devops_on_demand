@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'mini_racer', '~> 0.2.4'
+
 gem 'bcrypt', '~> 3.1.12'
 
 gem 'devise', '~> 4.5.0'
@@ -71,4 +73,4 @@ gem "font-awesome-rails"
 
 gem 'js_cookie_rails'
 
-gem 'mini_racer'
+

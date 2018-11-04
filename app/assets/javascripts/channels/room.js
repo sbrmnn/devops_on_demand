@@ -10,14 +10,12 @@ function subscribeToRoom(chatroomId){
                 body: message
             });
         },
-        rejected: function() {
-            console.log('rejected')
-        },
         connected: function(){
            console.log('Subscribed to ' + roomName)
         }
     });
 }
+
 
 
 

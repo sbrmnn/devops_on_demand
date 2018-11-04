@@ -7,7 +7,6 @@ end
 
 gem 'mini_racer', '~> 0.2.4'
 
-gem 'bcrypt', '~> 3.1.12'
 
 gem 'devise', '~> 4.5.0'
 

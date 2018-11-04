@@ -22,7 +22,7 @@ class OrderedUserChatroomQuery
   private
 
   def user_chatrooms
-    Chatroom.where(user: @user)
+    @user.chatrooms
   end
 
 

@@ -73,6 +73,8 @@ function getPreviouslySelectedPill(){
     if (activePillId) {
         $('#' + activePillId).tab('show');
         window.localStorage.removeItem("activeTab");
+    }else{
+        $('#pills-freelancers').tab('show');
     }
     $(document).on('click','a[data-toggle="pill"]', function(e){
         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));

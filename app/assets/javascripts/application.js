@@ -43,8 +43,12 @@ $.ajaxSetup({
             $(element).scrollTop($(element)[0].scrollHeight);
         });
     };
-
 }(jQuery));
+
+$(document).ready(function() {
+    getPreviouslySelectedPill();
+});
+
 
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
@@ -63,6 +67,18 @@ $(document).on('click','.msg_send_btn', function(){
     broadcastMessage()
 });
 
+
+function getPreviouslySelectedPill(){
+    var activePillId = window.localStorage.getItem('activeTabId');
+    if (activePillId) {
+        $('#' + activePillId).tab('show');
+        window.localStorage.removeItem("activeTab");
+    }
+    $(document).on('click','a[data-toggle="pill"]', function(e){
+        window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
+    });
+}
+
 function broadcastMessage(){
     var roomId = $('.active_chat').find('.chat_room_id')[0].innerHTML;
     var messageInput = $('.write_msg');
@@ -73,7 +89,6 @@ function broadcastMessage(){
         messageInput.val('')
     }
 }
-
 
 
 

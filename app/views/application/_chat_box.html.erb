@@ -1,5 +1,10 @@
-<div id= "chatbox" class="messaging">
+<div id="connection-error-alert" class="alert alert-danger" role="alert" style="display: none;">
+  <i class="fa fa-exclamation-triangle"></i>
+  <strong class="ml-1 mr-1"><%= t('poor_connection_header') %></strong>
+  <%= t('poor_connection_msg') %>
+</div>
 
+<div id= "chatbox" class="messaging">
   <div class="inbox_msg">
     <div class="inbox_people">
       <div class="headind_srch">

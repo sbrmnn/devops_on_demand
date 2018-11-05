@@ -56,3 +56,5 @@ en:
   chatrooms: "Chatrooms"
   select_chatroom_msg: "Select a chatroom from the left to view messages."
   type_message: "Type a message"
+  poor_connection_header: "POOR NETWORK CONNECTION:"
+  poor_connection_msg: "Please check your internet connection and refresh this page."

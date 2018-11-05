@@ -11,9 +11,10 @@ function subscribeToRoom(chatroomId){
             });
         },
         disconnected: function() {
-            console.log("hello");
+            $("#connection-error-alert").show();
         },
         connected: function(){
+            $("#connection-error-alert").hide();
            console.log('Subscribed to ' + roomName)
         }
     });

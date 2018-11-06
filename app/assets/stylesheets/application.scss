@@ -3,28 +3,10 @@
 @import "freelancers";
 @import "users";
 
-//colors
-
-
-#page-container{
-  min-height: 500px;
+.search-banner {
+  background-color: white;
+  font-size: large;
 }
-
-.navbar-light{
-  background-color: white !important;
-}
-
-.navbar{
-  border-bottom: 5px solid whitesmoke;
-}
-
-footer{
-  border-top:5px solid whitesmoke;
-  width: 100%;
-  color: whitesmoke;
-  background-color: rgba(124, 124, 124, 0.85);
-}
-
 
 // Chat box --->
 

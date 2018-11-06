@@ -45,10 +45,9 @@ $.ajaxSetup({
     };
 }(jQuery));
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
     getPreviouslySelectedPill();
 });
-
 
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {

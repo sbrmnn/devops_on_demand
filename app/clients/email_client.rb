@@ -8,21 +8,24 @@ class EmailClient
 
   def initialize
      @vendor = SendGrid::API.new(api_key: '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')
+     @mail = Mail.new
   end
 
-  def send_email(recipient, template_id, personalization_hash={})
-    mail = Mail.new
-    mail.from = Email.new(email: 'webmaster@yumfog.com')
+  def send_chat_notification(recipient_email, personalization_hash={})
+    template_id = 'd-922a172bd405417c97d73ddc1e798a05'
+    @mail.from = Email.new(email: 'webmaster@yumfog.com')
     personalization = Personalization.new
-    personalization.add_to(Email.new(email: recipient))
+    personalization.add_to(Email.new(email: recipient_email))
     personalization.add_dynamic_template_data(personalization_hash)
-    mail.add_personalization(personalization)
-    mail.template_id = template_id
+    @mail.add_personalization(personalization)
+    @mail.template_id = template_id
     begin
-      EmailClient.instance.send(mail)
+      self.vendor.client.mail._("send").post(request_body: @mail.to_json)
     rescue Exception => e
-      puts e.message
+      Rails.logger.error "Email Error: send_chat_notification #{e.message}"
     end
-    self.vendor.client.mail._("send").post(request_body: mail.to_json)
+  end
+
+  def send_newsletter
   end
 end

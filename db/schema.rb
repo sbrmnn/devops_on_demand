@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20181108045043) do
     t.string "last_sign_in_ip"
     t.boolean "chat_notification_subscription", default: true
     t.boolean "newsletter_subscription", default: true
-    t.bigint "unsub_token"
+    t.string "unsub_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

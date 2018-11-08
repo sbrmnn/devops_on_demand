@@ -7,7 +7,7 @@
           <div class="col-12">
             <div class="form-check">
               <label class="form-check-label">
-                <%= form.check_box :newsletter_subscription, {class: 'form-check-input', checked: true} %>
+                <%= form.check_box :newsletter_subscription, {class: 'form-check-input', checked: @user.newsletter_subscription}, true, false %>
                 <%= t('newsletters') %>
               </label>
               <p class="text-muted"><small><%= t('newsletters_subscription_description') %></small></p>
@@ -18,7 +18,7 @@
           <div class="col-12">
             <div class="form-check">
               <label class="form-check-label">
-                <%= form.check_box :chat_notification_subscription, {class: 'form-check-input', checked: true} %>
+                <%= form.check_box :chat_notification_subscription, {class: 'form-check-input', checked:  @user.chat_notification_subscription}, true, false  %>
                 <%= t('chat_notifications') %>
               </label>
               <p class="text-muted"><small><%= t('chat_subscription_description') %></small></p>

@@ -18,6 +18,21 @@
 //= require js.cookie
 //= require_tree .
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
 function formatAMPM(date) {
     var hours = date.getHours();
     var minutes = date.getMinutes();
@@ -27,6 +42,16 @@ function formatAMPM(date) {
     minutes = minutes < 10 ? '0'+minutes : minutes;
     var strTime = hours + ':' + minutes + ' ' + ampm;
     return strTime;
+}
+
+function preSelectChatRoom(){
+    if (getUrlParameter('respond_to_room') !== undefined){
+        $('#pills-messages-tab').trigger('click');
+        var roomSelector = $('#' + getUrlParameter('respond_to_room'));
+        if (roomSelector.length > 0){
+            roomSelector.trigger("click")
+        }
+    }
 }
 
 var months = [ "January", "February", "March", "April", "May", "June",
@@ -47,7 +72,10 @@ $.ajaxSetup({
 
 $( document ).on('turbolinks:load', function() {
     getPreviouslySelectedPill();
+    preSelectChatRoom();
 });
+
+
 
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
@@ -61,6 +89,8 @@ $(document).on('click','.chat_list', function(){
     $('.type_msg').show();
     renderChatRoomMessage($(this).find('.chat_room_id')[0].innerHTML)
 });
+
+
 
 $(document).on('click','.msg_send_btn', function(){
     broadcastMessage()

@@ -14,7 +14,7 @@
       <div class="inbox_chat">
         <% get_chatrooms_with_latest_messages(current_user).each do |chatroom| %>
           <% @chatroom_info = chatroom_info(chatroom, current_user) %>
-          <div id= "<%'chatroom_' << @chatroom_info.id %>" class="chat_list <%= @chatroom_info.new_message? ? 'new_msg' : '' %>">
+          <div id= "chatroom_<%= chatroom.id %>" class="chat_list <%= @chatroom_info.new_message? ? 'new_msg' : '' %>">
             <div class="chat_people">
               <div class="chat_img"> </div>
               <div class="chat_ib">

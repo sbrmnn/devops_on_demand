@@ -1,7 +1,7 @@
 class ChatroomPolicy
 
-  def initialize(user_id, chatroom_id)
-    @chatroom = Chatroom.find(chatroom_id)
+  def initialize(user_id, chatroom)
+    @chatroom = chatroom
     @user = User.find(user_id)
   end
 

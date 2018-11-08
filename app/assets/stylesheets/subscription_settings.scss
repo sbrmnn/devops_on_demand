@@ -1,0 +1,42 @@
+// Place all the styles related to the subscription_settings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.subscription_settings_index{
+  background-color: #f5f5f5 !important;
+}
+
+
+#sub-form{
+  background-color: white;
+  border: #2E2F30 1px;
+}
+
+
+
+// managers
+.manager-headline {
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+
+.manager-textbox {
+  background-color: white;
+
+  position: relative;
+  margin-top: 60px;
+}
+
+.manager-text {
+
+  padding-top: 10px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#manager  .teaser-header-what {
+  padding-left: 0px;
+}

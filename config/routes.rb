@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  get 'freelancers/index'
+
+
+
+  resources :subscription_settings, only: :index
+
   resources :chatrooms, module: "chatrooms" do
     resource :chatroom_users
     resource :messages
   end
+
   resources :freelancers
-  get 'users/show'
+
 
   devise_for :users
   resources :photos

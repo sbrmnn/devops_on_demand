@@ -59,3 +59,8 @@ en:
   poor_connection_header: "POOR NETWORK CONNECTION:"
   poor_connection_msg: "Please check your internet connection and refresh this page."
   find_freelancers: "Find Freelancers"
+  newsletters_subscription_description: "Monthly newsletters outlining new product offerings, recent platform improvements (ie. bux fixes), and general announcements by the management team."
+  chat_subscription_description: "Email notification alerting the user that've received message from another user on the platform."
+  current_subscription: "Current Subscriptions"
+  chat_notifications: "Chat Notifications"
+  newsletters: "Newsletters"

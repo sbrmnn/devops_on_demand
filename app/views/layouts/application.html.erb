@@ -8,9 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
 
-  <% unless login_or_registration_page? %>
+  <% if render_navbar_and_footer? %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a href="https://getbootstrap.com/docs/4.0/examples/album/#" class="navbar-brand d-flex align-items-center">
@@ -51,9 +51,7 @@
         </div>
       </div>
     </nav>
-  <% end %>
-
-
+     <% end %>
     <%= yield %>
   </body>
 </html>

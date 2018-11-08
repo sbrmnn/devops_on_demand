@@ -14,8 +14,8 @@ module ApplicationHelper
     end
   end
 
-  def login_or_registration_page?
-    controller.is_a?(Devise::SessionsController) || controller.is_a?(Devise::RegistrationsController)
+  def render_navbar_and_footer?
+    !controller.is_a?(Devise::SessionsController) &&  !controller.is_a?(Devise::RegistrationsController) &&  !controller.is_a?(SubscriptionSettingsController)
   end
 
   def chatroom_info(chatroom, current_user)
@@ -23,7 +23,8 @@ module ApplicationHelper
   end
 
   def get_chatrooms_with_latest_messages(current_user)
-    OrderedUserChatroomQuery.new(current_user, 'id').all
+    chatrooms = current_user.chatrooms
+    ChatroomWithLatestUnreadMessagesQuery.call(chatrooms)
   end
 
   def new_message?(chatroom, current_user)

@@ -74,5 +74,7 @@ gem 'js_cookie_rails'
 
 gem 'redis', '~> 4.0.3'
 
+gem 'sendgrid-ruby'
+
 
 

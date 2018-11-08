@@ -2,6 +2,19 @@
 @import "font-awesome";
 @import "freelancers";
 @import "users";
+@import "subscription_settings";
+
+
+
+body {
+  font-family: Arial !important;
+}
+
+
+.small-logo{
+  height: 80px;
+  width: 80px;
+}
 
 .search-banner {
   background-color: white;

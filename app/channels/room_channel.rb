@@ -9,17 +9,33 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    broadcast_message(data['body'])
+    message = save_message(data['body'])
+    if message.present?
+      broadcast_message(message)
+    end
   end
 
 
   private
 
   def user_can_access_chatroom?
-    ChatroomPolicy.new(current_user.id, params[:chatroom_id]).can_access?
+    ChatroomPolicy.new(current_user.id, chatroom).can_access?
   end
 
-  def broadcast_message(body)
-    MessageService.new(params[:chatroom_id], body, current_user).broadcast
+  def save_message(body)
+    message = Message.new(chatroom: chatroom, body: body, user: current_user)
+    unless message.save
+      Rails.logger.error "Message Save Error chatroom_id: #{params[:chatroom_id]}, model_error: #{message.errors.messages}"
+      return nil
+    end
+    message
+  end
+
+  def broadcast_message(message)
+    BroadcastMessageToChatroom.call(chatroom, message)
+  end
+
+  def chatroom
+    @chatroom ||= Chatroom.find(params[:chatroom_id])
   end
 end

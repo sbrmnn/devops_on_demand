@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="manager-textbox">
+    <div class="manager-text">
+      <%= form_with model: @user do |form| %>
+        <h3 ><%= t('current_subscriptions') %></h3>
+        <div class="row  mt-4">
+          <div class="col-12">
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= form.check_box :newsletter_subscription, {class: 'form-check-input', checked: true} %>
+                <%= t('newsletters') %>
+              </label>
+              <p class="text-muted"><small><%= t('newsletters_subscription_description') %></small></p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-12">
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= form.check_box :chat_notification_subscription, {class: 'form-check-input', checked: true} %>
+                <%= t('chat_notifications') %>
+              </label>
+              <p class="text-muted"><small><%= t('chat_subscription_description') %></small></p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

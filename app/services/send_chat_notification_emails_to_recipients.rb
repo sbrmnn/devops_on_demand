@@ -1,6 +1,5 @@
 require 'sendgrid-ruby'
 
-
 class SendChatNotificationEmailsToRecipients
   include SendGrid
 
@@ -16,6 +15,7 @@ class SendChatNotificationEmailsToRecipients
   end
 
   def call
+
     Chatroom.all.each do |cr|
       last_message = cr.messages.where("created_at > ?",  @earliest_message_created_at_date).last
       next if last_message.blank?

@@ -8,7 +8,6 @@ class EmailClient
 
   def initialize
      @vendor = SendGrid::API.new(api_key: ENV['EMAIL_VENDOR_API_KEY'])
-     @mail = Mail.new
   end
 
   def post(mail_json)

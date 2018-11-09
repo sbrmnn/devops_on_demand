@@ -8,7 +8,7 @@ module ApplicationHelper
       when 'notice'
         'alert-info'
       else
-        flash_type.to_s
+        nil
     end
   end
 

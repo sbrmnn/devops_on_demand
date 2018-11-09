@@ -15,12 +15,11 @@
         <div class="row mt-1">
           <div class="col-12">
             <% flash.each do |key, value| %>
-
-              <div class="alert <%= bootstrap_class_for_flash(key) %> unsub-alert text-center" role="alert">
-
-                  <strong><%= value["header"]%> </strong> <%= value["message"] %>
-
-              </div>
+              <% if bootstrap_class_for_flash(key).present? %>
+                <div class="alert <%= bootstrap_class_for_flash(key) %> unsub-alert text-center" role="alert">
+                    <strong><%= value["header"]%> </strong> <%= value["message"] %>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

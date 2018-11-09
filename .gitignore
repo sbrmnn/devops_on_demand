@@ -22,6 +22,10 @@
 
 .byebug_history
 
+# Ignore local environmental variables
+
+config/local_env.yml
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

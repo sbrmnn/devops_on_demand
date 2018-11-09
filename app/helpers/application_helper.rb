@@ -5,8 +5,6 @@ module ApplicationHelper
         'alert-success'
       when 'error'
         'alert-danger'
-      when 'alert'
-        'alert-danger'
       when 'notice'
         'alert-info'
       else

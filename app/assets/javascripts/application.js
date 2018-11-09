@@ -44,14 +44,16 @@ function formatAMPM(date) {
     return strTime;
 }
 
-function preSelectChatRoom(){
+function preSelectChatroom(){
     if (getUrlParameter('respond_to_room') !== undefined){
         $('#pills-messages-tab').trigger('click');
         var roomSelector = $('#' + getUrlParameter('respond_to_room'));
         if (roomSelector.length > 0){
-            roomSelector.trigger("click")
+            roomSelector.trigger("click");
         }
+        return true
     }
+    return false;
 }
 
 var months = [ "January", "February", "March", "April", "May", "June",
@@ -71,9 +73,9 @@ $.ajaxSetup({
 }(jQuery));
 
 $( document ).on('turbolinks:load', function() {
-    getPreviouslySelectedPill();
-    preSelectChatRoom();
+    getSelectedPill();
 });
+
 
 
 
@@ -97,13 +99,16 @@ $(document).on('click','.msg_send_btn', function(){
 });
 
 
-function getPreviouslySelectedPill(){
-    var activePillId = window.localStorage.getItem('activeTabId');
-    if (activePillId) {
-        $('#' + activePillId).tab('show');
-        window.localStorage.removeItem("activeTab");
-    }else{
-        $('#pills-home').tab('show');
+function getSelectedPill(){
+    var preSelectedChatroom = preSelectChatroom();
+    if (!preSelectedChatroom) {
+        var activePillId = window.localStorage.getItem('activeTabId');
+        if (activePillId){
+            $('#' + activePillId).tab('show');
+            window.localStorage.removeItem("activeTab");
+        }else{
+            $('#pills-home-tab').tab('show');
+        }
     }
     $(document).on('click','a[data-toggle="pill"]', function(e){
         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));

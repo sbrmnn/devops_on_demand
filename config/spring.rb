@@ -7,4 +7,6 @@
   app/decorator
   app/queries
   app/services/concerns
+  app/services
+  app/clients
 ).each { |path| Spring.watch(path) }

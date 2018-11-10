@@ -21,6 +21,7 @@
 
 
 var ua = navigator.userAgent;
+// cliciPhone has different click event than browsers
 var click_event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "touchstart" : "click";
 
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -52,7 +53,7 @@ function formatAMPM(date) {
 function preSelectChatroom(){
     if (getUrlParameter('respond_to_room') !== undefined){
         $('#pills-messages-tab').trigger('click');
-        var roomSelector = $('#' + getUrlParameter('respond_to_room'));
+        var roomSelector = $('#' + getUrlParameter('respond_to_room') + ' > a');
         if (roomSelector.length > 0){
             roomSelector.trigger("click");
         }
@@ -78,6 +79,7 @@ $.ajaxSetup({
 }(jQuery));
 
 $( document ).on('turbolinks:load', function() {
+    $('.msg-input-grp').hide();
     getSelectedPill();
 });
 
@@ -90,11 +92,14 @@ $(document).keyup(function (e) {
     }
 });
 
-$(document).on(click_event,'.chat_list', function(){
+$(document).on(click_event,'.chatroom-link', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
     $('.chat_list').removeClass('active_chat');
     $(this).addClass('active_chat');
     $('.type_msg').show();
-    renderChatRoomMessage($(this).find('.chat_room_id')[0].innerHTML)
+    renderChatRoomMessage($(this).attr('chatroom_id'));
+    return false;
 });
 
 
@@ -120,7 +125,7 @@ function getSelectedPill(){
 }
 
 function broadcastMessage(){
-    var roomId = $('.active_chat').find('.chat_room_id')[0].innerHTML;
+    var roomId = $('.active_chat').attr('chatroom_id');
     var messageInput = $('.write_msg');
     var message = messageInput.val().trim();
     var roomName = 'room' + roomId;
@@ -135,48 +140,57 @@ function broadcastMessage(){
 
 
 function renderChatRoomMessage(chatroomId){
-    $('.msg_history').empty();
+    $('.chat-box').empty();
     $.ajax({
         type: "GET",
         dataType: "json",
         url: "/chatrooms/" + chatroomId + "/messages.json",
         success: function(data){
             data.forEach(function(item) {
-                appendMessageHistroy(item['body'], new Date(item['created_at']), item['user_id']);
+                appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id']);
             });
+
+            $('.msg-input-grp').show()
 
         }
     });
 }
 
 
-function appendMessageHistroy(message, time ,message_user_id){
+function appendMessageHistory(message, time , message_user_id){
     var current_user_id = Cookies.get('current_user_id');
     if (message_user_id == current_user_id) {
-        $('.msg_history').append(outgoingMessageHTML(message, time)).scrollToBottom();
+        $('.chat-box').append(outgoingMessageHTML(message, time)).scrollToBottom();
 
     }else{
-        $('.msg_history').append(incomingMessageHTML(message, time)).scrollToBottom();
+        $('.chat-box').append(incomingMessageHTML(message, time)).scrollToBottom();
     }
 }
 
 function incomingMessageHTML(message, time){
-    return '<div class="incoming_msg mb-3">\
-              <div class="received_msg">\
-               <div class="received_withd_msg">\
-                  <p>'+ message+'</p>\
-                 <span class="time_date"> ' + timeString(time) + '</span></div>\
+    return '<div class="row">\
+               <div class="col-12">\
+                <div class="chat bg-secondary d-inline-block   text-white mb-2">\
+                 <div class="chat-bubble">\
+                   <p class="m-0 chat-message">'+ message+'</p>\
+                   <span class="time_date"> ' + timeString(time) + '</span></div>\
+                 </div>\
+                </div>\
                </div>\
-            </div>'
+           </div>';
 }
 
 function outgoingMessageHTML(message, time){
-   return '<div class="outgoing_msg mb-3">\
-             <div class="sent_msg">\
-               <p>'+message+'</p>\
-               <span class="time_date">' + timeString(time) + '</span> \
-             </div>\
-           </div>'
+    return '<div class="row">\
+             <div class="col-12">\
+                 <div class="chat bg-red d-inline-block text-white mb-2 pull-right">\
+                   <div class="chat-bubble">\
+                     <p class="m-0 text-right">'+ message+'</p>\
+                     <span class="time_date"> ' + timeString(time) + '</span></div>\
+                   </div>\
+                 </div>\
+              </div>\
+            </div>';
 }
 
 

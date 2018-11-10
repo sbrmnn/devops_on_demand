@@ -2,7 +2,7 @@ function subscribeToRoom(chatroomId){
     var roomName = 'room' + chatroomId;
     App[roomName] = App.cable.subscriptions.create({channel: 'RoomChannel', chatroom_id: chatroomId}, {
         received: function(data) {
-            return  appendMessageHistroy(data['body'], new Date(data['created_at']), data['user_id']);
+            return  appendMessageHistory(data['body'], new Date(data['created_at']), data['user_id']);
         },
 
         speak: function(message) {
@@ -27,9 +27,9 @@ function subscribeToRoom(chatroomId){
 
 $(document).on('turbolinks:load', function() {
 
-    if ( $("#chatbox").length ) {
-     $('.chat_room_id').each(function( ) {
-         subscribeToRoom($( this ).text());
+    if ( $(".chatroom-link").length ) {
+     $('.chatroom-link').each(function( ) {
+         subscribeToRoom($( this ).attr('chatroom_id'));
       });
     }
 });

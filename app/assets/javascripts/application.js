@@ -18,6 +18,11 @@
 //= require js.cookie
 //= require_tree .
 
+
+
+var ua = navigator.userAgent;
+var event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "touchstart" : "click";
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -93,12 +98,9 @@ $(document).on('click','.chat_list', function(){
 });
 
 
-$(".msg_send_btn").unbind("click").click(function(){
-
+$(document).on(event,'.msg_send_btn', function(){
     broadcastMessage()
-
 });
-
 
 
 function getSelectedPill(){

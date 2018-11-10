@@ -93,10 +93,12 @@ $(document).on('click','.chat_list', function(){
 });
 
 
-
-$(document).on('click','.msg_send_btn', function(){
+$(document).off('click').on('click', '.msg_send_btn', function () {
     broadcastMessage()
 });
+
+
+
 
 
 function getSelectedPill(){

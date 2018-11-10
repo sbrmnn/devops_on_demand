@@ -1,5 +1,12 @@
+<div id="connection-error-alert" class="alert alert-danger" role="alert">
+  <i class="fa fa-exclamation-triangle"></i>
+  <strong class="ml-1 mr-1"><%= t('poor_connection_header') %></strong>
+  <%= t('poor_connection_msg') %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <div class="container-fluid">
-
 <div class="row">
     <div id= "sidebar-wrapper" class="col-3 col-md-2 bg-dark full-height sidebar">
       <div id="sidebar-wrapper">
@@ -24,7 +31,7 @@
           <div class="input-group msg-input-grp">
             <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox" maxlength="50" >
             <div class="input-group-append">
-              <button class="msg_send_btn btn btn-outline-secondary" type="button"  ><%= t('send') %></button>
+              <button class="msg_send_btn btn btn-outline-secondary"  type="button"  ><%= t('send') %></button>
             </div>
           </div>
         </div>

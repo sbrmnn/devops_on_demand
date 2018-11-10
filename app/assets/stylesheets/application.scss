@@ -70,7 +70,12 @@ input.form-control.sidebar-form {
 
 // <--- Chat box
 
+#connection-error-alert{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 
+}
 
 .sidebar-nav {
   position: absolute;

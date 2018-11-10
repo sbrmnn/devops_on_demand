@@ -170,7 +170,7 @@ function appendMessageHistory(message, time , message_user_id){
 function incomingMessageHTML(message, time){
     return '<div class="row">\
                <div class="col-12">\
-                <div class="chat bg-secondary d-inline-block   text-white mb-2">\
+                <div class="chat bg-secondary d-inline-block  text-dark mb-2">\
                  <div class="chat-bubble">\
                    <p class="m-0 chat-message">'+ message+'</p>\
                    <span class="time_date"> ' + timeString(time) + '</span></div>\
@@ -183,7 +183,7 @@ function incomingMessageHTML(message, time){
 function outgoingMessageHTML(message, time){
     return '<div class="row">\
              <div class="col-12">\
-                 <div class="chat bg-red d-inline-block text-white mb-2 pull-right">\
+                 <div class="chat bg-warning d-inline-block text-dark mb-2 pull-right">\
                    <div class="chat-bubble">\
                      <p class="m-0 text-right">'+ message+'</p>\
                      <span class="time_date"> ' + timeString(time) + '</span></div>\

@@ -21,7 +21,7 @@
 
 
 var ua = navigator.userAgent;
-var event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "touchstart" : "click";
+var click_event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "touchstart" : "click";
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -90,7 +90,7 @@ $(document).keyup(function (e) {
     }
 });
 
-$(document).on('click','.chat_list', function(){
+$(document).on(click_event,'.chat_list', function(){
     $('.chat_list').removeClass('active_chat');
     $(this).addClass('active_chat');
     $('.type_msg').show();
@@ -98,7 +98,7 @@ $(document).on('click','.chat_list', function(){
 });
 
 
-$(document).on(event,'.msg_send_btn', function(){
+$(document).on(click_event,'.msg_send_btn', function(){
     broadcastMessage()
 });
 
@@ -114,7 +114,7 @@ function getSelectedPill(){
             $('#pills-home-tab').tab('show');
         }
     }
-    $(document).on('click','a[data-toggle="pill"]', function(e){
+    $(document).on(click_event,'a[data-toggle="pill"]', function(e){
         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }

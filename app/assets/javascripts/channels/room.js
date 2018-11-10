@@ -2,7 +2,6 @@ function subscribeToRoom(chatroomId){
     var roomName = 'room' + chatroomId;
     App[roomName] = App.cable.subscriptions.create({channel: 'RoomChannel', chatroom_id: chatroomId}, {
         received: function(data) {
-            alert("Test")
             return  appendMessageHistroy(data['body'], new Date(data['created_at']), data['user_id']);
         },
 

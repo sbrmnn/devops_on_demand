@@ -174,7 +174,7 @@ function incomingMessageHTML(message, time){
 function outgoingMessageHTML(message, time){
     return '<div class="row">\
              <div class="col-12">\
-                 <div class="chat bg-gray d-inline-block text-dark mb-2 pull-right">\
+                 <div class="chat bg-white-smoke d-inline-block text-dark mb-2 pull-right">\
                    <div class="chat-bubble">\
                      <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
                      <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\

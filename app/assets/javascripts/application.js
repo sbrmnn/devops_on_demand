@@ -159,13 +159,12 @@ function appendMessageHistory(message, time , message_user_id){
 }
 
 function incomingMessageHTML(message, time){
-    var messageWithLineBreak = message.replace(/(.{55})/g, "$1<br>")
     return '<div class="row">\
                <div class="col-12">\
                 <div class="chat bg-warning d-inline-block  text-dark mb-2">\
                  <div class="chat-bubble">\
-                   <p class="m-0">'+ messageWithLineBreak +'</p>\
-                   <span class="time_date"> ' + timeString(time) + '</span></div>\
+                   <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
+                   <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
                  </div>\
                 </div>\
                </div>\
@@ -173,17 +172,20 @@ function incomingMessageHTML(message, time){
 }
 
 function outgoingMessageHTML(message, time){
-    var messageWithLineBreak = message.replace(/(.{55})/g, "$1<br>");
     return '<div class="row">\
              <div class="col-12">\
                  <div class="chat bg-gray d-inline-block text-dark mb-2 pull-right">\
                    <div class="chat-bubble">\
-                     <p class="m-0">'+ messageWithLineBreak +'</p>\
-                     <span class="time_date"> ' + timeString(time) + '</span></div>\
+                     <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
+                     <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
                    </div>\
                  </div>\
               </div>\
             </div>';
+}
+
+function messageWithLineBreak(message){
+    return message.replace(/(.{55})/g, "$1<br>");
 }
 
 

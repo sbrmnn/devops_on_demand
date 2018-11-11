@@ -8,7 +8,7 @@
 </div>
 <div class="container-fluid">
 <div class="row">
-    <div id= "sidebar-wrapper" class="col-3 col-md-2 bg-dark full-height sidebar">
+    <div id= "sidebar-wrapper" class="col-4 col-md-3 bg-dark full-height sidebar">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav py-3">
           <% get_chatrooms_with_latest_messages(current_user).each do |chatroom| %>
@@ -22,7 +22,7 @@
       </div>
 
     </div>
-    <div class="col-9 col-md-10 bg-light full-height">
+    <div class="col-8 col-md-9 bg-light full-height">
       <div class="container-fluid">
         <div class="chat-box py-3">
           <p class="lead text-muted"><%= t('select_chatroom_msg') %></p>

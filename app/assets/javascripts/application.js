@@ -18,7 +18,9 @@
 //= require js.cookie
 //= require_tree .
 
-
+$.ajaxSetup({
+    'beforeSend': function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-      token']").attr('content')); }
+});
 
 var ua = navigator.userAgent;
 // cliciPhone has different click event than browsers
@@ -65,11 +67,6 @@ function preSelectChatroom(){
 var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
-
-$.ajaxSetup({
-    'beforeSend': function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-      token']").attr('content')); }
-});
-
 (function($) {
     $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
@@ -82,8 +79,6 @@ $( document ).on('turbolinks:load', function() {
     $('.msg-input-grp').hide();
     getSelectedPill();
 });
-
-
 
 
 $(document).keyup(function (e) {
@@ -135,10 +130,6 @@ function broadcastMessage(){
     }
 }
 
-
-
-
-
 function renderChatRoomMessage(chatroomId){
     $('.chat-box').empty();
     $.ajax({
@@ -170,9 +161,9 @@ function appendMessageHistory(message, time , message_user_id){
 function incomingMessageHTML(message, time){
     return '<div class="row">\
                <div class="col-12">\
-                <div class="chat bg-secondary d-inline-block  text-dark mb-2">\
+                <div class="chat bg-warning d-inline-block  text-dark mb-2">\
                  <div class="chat-bubble">\
-                   <p class="m-0 chat-message">'+ message+'</p>\
+                   <p class="m-0">'+ message+'</p>\
                    <span class="time_date"> ' + timeString(time) + '</span></div>\
                  </div>\
                 </div>\
@@ -183,7 +174,7 @@ function incomingMessageHTML(message, time){
 function outgoingMessageHTML(message, time){
     return '<div class="row">\
              <div class="col-12">\
-                 <div class="chat bg-warning d-inline-block text-dark mb-2 pull-right">\
+                 <div class="chat bg-gray d-inline-block text-dark mb-2 pull-right">\
                    <div class="chat-bubble">\
                      <p class="m-0 text-right">'+ message+'</p>\
                      <span class="time_date"> ' + timeString(time) + '</span></div>\

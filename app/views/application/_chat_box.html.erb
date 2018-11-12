@@ -8,27 +8,27 @@
 </div>
 <div class="container">
 <div class="row py-3">
-    <div id= "sidebar-wrapper" class="col-4 col-md-3 bg-dark full-height sidebar">
+    <div id= "sidebar-wrapper" class="col-5 col-md-3 bg-dark full-height sidebar">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav py-3">
           <% get_chatrooms_with_latest_messages(current_user).each do |chatroom| %>
             <% @chatroom_info = chatroom_info(chatroom, current_user) %>
             <li class="chat_list" id = "chatroom_<%= chatroom.id %>" >
               <div class="chat_room_id" hidden><%= chatroom.id %></div>
-              <a class="<%= @chatroom_info.new_message? ? 'new_msg' : '' %>  chatroom-link medium" chatroom_id = "<%= chatroom.id %>" href="#"><%= @chatroom_info.recipient %></a>
+              <div id = "chatroom_<%= chatroom.id %>_name" class="<%= @chatroom_info.new_message? ? 'new_msg' : '' %>  chatroom-name" chatroom_id = "<%= chatroom.id %>"><%= @chatroom_info.recipient %></div>
             </li>
           <% end %>
         </ul>
       </div>
 
     </div>
-    <div class="col-8 col-md-9 bg-light full-height">
+    <div class="col-7 col-md-9 bg-light full-height">
       <div class="container-fluid">
         <div class="chat-box py-3">
           <p class="lead text-muted"><%= t('select_chatroom_msg') %></p>
         </div>
         <div class="chat-text-input">
-          <div class="input-group msg-input-grp">
+          <div class="input-group msg-input-grp" style="display: none">
             <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox"   >
             <div class="input-group-append">
               <button class="msg_send_btn btn btn-outline-secondary"  type="button"  ><%= t('send') %></button>

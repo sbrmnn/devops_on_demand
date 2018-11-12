@@ -27,8 +27,8 @@ function subscribeToRoom(chatroomId){
 
 $(document).on('turbolinks:load', function() {
 
-    if ( $(".chatroom-link").length ) {
-     $('.chatroom-link').each(function( ) {
+    if ( $(".chatroom-name").length ) {
+     $('.chatroom-name').each(function( ) {
          subscribeToRoom($( this ).attr('chatroom_id'));
       });
     }

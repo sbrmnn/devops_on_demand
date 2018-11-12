@@ -60,6 +60,7 @@ input.form-control.sidebar-form {
 
 .active_chat{
   background-color: white;
+  color: black !important;
 }
 
 .chat-text-size{
@@ -71,8 +72,10 @@ input.form-control.sidebar-form {
 }
 
 
-.chatroom-link{
-  font-size: large;
+.chatroom-name{
+  font-size: medium;
+  color: whitesmoke;
+  cursor: pointer;
 }
 
 

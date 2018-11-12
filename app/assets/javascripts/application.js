@@ -55,10 +55,8 @@ function formatAMPM(date) {
 function preSelectChatroom(){
     if (getUrlParameter('respond_to_room') !== undefined){
         $('#pills-messages-tab').trigger('click');
-        var roomSelector = $('#' + getUrlParameter('respond_to_room') + ' > a');
-        if (roomSelector.length > 0){
-            roomSelector.trigger("click");
-        }
+        var roomName = '#' + getUrlParameter('respond_to_room') + '_name';
+        $(roomName).trigger(click_event);
         return true
     }
     return false;
@@ -75,8 +73,9 @@ var months = [ "January", "February", "March", "April", "May", "June",
     };
 }(jQuery));
 
+
+
 $( document ).on('turbolinks:load', function() {
-    $('.msg-input-grp').hide();
     getSelectedPill();
 });
 
@@ -87,7 +86,7 @@ $(document).keyup(function (e) {
     }
 });
 
-$(document).on(click_event,'.chatroom-link', function(e){
+$(document).on(click_event,'.chatroom-name', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     $('.chat_list').removeClass('active_chat');

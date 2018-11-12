@@ -7,7 +7,7 @@
   </button>
 </div>
 <div class="container-fluid">
-<div class="row">
+<div class="row py-3">
     <div id= "sidebar-wrapper" class="col-4 col-md-3 bg-dark full-height sidebar">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav py-3">
@@ -15,7 +15,7 @@
             <% @chatroom_info = chatroom_info(chatroom, current_user) %>
             <li class="chat_list" id = "chatroom_<%= chatroom.id %>" >
               <div class="chat_room_id" hidden><%= chatroom.id %></div>
-              <a class="<%= @chatroom_info.new_message? ? 'new_msg' : '' %> chatroom-link medium" chatroom_id = "<%= chatroom.id %>" href="#"><%= @chatroom_info.recipient %></a>
+              <a class="<%= @chatroom_info.new_message? ? 'new_msg' : '' %>  chatroom-link medium" chatroom_id = "<%= chatroom.id %>" href="#"><%= @chatroom_info.recipient %></a>
             </li>
           <% end %>
         </ul>

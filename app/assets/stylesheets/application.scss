@@ -10,6 +10,10 @@ body {
   font-family: Arial !important;
 }
 
+.users_show{
+  background-color: whitesmoke;
+}
+
 
 
 .small-logo{
@@ -24,7 +28,7 @@ body {
 
 // Chat box --->
 .full-height {
-  height: 92vh;
+  height: 90vh;
   overflow: scroll;
 }
 
@@ -41,7 +45,7 @@ input.form-control.sidebar-form {
 }
 
 .chat-box {
-  height: 82vh;
+  height: 80vh;
   overflow: scroll;
 }
 
@@ -57,6 +61,10 @@ input.form-control.sidebar-form {
   font-size: small;
 }
 
+
+.chatroom-link{
+  font-size: large;
+}
 
 
 .chat {
@@ -90,7 +98,7 @@ input.form-control.sidebar-form {
 }
 
 .sidebar-nav {
-  position: absolute;
+  position: relative;
   top: 0;
   width: 100%;
   margin: 0;
@@ -133,6 +141,9 @@ input.form-control.sidebar-form {
   color: #fff;
   background: none;
 }
+
+
+
 
 
 

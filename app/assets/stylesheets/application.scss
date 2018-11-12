@@ -14,7 +14,16 @@ body {
   background-color: whitesmoke;
 }
 
+.nav-pills > li > a {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
 
+
+
+.nav-pills > li > a.active {
+  background-color: white !important;
+  color: black !important;
+}
 
 .small-logo{
   height: 80px;

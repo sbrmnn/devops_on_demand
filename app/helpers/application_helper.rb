@@ -16,6 +16,10 @@ module ApplicationHelper
     !controller.is_a?(Devise::SessionsController) &&  !controller.is_a?(Devise::RegistrationsController) &&  !controller.is_a?(SubscriptionSettingsController)
   end
 
+  def render_submenu?
+    controller.is_a?(UsersController)
+  end
+
   def chatroom_info(chatroom, current_user)
     ChatroomDecorator.new(chatroom, current_user)
   end

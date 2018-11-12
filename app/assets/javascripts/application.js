@@ -22,9 +22,6 @@ $.ajaxSetup({
     'beforeSend': function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-      token']").attr('content')); }
 });
 
-var ua = navigator.userAgent;
-// cliciPhone has different click event than browsers
-var click_event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "click" : "click";
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -56,7 +53,7 @@ function preSelectChatroom(){
     if (getUrlParameter('respond_to_room') !== undefined){
         $('#pills-messages-tab').trigger('click');
         var roomName = '#' + getUrlParameter('respond_to_room') + '_name';
-        $(roomName).trigger(click_event);
+        $(roomName).trigger('click');
         return true
     }
     return false;
@@ -86,7 +83,7 @@ $(document).keyup(function (e) {
     }
 });
 
-$(document).on(click_event,'.chatroom-name', function(e){
+$(document).on('click','.chatroom-name', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     $('.chat_list').removeClass('active_chat');
@@ -97,7 +94,7 @@ $(document).on(click_event,'.chatroom-name', function(e){
 });
 
 
-$(document).on(click_event,'.msg_send_btn', function(){
+$(document).on('click','.msg_send_btn', function(){
     broadcastMessage()
 });
 
@@ -113,7 +110,7 @@ function getSelectedPill(){
             $('#pills-home-tab').tab('show');
         }
     }
-    $(document).on(click_event,'a[data-toggle="pill"]', function(e){
+    $(document).on('click','a[data-toggle="pill"]', function(e){
         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }

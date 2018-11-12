@@ -87,6 +87,7 @@ $(document).on('click','.chatroom-name', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     $('.chat_list').removeClass('active_chat');
+    $(this).removeClass('new_msg');
     $(this).addClass('active_chat');
     $('.type_msg').show();
     renderChatRoomMessage($(this).attr('chatroom_id'));

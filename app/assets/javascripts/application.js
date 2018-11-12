@@ -24,7 +24,7 @@ $.ajaxSetup({
 
 var ua = navigator.userAgent;
 // cliciPhone has different click event than browsers
-var click_event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "touchstart" : "click";
+var click_event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "click" : "click";
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),

@@ -23,6 +23,12 @@ $.ajaxSetup({
 });
 
 
+var ua = navigator.userAgent;
+
+// iPhone has different click event than browsers
+
+var click_event = (ua.match(/iPad/i) || ua.match(/iPhone/i)) ? "touchstart" : "click";
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -53,7 +59,7 @@ function preSelectChatroom(){
     if (getUrlParameter('respond_to_room') !== undefined){
         $('#pills-messages-tab').trigger('click');
         var roomName = '#' + getUrlParameter('respond_to_room') + '_name';
-        $(roomName).trigger('click');
+        $(roomName).trigger(click_event);
         return true
     }
     return false;
@@ -83,7 +89,7 @@ $(document).keyup(function (e) {
     }
 });
 
-$(document).on('click','.chatroom-name', function(e){
+$(document).on(click_event,'.chatroom-name', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     $('.chat_list').removeClass('active_chat');
@@ -95,7 +101,7 @@ $(document).on('click','.chatroom-name', function(e){
 });
 
 
-$(document).on('click','.msg_send_btn', function(){
+$(document).on(click_event,'.msg_send_btn', function(){
     broadcastMessage()
 });
 
@@ -111,7 +117,7 @@ function getSelectedPill(){
             $('#pills-home-tab').tab('show');
         }
     }
-    $(document).on('click','a[data-toggle="pill"]', function(e){
+    $(document).on(click_event,'a[data-toggle="pill"]', function(e){
         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }

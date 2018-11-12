@@ -15,6 +15,12 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 
 
+# Fast Universal Google Analytics setup for Rails.
+# This gem is mostly intended for small to medium websites with a simple analytics strategy.
+
+gem 'google-analytics-rails', '1.1.1'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use sqlite3 as the database for Active Record

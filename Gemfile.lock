@@ -83,6 +83,7 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -230,6 +231,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.5.0)
   font-awesome-rails
+  google-analytics-rails (= 1.1.1)
   jbuilder (~> 2.5)
   jquery-rails
   js_cookie_rails

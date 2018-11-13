@@ -13,6 +13,7 @@ class ChatNotificationMailer < ApplicationMailer
     @Sender_City = "Atlanta"
     @Sender_State = "Ga"
     @Sender_Zip = "30308"
+    byebug
     mail(to: @email, subject: "You\'ve received a new message from #{@chat_sender_name}")
   end
 end

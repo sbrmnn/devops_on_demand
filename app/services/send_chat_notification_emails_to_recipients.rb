@@ -3,14 +3,7 @@ require 'sendgrid-ruby'
 class SendChatNotificationEmailsToRecipients
   include SendGrid
 
-  def initialize(template_id='d-922a172bd405417c97d73ddc1e798a05')
-    @template_id = template_id
-    @from = 'webmaster@yumfog.com'
-    @from_name = "YumFog"
-    @from_address = "75 5th St Nw"
-    @from_city = "Atlanta"
-    @from_state = "Georgia"
-    @from_zip  = 30308
+  def initialize
     @earliest_message_created_at_date = (ENV['CHAT_EMAIL_INTERVAL_IN_MINUTES'].to_i + 5).minutes.ago
   end
 

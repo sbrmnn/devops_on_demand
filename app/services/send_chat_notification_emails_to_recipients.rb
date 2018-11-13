@@ -1,5 +1,3 @@
-require 'sendgrid-ruby'
-
 class SendChatNotificationEmailsToRecipients
   include SendGrid
 

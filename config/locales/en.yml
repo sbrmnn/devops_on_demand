@@ -69,3 +69,7 @@ en:
   saved: "Saved!"
   error: "Error!"
   send: "Send"
+  hi: "Hi"
+  received_msg: "You have a new message from"
+  click_to_respond: "Click to Respond"
+  unsubscribe: "Unsubscribe"

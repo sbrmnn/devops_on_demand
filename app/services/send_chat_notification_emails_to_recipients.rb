@@ -1,6 +1,5 @@
 class SendChatNotificationEmailsToRecipients
-  include SendGrid
-
+  
   def initialize
     @earliest_message_created_at_date = (ENV['CHAT_EMAIL_INTERVAL_IN_MINUTES'].to_i + 5).minutes.ago
   end

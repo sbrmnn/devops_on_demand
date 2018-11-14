@@ -12,7 +12,7 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav py-3">
           <% get_chatrooms_with_latest_messages(current_user).each do |chatroom| %>
-            <% @chatroom_info = chatroom_info(chatroom, current_user) %>
+            <% @chatroom_info = chatroom_info(chatroom) %>
             <li class="chat_list" id = "chatroom_<%= chatroom.id %>" >
               <div class="chat_room_id" hidden><%= chatroom.id %></div>
               <div id = "chatroom_<%= chatroom.id %>_name" class="<%= @chatroom_info.new_message? ? 'new_msg' : '' %>  chatroom-name" chatroom_id = "<%= chatroom.id %>"><%= @chatroom_info.recipient %></div>

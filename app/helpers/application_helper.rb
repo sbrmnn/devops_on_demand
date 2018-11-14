@@ -20,8 +20,8 @@ module ApplicationHelper
     controller.is_a?(UsersController)
   end
 
-  def chatroom_info(chatroom, current_user)
-    ChatroomDecorator.new(chatroom, current_user)
+  def chatroom_info(chatroom)
+    ChatroomDecorator.new(chatroom)
   end
 
   def get_chatrooms_with_latest_messages(current_user)
@@ -29,8 +29,8 @@ module ApplicationHelper
     ChatroomWithLatestUnreadMessagesQuery.call(chatrooms)
   end
 
-  def new_message?(chatroom, current_user)
-    chatroom_info(chatroom, current_user).new_message?
+  def new_message?(chatroom)
+    chatroom_info(chatroom).new_message?
   end
 end
 

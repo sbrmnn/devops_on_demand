@@ -1,18 +1,17 @@
 class ChatroomDecorator
 
-  def initialize(chatroom, curr_user)
+  def initialize(chatroom)
     @chatroom = chatroom
-    @user = curr_user
   end
 
   def recipient
-    user = @chatroom.users.where.not(id: @user.id).first
+    user = @chatroom.users.where.not(id: last_message_user.id).first
     "#{user.try(:first_name)} #{user.try(:last_name)} "
   end
 
-  def new_message?
+  def new_message?(user_id)
     if last_message.present?
-      last_message.user_id != @user.id
+      last_message.user_id != user_id
     else
       false
     end
@@ -24,5 +23,9 @@ class ChatroomDecorator
 
   def last_message
     @chatroom.messages.last
+  end
+
+  def last_message_user
+    @chatroom.messages.last.user
   end
 end

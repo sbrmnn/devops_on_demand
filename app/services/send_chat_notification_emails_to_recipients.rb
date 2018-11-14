@@ -8,7 +8,9 @@ class SendChatNotificationEmailsToRecipients
 
   def call
     Chatroom.all.each do |cr|
+
       last_message = cr.messages.where("created_at > ?",  @earliest_message_created_at_date).last
+      @crd = ChatroomDecorator.new(cr, last_message.user)
       next if last_message.blank?
       notification_sent = last_message.try(:notification_sent)
       next if notification_sent.present?

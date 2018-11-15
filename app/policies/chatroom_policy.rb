@@ -5,7 +5,6 @@ class ChatroomPolicy
     @user = User.find(user_id)
   end
 
-
   def can_access?
     ChatroomUser.where(chatroom: @chatroom, user: @user).any?
   end

@@ -3,6 +3,6 @@ namespace :chat_notification_email do
   desc "Send chat notification email."
   # Define the task
   task send: :environment do
-    SendChatNotificationEmailsToRecipients.new.call
+    SendChatNotificationEmailsToRecipients.call
   end
 end

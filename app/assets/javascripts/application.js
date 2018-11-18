@@ -92,7 +92,7 @@ $(document).keyup(function (e) {
 $(document).on(click_event,'.chatroom-name', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $('.chat_list').removeClass('active_chat');
+    $('.chatroom-name').removeClass('active_chat');
     $(this).removeClass('new_msg');
     $(this).addClass('active_chat');
     $('.type_msg').show();

@@ -4,14 +4,19 @@
 @import "users";
 @import "subscription_settings";
 
+// colors
+
+@mixin yumfogOrange {
+  color: #FCBB43
+}
+
+.yumfog-orange{
+  @include yumfogOrange
+}
 
 
 body {
   font-family: Arial !important;
-}
-
-.users_show{
-  background-color: whitesmoke;
 }
 
 .nav-pills > li > a {
@@ -24,7 +29,6 @@ body {
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
 }
-
 
 .nav-pills > li > a.active {
   background-color: white !important;
@@ -64,8 +68,8 @@ input.form-control.sidebar-form {
   overflow: scroll;
 }
 
-.active_chat{
-  background-color: white;
+.active_chat, .active_chat:hover{
+  background-color: white !important;
   color: black !important;
 }
 
@@ -154,6 +158,8 @@ input.form-control.sidebar-form {
   color: #fff;
   background: none;
 }
+
+
 
 
 

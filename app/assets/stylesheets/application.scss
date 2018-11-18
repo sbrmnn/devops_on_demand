@@ -14,10 +14,15 @@
   @include yumfogOrange
 }
 
+.grey-border{
+  border: whitesmoke 2px solid;
+}
+
 
 body {
-  font-family: Arial !important;
-}
+  font-family: 'Hind', 'Arial', sans-serif !important;
+
+ }
 
 .nav-pills > li > a {
   color: rgba(255, 255, 255, 0.5) !important;

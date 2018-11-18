@@ -27,10 +27,25 @@
 .img-border { border-width: 5px; border-color: whitesmoke; border-style: solid}
 
 
-.users_show{
+.users_show {
   background-color: whitesmoke;
 }
 
+#profile-name{
+  line-height: 1;
+  margin: 0 0 5px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+#job-description {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.last-name-tag{
+  display: inline-block;
+}
 
 
 

@@ -4,7 +4,104 @@
 
 //profile
 
+//.header .profile-img {
+//  margin-right : 30px;
+//}
 
+#pills-profile h1, #pills-profile h2, #pills-profile h3, #pills-profile h4, #pills-profile h5, #pills-profile h6 {
+  margin : 0 0 15px;
+  color  : #444444;
+}
+
+#pills-profile h1 {
+  font-size   : 36px;
+  line-height : 1.8em;
+  font-weight : 700;
+}
+
+#pills-profile h2 {
+  font-size   : 18px;
+  line-height : 1.8em;
+  font-weight : 700;
+}
+
+#pills-profile h3 {
+  font-size   : 13px;
+  line-height : 1.8em;
+  font-weight : 700;
+}
+
+#pills-profile h4 {
+  font-size   : 15px;
+  line-height : 1.8em;
+  font-weight : 500;
+}
+
+#pills-profile h5 {
+  font-size   : 15px;
+  line-height : 1.5em;
+  font-weight : 500;
+}
+
+#pills-profile h6 {
+  font-size   : 15px;
+  line-height : 1.5em;
+}
+
+#pills-profile{
+  font-family : 'Hind', sans-serif;
+  font-size   : 15px;
+  line-height : 1.8em;
+  color       : #989898;
+  font-weight : 300;
+}
+
+@media (max-width : 768px) {
+  .header .profile-img {
+    margin: 0 0 30px;
+  }
+}
+
+.header .name-wrapper {
+  margin-bottom : 30px;
+}
+
+.header .name-wrapper h1 {
+  text-transform : uppercase;
+  line-height    : 1 !important;
+  margin         : 0 0 5px !important;
+}
+
+.header .name-wrapper span {
+  font-size : 24px;
+  color     : #FCBB43;
+}
+
+.header .personal-details {
+  margin : 10px 0;
+}
+
+.header .personal-details strong {
+  font-size   : 13px;
+  color       : #444444;
+  display     : block;
+  line-height : 1;
+}
+
+.header .personal-details small {
+  font-size : 12px;
+}
+
+.header .personal-details span {
+  color : #989898;
+}
+
+
+.img-thumbnail{
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  border: 0 !important;
+}
 
 
 

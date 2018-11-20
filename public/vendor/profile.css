@@ -8565,6 +8565,10 @@ a.theme-btn-on-bg:hover, a.theme-btn-on-bg:focus, a.theme-btn-on-bg:active, .the
   font-weight: 900;
 }
 
+.resume-header .rate{
+  font-size: large;
+}
+
 .resume-header .title {
   font-size: 1.5rem;
 }

@@ -80,6 +80,12 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
 $( document ).on('turbolinks:load', function() {
     getSelectedPill();
+    var chatroomNames = $(".chatroom-name");
+    if ( chatroomNames.length ) {
+      chatroomNames.each(function() {
+          subscribeToRoom($( this ).attr('chatroom_id'));
+      });
+    }
 });
 
 

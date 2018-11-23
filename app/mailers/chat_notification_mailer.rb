@@ -15,10 +15,10 @@ class ChatNotificationMailer < ApplicationMailer
     @chat_text = chat_text
     @email = user.email
     @unsub_token = user.unsub_token
-    @sender_name = "YumFog LLC"
-    @sender_address = "75 5th St NW"
-    @sender_city = "Atlanta"
-    @sender_state = "Ga"
-    @sender_zip = "30308"
+    @platform_name = "YumFog LLC"
+    @platform_address = "75 5th St NW"
+    @platform_city = "Atlanta"
+    @platform_state = "Ga"
+    @platform_zip = "30308"
   end
 end

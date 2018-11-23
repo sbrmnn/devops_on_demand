@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
   has_many :messages
+  has_one :freelancer
 
   def generate_unsub_token
     self.unsub_token = SecureRandom.hex

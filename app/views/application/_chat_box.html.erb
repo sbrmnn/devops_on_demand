@@ -11,7 +11,7 @@
     <div id= "sidebar-wrapper" class="col-5 col-md-3 bg-dark full-height sidebar">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav py-3">
-          <% @chatroom_presenters.each do |cp| %>
+          <% @user.chatrooms.each do |cp| %>
             <li class="chat_list" id = "chatroom_<%= cp.chatroom_id %>" >
               <div class="chat_room_id" hidden><%= cp.chatroom_id %></div>
               <div id = "chatroom_<%= cp.chatroom_id %>_name" class="<%= cp.latest_message_type_for_user(current_user)%>  chatroom-name" chatroom_id = "<%= cp.chatroom_id %>"><%= cp.participant_names(current_user) %></div>

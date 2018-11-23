@@ -1,8 +1,17 @@
 class UserPresenter < ApplicationPresenter
-    # Don't worry about the initialize method, it's already handled for you.
 
-    # You can now pass in an instance of User when you initialize this presenter
-    # and access it with the helper method: subject
+  def chatrooms
+    @chatroom_presenters ||= ordered_chatrooms.map{|cr| ChatroomPresenter.new(cr)}
+  end
 
-    # Write methods for this presenter in here using the helper method
+  def freelancer
+    subject.freelancer
+  end
+
+
+  private
+
+  def ordered_chatrooms
+    @ordered_chatrooms ||= OrderChatroomWithLatestUnreadMessagesQuery.call(subject.chatrooms)
+  end
 end

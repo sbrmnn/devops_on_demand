@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @chatrooms =   OrderChatroomWithLatestUnreadMessagesQuery.call(current_user.chatrooms)
-    @chatroom_presenters = @chatrooms.map{|cr| ChatroomPresenter.new(cr)}
+    @user = UserPresenter.new(current_user)
   end
 end

@@ -10,10 +10,10 @@ class SendChatNotificationEmailsToRecipients
     latest_chatroom_messages_with_no_notifications.each do |m|
       chatroom_id =  m.chatroom.id
       message_body = m.body
-      message_by = m.user
+      messenger_first_name = m.user.first_name
       emailable_message_recipients(m).each do |er|
         begin
-          ChatNotificationMailer.send_email(er, message_by.first_name, chatroom_id, message_body ).deliver
+          ChatNotificationMailer.send_email(er, messenger_first_name, chatroom_id, message_body ).deliver
           m.update_attribute(:notification_sent, true)
         rescue Exception => e
           Rails.logger.error "Email Error: SendChatNotificationEmailsToRecipients #{e.message}"

@@ -51,10 +51,21 @@ body {
 }
 
 // Chat box --->
-.full-height {
-  height: 90vh;
+.chatsidebar-height {
+  height: 85vh;
   overflow: scroll;
 }
+
+.chat-box-height{
+  height: 75vh;
+  overflow: scroll;
+}
+
+.chat-input-group-height{
+  height: 10vh;
+}
+
+
 
 .bg-red{
   background-color: #E41F2A;
@@ -69,8 +80,7 @@ input.form-control.sidebar-form {
 }
 
 .chat-box {
-  height: 80vh;
-  overflow: scroll;
+
 }
 
 .active_chat, .active_chat:hover{

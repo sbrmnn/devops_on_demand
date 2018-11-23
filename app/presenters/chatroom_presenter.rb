@@ -4,7 +4,7 @@ class ChatroomPresenter < ApplicationPresenter
     subject.id
   end
 
-  def participant_names(exclude_user=nil)
+  def participant_names_excluding_user(exclude_user=nil)
     participants(exclude_user).map{|u| "#{u.try(:first_name)} #{u.try(:last_name)}"}.join(', ')
   end
 

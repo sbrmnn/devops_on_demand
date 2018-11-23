@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def chatroom_recipients(chatroom)
-    ChatroomPresenter.new(chatroom).participant_names(current_user)
+    ChatroomPresenter.new(chatroom).participant_names_excluding_user(current_user)
   end
 
   def new_message_for_user?(chatroom)

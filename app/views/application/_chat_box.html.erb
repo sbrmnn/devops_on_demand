@@ -7,10 +7,10 @@
   </button>
 </div>
 <div class="container">
-<div class="row pt-3">
-    <div id= "sidebar-wrapper" class="col-5 col-md-3 bg-dark full-height sidebar">
-      <div id="sidebar-wrapper">
-        <ul class="sidebar-nav py-3">
+<div class="row no-gutters">
+    <div class="col-5 col-md-3">
+      <div id="sidebar-wrapper" class="full-height sidebar bg-dark mt-4 p-3">
+        <ul class="sidebar-nav">
           <% @user.chatrooms.each do |cp| %>
             <li class="chat_list" id = "chatroom_<%= cp.chatroom_id %>" >
               <div class="chat_room_id" hidden><%= cp.chatroom_id %></div>
@@ -19,19 +19,18 @@
           <% end %>
         </ul>
       </div>
-
     </div>
-    <div class="col-7 col-md-9 bg-light full-height">
-      <div class="container">
-        <div class="chat-box px-3 py-3">
+    <div class="col-7 col-md-9">
+      <div class="full-height chatbox-wrapper bg-light mt-4 p-3">
+        <div class="chat-box">
           <p class="lead text-muted"><%= t('select_chatroom_msg') %></p>
         </div>
-        <div class="chat-text-input">
-          <div class="input-group msg-input-grp" style="display: none">
-            <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox"   >
-            <div class="input-group-append">
-              <button class="msg_send_btn btn btn-outline-secondary"  type="button"  ><%= t('send') %></button>
-            </div>
+      </div>
+      <div class="chat-text-input bg-light">
+        <div class="input-group msg-input-grp" style="display: none">
+          <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox"   >
+          <div class="input-group-append">
+            <button class="msg_send_btn btn btn-outline-secondary"  type="button"  ><%= t('send') %></button>
           </div>
         </div>
       </div>

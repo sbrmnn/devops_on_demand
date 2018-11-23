@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181122171850) do
+ActiveRecord::Schema.define(version: 20181123210158) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -18,8 +18,12 @@ ActiveRecord::Schema.define(version: 20181122171850) do
   end
 
   create_table "certifications", force: :cascade do |t|
+    t.string "provider"
+    t.string "name"
+    t.integer "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["freelancer_id"], name: "index_certifications_on_freelancer_id"
   end
 
   create_table "chatroom_users", force: :cascade do |t|
@@ -46,17 +50,17 @@ ActiveRecord::Schema.define(version: 20181122171850) do
   create_table "educations", force: :cascade do |t|
     t.string "name"
     t.integer "graduation_year"
-    t.integer "freelancers_id"
+    t.integer "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["freelancers_id"], name: "index_educations_on_freelancers_id"
+    t.index ["freelancer_id"], name: "index_educations_on_freelancer_id"
   end
 
   create_table "freelancers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.string "title"
+    t.string "headline"
     t.string "about_me"
   end
 
@@ -93,10 +97,10 @@ ActiveRecord::Schema.define(version: 20181122171850) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
-    t.integer "freelancers_id"
+    t.integer "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["freelancers_id"], name: "index_skills_on_freelancers_id"
+    t.index ["freelancer_id"], name: "index_skills_on_freelancer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,8 +127,15 @@ ActiveRecord::Schema.define(version: 20181122171850) do
   end
 
   create_table "work_experiences", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "employer"
+    t.string "achievements"
+    t.date "from", null: false
+    t.date "to"
+    t.integer "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["freelancer_id"], name: "index_work_experiences_on_freelancer_id"
   end
 
 end

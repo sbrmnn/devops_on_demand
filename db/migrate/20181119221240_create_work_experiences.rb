@@ -6,7 +6,7 @@ class CreateWorkExperiences < ActiveRecord::Migration[5.1]
       t.string :achievements
       t.date :from, null: false
       t.date :to
-      t.belongs_to :freelancers
+      t.belongs_to :freelancer
       t.timestamps
     end
   end

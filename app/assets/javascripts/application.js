@@ -83,7 +83,7 @@ $( document ).on('turbolinks:load', function() {
     var chatroomNames = $(".chatroom-list-elem");
     if ( chatroomNames.length ) {
       chatroomNames.each(function() {
-          subscribeToRoom($( this ).attr('chatroom_id'));
+          subscribeToRoom($( this ).data('chatroom_id'));
       });
     }
 });
@@ -102,7 +102,7 @@ $(document).on(click_event,'.chatroom-list-elem', function(e){
     $(this).removeClass('new_msg');
     $(this).addClass('active_chat');
     $('.type_msg').show();
-    renderChatRoomMessage($(this).attr('chatroom_id'));
+    renderChatRoomMessage($(this).data('chatroom_id'));
     return false;
 });
 
@@ -129,7 +129,7 @@ function getSelectedPill(){
 }
 
 function broadcastMessage(){
-    var roomId = $('.active_chat').attr('chatroom_id');
+    var roomId = $('.active_chat').data('chatroom_id');
     var messageInput = $('.write_msg');
     var message = messageInput.val().trim();
     var roomName = 'room' + roomId;

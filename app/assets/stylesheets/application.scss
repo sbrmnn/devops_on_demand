@@ -29,7 +29,7 @@ body {
 }
 
 
-.chatroom-name:hover{
+.chatroom-list-elem:hover{
   text-decoration: none;
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
@@ -97,7 +97,7 @@ input.form-control.sidebar-form {
 }
 
 
-.chatroom-name{
+.chatroom-list-elem{
   font-size: medium;
   color: gray;
   cursor: pointer;

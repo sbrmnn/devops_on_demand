@@ -80,7 +80,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
 $( document ).on('turbolinks:load', function() {
     getSelectedPill();
-    var chatroomNames = $(".chatroom-name");
+    var chatroomNames = $(".chatroom-list-elem");
     if ( chatroomNames.length ) {
       chatroomNames.each(function() {
           subscribeToRoom($( this ).attr('chatroom_id'));
@@ -95,10 +95,10 @@ $(document).keyup(function (e) {
     }
 });
 
-$(document).on(click_event,'.chatroom-name', function(e){
+$(document).on(click_event,'.chatroom-list-elem', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $('.chatroom-name').removeClass('active_chat');
+    $('.chatroom-list-elem').removeClass('active_chat');
     $(this).removeClass('new_msg');
     $(this).addClass('active_chat');
     $('.type_msg').show();
@@ -161,7 +161,6 @@ function appendMessageHistory(message, time , message_user_id){
     var current_user_id = Cookies.get('current_user_id');
     if (message_user_id == current_user_id) {
         $('.chat-box').append(outgoingMessageHTML(message, time)).scrollToBottom();
-
     }else{
         $('.chat-box').append(incomingMessageHTML(message, time)).scrollToBottom();
     }

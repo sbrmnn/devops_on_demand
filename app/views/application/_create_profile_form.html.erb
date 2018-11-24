@@ -6,8 +6,19 @@
           <h3 class="mb-0">Create Freelance Profile</h3>
         </div>
         <div class="card-body">
-          <%= form_with model: @user do |form| %>
-            <%= form.text_field :email %>
+          <%= form_with url: users_path do |form| %>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label "Headline" %>
+                <%= form.text_field :headline, class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label "Headline" %>
+                <%= form.text_field :headline, class: "form-control" %>
+              </div>
+            </div>
           <% end %>
 
           <form class="form" role="form" autocomplete="off" id="loginForm" novalidate="" method="POST">
@@ -32,8 +43,8 @@
                 <input type="checkbox" class="form-check-input"> <span>Remember me on this computer</span>
               </label>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg float-right" id="btnLogin">Preview</button>
-            <button type="submit" class="btn btn-primary btn-lg float-right" id="btnLogin">Save</button>
+            <button type="submit" class="btn btn-primary btn-lg float-right">Preview</button>
+            <button type="submit" class="btn btn-primary btn-lg float-right">Save</button>
           </form>
         </div>
         <!--/card-body-->

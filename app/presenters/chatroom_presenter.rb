@@ -8,10 +8,6 @@ class ChatroomPresenter < ApplicationPresenter
     participants(exclude_user).map{|u| "#{u.try(:first_name)} #{u.try(:last_name)}"}.join(', ')
   end
 
-  def participants(exclude_user=nil)
-    model.users.where.not(id: exclude_user.try(:id))
-  end
-
   def latest_message_type_for_user(curr_user)
     if last_message.present? && (last_message.user_id != curr_user.id)
       'new_msg'
@@ -23,6 +19,10 @@ class ChatroomPresenter < ApplicationPresenter
   end
 
   private
+
+  def participants(exclude_user=nil)
+    model.users.where.not(id: exclude_user.try(:id))
+  end
 
   def last_message
     GetLatestMessageFromChatroomQuery.call(model)

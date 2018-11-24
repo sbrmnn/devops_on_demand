@@ -12,10 +12,11 @@
       <div id="sidebar-wrapper" class="chatsidebar-height sidebar bg-dark mt-4 p-3">
         <ul class="sidebar-nav">
           <% @user.chatrooms.each do |cp| %>
-            <li class="chat_list" id = "chatroom_<%= cp.chatroom_id %>" >
-              <div class="chat_room_id" hidden><%= cp.chatroom_id %></div>
-              <div class="<%= cp.latest_message_type_for_user(current_user)%>  chatroom-list-elem" chatroom_id = "<%= cp.chatroom_id %>"><%= cp.participant_names_excluding_user(current_user) %></div>
-            </li>
+            <% present(cp) do |cr| %>
+              <li class="chat_list" id = "chatroom_<%= cr.chatroom_id %>" >
+                <div class="<%= cr.latest_message_type_for_user(current_user)%>  chatroom-list-elem" chatroom_id = "<%= cr.chatroom_id %>"><%= cr.participant_names_excluding_user(current_user) %></div>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>

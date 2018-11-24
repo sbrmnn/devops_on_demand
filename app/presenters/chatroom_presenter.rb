@@ -1,12 +1,7 @@
-class ChatroomPresenter
-  attr_reader :chatroom
+class ChatroomPresenter < ApplicationPresenter
 
-  def initialize(chatroom)
-    @chatroom = chatroom  
-  end
-  
   def chatroom_id
-    chatroom.id
+    model.id
   end
 
   def participant_names_excluding_user(exclude_user=nil)
@@ -14,7 +9,7 @@ class ChatroomPresenter
   end
 
   def participants(exclude_user=nil)
-    chatroom.users.where.not(id: exclude_user.try(:id))
+    model.users.where.not(id: exclude_user.try(:id))
   end
 
   def latest_message_type_for_user(curr_user)
@@ -30,6 +25,6 @@ class ChatroomPresenter
   private
 
   def last_message
-    GetLatestMessageFromChatroomQuery.call(@chatroom)
+    GetLatestMessageFromChatroomQuery.call(model)
   end
 end

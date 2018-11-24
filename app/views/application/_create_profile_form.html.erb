@@ -6,7 +6,7 @@
           <h3 class="mb-0">Create Freelance Profile</h3>
         </div>
         <div class="card-body">
-          <%= form_with url: users_path do |form| %>
+          <%= form_with url: edit_user_path(current_user) do |form| %>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <%= form.label "Headline" %>
@@ -15,8 +15,8 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <%= form.label "Headline" %>
-                <%= form.text_field :headline, class: "form-control" %>
+                <%= form.label "About me" %>
+                <%= form.text_area :about_me, class: "form-control" %>
               </div>
             </div>
           <% end %>

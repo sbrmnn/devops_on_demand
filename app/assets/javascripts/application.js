@@ -16,6 +16,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require js.cookie
+//= require material
 //= require_tree .
 
 $.ajaxSetup({

@@ -1,8 +1,9 @@
-@import "bootstrap";
+@import "material";
 @import "font-awesome";
 @import "freelancers";
 @import "users";
 @import "subscription_settings";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 // colors
 
@@ -174,14 +175,20 @@ input.form-control.sidebar-form {
   background: none;
 }
 
-
-
-
-
-
-
-
-
-
-
+div.wrapper {
+  position: relative;
+  border: 2px solid cornflowerblue;
+  margin-top: 20px;
+  padding: 20px 10px 10px;
+}
+div.wrapper .wrapper-label {
+  color: white;
+  line-height: 20px;
+  padding: 0px 5px;
+  position: absolute;
+  background-color: cornflowerblue;
+  /* Adjust these values to posiytion the title or label */
+  top: -10px;
+  left: 10px;
+}
 

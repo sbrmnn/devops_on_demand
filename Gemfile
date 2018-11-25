@@ -10,7 +10,9 @@ gem 'mini_racer', '~> 0.2.4'
 
 gem 'devise', '~> 4.5.0'
 
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.1.1'
+
+gem 'material-sass', '4.1.1'
 
 gem 'jquery-rails'
 

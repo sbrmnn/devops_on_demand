@@ -11,6 +11,10 @@
   color: #FCBB43
 }
 
+.yumfog-red{
+  background-color: #E41F2A;
+}
+
 .yumfog-orange {
   @include yumfogOrange
 }
@@ -177,24 +181,29 @@ input.form-control.sidebar-form {
 
 div.wrapper {
   position: relative;
-  border-top: 1.5px solid black;
-
-
+  border-top: 1.5px solid transparent;
 }
-div.wrapper p.wrapper-label {
-  color: #ff3e3e;
+
+
+div.wrapper h4.wrapper-label {
+  color: black;
   line-height: 20px;
   padding: 5px 5px;
   position: relative;
-  background-color: #efefef;
+  background-color: #FCBB43;
   /* Adjust these values to posiytion the title or label */
   top: -10px;
   display: inline;
-  font-size: 1.00em !important;
+
 
 }
 
 label{
-  font-size: medium;
+  font-size: small;
 }
+
+
+
+
+
 

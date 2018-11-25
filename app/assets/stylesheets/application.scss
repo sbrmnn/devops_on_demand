@@ -177,18 +177,24 @@ input.form-control.sidebar-form {
 
 div.wrapper {
   position: relative;
-  border: 2px solid cornflowerblue;
-  margin-top: 20px;
-  padding: 20px 10px 10px;
+  border-top: 1.5px solid black;
+
+
 }
-div.wrapper .wrapper-label {
-  color: white;
+div.wrapper p.wrapper-label {
+  color: #ff3e3e;
   line-height: 20px;
-  padding: 0px 5px;
-  position: absolute;
-  background-color: cornflowerblue;
+  padding: 5px 5px;
+  position: relative;
+  background-color: #efefef;
   /* Adjust these values to posiytion the title or label */
   top: -10px;
-  left: 10px;
+  display: inline;
+  font-size: 1.00em !important;
+
+}
+
+label{
+  font-size: medium;
 }
 

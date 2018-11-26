@@ -4,6 +4,7 @@
 @import "users";
 @import "subscription_settings";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://fonts.googleapis.com/css?family=Montserrat";
 
 // colors
 
@@ -188,18 +189,31 @@ div.wrapper {
 div.wrapper h4.wrapper-label {
   color: black;
   line-height: 20px;
-  padding: 5px 5px;
+  font-family: 'Black Han Sans', sans-serif;
   position: relative;
-  background-color: #FCBB43;
-  /* Adjust these values to posiytion the title or label */
+
+  /* Adjust these values to position the title or label */
   top: -10px;
   display: inline;
 
 
 }
 
-label{
-  font-size: small;
+#new_freelancer label{
+  font-size: 1.0em;
+}
+
+.form-header {
+  background-color: #E41F2A !important;
+  color: antiquewhite !important;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.form-header h3{
+  margin-bottom: 0 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
 }
 
 

@@ -6,9 +6,9 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="container">
+<div class="container-fluid">
 <div class="row no-gutters">
-    <div class="col-5 col-md-3">
+    <div class="col-6 col-md-4">
       <div id="sidebar-wrapper" class="chatsidebar-height sidebar mt-4 p-3">
         <ul class="sidebar-nav">
           <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
@@ -19,7 +19,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-7 col-md-9">
+    <div class="col-6 col-md-8">
       <div class="chat-box chat-box-height bg-light mt-4 px-3 pt-3">
         <p class="lead text-muted"><%= t('select_chatroom_msg') %></p>
       </div>

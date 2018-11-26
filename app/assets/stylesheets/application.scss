@@ -4,20 +4,21 @@
 @import "users";
 @import "subscription_settings";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "https://fonts.googleapis.com/css?family=Montserrat";
+@import "https://fonts.googleapis.com/css?family=Black+Han+Sans";
 
 // colors
 
-@mixin yumfogOrange {
-  color: #FCBB43
-}
 
-.yumfog-red{
+.bg-red{
   background-color: #E41F2A;
 }
 
 .yumfog-orange {
-  @include yumfogOrange
+  color: #FCBB43
+}
+
+.bg-orange{
+  background-color: #FCBB43;
 }
 
 .grey-border{
@@ -71,8 +72,6 @@ body {
   height: 10vh;
 }
 
-
-
 .bg-red{
   background-color: #E41F2A;
 }
@@ -85,9 +84,6 @@ input.form-control.sidebar-form {
   border-radius: 0;
 }
 
-.chat-box {
-
-}
 
 .active_chat, .active_chat:hover{
   background-color: white !important;
@@ -189,7 +185,7 @@ div.wrapper {
 div.wrapper h4.wrapper-label {
   color: black;
   line-height: 20px;
-  font-family: 'Black Han Sans', sans-serif;
+
   position: relative;
 
   /* Adjust these values to position the title or label */
@@ -204,15 +200,24 @@ div.wrapper h4.wrapper-label {
 }
 
 .form-header {
-  background-color: #E41F2A !important;
-  color: antiquewhite !important;
+  background-color: gainsboro !important;
+  color: #E41F2A !important;
   text-transform: uppercase;
   opacity: 0.65;
 }
 
+#sidebar-wrapper{
+  background-color: #E41F2A;
+}
+
+#sidebar-wrapper .chatroom-list-elem{
+  color: whitesmoke;
+}
+
+
 .form-header h3{
   margin-bottom: 0 !important;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Black Han Sans', sans-serif;
   font-weight: 700 !important;
 }
 

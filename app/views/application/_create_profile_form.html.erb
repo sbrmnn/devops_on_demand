@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container p-0">
   <div class="row">
     <div class="col-12">
 
@@ -22,7 +22,7 @@
               </div>
             </div>
             <hr>
-            <%= form.fields_for :certications do |certification_fields| %>
+            <%= form.fields_for :certications do |certification| %>
                 <div class="certification-section">
                   <div class="form-row">
                     <div class="col-12">
@@ -32,6 +32,14 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <%= certification.label :provider %>
+                        <%= certification.select(:provider, ['AWS', 'Google', 'Microsoft'], {}, { :class => 'form-control' }) %>
+                      </div>
+                     </div>
                   </div>
                 </div>
             <% end %>

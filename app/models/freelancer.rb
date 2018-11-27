@@ -4,4 +4,5 @@ class Freelancer < ApplicationRecord
   has_many :certifications
   has_many :skills
   has_many :work_experiences
+  has_many :certifications, through: :freelancer_certifications
 end

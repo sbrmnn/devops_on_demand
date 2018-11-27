@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+AWS = 'AWS'
+AZURE = 'MS Azure'
+GOOGLE = 'Google'
+
+CertificationName.first_or_create(provider: AWS, name: 'Certified Cloud Practitioner')
+CertificationName.first_or_create(provider: AWS, name: 'Certified Developer – Associate')
+CertificationName.first_or_create(provider: AWS, name: 'Certified SysOps Administrator – Associate')
+CertificationName.first_or_create(provider: AWS, name: 'Certified Solutions Architect – Associate')
+CertificationName.first_or_create(provider: AWS, name: 'Certified DevOps Engineer – Professional')
+CertificationName.first_or_create(provider: AWS, name: 'Certified Solutions Architect – Professional')
+CertificationName.first_or_create(provider: AWS, name: 'Certified Big Data – Specialty')
+CertificationName.first_or_create(provider: AWS, name: 'Certified Advanced Networking – Specialty')

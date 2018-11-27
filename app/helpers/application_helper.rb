@@ -22,11 +22,7 @@ module ApplicationHelper
   def render_navbar_and_footer?
     !controller.is_a?(Devise::SessionsController) &&  !controller.is_a?(Devise::RegistrationsController) &&  !controller.is_a?(SubscriptionSettingsController)
   end
-
-  def render_submenu?
-    controller.is_a?(UsersController)
-  end
-
+  
   def chatroom_recipients(chatroom)
     ChatroomPresenter.new(chatroom).participant_names_excluding_user(current_user)
   end

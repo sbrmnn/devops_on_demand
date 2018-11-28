@@ -91,16 +91,23 @@ $( document ).on('turbolinks:load', function() {
 
     $(".select-provider").on('change', function(e){
         var data = {certification_name: {}};
+        var certProviderSelector = $(this);
         data['certification_name']['provider'] = $(this).val();
-
+        var iterator = certProviderSelector.data('iteration');
+        var certNameSelector = $('.select-certificate-name[data-iteration="'+ iterator +'"]');
+        certNameSelector.find('option').not(':first').remove();
         $.ajax({
             type: "GET",
             dataType: "json",
             data: data,
             url: "/certification_names.json",
             success: function(data){
-                console.log(data);
-
+                $.each(data, function(key, value) {
+                    certNameSelector
+                        .append($("<option></option>")
+                            .attr("value",value["id"])
+                            .text(value["name"]));
+                });
             }
         });
      });

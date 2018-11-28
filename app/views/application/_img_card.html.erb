@@ -1,0 +1,17 @@
+<div class="card" style="width: 250px;">
+  <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+  <div class="card-body">
+    <% present(@user) do |user| %>
+      <h5 class="card-title"><%= user.full_name%></h5>
+    <% end %>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <button type="button" class="btn btn-success btn-raised btn-sm">Signup to be an Engineer</button>
+    </li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>

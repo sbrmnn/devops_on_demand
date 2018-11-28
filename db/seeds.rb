@@ -10,22 +10,22 @@ AWS_CERT = 'AWS'
 AZURE_CERT = 'MS Azure'
 GOOGLE_CERT = 'Google'
 
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Cloud Practitioner')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Developer – Associate')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified SysOps Administrator – Associate')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Solutions Architect – Associate')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified DevOps Engineer – Professional')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Solutions Architect – Professional')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Big Data – Specialty')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Advanced Networking – Specialty')
-CertificationName.first_or_create(provider: AWS_CERT, name: 'Certified Security – Specialty')
+CertificationName.where(provider: AWS_CERT, name: 'Certified Cloud Practitioner').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified Developer – Associate').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified SysOps Administrator – Associate').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified Solutions Architect – Associate').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified DevOps Engineer – Professional').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified Solutions Architect – Professional').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified Big Data – Specialty').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified Advanced Networking – Specialty').first_or_create
+CertificationName.where(provider: AWS_CERT, name: 'Certified Security – Specialty').first_or_create
 
-CertificationName.first_or_create(provider: AZURE_CERT, name: 'Certified Solutions Associate (MCSA)')
-CertificationName.first_or_create(provider: AZURE_CERT, name: 'Certified Solutions Expert (MCSE)')
-CertificationName.first_or_create(provider: AZURE_CERT, name: 'Certified Solutions Developer (MCSD)')
+CertificationName.where(provider: AZURE_CERT, name: 'Certified Solutions Associate (MCSA)').first_or_create
+CertificationName.where(provider: AZURE_CERT, name: 'Certified Solutions Expert (MCSE)').first_or_create
+CertificationName.where(provider: AZURE_CERT, name: 'Certified Solutions Developer (MCSD)').first_or_create
 
 
-CertificationName.first_or_create(provider: GOOGLE_CERT, name: 'Associate Cloud Engineer')
-CertificationName.first_or_create(provider: GOOGLE_CERT, name: 'Professional Cloud Architect')
-CertificationName.first_or_create(provider: GOOGLE_CERT, name: 'Professional Data Engineer')
-CertificationName.first_or_create(provider: GOOGLE_CERT, name: 'Professional Cloud Developer')
+CertificationName.where(provider: GOOGLE_CERT, name: 'Associate Cloud Engineer').first_or_create
+CertificationName.where(provider: GOOGLE_CERT, name: 'Professional Cloud Architect').first_or_create
+CertificationName.where(provider: GOOGLE_CERT, name: 'Professional Data Engineer').first_or_create
+CertificationName.where(provider: GOOGLE_CERT, name: 'Professional Cloud Developer').first_or_create

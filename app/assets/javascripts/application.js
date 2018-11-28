@@ -87,7 +87,21 @@ $( document ).on('turbolinks:load', function() {
           subscribeToRoom($( this ).data('chatroom_id'));
       });
     }
+
+    $(".select-provider").on('change', function(e){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "/chatroom_names.json",
+            success: function(data){
+                console.log(data)
+
+            }
+        });
+
+    });
 });
+
 
 
 $(document).keyup(function (e) {
@@ -202,3 +216,4 @@ function messageWithLineBreak(message){
 function timeString(time) {
     return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
 }
+

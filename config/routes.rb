@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  resources :certification_names, only: [:index]
 
   resources :healthcheck, only: [:index]
 

@@ -88,18 +88,23 @@ $( document ).on('turbolinks:load', function() {
       });
     }
 
+
     $(".select-provider").on('change', function(e){
+        var data = {certification_name: {}};
+        data['certification_name']['provider'] = $(this).val();
+
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "/chatroom_names.json",
+            data: data,
+            url: "/certification_names.json",
             success: function(data){
-                console.log(data)
+                console.log(data);
 
             }
         });
+     });
 
-    });
 });
 
 

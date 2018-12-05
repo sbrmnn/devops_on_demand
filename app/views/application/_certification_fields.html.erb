@@ -1,0 +1,19 @@
+<div class="certification-nested-fields">
+  <div class="form-row">
+    <%= f.fields_for :certification_name do |certification_name| %>
+      <div class="form-group col-12">
+        <%= certification_name.label :provider %>
+        <%= certification_name.select(:provider, ['AWS', 'Google', 'MS Azure'], {include_blank: 'Select Provider' }, { class: 'form-control select-provider', id: nil }) %>
+      </div>
+      <div class="form-group col-12">
+        <%= certification_name.label :certification_name_id %>
+        <%= certification_name.select(:certification_name_id, [], {include_blank: 'Select Certification' }, { class: 'form-control select-certificate-name', id: nil }) %>
+      </div>
+    <% end %>
+    <div class="form-group col-12">
+      <%= f.label :number, "Certification no." %>
+      <%= f.text_field :number, class: 'form-control', id: nil %>
+    </div>
+  </div>
+  <hr>
+</div>

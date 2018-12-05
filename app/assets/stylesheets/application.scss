@@ -1,4 +1,4 @@
-@import "material";
+@import "bootstrap";
 @import "font-awesome";
 @import "freelancers";
 @import "users";
@@ -35,26 +35,14 @@ body {
   padding: 0 !important;
 }
 
-.nav-pills > li > a {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-
-
 .chatroom-list-elem:hover{
   text-decoration: none;
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
 }
 
-.nav-pills > li > a.active {
-  background-color: white !important;
-  color: black !important;
-}
 
-.small-logo{
-  height: 80px;
-  width: 80px;
-}
+
 
 .search-banner {
   background-color: white;
@@ -186,18 +174,7 @@ div.wrapper {
 }
 
 
-div.wrapper h4.wrapper-label {
-  color: black;
-  line-height: 20px;
 
-  position: relative;
-
-  /* Adjust these values to position the title or label */
-  top: -10px;
-  display: inline;
-
-
-}
 
 #new_freelancer label{
   font-size: 1.0em;
@@ -221,6 +198,8 @@ div.wrapper h4.wrapper-label {
   font-family: 'Black Han Sans', sans-serif;
   font-weight: 700 !important;
 }
+
+
 
 
 

@@ -4,5 +4,6 @@ class Freelancer < ApplicationRecord
   has_many :certifications
   has_many :skills
   has_many :work_experiences
-  has_many :certifications, through: :freelancer_certifications
+  has_many :certifications, inverse_of: :freelancers
+  accepts_nested_attributes_for :certifications, reject_if: :all_blank, allow_destroy: true
 end

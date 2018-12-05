@@ -1,93 +1,43 @@
-<!-- Modal -->
+<div class="card">
+  <div class="card-header">
+    <%= t('freelancer_registration_form') %>
+  </div>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12">
+          <div class="rounded">
+            <% present(@user) do |user| %>
+              <%= form_for user.freelancer, html: {class: ''} do |form| %>
+                <div class="form-row">
+                  <div class="form-group col-12">
+                    <%= form.label :headline %>
+                    <%= form.text_field :headline,  class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group mt-3 col-12">
+                    <%= form.label :about_me %>
+                    <%= form.text_area :about_me, class: "form-control" %>
+                  </div>
+                </div>
 
+                <h4 class="my-3"><i class="pr-2 fa fa-trophy" aria-hidden="true"></i>Certifications</h4>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header p-0">
-        <div class="form-header w-100 p-3">
-          <h3>Sign up to be an Engineer</h3>
-        </div>
-          <button type="button" class="close mr-3" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body p-0">
-
-        <div class="container p-0">
-          <div class="row">
-            <div class="col-12">
-
-              <div class="bg-light rounded">
-                <% present(@user) do |user| %>
-                  <%= form_for user.freelancer, html: {class: 'px-3 pt-3'} do |form| %>
-                    <div class="form-row">
-                      <div class="form-group col-12">
-                        <%= form.label :headline %>
-                        <%= form.text_field :headline,  class: "form-control" %>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group mt-3 col-12">
-                        <%= form.label :about_me %>
-                        <%= form.text_area :about_me, class: "form-control" %>
-                      </div>
-                    </div>
-                    <hr>
-                    <%= form.fields_for :certications do |certification| %>
-                      <div class="certification-section">
-                        <div class="form-row">
-                          <div class="col-12">
-                            <div class="wrapper my-4">
-                              <div class="header">
-                                <h4 class="wrapper-label"><i class="pr-1 fa fa-trophy" aria-hidden="true"></i>Certifications</h4>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="col-12">
-                            <div class="form-group">
-                              <%= certification.label :provider %>
-                              <%= certification.select(:provider, ['AWS', 'Google', 'MS Azure'], {include_blank: 'Select Provider' }, { "data-iteration": 0, class: 'form-control select-provider' }) %>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="form-group">
-                              <%= certification.label :certification_name_id %>
-                              <%= certification.select(:certification_name_id, [], {include_blank: 'Select Certification' }, { "data-iteration": 0, class: 'form-control select-certificate-name' }) %>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <% end %>
-                  <% end %>
-
+                <%= form.fields_for :certification  do |certification| %>
+                  <%= render 'certification_fields', f: certification %>
+                  <div class="form-row justify-content-center mt-3">
+                    <a id="add-more-cert-btn" class="btn btn-outline-info text-info">+ Add more certifications</a>
+                  </div>
                 <% end %>
-
-
-              </div>
-            </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
 
 

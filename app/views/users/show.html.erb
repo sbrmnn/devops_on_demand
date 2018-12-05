@@ -1,73 +1,53 @@
 <% present(@user) do |up| %>
-  <div class="container-fluid">
-    <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="tab" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><%= t("profile") %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-find-tab" data-toggle="tab" href="#pills-find" role="tab" aria-controls="pills-find" aria-selected="false"><%= t("find_freelancers") %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-jobs-tab" data-toggle="tab" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><%= t("jobs") %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-contact-tab" data-toggle="tab" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><%= t("contact") %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-messages-tab" data-toggle="tab" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><%= t("messages") %></a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade" id="pills-find" role="tabpanel" aria-labelledby="pills-find-tab">
-      <div class="container p-0" style="background-color: red" >
-        <div class="row search-banner">
-          <div class = "col-12">
-            <div class="search-wrapper mt-4">
-              <label  for="contractor-search"><%= t('search_label') %></label>
-              <div class="input-group">
-                <input type="text" id="contractor-search" class="form-control" placeholder="<%=t('search_placeholder')%>" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button"><%= t("search") %></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav nav-tabs mt-3">
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="tab" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> <i class="fa fa-user-circle mr-1"></i><%= t("profile") %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-messages-tab" data-toggle="tab" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t("messages") %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pills-find_freelancers" data-toggle="tab"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pills-settings" data-toggle="tab"><i class="fa mr-1 fa-cog"></i> <%= t('settings') %></a>
+          </li>
+          <li class="nav-item ml-auto">
+            <a class="nav-link bg-success text-light" href="#pills-freelancer-registration" data-toggle="tab"><i class="fa fa-user-plus mr-1"></i><%= t('register_as_a_freelancer') %></a>
+          </li>
+        </ul>
       </div>
-    </div>
-    <div class="tab-pane fade" id="pills-jobs"  role="tabpanel"  aria-labelledby="pills-jobs-tab">
-      <div class="container">
-      </div>
-    </div>
-    <div class="tab-pane fade pt-3" id="pills-profile"  role="tabpanel"  aria-labelledby="pills-profile-tab">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 col-md-3">
-            <div class="card w-100">
-              <div class="card-body">
-                <h5 class="card-title"><%= up.full_name %></h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-sm btn-success"><%= t('be_a_freelancer')%></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-6">
-          </div>
-        </div>
-      </div>
-      <%= render "create_profile_form" %>
-    </div>
-    <div class="tab-pane fade" id="pills-contact"  role="tabpanel"  aria-labelledby="pills-contact-tab">
-      <div class="container">
-      </div>
-    </div>
-    <div class="tab-pane fade" id="pills-messages" role="tabpanel"  aria-labelledby="pills-messages-tab">
-      <%= render "chat_box" %>
     </div>
   </div>
-
+  <div class="container">
+    <div class="tab-content pt-3 py-1" id="pills-tabContent">
+      <div class="tab-pane fade" id="pills-find" role="tabpanel" aria-labelledby="pills-find-tab">
+        <%= render 'find_freelancers' %>
+      </div>
+      <div class="tab-pane fade" id="pills-jobs"  role="tabpanel"  aria-labelledby="pills-jobs-tab">
+      </div>
+      <div class="tab-pane fade" id="pills-profile"  role="tabpanel"  aria-labelledby="pills-profile-tab">
+        <%= render 'profile', up: up %>
+      </div>
+      <div class="tab-pane fade" id="pills-contact"  role="tabpanel"  aria-labelledby="pills-contact-tab">
+      </div>
+      <div class="tab-pane fade" id="pills-messages" role="tabpanel"  aria-labelledby="pills-messages-tab">
+        <%= render "chat_box" %>
+      </div>
+      <div class="tab-pane fade" id="pills-find_freelancers" role="tabpanel"  aria-labelledby="pills-find_freelancers-tab">
+        <%= render "chat_box" %>
+      </div>
+      <div class="tab-pane fade" id="pills-settings" role="tabpanel"  aria-labelledby="pills-settings-tab">
+        <%= render "chat_box" %>
+      </div>
+      <div class="tab-pane fade" id="pills-freelancer-registration" role="tabpanel"  aria-labelledby="pills-freelancer-registration-tab">
+        <%= render "create_profile_form" %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 

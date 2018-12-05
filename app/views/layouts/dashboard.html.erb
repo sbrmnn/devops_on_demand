@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DevopsOnDemand</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
-  <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
+<head>
+  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevopsOnDemand</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
 
-  <% if render_navbar_and_footer? %>
-
-
-      <nav class="navbar navbar-dark box-shadow navbar-expand-lg bg-dark">
-        <div class="container py-2">
+<% if render_navbar_and_footer? %>
+    <nav class="navbar navbar-light bg-light navbar-expand-lg">
+      <div class="container py-2">
         <a href="https://getbootstrap.com/docs/4.0/examples/album/#" class="navbar-brand d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
           <strong>YumFog</strong>
@@ -32,10 +30,9 @@
             </li>
           </ul>
         </div>
-        </div>
-      </nav>
-
-     <% end %>
-    <%= yield %>
-  </body>
+      </div>
+    </nav>
+<% end %>
+<%= yield %>
+</body>
 </html>

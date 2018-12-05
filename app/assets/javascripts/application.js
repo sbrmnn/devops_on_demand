@@ -81,37 +81,9 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
 $( document ).on('turbolinks:load', function() {
     getSelectedPill();
-    var chatroomNames = $(".chatroom-list-elem");
-    if ( chatroomNames.length ) {
-      chatroomNames.each(function() {
-          subscribeToRoom($( this ).data('chatroom_id'));
-      });
-    }
-
-
-    $(".select-provider").on('change', function(e){
-        var data = {certification_name: {}};
-        var certProviderSelector = $(this);
-        data['certification_name']['provider'] = $(this).val();
-        var iterator = certProviderSelector.data('iteration');
-        var certNameSelector = $('.select-certificate-name[data-iteration="'+ iterator +'"]');
-        certNameSelector.find('option').not(':first').remove();
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            data: data,
-            url: "/certification_names.json",
-            success: function(data){
-                $.each(data, function(key, value) {
-                    certNameSelector
-                        .append($("<option></option>")
-                            .attr("value",value["id"])
-                            .text(value["name"]));
-                });
-            }
-        });
-     });
-
+    subscribeToRooms();
+    bindChangeEventToCertificateSelectProvider();
+    bindClickEventToAddCertificationBtn();
 });
 
 
@@ -138,6 +110,48 @@ $(document).on(click_event,'.msg_send_btn', function(){
     broadcastMessage()
 });
 
+function bindClickEventToAddCertificationBtn(){
+    var certificationNestedField = $('.certification-nested-fields');
+    $('#add-more-cert-btn').on('click', function(e){
+        if ($(this).data('insertion') === undefined || $(this).data('insertion') === null){
+            $(this).data('insertion', certificationNestedField.html())
+        }
+        certificationNestedField.append($(this).data('insertion'));
+
+    });
+}
+
+
+function bindChangeEventToCertificateSelectProvider(){
+    $('.certification-nested-fields').on('change', '.select-provider', function(e){
+        var data = {certification_name: {provider: $(this).val()}};
+        var certNameSelector = $(this).closest('.form-row').find('.select-certificate-name');
+        certNameSelector.find('option').not(':first').remove();
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: data,
+            url: "/certification_names.json",
+            success: function(data){
+                $.each(data, function(key, value) {
+                    certNameSelector
+                        .append($("<option></option>")
+                            .attr("value",value["id"])
+                            .text(value["name"]));
+                });
+            }
+        });
+    });
+}
+
+function subscribeToRooms(){
+    var chatroomNames = $(".chatroom-list-elem");
+    if ( chatroomNames.length ) {
+        chatroomNames.each(function() {
+            subscribeToRoom($( this ).data('chatroom_id'));
+        });
+    }
+}
 
 function getSelectedPill(){
     var preSelectedChatroom = preSelectChatroom();

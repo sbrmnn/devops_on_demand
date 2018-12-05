@@ -69,17 +69,12 @@ function preSelectChatroom(){
 var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
-(function($) {
+$( document ).on('turbolinks:load', function() {
     $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
         });
     };
-}(jQuery));
-
-
-
-$( document ).on('turbolinks:load', function() {
     getSelectedPill();
     subscribeToRooms();
     bindChangeEventToCertificateSelectProvider();

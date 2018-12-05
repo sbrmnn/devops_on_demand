@@ -185,7 +185,7 @@ function renderChatRoomMessage(chatroomId){
             data.forEach(function(item) {
                 appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id']);
             });
-
+            $('.chat-box').scrollToBottom();
             $('.msg-input-grp').show()
 
         }
@@ -196,9 +196,9 @@ function renderChatRoomMessage(chatroomId){
 function appendMessageHistory(message, time , message_user_id){
     var current_user_id = Cookies.get('current_user_id');
     if (message_user_id == current_user_id) {
-        $('.chat-box').append(outgoingMessageHTML(message, time)).scrollToBottom();
+        $('.chat-box').append(outgoingMessageHTML(message, time))
     }else{
-        $('.chat-box').append(incomingMessageHTML(message, time)).scrollToBottom();
+        $('.chat-box').append(incomingMessageHTML(message, time))
     }
 }
 

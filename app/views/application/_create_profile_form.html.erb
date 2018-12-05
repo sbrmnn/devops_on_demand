@@ -1,29 +1,28 @@
-<div class="card">
-  <div class="card-header">
-    <%= t('freelancer_registration_form') %>
-  </div>
-  <div class="card-body">
+<div class="py-3">
+  <h1 class="display-4"><%= t('freelancer_registration_form') %></h1>
+  <p class="lead text-muted"><%= t('freelance_form_tagline') %></p>
+</div>
+<div class="card shadow">
+  <div class="card-body bg-orange">
     <div class="container p-0">
       <div class="row">
         <div class="col-12">
           <div class="rounded">
             <% present(@user) do |user| %>
-              <%= form_for user.freelancer, html: {class: ''} do |form| %>
+              <%= form_for user.freelancer do |form| %>
                 <div class="form-row">
                   <div class="form-group col-12">
                     <%= form.label :headline %>
-                    <%= form.text_field :headline,  class: "form-control" %>
+                    <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group mt-3 col-12">
                     <%= form.label :about_me %>
-                    <%= form.text_area :about_me, class: "form-control" %>
+                    <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
                   </div>
                 </div>
-
-                <h4 class="my-3"><i class="pr-2 fa fa-trophy" aria-hidden="true"></i>Certifications</h4>
-
+                <hr class="hr-text" data-content="<%= t('certifications')%>">
                 <%= form.fields_for :certification  do |certification| %>
                   <%= render 'certification_fields', f: certification %>
                   <div class="form-row justify-content-center mt-3">

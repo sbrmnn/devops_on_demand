@@ -69,7 +69,7 @@ function preSelectChatroom(){
 var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
-$( document ).on('turbolinks:load', function() {
+ $( document ).on('turbolinks:load', function() {
     $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
@@ -115,7 +115,6 @@ function bindClickEventToAddCertificationBtn(){
 
     });
 }
-
 
 function bindChangeEventToCertificateSelectProvider(){
     $('.certification-nested-fields').on('change', '.select-provider', function(e){
@@ -186,7 +185,7 @@ function renderChatRoomMessage(chatroomId){
                 appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id']);
             });
             $('.chat-box').scrollToBottom();
-            $('.msg-input-grp').show()
+            $('.msg-input-grp').show();
         }
     });
 }
@@ -230,8 +229,6 @@ function outgoingMessageHTML(message, time){
 function messageWithLineBreak(message){
     return message.replace(/(.{55})/g, "$1<br>");
 }
-
-
 
 function timeString(time) {
     return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()

@@ -187,7 +187,6 @@ function renderChatRoomMessage(chatroomId){
             });
             $('.chat-box').scrollToBottom();
             $('.msg-input-grp').show()
-
         }
     });
 }

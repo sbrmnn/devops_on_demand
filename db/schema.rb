@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20181208210759) do
   end
 
 # Could not dump table "freelancers" because of following StandardError
-#   Unknown type 'json_b' for column 'skills'
+#   Unknown type 'jsonb' for column 'skills'
 
   create_table "messages", force: :cascade do |t|
     t.integer "chatroom_id"

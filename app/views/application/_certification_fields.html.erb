@@ -1,5 +1,5 @@
 <div class="certification-nested-fields">
-  <div class="form-row">
+  <div class="form-row  mb-3">
     <%= f.fields_for :certification_name do |certification_name| %>
       <div class="form-group col-12">
         <%= certification_name.label :provider %>
@@ -15,5 +15,10 @@
       <%= f.text_field :number, class: 'form-control', id: nil %>
     </div>
   </div>
-  <hr>
+  <div class="line-separator ">
+    <span class="outer-line"></span>
+    <span class="fa fa-trophy" aria-hidden="true"></span>
+    <span class="outer-line"></span>
+  </div>
+
 </div>

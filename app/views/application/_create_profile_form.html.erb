@@ -1,34 +1,57 @@
-<div class="py-3">
+<div class="header py-3">
   <h1 class="display-4"><%= t('freelancer_registration_form') %></h1>
   <p class="lead text-muted"><%= t('freelance_form_tagline') %></p>
 </div>
-<div class="card shadow">
-  <div class="card-body bg-orange">
+<div class="card shadow freelancer-registration">
+  <div class="card-body">
     <div class="container p-0">
       <div class="row">
         <div class="col-12">
           <div class="rounded">
             <% present(@user) do |user| %>
               <%= form_for user.freelancer do |form| %>
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <%= form.label :headline %>
-                    <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
+                <h3 class="py-3"><%= t('basic_info')%></h3>
+                <div class="basic-info-nested-fieldsmb-2">
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <%= form.label :headline %>
+                      <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
+                    </div>
                   </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group mt-3 col-12">
-                    <%= form.label :about_me %>
-                    <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
+                  <div class="form-row">
+                    <div class="form-group mt-3 col-12">
+                      <%= form.label :about_me %>
+                      <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
+                    </div>
                   </div>
+                  <div class="form-row">
+                    <div class="form-group mt-3 col-12">
+                      <%= form.label :rate %>
+                      <%= form.number_field :rate, class: "form-control bg-orange whitesmoke-border" %>
+                    </div>
+                  </div>
+                  <%= form.fields_for :work_experience  do |work_experience| %>
+                    <%= render 'skills_fields', f: work_experience %>
+                  <% end %>
+
                 </div>
-                <hr class="hr-text" data-content="<%= t('certifications')%>">
+
+                <h3 class="py-3"><%= t('certifications')%></h3>
                 <%= form.fields_for :certification  do |certification| %>
                   <%= render 'certification_fields', f: certification %>
-                  <div class="form-row justify-content-center mt-3">
-                    <a id="add-more-cert-btn" class="btn btn-outline-info text-info">+ Add more certifications</a>
+                  <div class="form-row justify-content-center my-3">
+                    <a id="add-more-cert-btn" class="btn btn-outline-dark"><%= t('add_more_certs_btn')%></a>
                   </div>
                 <% end %>
+                <h3 class="py-3"><%= t('work_experience')%></h3>
+                <%= form.fields_for :work_experience  do |work_experience| %>
+                  <%= render 'work_experience_fields', f: work_experience %>
+                  <div class="form-row justify-content-center my-3">
+                    <a id="add-more-work-exp-btn" class="btn btn-outline-dark"><%= t('add_more_experiences_btn') %></a>
+                  </div>
+                <% end %>
+                <hr>
+                <%= form.submit :class => "btn btn-info btn-bg pull-right" %>
               <% end %>
             <% end %>
           </div>

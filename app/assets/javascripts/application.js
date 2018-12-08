@@ -17,6 +17,8 @@
 //= require bootstrap-sprockets
 //= require js.cookie
 //= require material
+//= require bootstrap-datepicker
+//= require jquery-ui
 //= require_tree .
 
 $.ajaxSetup({
@@ -79,9 +81,8 @@ var months = [ "January", "February", "March", "April", "May", "June",
     subscribeToRooms();
     bindChangeEventToCertificateSelectProvider();
     bindClickEventToAddCertificationBtn();
+    bindClickEventToAddWorkExperienceBtn();
 });
-
-
 
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
@@ -112,6 +113,17 @@ function bindClickEventToAddCertificationBtn(){
             $(this).data('insertion', certificationNestedField.html())
         }
         certificationNestedField.append($(this).data('insertion'));
+
+    });
+}
+
+function bindClickEventToAddWorkExperienceBtn(){
+    var workExperienceNestedField = $('.work_experience-nested-fields');
+    $('#add-more-work-exp-btn').on('click', function(e){
+        if ($(this).data('insertion') === undefined || $(this).data('insertion') === null){
+            $(this).data('insertion', workExperienceNestedField.html())
+        }
+        workExperienceNestedField.append($(this).data('insertion'));
 
     });
 }

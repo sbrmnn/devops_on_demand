@@ -87,3 +87,8 @@ gem 'whenever', require: false
 
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'jquery-ui-rails'
+

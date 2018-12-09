@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
 
   resources :certification_names, only: [:index]
 

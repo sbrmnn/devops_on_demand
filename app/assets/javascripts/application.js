@@ -19,6 +19,7 @@
 //= require material
 //= require bootstrap-datepicker
 //= require jquery-ui
+//= require cloudinary
 //= require_tree .
 
 $.ajaxSetup({
@@ -72,17 +73,37 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
  $( document ).on('turbolinks:load', function() {
-    $.fn.scrollToBottom = function() {
+     $.cloudinary.config({ cloud_name: 'yumfog-com',  api_key: '165496118466817'});
+
+     $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
+         $('.preview').html(
+             $.cloudinary.image(data.result.public_id,
+                 { format: data.result.format, version: data.result.version,
+                     crop: 'fill', gravity: 'face' ,width: 250, height: 250 })
+         );
+
+         return true;
+     });
+
+     if($.fn.cloudinary_fileupload !== undefined) {
+         $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+     }
+
+     $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
         });
-    };
-    getSelectedPill();
-    subscribeToRooms();
-    bindChangeEventToCertificateSelectProvider();
-    bindClickEventToAddCertificationBtn();
-    bindClickEventToAddWorkExperienceBtn();
+     };
+
+     getSelectedPill();
+     subscribeToRooms();
+     bindChangeEventToCertificateSelectProvider();
+     bindClickEventToAddCertificationBtn();
+     bindClickEventToAddWorkExperienceBtn();
 });
+
+
+
 
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {

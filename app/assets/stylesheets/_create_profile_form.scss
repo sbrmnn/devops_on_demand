@@ -7,6 +7,10 @@
   @include freelancer-form-bg-color
 }
 
+.freelancer-registration input[type=file]{
+  @include freelancer-form-bg-color
+}
+
 .freelancer-registration input[type=number]{
   @include freelancer-form-bg-color
 }
@@ -37,4 +41,22 @@
 
 .tokenfield{
   @include freelancer-form-bg-color;
+}
+
+#tabs-freelancer-registration h3{
+   border-bottom: 5px double black;
+}
+
+.line-separator {
+  text-align: center;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.outer-line {
+  width: 40%;
+  border-bottom: 1px solid #c2c2c2;
 }

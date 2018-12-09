@@ -10,7 +10,6 @@
 @import 'bootstrap-datepicker';
 @import "jquery-ui";
 
-
 .nav-tabs > li > .dashboard {
   color: black !important;
 }
@@ -20,7 +19,6 @@
   background-color: #FCBB43 !important;
 }
 
-
 body {
   font-family: 'Arial', sans-serif !important;
 }
@@ -29,20 +27,6 @@ body {
   padding: 0 !important;
 }
 
-
-.line-separator {
-  text-align: center;
-}
-
-span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.outer-line {
-  width: 40%;
-  border-bottom: 1px solid #c2c2c2;
-}
 
 
 // colors

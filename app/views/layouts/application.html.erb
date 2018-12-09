@@ -7,8 +7,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    </head>
+    <%= cloudinary_js_config %>
+  </head>
   <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
 
   <% if render_navbar_and_footer? %>

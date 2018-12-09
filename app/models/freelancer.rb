@@ -5,4 +5,5 @@ class Freelancer < ApplicationRecord
   has_many :skills
   has_many :certifications, inverse_of: :freelancers
   accepts_nested_attributes_for :certifications, reject_if: :all_blank, allow_destroy: true
+  attr_accessor :my_skills
 end

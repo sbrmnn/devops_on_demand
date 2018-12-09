@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181208210759) do
+ActiveRecord::Schema.define(version: 20181209182317) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -64,8 +64,14 @@ ActiveRecord::Schema.define(version: 20181208210759) do
     t.index ["freelancer_id"], name: "index_educations_on_freelancer_id"
   end
 
-# Could not dump table "freelancers" because of following StandardError
-#   Unknown type 'jsonb' for column 'skills'
+  create_table "freelancers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "headline"
+    t.string "about_me"
+    t.integer "rate", default: 30, null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.integer "chatroom_id"
@@ -96,6 +102,14 @@ ActiveRecord::Schema.define(version: 20181208210759) do
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "freelancer_id"
+    t.text "types", default: "--- []\n"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["freelancer_id"], name: "index_skills_on_freelancer_id"
   end
 
   create_table "users", force: :cascade do |t|

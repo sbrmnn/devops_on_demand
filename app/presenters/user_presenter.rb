@@ -1,10 +1,25 @@
 class UserPresenter < ApplicationPresenter
 
   def freelancer
-     model.freelancer || model.build_freelancer
+    build_freelancer_obj
   end
 
   def full_name
     "#{model.first_name} #{model.last_name}"
   end
+
+
+  private
+
+  def build_freelancer_obj
+    freelancer = model.freelancer || model.build_freelancer
+    freelancer.educations.present? ||  freelancer.educations.build
+    freelancer.work_experiences.present? ||  freelancer.work_experiences.build
+    freelancer.skills.present? ||  freelancer.skills.build
+    freelancer.certifications.present? ||  freelancer.certifications.build
+    freelancer
+  end
 end
+
+
+

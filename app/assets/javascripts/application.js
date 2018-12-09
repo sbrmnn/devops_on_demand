@@ -102,10 +102,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
      bindClickEventToAddWorkExperienceBtn();
 });
 
-
-
-
-$(document).keyup(function (e) {
+ $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
         broadcastMessage()
     }
@@ -128,8 +125,8 @@ $(document).on(click_event,'.msg_send_btn', function(){
 });
 
 function bindClickEventToAddCertificationBtn(){
-    var certificationNestedField = $('.certification-nested-fields');
-    $('#add-more-cert-btn').on('click', function(e){
+    var certificationNestedField = $('.certifications-nested-fields');
+    $('#add-more-certs-btn').on('click', function(e){
         if ($(this).data('insertion') === undefined || $(this).data('insertion') === null){
             $(this).data('insertion', certificationNestedField.html())
         }
@@ -139,8 +136,8 @@ function bindClickEventToAddCertificationBtn(){
 }
 
 function bindClickEventToAddWorkExperienceBtn(){
-    var workExperienceNestedField = $('.work_experience-nested-fields');
-    $('#add-more-work-exp-btn').on('click', function(e){
+    var workExperienceNestedField = $('.work-experiences-nested-fields');
+    $('#add-more-work-exps-btn').on('click', function(e){
         if ($(this).data('insertion') === undefined || $(this).data('insertion') === null){
             $(this).data('insertion', workExperienceNestedField.html())
         }
@@ -150,7 +147,7 @@ function bindClickEventToAddWorkExperienceBtn(){
 }
 
 function bindChangeEventToCertificateSelectProvider(){
-    $('.certification-nested-fields').on('change', '.select-provider', function(e){
+    $('.certifications-nested-fields').on('change', '.select-provider', function(e){
         var data = {certification_name: {provider: $(this).val()}};
         var certNameSelector = $(this).closest('.form-row').find('.select-certificate-name');
         certNameSelector.find('option').not(':first').remove();

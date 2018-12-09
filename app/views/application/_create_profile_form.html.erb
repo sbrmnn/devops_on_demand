@@ -49,18 +49,18 @@
                 <%= form.fields_for :certification  do |certification| %>
                   <%= render 'certification_fields', f: certification %>
                   <div class="form-row justify-content-center my-3">
-                    <a id="add-more-cert-btn" class="btn btn-outline-dark"><%= t('add_more_certs_btn')%></a>
+                    <a id="add-more-cert-btn" class="btn btn-lg btn-outline-dark"><%= t('add_more_certs_btn')%></a>
                   </div>
                 <% end %>
                 <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
                 <%= form.fields_for :work_experience  do |work_experience| %>
                   <%= render 'work_experience_fields', f: work_experience %>
                   <div class="form-row justify-content-center my-3">
-                    <a id="add-more-work-exp-btn" class="btn btn-outline-dark"><%= t('add_more_experiences_btn') %></a>
+                    <a id="add-more-work-exp-btn" class="btn btn-lg btn-outline-dark"><%= t('add_more_experiences_btn') %></a>
                   </div>
                 <% end %>
                 <hr>
-                <%= form.submit :class => "btn btn-info btn-bg pull-right" %>
+                <%= form.submit :class => "btn btn-info btn-lg pull-right" %>
               <% end %>
             <% end %>
           </div>

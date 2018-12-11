@@ -1,24 +1,17 @@
-<div class="certifications-nested-fields">
-  <div class="form-row  mb-3">
-    <%= f.fields_for :certification_name do |certification_name| %>
-      <div class="form-group col-12">
-        <%= certification_name.label :provider %>
-        <%= certification_name.select(:provider, ['AWS', 'Google', 'MS Azure'], {include_blank: 'Select Provider' }, { class: 'form-control select-provider', id: nil }) %>
-      </div>
-      <div class="form-group col-12">
-        <%= certification_name.label :certification_name_id %>
-        <%= certification_name.select(:certification_name_id, [], {include_blank: 'Select Certification' }, { class: 'form-control select-certificate-name', id: nil }) %>
-      </div>
-    <% end %>
-    <div class="form-group col-12">
-      <%= f.label :number, "Certification no." %>
-      <%= f.text_field :number, class: 'form-control', id: nil %>
-    </div>
+<div class="form-row  mb-3">
+  <%= f.hidden_field :id, class: "form-control", id: nil %>
+  <div class="form-group col-12">
+    <%= f.label :certification_name_id %>
+    <%= f.select(:certification_name_id, grouped_options_for_select(CertificationName.all.map{|l| [l.name, l.provider, l.id]}.group_by { |c| c[1] }, f.object.certification_name_id), {include_blank: 'Select Certificate' }, { class: 'form-control select-certificate', id: nil }) %>
   </div>
-  <div class="line-separator ">
+  <div class="form-group col-12">
+    <%= f.label :number, "Certification no." %>
+    <%= f.text_field :number, class: 'form-control certificate-number', id: nil %>
+  </div>
+  <div class="line-separator w-100 ">
     <span class="outer-line"></span>
     <span class="fa fa-trophy" aria-hidden="true"></span>
     <span class="outer-line"></span>
   </div>
-
 </div>
+

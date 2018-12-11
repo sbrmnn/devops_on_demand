@@ -1,3 +1,2 @@
 class CertificationName < ApplicationRecord
-   
 end

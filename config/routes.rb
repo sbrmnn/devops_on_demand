@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Attachinary::Engine => "/attachinary"
 
   resources :certification_names, only: [:index]
 
@@ -12,9 +11,6 @@ Rails.application.routes.draw do
     resource :messages
   end
 
-  resources :freelancers
-
-
   devise_for :users
   resources :photos
   resources :revenues
@@ -22,7 +18,14 @@ Rails.application.routes.draw do
   resources :conversations
   resources :calendars
   resources :reviews
-  resources :users
+  resources :users do
+    scope module: :users do
+      resources :freelancers
+    end
+  end
+
+  resources :freelancers
+
   resources :messages
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'freelancers#index'

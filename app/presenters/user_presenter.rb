@@ -1,7 +1,7 @@
 class UserPresenter < ApplicationPresenter
 
   def freelancer
-    build_freelancer_obj
+    @freelancer ||= build_freelancer_obj
   end
 
   def full_name
@@ -15,7 +15,7 @@ class UserPresenter < ApplicationPresenter
     freelancer = model.freelancer || model.build_freelancer
     freelancer.educations.present? ||  freelancer.educations.build
     freelancer.work_experiences.present? ||  freelancer.work_experiences.build
-    freelancer.skills.present? ||  freelancer.skills.build
+    freelancer.skill.present? ||  freelancer.build_skill
     freelancer.certifications.present? ||  freelancer.certifications.build
     freelancer
   end

@@ -1,0 +1,2 @@
+module Users::FreelancersHelper
+end

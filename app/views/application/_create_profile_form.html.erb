@@ -8,61 +8,60 @@
       <div class="row">
         <div class="col-12">
           <div class="rounded">
-            <% present(@user) do |user| %>
-              <%= form_for user.freelancer do |form| %>
+            <% present(@user) do |user_presenter| %>
+              <%= form_for [user_presenter.model, user_presenter.freelancer] do |form| %>
                 <h3 class="mb-4 py-2"><%= t('basic_info')%></h3>
-                <div class="basic-info-nested-fields mb-2">
-                  <div class="form-row">
-                    <div class="form-group col-12">
-                      <%= form.label :headline %>
-                      <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group  col-12">
-                      <%= form.label :about_me %>
-                      <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-12">
-                      <%= form.label :rate %>
-                      <%= form.number_field :rate, class: "form-control bg-orange whitesmoke-border" %>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-12">
-                      <%= form.label :my_skills %>
-                      <%= form.text_field :my_skills, class: 'form-control', placeholder: "(eg., Kubernetes, Ubuntu, Elastic Search)" %>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-12">
-                      <%= form.label :profile_photo %>
-                      <%= cl_image_upload_tag(:profile_photo, {html: {class: "form-control"}} ) %>
-                      <div class="mt-2 preview">
+                  <div class="basic-info-nested-fields mb-2">
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <%= form.label :headline %>
+                        <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
                       </div>
-                     </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group  col-12">
+                        <%= form.label :about_me %>
+                        <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <%= form.label :rate %>
+                        <%= form.number_field :rate, class: "form-control bg-orange whitesmoke-border" %>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <%= form.label :profile_photo %>
+                        <%= form.hidden_field :profile_photo %>
+                        <%= cl_image_upload_tag(:profile_photo, {html: {class: "form-control"}} ) %>
+                        <div class="mt-2 preview">
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h3 class="mb-4 py-2"><%= t('skills')%></h3>
-                <%= form.fields_for :skills  do |skill| %>
-                  <%= render 'skills_fields', f: skill %>
-                <% end %>
-                <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
-                <%= form.fields_for :certifications  do |certification| %>
-                  <%= render 'certifications_fields', f: certification %>
+                  <h3 class="mb-4 py-2"><%= t('skills')%></h3>
+                  <%= form.fields_for :skill  do |skill| %>
+                    <%= render 'skills_fields', f: skill %>
+                  <% end %>
+                  <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
+                  <div class="certifications-nested-fields">
+                    <%= form.fields_for :certifications  do |certification| %>
+                      <%= render 'certifications_fields', f: certification %>
+                    <% end %>
+                  </div>
                   <div class="form-row justify-content-center my-3">
                     <a id="add-more-certs-btn" class="btn btn-lg btn-outline-dark"><%= t('add_more_certs_btn')%></a>
                   </div>
-                <% end %>
-                <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
-                <%= form.fields_for :work_experiences  do |work_experience| %>
-                  <%= render 'work_experiences_fields', f: work_experience %>
+                  <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
+                  <div class="work-experiences-nested-fields">
+                    <%= form.fields_for :work_experiences  do |work_experience| %>
+                      <%= render 'work_experiences_fields', f: work_experience %>
+                    <% end %>
+                  </div>
                   <div class="form-row justify-content-center my-3">
                     <a id="add-more-work-exps-btn" class="btn btn-lg btn-outline-dark"><%= t('add_more_experiences_btn') %></a>
                   </div>
-                <% end %>
                 <hr>
                 <%= form.submit :class => "btn btn-info btn-lg pull-right" %>
               <% end %>

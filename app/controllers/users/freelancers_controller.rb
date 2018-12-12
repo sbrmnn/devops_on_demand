@@ -15,6 +15,7 @@ class Users::FreelancersController < ApplicationController
 
   def update
     current_user.freelancer.update_attributes(freelancer_params)
+    redirect_to current_user
   end
 
   def destroy

@@ -45,22 +45,24 @@
                     <%= render 'skills_fields', f: skill %>
                   <% end %>
                   <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
-                  <div class="certifications-nested-fields">
-                    <%= form.fields_for :certifications  do |certification| %>
-                      <%= render 'certifications_fields', f: certification %>
+                  <div id='certifications'>
+                    <%= form.fields_for :certifications do |certification| %>
+                      <%= render 'certification_fields', :f => certification %>
                     <% end %>
-                  </div>
-                  <div class="form-row justify-content-center my-3">
-                    <a id="add-more-certs-btn" class="btn btn-lg btn-outline-dark"><%= t('add_more_certs_btn')%></a>
+                    <div class='links text-center'>
+                      <%= link_to_add_association "#{t('add_more_certs_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
+                    </div>
                   </div>
                   <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
-                  <div class="work-experiences-nested-fields">
-                    <%= form.fields_for :work_experiences  do |work_experience| %>
-                      <%= render 'work_experiences_fields', f: work_experience %>
-                    <% end %>
+                <div id='work-experiences'>
+                    <div class="work-experiences-nested-fields">
+                      <%= form.fields_for :work_experiences  do |work_experience| %>
+                        <%= render 'work_experience_fields', f: work_experience %>
+                      <% end %>
+                    </div>
                   </div>
-                  <div class="form-row justify-content-center my-3">
-                    <a id="add-more-work-exps-btn" class="btn btn-lg btn-outline-dark"><%= t('add_more_experiences_btn') %></a>
+                  <div class='links text-center'>
+                    <%= link_to_add_association "#{t('add_more_experiences_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>
                   </div>
                 <hr>
                 <%= form.submit :class => "btn btn-info btn-lg pull-right" %>

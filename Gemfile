@@ -96,3 +96,6 @@ gem 'attachinary'
 
 gem 'cloudinary'
 
+
+gem "cocoon"
+

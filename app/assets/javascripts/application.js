@@ -75,6 +75,14 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
  $( document ).on('turbolinks:load', function() {
 
+     $("#modal-iframe").iziModal({
+         iframe: true,
+         closeButton: true,
+         iframeHeight: 500,
+         width: '85%',
+         iframeURL: "/freelancers/1"
+     });
+
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
@@ -94,6 +102,14 @@ var months = [ "January", "February", "March", "April", "May", "June",
         broadcastMessage()
     }
 });
+
+$(document).on(click_event,'.preview-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $('#modal-iframe').iziModal('open');
+    return false;
+});
+
 
 $(document).on(click_event,'.chatroom-list-elem', function(e){
     e.preventDefault();

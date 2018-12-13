@@ -5,9 +5,9 @@ class Users::FreelancersController < ApplicationController
   end
 
   def create
-   freelancer = current_user.build_freelancer(freelancer_params)
-   freelancer.save
-   redirect_to current_user
+    freelancer = current_user.build_freelancer(freelancer_params)
+    freelancer.save
+    redirect_to current_user
   end
 
   def show

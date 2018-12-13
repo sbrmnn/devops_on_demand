@@ -39,9 +39,7 @@
   min-height: 30vh;
 }
 
-.tokenfield{
-  @include freelancer-form-bg-color;
-}
+
 
 #tabs-freelancer-registration h3{
    border-bottom: 5px double black;
@@ -59,4 +57,11 @@ span {
 .outer-line {
   width: 40%;
   border-bottom: 1px solid #c2c2c2;
+}
+
+.close{
+  position: absolute;
+  top: 5px;
+  left: 97%;
+  width: 100%;
 }

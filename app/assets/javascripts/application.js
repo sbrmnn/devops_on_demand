@@ -74,15 +74,6 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
  $( document ).on('turbolinks:load', function() {
-
-     $("#modal-iframe").iziModal({
-         iframe: true,
-         closeButton: true,
-         iframeHeight: 500,
-         width: '85%',
-         iframeURL: "/freelancers/1"
-     });
-
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
@@ -106,7 +97,10 @@ var months = [ "January", "February", "March", "April", "May", "June",
 $(document).on(click_event,'.preview-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $('#modal-iframe').iziModal('open');
+    var serializedValue = $('.edit_freelancer').serialize();
+    var modalIframe = $("#modal-iframe");
+    var iframeUrl = "/profile_preview?" + serializedValue;
+    var lightbox = lity(iframeUrl);
     return false;
 });
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'profile_preview', controller: "profile_preview", action: "index"
+
   resources :certification_names, only: [:index]
 
   resources :healthcheck, only: [:index]

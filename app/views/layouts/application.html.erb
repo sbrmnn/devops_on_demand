@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DevopsOnDemand</title>
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"></script>
     <%= cloudinary_js_config %>
   </head>
   <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >

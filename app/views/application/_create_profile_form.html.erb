@@ -33,8 +33,7 @@
                     <div class="form-row">
                       <div class="form-group col-12">
                         <%= form.label :profile_photo %>
-                        <%= form.hidden_field :profile_photo %>
-                        <%= cl_image_upload_tag(:profile_photo, {html: {class: "form-control"}} ) %>
+                        <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control"}} ) %>
                         <div class="mt-2 preview">
                         </div>
                       </div>
@@ -49,7 +48,7 @@
                     <%= form.fields_for :certifications do |certification| %>
                       <%= render 'certification_fields', :f => certification %>
                     <% end %>
-                    <div class='links text-center'>
+                    <div class='add-btn text-center'>
                       <%= link_to_add_association "#{t('add_more_certs_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
                     </div>
                   </div>
@@ -61,7 +60,7 @@
                       <% end %>
                     </div>
                   </div>
-                  <div class='links text-center'>
+                  <div class='add-btn text-center'>
                     <%= link_to_add_association "#{t('add_more_experiences_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>
                   </div>
                 <hr>

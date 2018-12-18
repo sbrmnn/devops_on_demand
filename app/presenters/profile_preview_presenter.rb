@@ -1,4 +1,7 @@
 class ProfilePreviewPresenter  < ApplicationPresenter
+  def name
+    "#{user.first_name} #{user.last_name}"
+  end
 
   def headline
     model.headline || default_headline
@@ -9,15 +12,15 @@ class ProfilePreviewPresenter  < ApplicationPresenter
   end
 
   def rate
-    "$#{model.rate}"
+    "$#{model.rate}/hr"
   end
 
   def profile_photo
     model.profile_photo
   end
 
-  def skills
-    model.skills
+  def skill
+    model.skill
   end
 
   def certifications
@@ -29,6 +32,10 @@ class ProfilePreviewPresenter  < ApplicationPresenter
   end
 
   private
+
+  def user
+    @user ||= model.user
+  end
 
   def default_headline
     "Cloud Engineer"

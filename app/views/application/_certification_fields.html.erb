@@ -5,8 +5,8 @@
     <%= f.select(:certification_name_id, grouped_options_for_select(CertificationName.all.map{|l| [l.name, l.provider, l.id]}.group_by { |c| c[1] }, f.object.certification_name_id), {include_blank: 'Select Certificate' }, { class: 'form-control select-certificate', id: nil }) %>
   </div>
   <div class="form-group col-12">
-    <%= f.label :number, "Certification no." %>
-    <%= f.text_field :number, class: 'form-control certificate-number', id: nil %>
+    <%= f.label :vendor_identifier, "Certification no." %>
+    <%= f.text_field :vendor_identifier, class: 'form-control certificate-number', id: nil %>
   </div>
   <div class="line-separator w-100 ">
     <span class="outer-line"></span>

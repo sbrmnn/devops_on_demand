@@ -1,7 +1,7 @@
 class FromToChangeColumnTypeInWorkexperiences < ActiveRecord::Migration[5.1]
   def up
     change_column :work_experiences, :from, :string
-    change_column :work_experiences, :to, :string
+    change_column :work_experiences, :to,   :string
   end
 
   def down

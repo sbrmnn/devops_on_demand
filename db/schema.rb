@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212025542) do
+ActiveRecord::Schema.define(version: 20181218193054) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20181212025542) do
     t.integer "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "number"
     t.integer "certification_name_id"
+    t.string "vendor_identifier"
     t.index ["certification_name_id"], name: "index_certifications_on_certification_name_id"
     t.index ["freelancer_id"], name: "index_certifications_on_freelancer_id"
   end

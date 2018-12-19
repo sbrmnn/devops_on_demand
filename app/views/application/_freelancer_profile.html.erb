@@ -36,15 +36,14 @@
             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3"><%= t('certifications')%></h2>
             <div class="resume-section-content">
               <ul class="list-unstyled">
-                <li class="mb-2">
-                  <div class="resume-degree font-weight-bold">MSc in Computer Science</div>
-                  <div class="resume-degree-org">University College London</div>
-                </li>
-                <li>
-                  <div class="resume-degree font-weight-bold">BSc Maths and Physics</div>
-                  <div class="resume-degree-org">Imperial College London</div>
-                  <div class="resume-degree-time">2007 - 2010</div>
-                </li>
+                <% profile_preview.certifications.each do |cert| %>
+                  <li class="mb-2">
+                    <% certification =  CertificationPresenter.new(cert) %>
+                    <div class="resume-certification font-weight-bold"><%= certification.try(:name) %></div>
+                    <div class="resume-certification"><%=t('license_number')%>: <span class="font-underline"><%= certification.try(:vendor_identifier) %></span></div>
+                    <div class="resume-certification-org"><%= certification.try(:provider) %></div>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </section><!--//certification-section-->
@@ -86,7 +85,7 @@
             <div class="resume-section-content">
               <div class="resume-skill-item">
                 <ul class="list-inline">
-                  <% profile_preview.skill&.types&.split(",").each do |skill| %>
+                  <% profile_preview.skill&.types&.split(",")&.each do |skill| %>
                     <li class="list-inline-item"><span class="badge badge-light"><%= skill %></span></li>
                   <% end %>
                 </ul>

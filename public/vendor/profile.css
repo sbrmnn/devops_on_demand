@@ -8324,6 +8324,10 @@ button.bg-dark:focus {
   font-style: italic !important;
 }
 
+.font-underline{
+  text-decoration: underline;
+}
+
 .text-white {
   color: #fff !important;
 }

@@ -25,7 +25,7 @@ class SendChatNotificationEmailsToRecipients
   def latest_chatroom_messages
     GetLatestMessagesFromChatrooms.call(@created_at_time_limit)
   end
-  
+
   def emailable_message_recipients(m)
     m.chatroom.users.where.not(id: m.user_id).where(chat_notification_subscription: true)
   end

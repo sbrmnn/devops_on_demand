@@ -11,7 +11,7 @@ class SendChatNotificationEmailsToRecipients
       emailable_message_recipients(m).each do |er|
         begin
           ChatNotificationMailer.send_chatroom_msg_to_user(m, er).deliver
-          m.update_attribute(:notification_sent, true)
+          mark_this_and_prior_messages_as_sent(m)
         rescue Exception => e
           Rails.logger.error "Email Error: SendChatNotificationEmailsToRecipients #{e.message}"
         end
@@ -23,6 +23,11 @@ class SendChatNotificationEmailsToRecipients
 
   def latest_chatroom_messages_with_no_notifications
     GetLatestMessagesFromChatroomsWithNoNotifications.call(@created_at_time_limit)
+  end
+
+  def mark_this_and_prior_messages_as_sent(m)
+    messages = Message.where("id <= #{m.id}").where(chatroom_id: m.chatroom_id, notification_sent: false)
+    messages.update_all(notification_sent: true)
   end
 
   def emailable_message_recipients(m)

@@ -4,7 +4,6 @@ class Message < ApplicationRecord
   belongs_to  :user
   validates_presence_of :user
 
-  scope :latest_messages_by_chatroom, -> { select('*, MAX(created_at)').group('chatroom_id') }
 
   protected
 

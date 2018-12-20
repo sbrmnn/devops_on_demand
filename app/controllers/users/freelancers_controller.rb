@@ -1,11 +1,15 @@
 class Users::FreelancersController < ApplicationController
   before_action :authenticate_user!
+  include StrongParameterizable
 
   def index
   end
 
   def create
-    current_user.build_freelancer(freelancer_params).save
+    freelancer = current_user.build_freelancer(freelancer_params).save
+    if freelancer.errors.present?
+      render :index and return
+    end
     redirect_to current_user
   end
 
@@ -13,7 +17,11 @@ class Users::FreelancersController < ApplicationController
   end
 
   def update
-    current_user.freelancer.update_attributes(freelancer_params)
+    freelancer = current_user.freelancer
+    freelancer.update_attributes(freelancer_params)
+    if freelancer.errors.present?
+      render :index and return
+    end
     redirect_to current_user
   end
 
@@ -23,6 +31,6 @@ class Users::FreelancersController < ApplicationController
   private
 
   def freelancer_params
-    params.require(:freelancer).permit(:headline, :about_me, :rate, :profile_photo, skill_attributes: [:types], certifications_attributes: [:id, :certification_name_id, :vendor_identifier], work_experiences_attributes: [:id, :title, :employer, :from, :to, :achievements])
+    whitelist_params(params, :freelancer)
   end
 end

@@ -97,7 +97,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
 $(document).on(click_event,'.preview-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    var serializedValue = $('.edit_freelancer').serialize();
+    var serializedValue = $('.edit_freelancer').serialize().trim() || $('.new_freelancer').serialize();
     var modalIframe = $("#modal-iframe");
     var iframeUrl = "/profile_preview?" + serializedValue;
     var lightbox = lity(iframeUrl);

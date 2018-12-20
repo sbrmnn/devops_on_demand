@@ -10,10 +10,6 @@ class Freelancer < ApplicationRecord
   validates :rate, numericality: { only_integer: true, greater_than_or_equal_to: 30 }
   validates_presence_of :profile_photo
 
-
-
-  attr_accessor :skills
-
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :work_experiences, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :skill, reject_if: :all_blank, allow_destroy: true

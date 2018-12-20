@@ -6,7 +6,8 @@ class Users::FreelancersController < ApplicationController
   end
 
   def create
-    freelancer = current_user.build_freelancer(freelancer_params).save
+    freelancer = current_user.build_freelancer(freelancer_params)
+    freelancer.save
     if freelancer.errors.present?
       render :index and return
     end

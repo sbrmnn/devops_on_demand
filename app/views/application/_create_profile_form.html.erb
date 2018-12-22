@@ -53,12 +53,11 @@
                     </div>
                   </div>
                   <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
-                <div id='work-experiences'>
-                    <div class="work-experiences-nested-fields">
+                  <div id='work-experiences'>
                       <%= form.fields_for :work_experiences  do |work_experience| %>
                         <%= render 'work_experience_fields', f: work_experience %>
                       <% end %>
-                    </div>
+
                   </div>
                   <div class='add-btn text-center'>
                     <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>

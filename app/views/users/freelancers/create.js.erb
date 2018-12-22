@@ -16,6 +16,7 @@
       }
 
       if ("<%=key%>" == "work_experiences.title" && "<%=raw value %>" == "can't be blank"){
+           $("#work-experiences").find('.work-experience-employer,.work-experience-from, .work-experience-to')
           $('.form-row.select-certificate-selected').not('.certificate-number-selected').find('.certificate-number').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
       }
 

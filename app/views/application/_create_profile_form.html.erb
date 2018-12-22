@@ -2,6 +2,7 @@
   <h1 class="display-4"><%= t('freelancer_registration_form') %></h1>
   <p class="lead text-muted"><%= t('freelance_form_tagline') %></p>
 </div>
+
 <div class="card shadow freelancer-registration">
   <div class="card-body">
     <div class="container p-0">
@@ -11,66 +12,67 @@
             <% present(@user) do |user_presenter| %>
               <%= form_for [user_presenter.model, user_presenter.freelancer], :remote => true do |form| %>
                 <h3 class="mb-4 py-2"><%= t('basic_info')%></h3>
-                  <div class="basic-info-nested-fields mb-2">
-                    <div class="form-row">
-                      <div class="form-group col-12">
-                        <%= form.label :headline %>
-                        <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
-                      </div>
+                <div class="basic-info-nested-fields mb-2">
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <%= form.label :headline %>
+                      <%= form.text_field :headline,  class: "form-control bg-orange whitesmoke-border" %>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group  col-12">
-                        <%= form.label :about_me %>
-                        <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
-                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group  col-12">
+                      <%= form.label :about_me %>
+                      <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-12">
-                        <%= form.label :rate %>
-                        <%= form.number_field :rate, class: "form-control bg-orange whitesmoke-border" %>
-                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <%= form.label :rate %>
+                      <%= form.number_field :rate, class: "form-control bg-orange whitesmoke-border" %>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-12">
-                        <%= form.label :profile_photo %>
-                        <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control"}} ) %>
-                        <div class="mt-2 preview">
-                        </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <%= form.label :profile_photo %>
+                      <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control"}} ) %>
+                      <div class="mt-2 preview">
                       </div>
                     </div>
                   </div>
-                  <h3 class="mb-4 py-2"><%= t('skills')%></h3>
+                </div>
+                <h3 class="mb-4 py-2"><%= t('skills')%></h3>
+                <div id='skills'>
                   <%= form.fields_for :skill  do |skill| %>
                     <%= render 'skills_fields', f: skill %>
                   <% end %>
-                  <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
-                  <div id='certifications'>
-                    <%= form.fields_for :certifications do |certification| %>
-                      <%= render 'certification_fields', :f => certification %>
-                    <% end %>
-                    <div class='add-btn text-center'>
-                      <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
-                    </div>
+                </div>
+                <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
+                <div id='certifications' class="certifications-nested-fields">
+                  <%= form.fields_for :certifications do |certification| %>
+                    <%= render 'certification_fields', :f => certification %>
+                  <% end %>
+                  <div class='add-btn text-center'>
+                    <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
                   </div>
-                  <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
-                  <div id='work-experiences'>
-                      <%= form.fields_for :work_experiences  do |work_experience| %>
-                        <%= render 'work_experience_fields', f: work_experience %>
-                      <% end %>
-
-                  </div>
+                </div>
+                <h3 class="mb-4 py-2"><%= t('work_experiences')%></h3>
+                <div id='work-experiences' class="work-experiences-nested-fields">
+                  <%= form.fields_for :certifications do |certification| %>
+                    <%= render 'work_experience_fields', :f => certification %>
+                  <% end %>
                   <div class='add-btn text-center'>
                     <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>
                   </div>
+                </div>
                 <hr>
-                <div class="card freelancer-error-card d-none">
+                <div class="card freelancer-error-card d-none mb-2">
                   <div class="card-header bg-danger text-light">
                     <%= t('error') %>
                   </div>
                 </div>
                 <div class="pull-right">
-                <a class="preview-btn btn btn-info btn-lg text-light"><%=t('preview')%></a>
-                <%= form.submit :class => "btn btn-success btn-lg" %>
+                  <a class="preview-btn btn btn-info btn-lg text-light"><%=t('preview')%></a>
+                  <%= form.submit :class => "btn btn-success btn-lg" %>
                 </div>
               <% end %>
             <% end %>
@@ -80,6 +82,8 @@
     </div>
   </div>
 </div>
+
+
 <div id="modal-iframe">
   <div class="close">
     <a class="modal-close" data-izimodal-close="">×</a>

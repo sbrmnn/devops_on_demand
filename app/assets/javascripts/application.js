@@ -84,8 +84,6 @@ var months = [ "January", "February", "March", "April", "May", "June",
      bindCloudinaryElement();
      getSelectedPill();
      subscribeToRooms();
-     bindClickEventToAddCertificationBtn();
-     bindClickEventToAddWorkExperienceBtn();
 });
 
  $(document).keyup(function (e) {
@@ -199,30 +197,6 @@ function bindCloudinaryElement(){
     if($.fn.cloudinary_fileupload !== undefined) {
         $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
     }
-}
-
-function bindClickEventToAddCertificationBtn(){
-    $('#add-more-certs-btn').on('click', function(e){
-        var certificationNestedField = $('.certifications-nested-fields');
-        var insertionCode = $('.certifications-nested-fields > .form-row:first').prop('outerHTML');
-        if ($(this).data('insertion') === undefined || $(this).data('insertion') === null){
-            $(this).data('insertion', insertionCode)
-        }
-        certificationNestedField.append($(this).data('insertion'));
-        $('.certifications-nested-fields > .form-row:last .form-control').val(" ")
-    });
-}
-
-function bindClickEventToAddWorkExperienceBtn(){
-    $('#add-more-work-exps-btn').on('click', function(e){
-        var workExperienceNestedField = $('.work-experiences-nested-fields');
-        var insertionCode = $('.work-experiences-nested-fields > .form-row:first').prop('outerHTML');
-        if ($(this).data('insertion') === undefined || $(this).data('insertion') === null){
-            $(this).data('insertion', insertionCode)
-        }
-        workExperienceNestedField.append($(this).data('insertion'));
-        $('.work-experiences-nested-fields > .form-row:last .form-control').val(null)
-    });
 }
 
 function subscribeToRooms(){

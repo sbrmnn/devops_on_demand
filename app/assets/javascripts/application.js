@@ -105,6 +105,61 @@ $(document).on(click_event,'.preview-btn', function(e){
 });
 
 
+$(document).on('change','.select-certificate', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("select-certificate-selected");
+    }else{
+        $(this).closest('.form-row').addClass("select-certificate-selected");
+    }
+    return false;
+});
+
+$(document).on('change paste keyup','.certificate-number', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("certificate-number-selected");
+    }else{
+        $(this).closest('.form-row').addClass("certificate-number-selected");
+    }
+});
+
+
+///
+
+$(document).on('change paste keyup','.work-experience-title', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass(".work-experience-title-selected");
+    }else{
+        $(this).closest('.form-row').addClass(".work-experience-title-selected");
+    }
+});
+$(document).on('change paste keyup','.work-experience-employer', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("work-experience-employer-selected");
+    }else{
+        $(this).closest('.form-row').addClass("work-experience-employer-selected");
+    }
+});
+
+var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
+
+
+$(document).on('change paste keyup','.work-experience-from', function(e){
+    if (date.test($(this).val())){
+        $(this).closest('.form-row').addClass("work-experience-from-selected");
+    }else{
+        $(this).closest('.form-row').removeClass("work-experience-from-selected");
+    }
+});
+$(document).on('change paste keyup','.work-experience-to', function(e){
+    if (date.test($(this).val())) {
+        $(this).closest('.form-row').addClass("work-experience-to-selected");
+    }else{
+        $(this).closest('.form-row').removeClass("work-experience-to-selected");
+    }
+});
+
+///
+
 $(document).on(click_event,'.chatroom-list-elem', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();

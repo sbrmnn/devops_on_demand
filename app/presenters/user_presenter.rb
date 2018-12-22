@@ -13,10 +13,7 @@ class UserPresenter < ApplicationPresenter
 
   def build_freelancer_obj
     freelancer = model.freelancer || model.build_freelancer
-    freelancer.educations.present? ||  freelancer.educations.build
-    freelancer.work_experiences.present? ||  freelancer.work_experiences.build
     freelancer.skill.present? ||  freelancer.build_skill
-    freelancer.certifications.present? ||  freelancer.certifications.build
     freelancer
   end
 end

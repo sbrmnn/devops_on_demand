@@ -1,0 +1,26 @@
+<% if @freelancer.errors.full_messages.present? %>
+   $('#new_freelancer').find('.text-danger').remove()
+   $('.freelancer-error-card').removeClass('d-none')
+<% end %>
+
+<% @freelancer.errors.messages.each do |key ,values| %>
+
+   <% values.each do |value| %>
+
+       if ("<%=key%>" == "certifications.certification_name" && "<%=raw value %>" == "must exist"){
+           $('.form-row.certificate-number-selected').not('.select-certificate-selected').find('.select-certificate').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+       }
+
+      if ("<%=key%>" == "certifications.vendor_identifier" && "<%=raw value %>" == "can't be blank"){
+          $('.form-row.select-certificate-selected').not('.certificate-number-selected').find('.certificate-number').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+      }
+
+      if ("<%=key%>" == "work_experiences.title" && "<%=raw value %>" == "can't be blank"){
+          $('.form-row.select-certificate-selected').not('.certificate-number-selected').find('.certificate-number').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+      }
+
+
+
+$("label[for='freelancer_" + "<%= key %>" + "']").append(" <span class='text-danger'><%= raw value %></span>")
+   <% end %>
+<% end %>

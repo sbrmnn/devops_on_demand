@@ -9,7 +9,7 @@
         <div class="col-12">
           <div class="rounded">
             <% present(@user) do |user_presenter| %>
-              <%= form_for [user_presenter.model, user_presenter.freelancer] do |form| %>
+              <%= form_for [user_presenter.model, user_presenter.freelancer], :remote => true do |form| %>
                 <h3 class="mb-4 py-2"><%= t('basic_info')%></h3>
                   <div class="basic-info-nested-fields mb-2">
                     <div class="form-row">
@@ -49,7 +49,7 @@
                       <%= render 'certification_fields', :f => certification %>
                     <% end %>
                     <div class='add-btn text-center'>
-                      <%= link_to_add_association "#{t('add_more_certs_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
+                      <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
                     </div>
                   </div>
                   <h3 class="mb-4 py-2"><%= t('work_experience')%></h3>
@@ -61,9 +61,14 @@
                     </div>
                   </div>
                   <div class='add-btn text-center'>
-                    <%= link_to_add_association "#{t('add_more_experiences_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>
+                    <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>
                   </div>
                 <hr>
+                <div class="card freelancer-error-card d-none">
+                  <div class="card-header bg-danger text-light">
+                    <%= t('error') %>
+                  </div>
+                </div>
                 <div class="pull-right">
                 <a class="preview-btn btn btn-info btn-lg text-light"><%=t('preview')%></a>
                 <%= form.submit :class => "btn btn-success btn-lg" %>
@@ -76,7 +81,6 @@
     </div>
   </div>
 </div>
-
 <div id="modal-iframe">
   <div class="close">
     <a class="modal-close" data-izimodal-close="">×</a>

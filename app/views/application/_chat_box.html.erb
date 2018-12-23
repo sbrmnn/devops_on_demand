@@ -6,6 +6,34 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+<div class="accordion" id="accordionExample">
+  <div class="card flex-row flex-wrap">
+    <div class="card-header bordered">
+      <img class="chat-image" src="https://via.placeholder.com/100">
+    </div>
+    <div class="card-block px-2">
+      <h4 class="card-title mt-2">Title</h4>
+      <p class="card-text p-0">Description</p>
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="false" aria-controls="collapseOne">
+        <%= t('see_messages') %>
+      </button>
+    </div>
+  </div>
+  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+        nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+        labore sustainable.
+      </div>
+  </div>
+</div>
+
+
 <div class="container-fluid p-0">
   <div class="row no-gutters">
       <div class="col-6 col-md-4">

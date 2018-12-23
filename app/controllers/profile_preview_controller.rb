@@ -10,6 +10,6 @@ class ProfilePreviewController < ApplicationController
   end
 
   def freelancer_params
-    whitelist_params(params, :freelancer)
+    whitelist_params(params, :freelancer, true)
   end
 end

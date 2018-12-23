@@ -125,9 +125,9 @@ $(document).on('change paste keyup','.certificate-number', function(e){
 
 $(document).on('change paste keyup','.work-experience-title', function(e){
     if ($(this).val() === ""){
-        $(this).closest('.form-row').removeClass(".work-experience-title-selected");
+        $(this).closest('.form-row').removeClass("work-experience-title-selected");
     }else{
-        $(this).closest('.form-row').addClass(".work-experience-title-selected");
+        $(this).closest('.form-row').addClass("work-experience-title-selected");
     }
 });
 $(document).on('change paste keyup','.work-experience-employer', function(e){
@@ -148,6 +148,7 @@ $(document).on('change paste keyup','.work-experience-from', function(e){
         $(this).closest('.form-row').removeClass("work-experience-from-selected");
     }
 });
+
 $(document).on('change paste keyup','.work-experience-to', function(e){
     if (date.test($(this).val())) {
         $(this).closest('.form-row').addClass("work-experience-to-selected");
@@ -155,6 +156,16 @@ $(document).on('change paste keyup','.work-experience-to', function(e){
         $(this).closest('.form-row').removeClass("work-experience-to-selected");
     }
 });
+
+
+$(document).on('change paste keyup','.work-experience-achievements', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
+    }else{
+        $(this).closest('.form-row').addClass("work-experience-achievements-selected");
+    }
+});
+
 
 ///
 

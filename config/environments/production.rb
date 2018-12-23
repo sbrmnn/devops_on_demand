@@ -95,5 +95,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  config.action_cable.allowed_request_origins = ["https://yumfog.com", "https://www.yumfog.com", 'https://staging.yumfog.com']
+  config.action_cable.allowed_request_origins = ["https://yumfog.com", "https://#{ENV['HOST_URL']}", 'https://staging.yumfog.com']
 end

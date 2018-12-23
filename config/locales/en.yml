@@ -68,6 +68,7 @@ en:
   subscription_save_error: "Your settings were not saved. Please contact us at webmaster@yumfog.com so we can resolve this issue."
   saved: "Saved!"
   error: "Error!"
+  form_error_msg: "Error! Please scroll up to see error messages."
   send: "Send"
   hi: "Hi"
   received_msg: "You have a new message from"

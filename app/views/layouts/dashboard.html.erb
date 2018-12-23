@@ -21,14 +21,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <%= link_to( t('signup'), new_registration_path('user'), class: "nav-link")  %>
-            </li>
-            <li class="nav-item">
-              <%= link_to( t('login'), new_user_session_path, class: "nav-link")  %>
-            </li>
-          </ul>
+          <%= render 'login_logout' %>
         </div>
       </div>
     </nav>

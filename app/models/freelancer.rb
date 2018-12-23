@@ -6,6 +6,7 @@ class Freelancer < ApplicationRecord
   has_many :certifications, dependent: :destroy
 
   validates_presence_of :headline
+  validates_presence_of :location
   validates_presence_of :about_me
   validates :rate, numericality: { only_integer: true, greater_than_or_equal_to: 30 }
   validates_presence_of :profile_photo

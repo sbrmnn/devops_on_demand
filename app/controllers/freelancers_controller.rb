@@ -1,8 +1,10 @@
 class FreelancersController < ApplicationController
   layout 'profile', only: :show
-  before_action :authenticate_user!
-  
+
   def index
+    if user_signed_in?
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def show

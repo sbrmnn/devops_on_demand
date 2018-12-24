@@ -74,6 +74,12 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
  $( document ).on('turbolinks:load', function() {
+
+     $('a').click(function (event) {
+         event.preventDefault();
+         // or use return false;
+     });
+
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
@@ -99,6 +105,15 @@ $(document).on(click_event,'.preview-btn', function(e){
     var modalIframe = $("#modal-iframe");
     var iframeUrl = "/profile_preview?" + serializedValue;
     var lightbox = lity(iframeUrl);
+    return false;
+});
+
+$(document).on(click_event,'.view-messages-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if($(this).attr('aria-expanded') === 'true'){
+        renderChatRoomMessage($(this).data('chatroom'));
+    }
     return false;
 });
 
@@ -254,21 +269,21 @@ function renderChatRoomMessage(chatroomId){
         url: "/chatrooms/" + chatroomId + "/messages.json",
         success: function(data){
             data.forEach(function(item) {
-                appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id']);
+                appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId);
             });
-            $('.chat-box').scrollToBottom();
+            $('.chat-box[data-chatroom="'+ chatroomId +'"]').scrollToBottom();
             $('.msg-input-grp').show();
         }
     });
 }
 
 
-function appendMessageHistory(message, time , message_user_id){
+function appendMessageHistory(message, time , message_user_id, chatroomId){
     var current_user_id = Cookies.get('current_user_id');
     if (message_user_id == current_user_id) {
-        $('.chat-box').append(outgoingMessageHTML(message, time))
+        $('.chat-box[data-chatroom="'+ chatroomId +'"]').append(outgoingMessageHTML(message, time))
     }else{
-        $('.chat-box').append(incomingMessageHTML(message, time))
+        $('.chat-box[data-chatroom="'+ chatroomId +'"]').append(incomingMessageHTML(message, time))
     }
 }
 

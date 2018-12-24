@@ -42,7 +42,7 @@ body {
   color: whitesmoke;
 }
 
-.chat-image{
+.chat-sender-image{
   border-radius: 50%;
 }
 
@@ -50,6 +50,17 @@ body {
   color: #FCBB43
 }
 // <-- colors
+
+// Chatbox
+.see-messages-btn{
+  margin-top: .75rem;
+}
+
+.list-group-item{
+  background-color: wheat !important;
+}
+
+// <-- Chatbox
 
 
 

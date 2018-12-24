@@ -5,6 +5,10 @@ class ApplicationPresenter
     @model = model
   end
 
+  def id
+    model.id
+  end
+
   def self.wrap(collection)
     collection.map do |obj|
        new(obj)

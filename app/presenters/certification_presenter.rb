@@ -1,4 +1,5 @@
 class CertificationPresenter < ApplicationPresenter
+
   def vendor_identifier
     "#{model.try(:vendor_identifier)}"
   end

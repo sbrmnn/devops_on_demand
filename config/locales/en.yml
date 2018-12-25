@@ -98,3 +98,5 @@ en:
   select_location: "Select Location"
   see_messages: "See messages"
   view_messages: "View Messages"
+  form_success_msg: "Success! Checkout your profile @"
+  here: "here"

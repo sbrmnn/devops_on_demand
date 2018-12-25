@@ -1,0 +1,34 @@
+<% if @freelancer.errors.full_messages.present? %>
+  $('#new_freelancer').find('.text-danger').remove() // Removing all previous errors before rendering new ones.
+  $('.freelancer-error-card').removeClass('d-none')
+<% else %>
+  location.reload()
+  var freelancerSuccessCard =  $('.freelancer-success-card')
+  freelancerSuccessCard.removeClass('d-none')
+  freelancerSuccessCard.html("<div class=\"card-header bg-success text-light\"><%= t('form_success_msg') %> <a target='_blank' class='text-light' href=\" <%= profile_url(@freelancer) %> \">  <u> <%= profile_url(@freelancer) %>. </u>      </a></div>")
+<% end %>
+ <% @freelancer.errors.messages.each do |key ,values| %>
+
+  <% values.each do |value| %>
+    if ("<%=key%>" == "certifications.certification_name" && "<%=raw value %>" == "must exist"){
+        $('.form-row.certificate-number-selected').not('.select-certificate-selected').find('.select-certificate').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+    }else if("<%=key%>" == "certifications.vendor_identifier" && "<%=raw value %>" == "can't be blank"){
+        $('.form-row.select-certificate-selected').not('.certificate-number-selected').find('.certificate-number').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+
+    }else if("<%=key%>" == "work_experiences.title" && "<%=raw value %>" == "can't be blank"){
+        $("#work-experiences").find('.work-experience-achievements-selected,.work-experience-employer-selected, .work-experience-from-selected, .work-experience-to-selected').not(".work-experience-title-selected").find('.work-experience-title').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+
+    }else if ("<%=key%>" == "work_experiences.employer" && "<%=raw value %>" == "can't be blank"){
+        $("#work-experiences").find('.work-experience-achievements-selected,.work-experience-title-selected, .work-experience-from-selected, .work-experience-to-selected').not(".work-experience-employer-selected").find('.work-experience-employer').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+
+    }else if ("<%=key%>" == "work_experiences.from" && "<%=raw value %>" == "is invalid"){
+        $("#work-experiences").find('.work-experience-achievements-selected,.work-experience-title-selected, .work-experience-employer-selected, .work-experience-to-selected').not(".work-experience-from-selected").find('.work-experience-from').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+
+    }else if ("<%=key%>" == "work_experiences.to" && "<%=raw value %>" == "is invalid"){
+        $("#work-experiences").find('.work-experience-achievements-selected, .work-experience-title-selected, .work-experience-employer-selected, .work-experience-from-selected').not(".work-experience-to-selected").find('.work-experience-to').siblings("label").append(" <span class='text-danger'><%= raw value %></span>")
+
+    }else{
+        $("label[for='freelancer_" + "<%= key %>" + "']").append(" <span class='text-danger'><%= raw value %></span>")
+    }
+  <% end %>
+<% end %>

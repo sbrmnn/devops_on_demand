@@ -14,12 +14,8 @@ class Users::FreelancersController < ApplicationController
   end
 
   def update
-    freelancer = current_user.freelancer
-    freelancer.update_attributes(freelancer_params)
-    if freelancer.errors.present?
-      render :index and return
-    end
-    redirect_to current_user
+    @freelancer = current_user.freelancer
+    @freelancer.update_attributes(freelancer_params)
   end
 
   def destroy

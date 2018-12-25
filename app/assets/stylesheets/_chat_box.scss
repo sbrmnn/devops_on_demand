@@ -62,10 +62,10 @@ input.form-control.sidebar-form {
   font-size: 1.70rem;
 }
 
-.new_msg { color:white !important; font-weight: bold; }
+.new_msg { background-color: lightgreen !important; color: white ;font-weight: bold; }
 
 #connection-error-alert{
-  position: absolute;
+  position: relative;
   z-index: 1;
   width: 100%;
 

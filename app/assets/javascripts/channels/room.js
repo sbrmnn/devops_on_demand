@@ -3,11 +3,8 @@ function subscribeToRoom(chatroomId){
     App[roomName] = App.cable.subscriptions.create({channel: 'RoomChannel', chatroom_id: chatroomId}, {
 
         received: function(data) {
-            var output = null;
-            if ($("#chatroom_"+ chatroomId + "> .active_chat").length > 0) {
-                output = appendMessageHistory(data['body'], new Date(data['created_at']), data['user_id']);
-            }
-            return output
+            appendMessageHistory(data['body'], new Date(data['created_at']), data['user_id'], data['chatroom_id'], true);
+
         },
 
         speak: function(message) {

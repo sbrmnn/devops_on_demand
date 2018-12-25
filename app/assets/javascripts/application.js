@@ -89,12 +89,14 @@ var months = [ "January", "February", "March", "April", "May", "June",
      taggifyInput();
      bindCloudinaryElement();
      getSelectedPill();
+     bindChatroomToRecieveMessages()
      subscribeToRooms();
 });
 
  $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
-        broadcastMessage()
+        var chatroomId = $(document.activeElement).data("chatroom");
+        broadcastMessage(chatroomId)
     }
 });
 
@@ -108,14 +110,20 @@ $(document).on(click_event,'.preview-btn', function(e){
     return false;
 });
 
-$(document).on(click_event,'.view-messages-btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    if($(this).attr('aria-expanded') === 'true'){
-        renderChatRoomMessage($(this).data('chatroom'));
+function bindChatroomToRecieveMessages(){
+    var viewMsgBtns = $(".view-messages-btn");
+    if ( viewMsgBtns.length ) {
+        viewMsgBtns.each(function() {
+            var target = $(this).data('target');
+            var chatroomId = $(this).data('chatroom');
+            $(document).on('show.bs.collapse', target, function () {
+                renderChatRoomMessages(chatroomId);
+            });
+        });
     }
-    return false;
-});
+}
+
+
 
 
 $(document).on('change','.select-certificate', function(e){
@@ -191,13 +199,13 @@ $(document).on(click_event,'.chatroom-list-elem', function(e){
     $(this).removeClass('new_msg');
     $(this).addClass('active_chat');
     $('.type_msg').show();
-    renderChatRoomMessage($(this).data('chatroom_id'));
+    renderChatRoomMessages($(this).data('chatroom_id'));
     return false;
 });
 
 
 $(document).on(click_event,'.msg_send_btn', function(){
-    broadcastMessage()
+    broadcastMessage($(this).data('chatroom'))
 });
 
 
@@ -226,10 +234,10 @@ function bindCloudinaryElement(){
 }
 
 function subscribeToRooms(){
-    var chatroomNames = $(".chatroom-list-elem");
+    var chatroomNames = $(".chat-box");
     if ( chatroomNames.length ) {
         chatroomNames.each(function() {
-            subscribeToRoom($( this ).data('chatroom_id'));
+            subscribeToRoom($( this ).data('chatroom'));
         });
     }
 }
@@ -250,9 +258,9 @@ function getSelectedPill(){
     });
 }
 
-function broadcastMessage(){
-    var roomId = $('.active_chat').data('chatroom_id');
-    var messageInput = $('.write_msg');
+function broadcastMessage(chatroomId){
+    var roomId = chatroomId;
+    var messageInput = $('.write_msg[data-chatroom="'+ chatroomId +'"]');
     var message = messageInput.val().trim();
     var roomName = 'room' + roomId;
     if (!$.isEmptyObject(message)){
@@ -261,36 +269,44 @@ function broadcastMessage(){
     }
 }
 
-function renderChatRoomMessage(chatroomId){
-    $('.chat-box').empty();
+function renderChatRoomMessages(chatroomId){
+    var chatbox = $('.chat-box[data-chatroom="'+ chatroomId +'"]');
+    chatbox.empty();
     $.ajax({
         type: "GET",
         dataType: "json",
         url: "/chatrooms/" + chatroomId + "/messages.json",
         success: function(data){
-            data.forEach(function(item) {
-                appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId);
-            });
-            $('.chat-box[data-chatroom="'+ chatroomId +'"]').scrollToBottom();
-            $('.msg-input-grp').show();
+            data.forEach(function(item, key, data) {
+                if (Object.is(data.length - 1, key)) {
+                    // execute last item logic
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, true);
+                }else{
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId);
+
+                }
+             });
         }
     });
 }
 
-
-function appendMessageHistory(message, time , message_user_id, chatroomId){
+function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom=false){
     var current_user_id = Cookies.get('current_user_id');
+    var elem = document.getElementById("chatboxID-" + chatroomId);
     if (message_user_id == current_user_id) {
-        $('.chat-box[data-chatroom="'+ chatroomId +'"]').append(outgoingMessageHTML(message, time))
+        elem.insertAdjacentHTML( 'beforeend', outgoingMessageHTML(message, time) );
     }else{
-        $('.chat-box[data-chatroom="'+ chatroomId +'"]').append(incomingMessageHTML(message, time))
+        elem.insertAdjacentHTML( 'beforeend', incomingMessageHTML(message, time) );
+    }
+    if (toBottom === true){
+        $(elem).scrollToBottom()
     }
 }
 
 function incomingMessageHTML(message, time){
-    return '<div class="row">\
+    return '<div class="row py-2">\
                <div class="col-12">\
-                <div class="chat bg-orange d-inline-block text-dark mb-2">\
+                <div class="chat bg-yumfog-orange d-inline-block text-dark">\
                  <div class="chat-bubble">\
                    <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
                    <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
@@ -301,9 +317,9 @@ function incomingMessageHTML(message, time){
 }
 
 function outgoingMessageHTML(message, time){
-    return '<div class="row">\
+    return '<div class="row py-2">\
              <div class="col-12">\
-                 <div class="chat bg-white-smoke d-inline-block text-dark mb-2 pull-right">\
+                 <div class="chat bg-white-smoke d-inline-block text-dark pull-right">\
                    <div class="chat-bubble">\
                      <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
                      <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\

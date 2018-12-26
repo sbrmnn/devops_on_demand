@@ -75,11 +75,6 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
  $( document ).on('turbolinks:load', function() {
 
-     $('a').click(function (event) {
-         event.preventDefault();
-         // or use return false;
-     });
-
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
             $(element).scrollTop($(element)[0].scrollHeight);
@@ -89,7 +84,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
      taggifyInput();
      bindCloudinaryElement();
      getSelectedPill();
-     bindChatroomToRecieveMessages()
+     bindChatroomToRecieveMessages();
      subscribeToRooms();
 });
 
@@ -253,7 +248,7 @@ function getSelectedPill(){
             $('#pills-home-tab').tab('show');
         }
     }
-    $(document).on(click_event,'a[data-toggle="pill"]', function(e){
+    $(document).on(click_event,'a[data-toggle="tab"]', function(e){
         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }

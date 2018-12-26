@@ -1,0 +1,29 @@
+var reloadWithTurbolinks = (function () {
+    var scrollPosition;
+    var focusId;
+    var runFunction;
+
+    function reload(func=null) {
+        Turbolinks.visit(window.location.toString(), {action: 'replace'})
+        runFunction = func
+    }
+
+    document.addEventListener('turbolinks:before-render', function () {
+        scrollPosition = [window.scrollX, window.scrollY];
+        focusId = document.activeElement.id;
+    });
+    document.addEventListener('turbolinks:load', function () {
+        if (scrollPosition) {
+            window.scrollTo.apply(window, scrollPosition);
+            scrollPosition = null
+        }
+        if (focusId) {
+            document.getElementById(focusId).focus();
+            focusId = null;
+        }
+        if (runFunction){
+            runFunction()
+        }
+    });
+    return reload;
+})();

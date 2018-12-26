@@ -1,4 +1,4 @@
-class ProfilePreviewPresenter  < ApplicationPresenter
+class FreelancerPresenter < ApplicationPresenter
   def name
     "#{user.first_name} #{user.last_name}"
   end

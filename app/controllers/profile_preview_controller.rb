@@ -6,7 +6,7 @@ class ProfilePreviewController < ApplicationController
   def index
     freelancer = Freelancer.new(freelancer_params)
     freelancer.user_id = current_user.id
-    @profile_preview =  ProfilePreviewPresenter.new(freelancer)
+    @freelancer =  FreelancerPresenter.new(freelancer)
   end
 
   def freelancer_params

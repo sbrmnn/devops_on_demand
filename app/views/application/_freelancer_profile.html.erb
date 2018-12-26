@@ -8,15 +8,15 @@
         <img class="mr-3 img-fluid picture mx-auto" src="<%=  image_url("pgphoto.png") %>">
         <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
           <div class="primary-info">
-            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase"><%= profile_preview.name %></h1>
-            <div class="title mb-2"><%= profile_preview.headline %></div>
+            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase"><%= freelancer.name %></h1>
+            <div class="title mb-2"><%= freelancer.headline %></div>
             <ul class="list-unstyled hire-contact-btns my-4">
               <li><button type="button" class="btn btn-success mr-2"><i class="mr-1 fas fa-user-check fa-fw mr-2" data-fa-transform="grow-3"></i>Hire</button><button type="button" class="btn btn-light"><i class="far fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>Message</button></li>
             </ul>
           </div><!--//primary-info-->
           <div class="secondary-info ml-md-auto mt-2">
             <ul class="resume-rate list-unstyled">
-              <li class="mb-3"> <h4><%= profile_preview.rate %></h4> </li>
+              <li class="mb-3"> <h4><%= freelancer.rate %></h4> </li>
             </ul>
           </div><!--//secondary-info-->
 
@@ -27,7 +27,7 @@
       <section class="resume-section summary-section mb-5">
         <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3"><%= t('about_me') %></h2>
         <div class="resume-section-content">
-          <p class="mb-0"><%= profile_preview.about_me %></p>
+          <p class="mb-0"><%= freelancer.about_me %></p>
         </div>
       </section><!--//summary-section-->
       <div class="row">
@@ -36,7 +36,7 @@
             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3"><%= t('certifications')%></h2>
             <div class="resume-section-content">
               <ul class="list-unstyled">
-                <% profile_preview.certifications.each do |cert| %>
+                <% freelancer.certifications.each do |cert| %>
                   <li class="mb-2">
                     <% certification =  CertificationPresenter.new(cert) %>
                     <div class="resume-certification font-weight-bold"><%= certification.try(:name) %></div>
@@ -58,7 +58,7 @@
             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
             <div class="resume-section-content">
               <div class="resume-timeline position-relative">
-                <% profile_preview.work_experiences.each do |we| %>
+                <% freelancer.work_experiences.each do |we| %>
                   <article class="resume-timeline-item position-relative pb-5">
                     <div class="resume-timeline-item-header mb-2">
                       <div class="d-flex flex-column flex-md-row">
@@ -85,7 +85,7 @@
             <div class="resume-section-content">
               <div class="resume-skill-item">
                 <ul class="list-inline">
-                  <% profile_preview.skill&.types&.split(",")&.each do |skill| %>
+                  <% freelancer.skill&.types&.split(",")&.each do |skill| %>
                     <li class="list-inline-item"><span class="badge badge-light"><%= skill %></span></li>
                   <% end %>
                 </ul>

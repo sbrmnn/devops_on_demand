@@ -105,6 +105,13 @@ $(document).on(click_event,'.preview-btn', function(e){
     return false;
 });
 
+$(document).on(click_event,'#freelancer-search-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    alert($('#contactor-search').val());
+    return false;
+});
+
 function bindChatroomToRecieveMessages(){
     var viewMsgBtns = $(".view-messages-btn");
     if ( viewMsgBtns.length ) {

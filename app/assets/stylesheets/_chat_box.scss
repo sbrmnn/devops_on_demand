@@ -1,5 +1,3 @@
-// Chat box --->
-
 .chatroom-list-elem:hover{
   text-decoration: none;
   color: #fff;
@@ -71,9 +69,7 @@ input.form-control.sidebar-form {
 
 }
 
-.bg-white-smoke{
-  background-color: whitesmoke;
-}
+
 
 .sidebar-nav {
   position: relative;
@@ -120,4 +116,22 @@ input.form-control.sidebar-form {
 }
 
 
-// <--- Chat box
+.see-messages-btn{
+  margin-top: .75rem;
+}
+
+.chat-sender-image{
+  border-radius: 50%;
+}
+
+
+.see-messages-btn{
+  margin-top: .75rem;
+}
+
+.chat-sender-image{
+  border-radius: 50%;
+}
+
+
+

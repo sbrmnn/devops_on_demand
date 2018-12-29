@@ -99,3 +99,6 @@ gem 'cloudinary'
 
 gem "cocoon"
 
+
+gem 'searchkick'
+

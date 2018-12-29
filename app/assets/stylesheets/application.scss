@@ -5,12 +5,13 @@
 @import "freelancers";
 @import "users";
 @import "subscription_settings";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "https://fonts.googleapis.com/css?family=Black+Han+Sans";
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import 'bootstrap-datepicker';
 @import "jquery-ui";
 @import "jquery.tagsinput";
 @import "lity";
+@import "find-freelancers";
+@import "blog";
 
 
 .nav-tabs > li > .dashboard {
@@ -30,8 +31,6 @@ body {
   padding: 0 !important;
 }
 
-
-
 // colors
 .bg-yumfog-orange{
   background-color: #FCBB43 !important;
@@ -42,27 +41,16 @@ body {
   color: whitesmoke;
 }
 
-.chat-sender-image{
-  border-radius: 50%;
+.bg-white-smoke{
+  background-color: whitesmoke;
 }
 
 .text-yumfog-orange {
   color: #FCBB43
 }
+
+
 // <-- colors
-
-// Chatbox
-.see-messages-btn{
-  margin-top: .75rem;
-}
-
-
-
-
-
-
-
-// <-- Chatbox
 
 
 

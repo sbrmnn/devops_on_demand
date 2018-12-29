@@ -31,6 +31,8 @@ class FreelancerPresenter < ApplicationPresenter
     model.work_experiences
   end
 
+
+
   private
 
   def user

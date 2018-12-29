@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'freelancer_searches',  controller: "freelancer_searches", action: "index"
 
   get 'profile_preview', controller: "profile_preview", action: "index"
 

@@ -1,15 +1,16 @@
 <div class="container-fluid p-0">
-  <div class="jumbotron p-3 p-md-4 text-white rounded bg-warning">
+  <div class="jumbotron p-3 p-md-4 text-white  bg-green">
     <div class="col-md-9 px-0">
       <h1 class="display-4"><%= t('find_and_hire_freelancers') %></h1>
       <p class="lead my-3"><%= t('freelance_search_tagline') %></p>
     </div>
   </div>
-
-  <div class="input-group my-3">
-    <input type="text" id="contractor-search" class="form-control" placeholder="<%=t('search_placeholder')%>" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button id="freelancer-search-btn" class="btn btn-outline-dark" type="button"><%= t("search") %></button>
+  <div class="search-wrapper my-3">
+    <div class="input-group p-3">
+      <input type="text" id="contractor-search" class="form-control" placeholder="<%=t('search_placeholder')%>" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button id="freelancer-search-btn" class="btn btn-dark" type="button"><%= t("search") %></button>
+      </div>
     </div>
   </div>
 

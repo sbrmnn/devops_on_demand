@@ -108,7 +108,22 @@ $(document).on(click_event,'.preview-btn', function(e){
 $(document).on(click_event,'#freelancer-search-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    alert($('#contactor-search').val());
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/freelancer_searches.json",
+        success: function(data){
+            data.forEach(function(item, key, data) {
+                if (Object.is(data.length - 1, key)) {
+                    // execute last item logic
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, true);
+                }else{
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId);
+
+                }
+            });
+        }
+    });
     return false;
 });
 

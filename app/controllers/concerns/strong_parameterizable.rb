@@ -13,7 +13,8 @@ module StrongParameterizable
     {
         freelancer: [:headline, :about_me, :rate, :location ,:profile_photo,  skill_attributes: [:types],
                      certifications_attributes:   whitelist_certifications_attributes(preview),
-                     work_experiences_attributes: whitelist_work_experiences_attributes(preview)]
+                     work_experiences_attributes: whitelist_work_experiences_attributes(preview)],
+        freelancer_searches: [:value]
     }[controller_name]
   end
 

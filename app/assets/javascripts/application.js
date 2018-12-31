@@ -114,13 +114,7 @@ $(document).on(click_event,'#freelancer-search-btn', function(e){
         url: "/freelancer_searches.json",
         success: function(data){
             data.forEach(function(item, key, data) {
-                if (Object.is(data.length - 1, key)) {
-                    // execute last item logic
-                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, true);
-                }else{
-                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId);
-
-                }
+                console.log(data);
             });
         }
     });
@@ -353,4 +347,26 @@ function messageWithLineBreak(message){
 function timeString(time) {
     return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
 }
+
+$(document).on(click_event,'.navbar-nav a', function(){
+    $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+    $( this ).parent( 'li' ).addClass( 'active' );
+    var btnContent =  $('.nav-button-content');
+    btnContent.find('.content').not('.d-none').addClass('d-none');
+    $('#tabs-freelancer-registration').addClass('d-none');
+    btnContent.find($(this).data('target')).removeClass('d-none');
+    return false;
+});
+
+
+$(document).on(click_event,'#register-freelancer-btn', function(){
+    var btnContent =  $('.nav-button-content');
+    btnContent.find('.content').not('.d-none').addClass('d-none');
+    $('#tabs-freelancer-registration').removeClass('d-none');
+    return false;
+});
+
+
+
+
 

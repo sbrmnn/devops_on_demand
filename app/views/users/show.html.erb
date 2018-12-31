@@ -1,53 +1,23 @@
 <% present(@user) do |up| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <ul class="nav nav-tabs mt-3">
-          <li class="nav-item">
-            <a class="nav-link dashboard" id="profile-tab" data-toggle="tab" href="#tabs-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> <i class="fa fa-user-circle mr-1"></i><%= t("dashboard") %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link dashboard" id="messages-tab" data-toggle="tab" href="#tabs-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t("messages") %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link dashboard" id="find-freelancers-tab" href="#tabs-find-freelancers" data-toggle="tab"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link dashboard" id="settings-tab" href="#tabs-settings" data-toggle="tab"><i class="fa mr-1 fa-cog"></i> <%= t('settings') %></a>
-          </li>
-          <li class="nav-item ml-lg-auto">
-            <a class="nav-link bg-dark text-light" id="registrations-tab" href="#tabs-freelancer-registration" data-toggle="tab"><i class="fa fa-user-plus mr-1"></i><%= t('register_as_a_freelancer') %></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-     <div class="tab-content pt-3 py-1" id="pills-tabContent">
-      <div class="tab-pane fade" id="pills-find" role="tabpanel" aria-labelledby="pills-find-tab">
-        <%= render 'find_freelancers' %>
-      </div>
-      <div class="tab-pane fade" id="pills-jobs"  role="tabpanel"  aria-labelledby="pills-jobs-tab">
-      </div>
-      <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="container nav-button-content">
+      <div class="content d-none"  id="tabs-dashboard" role="tabpanel" aria-labelledby="profile-tab">
         <%= render 'dashboard', up: up %>
       </div>
-      <div class="tab-pane fade" id="pills-contact"  role="tabpanel"  aria-labelledby="pills-contact-tab">
-      </div>
-      <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="messages-tab">
-        <%= render "chat_box" %>
-      </div>
-      <div class="tab-pane fade" id="tabs-find-freelancers" role="tabpanel" aria-labelledby="pills-find_freelancers-tab">
+      <div class="content d-none" id="pills-find" role="tabpanel" aria-labelledby="pills-find-tab">
         <%= render 'find_freelancers' %>
       </div>
-      <div class="tab-pane fade" id="tabs-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-
+      <div class="content d-none"  id="tabs-messages" role="tabpanel" aria-labelledby="messages-tab">
+        <%= render "chat_box" %>
       </div>
-      <div class="tab-pane fade" id="tabs-freelancer-registration" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
+      <div class="content d-none"  id="tabs-find-freelancers" role="tabpanel" aria-labelledby="pills-find_freelancers-tab">
+        <%= render 'find_freelancers' %>
+      </div>
+      <div class="content d-none"  id="tabs-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
+      </div>
+      <div class="content d-none"  id="tabs-freelancer-registration" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
         <%= render "create_profile_form" %>
       </div>
-    </div>
-  </div>
+   </div>
 <% end %>
 
 

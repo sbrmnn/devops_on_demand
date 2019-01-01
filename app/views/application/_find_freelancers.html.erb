@@ -1,15 +1,13 @@
-<div class="container-fluid p-0">
 
-  <div class="search-wrapper my-3">
+  <div class="search-wrapper">
 
-    <%= form_tag("/search", remote: true ,method: "get") do %>
       <div class="input-group p-3">
-        <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder')) %>
+        <input type="text" id="freelancer-search-field" class = "form-control" placeholder="<%= t('search_placeholder') %>" >
         <div class="input-group-append">
-          <%= submit_tag("Search", class: 'btn btn-dark') %>
+          <button class="btn btn-dark" onclick="getFreelancers()"><%= t('search') %></button>
         </div>
       </div>
-    <% end %>
+
   </div>
   <div class="row no-gutters">
     <div class="col-md-3">
@@ -28,4 +26,4 @@
       </div>
     </div>
   </div>
-</div>
+

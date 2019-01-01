@@ -2,7 +2,7 @@ class FreelancerSearchesController < ApplicationController
   include StrongParameterizable
 
   def index
-    render json: Freelancer.search(freelancer_searches[:value])
+    render json: Freelancer.search(freelancer_searches[:value]).as_json
   end
 
 

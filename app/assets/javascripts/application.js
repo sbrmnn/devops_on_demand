@@ -105,21 +105,7 @@ $(document).on(click_event,'.preview-btn', function(e){
     return false;
 });
 
-$(document).on(click_event,'#freelancer-search-btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/freelancer_searches.json",
-        success: function(data){
-            data.forEach(function(item, key, data) {
-                console.log(data);
-            });
-        }
-    });
-    return false;
-});
+
 
 function bindChatroomToRecieveMessages(){
     var viewMsgBtns = $(".view-messages-btn");
@@ -365,6 +351,25 @@ $(document).on(click_event,'#register-freelancer-btn', function(){
     $('#tabs-freelancer-registration').removeClass('d-none');
     return false;
 });
+
+
+function getFreelancers(){
+    $.ajax({
+        type: "GET",
+        data: {freelancer_searches: {value: $('#freelancer-search-field').val()}},
+        dataType: "json",
+        url: "/freelancer_searches.json",
+        success: function(data){
+           console.log(data);
+        }
+    });
+}
+
+
+
+
+
+
 
 
 

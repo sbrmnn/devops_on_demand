@@ -21,20 +21,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" data-target="#tabs-dashboard" href="#"><i class="fa fa-user-circle mr-1"></i><%= t("dashboard") %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-target="#tabs-messages" href="#"><i class="fa fa-comments mr-1"></i><%= t("messages") %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-target="#tabs-find-freelancers" href="#"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-target="#tabs-settings" href="#"><i class="fa mr-1 fa-cog"></i> <%= t('settings') %></a>
-          </li>
-        </ul>
+        <% if user_signed_in? %>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" data-target="#tabs-dashboard" href="#"><i class="fa fa-user-circle mr-1"></i><%= t("dashboard") %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-target="#tabs-messages" href="#"><i class="fa fa-comments mr-1"></i><%= t("messages") %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-target="#tabs-find-freelancers" href="#"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-target="#tabs-settings" href="#"><i class="fa mr-1 fa-cog"></i> <%= t('settings') %></a>
+            </li>
+          </ul>
+        <% end %>
         <%= render 'login_logout' %>
       </div>
     </div>

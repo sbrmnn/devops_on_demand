@@ -360,7 +360,7 @@ function getFreelancers(){
         dataType: "json",
         url: "/freelancer_searches.json",
         success: function(data){
-           console.log(data);
+
         }
     });
 }

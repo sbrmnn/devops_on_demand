@@ -120,9 +120,6 @@ function bindChatroomToRecieveMessages(){
     }
 }
 
-
-
-
 $(document).on('change','.select-certificate', function(e){
     if ($(this).val() === ""){
         $(this).closest('.form-row').removeClass("select-certificate-selected");
@@ -334,7 +331,7 @@ function timeString(time) {
     return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
 }
 
-$(document).on(click_event,'.navbar-nav a', function(){
+$(document).on(click_event,'.navbar-nav .dashboard-btn', function(){
     $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
     $( this ).parent( 'li' ).addClass( 'active' );
     var btnContent =  $('.nav-button-content');
@@ -364,14 +361,3 @@ function getFreelancers(){
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-

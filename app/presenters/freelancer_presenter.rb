@@ -32,7 +32,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def location
-    Stripe.stripe_countries[model.location]
+    CreditCardProcessor.countries[model.location]
   end
 
   def url

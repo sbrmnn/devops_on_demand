@@ -1,14 +1,14 @@
-class Stripe
+class CreditCardProcessor
   include Singleton
 
-  def self.stripe_countries
-    @@stripe_countries
+  def self.countries
+    @@countries
   end
 
   def initialize
   end
 
-  @@stripe_countries = {
+  @@countries = {
       "US"=>"United States",
       "AU"=>"Australia",
       "AT"=>"Austria",

@@ -24,7 +24,9 @@
 //= require_tree .
 
 $.ajaxSetup({
-    'beforeSend': function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-      token']").attr('content')); }
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-      token']").attr('content'));
+    }
 });
 
 
@@ -74,6 +76,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
  $( document ).on('turbolinks:load', function() {
+     bindScrollFunctionToFrom()
 
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
@@ -87,6 +90,12 @@ var months = [ "January", "February", "March", "April", "May", "June",
      bindChatroomToRecieveMessages();
      subscribeToRooms();
 });
+
+ function bindScrollFunctionToFrom(){
+     $('form').submit(function() {
+         $('.fa-spin').removeClass('d-none')
+     });
+ }
 
  $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
@@ -350,14 +359,3 @@ $(document).on(click_event,'#register-freelancer-btn', function(){
 });
 
 
-function getFreelancers(){
-    $.ajax({
-        type: "GET",
-        data: {freelancer_searches: {value: $('#freelancer-search-field').val()}},
-        dataType: "json",
-        url: "/freelancer_searches.json",
-        success: function(data){
-
-        }
-    });
-}

@@ -7,34 +7,10 @@ module ApplicationHelper
   end
 
   def stripe_countries
-    @stripe_countries ||=[
-        {country: 'United States', code: 'US'},
-        {country: 'Australia', code: 'AU'},
-        {country: 'Austria', code: 'AT'},
-        {country: 'Belgium', code: 'BE'},
-        {country: 'Brazil ', code: 'BR'},
-        {country: 'Canada', code: 'CA'},
-        {country: 'Denmark', code: 'DK'},
-        {country: 'Finland', code: 'FI'},
-        {country: 'France', code: 'FR'},
-        {country: 'Germany', code: 'DE'},
-        {country: 'Hong Kong', code: 'HK'},
-        {country: 'Ireland', code: 'IE'},
-        {country: 'Japan', code: 'JP'},
-        {country: 'Luxembourg', code: 'LU'},
-        {country: 'Mexico ', code: 'MX'},
-        {country: 'Netherlands', code: 'NL'},
-        {country: 'New Zealand', code: 'NZ'},
-        {country: 'Norway', code: 'NO'},
-        {country: 'Singapore', code: 'SG'},
-        {country: 'Spain', code: 'ES'},
-        {country: 'Sweden', code: 'SE'},
-        {country: 'Switzerland', code: 'CH'},
-        {country: 'United Kingdom', code: 'GB'},
-        {country: 'Italy', code: 'IT'},
-        {country: 'Portugal', code: 'PT'}
-    ].map{|c| OpenStruct.new c}
+    Stripe.stripe_countries.map{|k,v| [v ,k]}
   end
+
+
 
   def bootstrap_class_for_flash(flash_type)
     case flash_type

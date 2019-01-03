@@ -31,6 +31,13 @@ class FreelancerPresenter < ApplicationPresenter
     model.work_experiences
   end
 
+  def location
+    Stripe.stripe_countries[model.location]
+  end
+
+  def url
+    "/freelancers/#{model.id}"
+  end
 
 
   private

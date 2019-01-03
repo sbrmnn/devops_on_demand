@@ -49,13 +49,15 @@ body {
   background-color: #2fb15f;
 }
 
-.bg-coca-cola-red{
-  background-color: #fe001a;
+.bg-blue{
+  background-color: #6fa4ad;
 }
 
 .text-yumfog-orange {
   color: #FCBB43
 }
+
+
 
 
 // <-- colors
@@ -65,28 +67,55 @@ body {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==") ;
 }
 
-#container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-#third-item {
-  flex-grow: 1;
 
+.pic-container {
+  position: relative;
+  text-align: center;
+  color: white;
 }
-/* just some colors - not important */
-#container {
 
-  width: 100%;
-  background: pink;
+/* Bottom left text */
+.pic-container .bottom-left {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
 }
-#container > div {
 
-  padding: 10px;
-
+/* Top left text */
+.pic-container .top-left {
+  position: absolute;
+  top: 2px;
+  left: 2px;
 }
+
+/* Top right text */
+.pic-container .top-right {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+/* Bottom right text */
+.pic-container .bottom-right {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+/* Centered text */
+.pic-container .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.price-text{
+  font-size: 1rem;
+}
+
+
+
 
 
 

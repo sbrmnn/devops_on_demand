@@ -3,14 +3,11 @@
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
 }
-.chatsidebar-height {
-  height: 85vh;
-  overflow: scroll;
-}
+
 
 .chat-box-height{
   height: 75vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .chat-input-group-height{

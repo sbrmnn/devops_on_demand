@@ -11,7 +11,7 @@ function bindCloudinaryElement(){
         $('.preview').html(
             $.cloudinary.image(data.result.public_id,
                 { format: data.result.format, version: data.result.version,
-                    crop: "<%= dim.crop %>", gravity: "<%= dim.gravity %>" ,width: <%= dim.width %>, height: <%= dim.height %> })
+                    crop: "<%= dim.crop %>", gravity: "<%= dim.gravity %>", width: <%= dim.width %>, height: <%= dim.height %> })
         );
 
         $('#freelancer_profile_photo').val($('.preview img').attr('src'));

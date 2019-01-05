@@ -1,6 +1,6 @@
 class FreelancerPresenter < ApplicationPresenter
-  def name
-    "#{user.first_name} #{user.last_name}"
+  def user_name
+    "#{model.user_name}"
   end
 
   def headline

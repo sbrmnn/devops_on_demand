@@ -5,10 +5,10 @@
   ">
     <header class="resume-header pt-4 h-sm-100 pt-md-0">
       <div class="media flex-column flex-md-row">
-        <img class="mr-3 img-fluid picture mx-auto" src="<%=  image_url("pgphoto.png") %>">
+        <%= cl_image_tag(freelancer.profile_photo, width: 250, height: 250, crop: :fill, gravity: :face, class: "mr-3 img-fluid picture mx-auto")%>
         <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
           <div class="primary-info">
-            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase"><%= freelancer.name %></h1>
+            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase"><%= freelancer.user_name %></h1>
             <div class="title mb-2"><%= freelancer.headline %></div>
             <ul class="list-unstyled hire-contact-btns my-4">
               <li><button type="button" class="btn btn-success mr-2"><i class="mr-1 fas fa-user-check fa-fw mr-2" data-fa-transform="grow-3"></i>Hire</button><button type="button" class="btn btn-light"><i class="far fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>Message</button></li>

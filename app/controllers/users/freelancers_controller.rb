@@ -1,6 +1,7 @@
 class Users::FreelancersController < ApplicationController
   before_action :authenticate_user!
   include StrongParameterizable
+  before_action :get_image_id, only: [:create, :update]
 
   def index
   end
@@ -25,5 +26,11 @@ class Users::FreelancersController < ApplicationController
 
   def freelancer_params
     whitelist_params(params, :freelancer)
+  end
+
+  def get_image_id
+    if freelancer_params[:profile_photo].present?
+      freelancer_params[:profile_photo] = GetImageIdFromImageProcessor.call(freelancer_params[:profile_photo])
+    end
   end
 end

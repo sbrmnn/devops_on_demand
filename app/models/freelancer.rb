@@ -19,6 +19,7 @@ class Freelancer < ApplicationRecord
 
   before_save :create_user_name
 
+
   def search_data
     attributes.merge(
         skill: skill(&:types),

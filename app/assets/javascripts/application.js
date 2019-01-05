@@ -76,7 +76,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
  $( document ).on('turbolinks:load', function() {
-     bindScrollFunctionToFrom()
+     bindScrollFunctionToFrom();
 
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
@@ -85,7 +85,6 @@ var months = [ "January", "February", "March", "April", "May", "June",
      };
 
      taggifyInput();
-     bindCloudinaryElement();
      getSelectedPill();
      bindChatroomToRecieveMessages();
      subscribeToRooms();
@@ -216,25 +215,7 @@ function taggifyInput(){
     $('#tags').tagsInput();
 }
 
-function bindCloudinaryElement(){
-    $.cloudinary.config({ cloud_name: 'yumfog-com',  api_key: '165496118466817'});
 
-    $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
-        $('.preview').html(
-            $.cloudinary.image(data.result.public_id,
-                { format: data.result.format, version: data.result.version,
-                    crop: 'fill', gravity: 'face' ,width: 250, height: 250 })
-        );
-
-        $('#freelancer_profile_photo').val($('.preview img').attr('src'));
-
-        return true;
-    });
-
-    if($.fn.cloudinary_fileupload !== undefined) {
-        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-    }
-}
 
 function subscribeToRooms(){
     var chatroomNames = $(".chat-box");

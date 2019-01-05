@@ -16,7 +16,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def profile_photo
-    model.profile_photo
+    ImageProcessorClient.get_profile_image_url(model.profile_photo)
   end
 
   def skill
@@ -32,7 +32,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def location
-    CreditCardProcessor.countries[model.location]
+    CreditCardProcessorClient.supported_countries[model.location]
   end
 
   def url

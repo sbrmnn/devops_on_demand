@@ -11,6 +11,7 @@ class ImageProcessorClient
     end
   end
   def self.get_public_id(image_path)
+    return nil if image_path.blank?
     preloaded = Cloudinary::PreloadedFile.new(image_path)
     if preloaded.valid?
       preloaded.identifier

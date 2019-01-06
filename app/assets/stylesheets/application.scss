@@ -17,6 +17,11 @@
   height: auto; // This css code fixes a UI issue  where the file selector on Firefox extends past its border. https://stackoverflow.com/questions/22049739/fix-for-firefox-file-input-using-bootstrap-3-1
 }
 
+input::-ms-value{ // Extra input styling for IE browsers.
+  background-color: transparent;
+  border: 0;
+}
+
 .nav-tabs > li > .dashboard {
   color: black !important;
 }

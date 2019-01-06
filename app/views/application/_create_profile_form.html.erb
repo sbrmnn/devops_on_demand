@@ -34,7 +34,7 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12">
-                      <%= form.hidden_field :profile_photo_hidden, value: ImageProcessorClient.get_public_id(form.object.profile_photo) %>
+                      <%= form.hidden_field :profile_photo, "data-public-id": ImageProcessorClient.get_public_id(form.object.profile_photo) %>
                       <%= form.label :profile_photo %>
                       <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control", accept: ".png,.jpg,.jpeg"}} ) %>
                       <div class="mt-3 profile-image-preview">

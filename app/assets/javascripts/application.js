@@ -30,6 +30,13 @@ $.ajaxSetup({
 });
 
 
+$.fn.scrollToBottom = function() {
+    return this.each(function (i, element) {
+        $(element).scrollTop($(element)[0].scrollHeight);
+    });
+};
+
+
 var ua = navigator.userAgent;
 
 // iPhone has different click event than browsers
@@ -75,170 +82,139 @@ function preSelectChatroom(){
 var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
- $( document ).on('turbolinks:load', function() {
-
-     $(document).on('change paste keyup','.work-experience-title', function(e){
-         if ($(this).val() === ""){
-             $(this).closest('.form-row').removeClass("work-experience-title-selected");
-         }else{
-             $(this).closest('.form-row').addClass("work-experience-title-selected");
-         }
-     });
-     $(document).on('change paste keyup','.work-experience-employer', function(e){
-         if ($(this).val() === ""){
-             $(this).closest('.form-row').removeClass("work-experience-employer-selected");
-         }else{
-             $(this).closest('.form-row').addClass("work-experience-employer-selected");
-         }
-     });
-
-     $(document).on('change','.select-certificate', function(e){
-         if ($(this).val() === ""){
-             $(this).closest('.form-row').removeClass("select-certificate-selected");
-         }else{
-             $(this).closest('.form-row').addClass("select-certificate-selected");
-         }
-         return false;
-     });
-
-     $(document).on('change paste keyup','.certificate-number', function(e){
-         if ($(this).val() === ""){
-             $(this).closest('.form-row').removeClass("certificate-number-selected");
-         }else{
-             $(this).closest('.form-row').addClass("certificate-number-selected");
-         }
-     });
-
-     $(document).on(click_event,'.navbar-nav .dashboard-btn', function(){
-         $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
-         $( this ).parent( 'li' ).addClass( 'active' );
-         var btnContent =  $('.nav-button-content');
-         btnContent.find('.content').not('.d-none').addClass('d-none');
-         $('#tabs-freelancer-registration').addClass('d-none');
-         btnContent.find($(this).data('target')).removeClass('d-none');
-         return false;
-     });
-
-
-     $(document).on(click_event,'#register-freelancer-btn', function(){
-         var btnContent =  $('.nav-button-content');
-         btnContent.find('.content').not('.d-none').addClass('d-none');
-         $('#tabs-freelancer-registration').removeClass('d-none');
-         return false;
-     });
-
-     $(document).keyup(function (e) {
-         if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
-             var chatroomId = $(document.activeElement).data("chatroom");
-             broadcastMessage(chatroomId)
-         }
-     });
-
-     $(document).on(click_event,'.preview-btn', function(e){
-         e.preventDefault();
-         e.stopImmediatePropagation();
-         var serializedValue = $('.edit_freelancer').serialize().trim() || $('.new_freelancer').serialize();
-         var modalIframe = $("#modal-iframe");
-         var iframeUrl = "/profile_preview?" + serializedValue;
-         var lightbox = lity(iframeUrl);
-         return false;
-     });
-
-     $(document).on('change paste keyup','.work-experience-from', function(e){
-         if (date.test($(this).val())){
-             $(this).closest('.form-row').addClass("work-experience-from-selected");
-         }else{
-             $(this).closest('.form-row').removeClass("work-experience-from-selected");
-         }
-     });
-
-     $(document).on('change paste keyup','.work-experience-to', function(e){
-         if (date.test($(this).val())) {
-             $(this).closest('.form-row').addClass("work-experience-to-selected");
-         }else{
-             $(this).closest('.form-row').removeClass("work-experience-to-selected");
-         }
-     });
-
-
-     $(document).on('change paste keyup','.work-experience-achievements', function(e){
-         if ($(this).val() === ""){
-             $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
-         }else{
-             $(this).closest('.form-row').addClass("work-experience-achievements-selected");
-         }
-     });
-
-
-///
-
-     $(document).on(click_event,'.chatroom-list-elem', function(e){
-         e.preventDefault();
-         e.stopImmediatePropagation();
-         $('.chatroom-list-elem').removeClass('active_chat');
-         $(this).removeClass('new_msg');
-         $(this).addClass('active_chat');
-         $('.type_msg').show();
-         renderChatRoomMessages($(this).data('chatroom_id'));
-         return false;
-     });
-
-
-     $(document).on(click_event,'.msg_send_btn', function(){
-         broadcastMessage($(this).data('chatroom'))
-     });
-
-
-     $.fn.scrollToBottom = function() {
-        return this.each(function (i, element) {
-            $(element).scrollTop($(element)[0].scrollHeight);
-        });
-     };
-
-     taggifyInput();
-     getSelectedPill();
-     bindChatroomToRecieveMessages();
-     subscribeToRooms();
-     bindScrollFunctionToFrom();
+$( document ).ready(function() {
+    init()
 });
 
- function bindScrollFunctionToFrom(){
+function init() {
+    bindCloudinaryElement();
+    var public_id = $('#freelancer_profile_photo').data("public-id");
+    renderProfileImagePreview(public_id);
+    taggifyInput();
+    getSelectedPill();
+    bindChatroomToRecieveMessages();
+    subscribeToRooms();
+    bindScrollFunctionToFrom();
+}
+
+$(document).on('change paste keyup','.work-experience-title', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("work-experience-title-selected");
+    }else{
+        $(this).closest('.form-row').addClass("work-experience-title-selected");
+    }
+});
+$(document).on('change paste keyup','.work-experience-employer', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("work-experience-employer-selected");
+    }else{
+        $(this).closest('.form-row').addClass("work-experience-employer-selected");
+    }
+});
+
+$(document).on('change','.select-certificate', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("select-certificate-selected");
+    }else{
+        $(this).closest('.form-row').addClass("select-certificate-selected");
+    }
+    return false;
+});
+
+$(document).on('change paste keyup','.certificate-number', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("certificate-number-selected");
+    }else{
+        $(this).closest('.form-row').addClass("certificate-number-selected");
+    }
+});
+
+$(document).on(click_event,'.navbar-nav .dashboard-btn', function(){
+    $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+    $( this ).parent( 'li' ).addClass( 'active' );
+    var btnContent =  $('.nav-button-content');
+    btnContent.find('.content').not('.d-none').addClass('d-none');
+    $('#tabs-freelancer-registration').addClass('d-none');
+    btnContent.find($(this).data('target')).removeClass('d-none');
+    return false;
+});
+
+
+$(document).on(click_event,'#register-freelancer-btn', function(){
+    var btnContent =  $('.nav-button-content');
+    btnContent.find('.content').not('.d-none').addClass('d-none');
+    $('#tabs-freelancer-registration').removeClass('d-none');
+    return false;
+});
+
+$(document).keyup(function (e) {
+    if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
+        var chatroomId = $(document.activeElement).data("chatroom");
+        broadcastMessage(chatroomId)
+    }
+});
+
+$(document).on(click_event,'.preview-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var serializedValue = $('.edit_freelancer').serialize().trim() || $('.new_freelancer').serialize();
+    var modalIframe = $("#modal-iframe");
+    var iframeUrl = "/profile_preview?" + serializedValue;
+    var lightbox = lity(iframeUrl);
+    return false;
+});
+
+$(document).on('change paste keyup','.work-experience-from', function(e){
+    if (date.test($(this).val())){
+        $(this).closest('.form-row').addClass("work-experience-from-selected");
+    }else{
+        $(this).closest('.form-row').removeClass("work-experience-from-selected");
+    }
+});
+
+$(document).on('change paste keyup','.work-experience-to', function(e){
+    if (date.test($(this).val())) {
+        $(this).closest('.form-row').addClass("work-experience-to-selected");
+    }else{
+        $(this).closest('.form-row').removeClass("work-experience-to-selected");
+    }
+});
+
+
+$(document).on('change paste keyup','.work-experience-achievements', function(e){
+    if ($(this).val() === ""){
+        $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
+    }else{
+        $(this).closest('.form-row').addClass("work-experience-achievements-selected");
+    }
+});
+
+
+$(document).on(click_event,'.chatroom-list-elem', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $('.chatroom-list-elem').removeClass('active_chat');
+    $(this).removeClass('new_msg');
+    $(this).addClass('active_chat');
+    $('.type_msg').show();
+    renderChatRoomMessages($(this).data('chatroom_id'));
+    return false;
+});
+
+
+$(document).on(click_event,'.msg_send_btn', function(){
+    broadcastMessage($(this).data('chatroom'))
+});
+
+
+function bindScrollFunctionToFrom(){
      $('form').submit(function() {
          $('.fa-spin').removeClass('d-none')
      });
- }
-
-
-
-
-
-function bindChatroomToRecieveMessages(){
-    var viewMsgBtns = $(".view-messages-btn");
-    if ( viewMsgBtns.length ) {
-        viewMsgBtns.each(function() {
-            var target = $(this).data('target');
-            var chatroomId = $(this).data('chatroom');
-            $(document).on('show.bs.collapse', target, function () {
-                renderChatRoomMessages(chatroomId);
-            });
-        });
-    }
 }
 
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
 
- function taggifyInput(){
-    $('#tags').tagsInput();
-}
-
-function subscribeToRooms(){
-    var chatroomNames = $(".chat-box");
-    if ( chatroomNames.length ) {
-        chatroomNames.each(function() {
-            subscribeToRoom($( this ).data('chatroom'));
-        });
-    }
-}
 
 function getSelectedPill(){
     var preSelectedChatroom = preSelectChatroom();
@@ -256,84 +232,7 @@ function getSelectedPill(){
     });
 }
 
-function broadcastMessage(chatroomId){
-    var roomId = chatroomId;
-    var messageInput = $('.write_msg[data-chatroom="'+ chatroomId +'"]');
-    var message = messageInput.val().trim();
-    var roomName = 'room' + roomId;
-    if (!$.isEmptyObject(message)){
-        App[roomName].speak(message);
-        messageInput.val('')
-    }
-}
 
-function renderChatRoomMessages(chatroomId){
-    var chatbox = $('.chat-box[data-chatroom="'+ chatroomId +'"]');
-    chatbox.empty();
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/chatrooms/" + chatroomId + "/messages.json",
-        success: function(data){
-            data.forEach(function(item, key, data) {
-                if (Object.is(data.length - 1, key)) {
-                    // execute last item logic
-                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, true);
-                }else{
-                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, false);
-
-                }
-             });
-        }
-    });
-}
-
-function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom){
-    var current_user_id = Cookies.get('current_user_id');
-    var elem = document.getElementById("chatboxID-" + chatroomId);
-    if (message_user_id == current_user_id) {
-        elem.insertAdjacentHTML( 'beforeend', outgoingMessageHTML(message, time) );
-    }else{
-        elem.insertAdjacentHTML( 'beforeend', incomingMessageHTML(message, time) );
-    }
-    if (toBottom === true){
-        $(elem).scrollToBottom()
-    }
-}
-
-function incomingMessageHTML(message, time){
-    return '<div class="row py-2">\
-               <div class="col-12">\
-                <div class="chat bg-yumfog-orange d-inline-block text-dark">\
-                 <div class="chat-bubble">\
-                   <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
-                   <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
-                 </div>\
-                </div>\
-               </div>\
-           </div>';
-}
-
-function outgoingMessageHTML(message, time){
-    return '<div class="row py-2">\
-             <div class="col-12">\
-                 <div class="chat bg-white-smoke d-inline-block text-dark pull-right">\
-                   <div class="chat-bubble">\
-                     <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
-                     <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
-                   </div>\
-                 </div>\
-              </div>\
-            </div>';
-}
-
-function messageWithLineBreak(message){
-    return message.replace(/(.{55})/g, "$1<br>");
-}
-
-function timeString(time) {
-    return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
-}
 
 
 

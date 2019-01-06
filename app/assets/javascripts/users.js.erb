@@ -1,11 +1,4 @@
 
-$( document ).ready(function() {
-    bindCloudinaryElement();
-    var public_id = $('#freelancer_profile_photo_hidden').val()
-    renderProfileImagePreview(public_id)
-});
-
-
 function bindCloudinaryElement(){
     $.cloudinary.config({ cloud_name: 'yumfog-com',  api_key: '165496118466817'});
     <% dim = ProfileImageDimensions.instance %>
@@ -28,4 +21,111 @@ function renderProfileImagePreview(public_id){
       );
     }
 }
+
+
+function bindChatroomToRecieveMessages(){
+    var viewMsgBtns = $(".view-messages-btn");
+    if ( viewMsgBtns.length ) {
+        viewMsgBtns.each(function() {
+            var target = $(this).data('target');
+            var chatroomId = $(this).data('chatroom');
+            $(document).on('show.bs.collapse', target, function () {
+                renderChatRoomMessages(chatroomId);
+            });
+        });
+    }
+}
+
+function subscribeToRooms(){
+    var chatroomNames = $(".chat-box");
+    if ( chatroomNames.length ) {
+        chatroomNames.each(function() {
+            subscribeToRoom($( this ).data('chatroom'));
+        });
+    }
+}
+
+function broadcastMessage(chatroomId){
+    var roomId = chatroomId;
+    var messageInput = $('.write_msg[data-chatroom="'+ chatroomId +'"]');
+    var message = messageInput.val().trim();
+    var roomName = 'room' + roomId;
+    if (!$.isEmptyObject(message)){
+        App[roomName].speak(message);
+        messageInput.val('')
+    }
+}
+
+function renderChatRoomMessages(chatroomId){
+    var chatbox = $('.chat-box[data-chatroom="'+ chatroomId +'"]');
+    chatbox.empty();
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/chatrooms/" + chatroomId + "/messages.json",
+        success: function(data){
+            data.forEach(function(item, key, data) {
+                if (Object.is(data.length - 1, key)) {
+                    // execute last item logic
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, true);
+                }else{
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, false);
+
+                }
+            });
+        }
+    });
+}
+
+function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom){
+    var current_user_id = Cookies.get('current_user_id');
+    var elem = document.getElementById("chatboxID-" + chatroomId);
+    if (message_user_id == current_user_id) {
+        elem.insertAdjacentHTML( 'beforeend', outgoingMessageHTML(message, time) );
+    }else{
+        elem.insertAdjacentHTML( 'beforeend', incomingMessageHTML(message, time) );
+    }
+    if (toBottom === true){
+        $(elem).scrollToBottom()
+    }
+}
+
+function incomingMessageHTML(message, time){
+    return '<div class="row py-2">\
+               <div class="col-12">\
+                <div class="chat bg-yumfog-orange d-inline-block text-dark">\
+                 <div class="chat-bubble">\
+                   <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
+                   <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
+                 </div>\
+                </div>\
+               </div>\
+           </div>';
+}
+
+function outgoingMessageHTML(message, time){
+    return '<div class="row py-2">\
+             <div class="col-12">\
+                 <div class="chat bg-white-smoke d-inline-block text-dark pull-right">\
+                   <div class="chat-bubble">\
+                     <p class="m-0 chat-text-size">'+ messageWithLineBreak(message) +'</p>\
+                     <span class="time_date chat-date-size"> ' + timeString(time) + '</span></div>\
+                   </div>\
+                 </div>\
+              </div>\
+            </div>';
+}
+
+function messageWithLineBreak(message){
+    return message.replace(/(.{55})/g, "$1<br>");
+}
+
+function timeString(time) {
+    return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
+}
+
+function taggifyInput(){
+    $('#tags').tagsInput();
+}
+
 

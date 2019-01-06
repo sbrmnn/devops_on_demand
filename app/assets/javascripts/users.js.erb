@@ -1,6 +1,8 @@
 
 $( document ).ready(function() {
     bindCloudinaryElement();
+    var public_id = $('#freelancer_profile_photo').val()
+    renderProfileImagePreview(public_id)
 });
 
 
@@ -8,14 +10,8 @@ function bindCloudinaryElement(){
     $.cloudinary.config({ cloud_name: 'yumfog-com',  api_key: '165496118466817'});
     <% dim = ProfileImageDimensions.instance %>
     $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
-        $('.preview').html(
-            $.cloudinary.image(data.result.public_id,
-                { format: data.result.format, version: data.result.version,
-                    crop: "<%= dim.crop %>", gravity: "<%= dim.gravity %>", width: <%= dim.width %>, height: <%= dim.height %> })
-        );
-
-        $('#freelancer_profile_photo').val($('.preview img').attr('src'));
-
+        <% dim = ProfileImageDimensions.instance %>
+        renderProfileImagePreview(data.result.public_id)
         return true;
     });
 
@@ -23,3 +19,13 @@ function bindCloudinaryElement(){
         $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
     }
 }
+
+function renderProfileImagePreview(public_id){
+    if (Boolean(public_id)){
+      var options = {crop: "<%= dim.crop %>", gravity: "<%= dim.gravity %>", width: <%= dim.width %>, height: <%= dim.height %> }
+      $('.profile-image-preview').html(
+          $.cloudinary.image(public_id, options)
+      );
+    }
+}
+

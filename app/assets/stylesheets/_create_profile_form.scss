@@ -3,6 +3,10 @@
   border: 0 !important;
 }
 
+.tagsinput{
+  @include freelancer-form-bg-color
+}
+
 .freelancer-registration input[type=text]{
   @include freelancer-form-bg-color
 }

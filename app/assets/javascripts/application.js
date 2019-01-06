@@ -76,7 +76,118 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
  $( document ).on('turbolinks:load', function() {
-     bindScrollFunctionToFrom();
+
+     $(document).on('change paste keyup','.work-experience-title', function(e){
+         if ($(this).val() === ""){
+             $(this).closest('.form-row').removeClass("work-experience-title-selected");
+         }else{
+             $(this).closest('.form-row').addClass("work-experience-title-selected");
+         }
+     });
+     $(document).on('change paste keyup','.work-experience-employer', function(e){
+         if ($(this).val() === ""){
+             $(this).closest('.form-row').removeClass("work-experience-employer-selected");
+         }else{
+             $(this).closest('.form-row').addClass("work-experience-employer-selected");
+         }
+     });
+
+     $(document).on('change','.select-certificate', function(e){
+         if ($(this).val() === ""){
+             $(this).closest('.form-row').removeClass("select-certificate-selected");
+         }else{
+             $(this).closest('.form-row').addClass("select-certificate-selected");
+         }
+         return false;
+     });
+
+     $(document).on('change paste keyup','.certificate-number', function(e){
+         if ($(this).val() === ""){
+             $(this).closest('.form-row').removeClass("certificate-number-selected");
+         }else{
+             $(this).closest('.form-row').addClass("certificate-number-selected");
+         }
+     });
+
+     $(document).on(click_event,'.navbar-nav .dashboard-btn', function(){
+         $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+         $( this ).parent( 'li' ).addClass( 'active' );
+         var btnContent =  $('.nav-button-content');
+         btnContent.find('.content').not('.d-none').addClass('d-none');
+         $('#tabs-freelancer-registration').addClass('d-none');
+         btnContent.find($(this).data('target')).removeClass('d-none');
+         return false;
+     });
+
+
+     $(document).on(click_event,'#register-freelancer-btn', function(){
+         var btnContent =  $('.nav-button-content');
+         btnContent.find('.content').not('.d-none').addClass('d-none');
+         $('#tabs-freelancer-registration').removeClass('d-none');
+         return false;
+     });
+
+     $(document).keyup(function (e) {
+         if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
+             var chatroomId = $(document.activeElement).data("chatroom");
+             broadcastMessage(chatroomId)
+         }
+     });
+
+     $(document).on(click_event,'.preview-btn', function(e){
+         e.preventDefault();
+         e.stopImmediatePropagation();
+         var serializedValue = $('.edit_freelancer').serialize().trim() || $('.new_freelancer').serialize();
+         var modalIframe = $("#modal-iframe");
+         var iframeUrl = "/profile_preview?" + serializedValue;
+         var lightbox = lity(iframeUrl);
+         return false;
+     });
+
+     $(document).on('change paste keyup','.work-experience-from', function(e){
+         if (date.test($(this).val())){
+             $(this).closest('.form-row').addClass("work-experience-from-selected");
+         }else{
+             $(this).closest('.form-row').removeClass("work-experience-from-selected");
+         }
+     });
+
+     $(document).on('change paste keyup','.work-experience-to', function(e){
+         if (date.test($(this).val())) {
+             $(this).closest('.form-row').addClass("work-experience-to-selected");
+         }else{
+             $(this).closest('.form-row').removeClass("work-experience-to-selected");
+         }
+     });
+
+
+     $(document).on('change paste keyup','.work-experience-achievements', function(e){
+         if ($(this).val() === ""){
+             $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
+         }else{
+             $(this).closest('.form-row').addClass("work-experience-achievements-selected");
+         }
+     });
+
+
+///
+
+     $(document).on(click_event,'.chatroom-list-elem', function(e){
+         e.preventDefault();
+         e.stopImmediatePropagation();
+         $('.chatroom-list-elem').removeClass('active_chat');
+         $(this).removeClass('new_msg');
+         $(this).addClass('active_chat');
+         $('.type_msg').show();
+         renderChatRoomMessages($(this).data('chatroom_id'));
+         return false;
+     });
+
+
+     $(document).on(click_event,'.msg_send_btn', function(){
+         broadcastMessage($(this).data('chatroom'))
+     });
+
 
      $.fn.scrollToBottom = function() {
         return this.each(function (i, element) {
@@ -88,6 +199,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
      getSelectedPill();
      bindChatroomToRecieveMessages();
      subscribeToRooms();
+     bindScrollFunctionToFrom();
 });
 
  function bindScrollFunctionToFrom(){
@@ -96,22 +208,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
      });
  }
 
- $(document).keyup(function (e) {
-    if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
-        var chatroomId = $(document.activeElement).data("chatroom");
-        broadcastMessage(chatroomId)
-    }
-});
 
-$(document).on(click_event,'.preview-btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var serializedValue = $('.edit_freelancer').serialize().trim() || $('.new_freelancer').serialize();
-    var modalIframe = $("#modal-iframe");
-    var iframeUrl = "/profile_preview?" + serializedValue;
-    var lightbox = lity(iframeUrl);
-    return false;
-});
 
 
 
@@ -128,94 +225,11 @@ function bindChatroomToRecieveMessages(){
     }
 }
 
-$(document).on('change','.select-certificate', function(e){
-    if ($(this).val() === ""){
-        $(this).closest('.form-row').removeClass("select-certificate-selected");
-    }else{
-        $(this).closest('.form-row').addClass("select-certificate-selected");
-    }
-    return false;
-});
-
-$(document).on('change paste keyup','.certificate-number', function(e){
-    if ($(this).val() === ""){
-        $(this).closest('.form-row').removeClass("certificate-number-selected");
-    }else{
-        $(this).closest('.form-row').addClass("certificate-number-selected");
-    }
-});
-
-
-///
-
-$(document).on('change paste keyup','.work-experience-title', function(e){
-    if ($(this).val() === ""){
-        $(this).closest('.form-row').removeClass("work-experience-title-selected");
-    }else{
-        $(this).closest('.form-row').addClass("work-experience-title-selected");
-    }
-});
-$(document).on('change paste keyup','.work-experience-employer', function(e){
-    if ($(this).val() === ""){
-        $(this).closest('.form-row').removeClass("work-experience-employer-selected");
-    }else{
-        $(this).closest('.form-row').addClass("work-experience-employer-selected");
-    }
-});
-
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
 
-
-$(document).on('change paste keyup','.work-experience-from', function(e){
-    if (date.test($(this).val())){
-        $(this).closest('.form-row').addClass("work-experience-from-selected");
-    }else{
-        $(this).closest('.form-row').removeClass("work-experience-from-selected");
-    }
-});
-
-$(document).on('change paste keyup','.work-experience-to', function(e){
-    if (date.test($(this).val())) {
-        $(this).closest('.form-row').addClass("work-experience-to-selected");
-    }else{
-        $(this).closest('.form-row').removeClass("work-experience-to-selected");
-    }
-});
-
-
-$(document).on('change paste keyup','.work-experience-achievements', function(e){
-    if ($(this).val() === ""){
-        $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
-    }else{
-        $(this).closest('.form-row').addClass("work-experience-achievements-selected");
-    }
-});
-
-
-///
-
-$(document).on(click_event,'.chatroom-list-elem', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $('.chatroom-list-elem').removeClass('active_chat');
-    $(this).removeClass('new_msg');
-    $(this).addClass('active_chat');
-    $('.type_msg').show();
-    renderChatRoomMessages($(this).data('chatroom_id'));
-    return false;
-});
-
-
-$(document).on(click_event,'.msg_send_btn', function(){
-    broadcastMessage($(this).data('chatroom'))
-});
-
-
-function taggifyInput(){
+ function taggifyInput(){
     $('#tags').tagsInput();
 }
-
-
 
 function subscribeToRooms(){
     var chatroomNames = $(".chat-box");
@@ -320,23 +334,5 @@ function messageWithLineBreak(message){
 function timeString(time) {
     return formatAMPM(time)  + '   |   ' + months[time.getMonth()] + ' ' + time.getDate()
 }
-
-$(document).on(click_event,'.navbar-nav .dashboard-btn', function(){
-    $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
-    $( this ).parent( 'li' ).addClass( 'active' );
-    var btnContent =  $('.nav-button-content');
-    btnContent.find('.content').not('.d-none').addClass('d-none');
-    $('#tabs-freelancer-registration').addClass('d-none');
-    btnContent.find($(this).data('target')).removeClass('d-none');
-    return false;
-});
-
-
-$(document).on(click_event,'#register-freelancer-btn', function(){
-    var btnContent =  $('.nav-button-content');
-    btnContent.find('.content').not('.d-none').addClass('d-none');
-    $('#tabs-freelancer-registration').removeClass('d-none');
-    return false;
-});
 
 

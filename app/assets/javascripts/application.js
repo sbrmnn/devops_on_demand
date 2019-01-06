@@ -280,7 +280,7 @@ function renderChatRoomMessages(chatroomId){
                     // execute last item logic
                     appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, true);
                 }else{
-                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId);
+                    appendMessageHistory(item['body'], new Date(item['created_at']), item['user_id'], chatroomId, false);
 
                 }
              });
@@ -288,7 +288,7 @@ function renderChatRoomMessages(chatroomId){
     });
 }
 
-function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom=false){
+function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom){
     var current_user_id = Cookies.get('current_user_id');
     var elem = document.getElementById("chatboxID-" + chatroomId);
     if (message_user_id == current_user_id) {

@@ -5,19 +5,19 @@
         <%= render 'dashboard', up: up %>
       </div>
       <div class="content d-none"  id="tabs-messages" role="tabpanel" aria-labelledby="messages-tab">
-        <div class="jumbotron p-3 mb-3 p-md-4 text-white  bg-blue">
-          <div class="col-md-9 px-0">
-            <h1 class="display-4"><%= t('read_and_reply_to_messages') %></h1>
-            <p class="lead my-3"><%= t('messages_tagline') %></p>
+        <div class="shadow-sm card mb-2">
+          <div class="card-body">
+            <h5 class="card-title"><%= t('read_and_reply_to_messages') %></h5>
+            <h6 class="card-subtitle text-muted"><%= t('messages_tagline') %></h6>
           </div>
         </div>
         <%= render "chat_box" %>
       </div>
       <div class="content d-none"  id="tabs-find-freelancers" role="tabpanel" aria-labelledby="pills-find_freelancers-tab">
-        <div class="jumbotron p-3 mb-3 p-md-4 text-dark  bg-light">
-          <div class="col-md-9 px-0">
-            <h1 class="display-4"><%= t('find_freelancers') %></h1>
-            <p class="lead my-3"><%= t('freelance_search_tagline') %></p>
+        <div class="shadow-sm card mb-2">
+          <div class="card-body">
+            <h5 class="card-title"><%= t('find_freelancers') %></h5>
+            <h6 class="card-subtitle text-muted"><%= t('freelance_search_tagline') %></h6>
           </div>
         </div>
         <%= render 'find_freelancers' %>
@@ -25,6 +25,12 @@
       <div class="content d-none"  id="tabs-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
       </div>
       <div class="content d-none"  id="tabs-freelancer-registration" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
+        <div class="shadow-sm card mb-2">
+          <div class="card-body">
+            <h5 class="card-title"><%= t('register_as_a_freelancer') %></h5>
+            <h6 class="card-subtitle text-muted"><%= t('freelance_form_tagline') %></h6>
+          </div>
+        </div>
         <%= render "create_profile_form" %>
       </div>
    </div>

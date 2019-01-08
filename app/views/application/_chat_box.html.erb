@@ -8,8 +8,6 @@
 </div>
 
 <ul class="list-group">
-  <div class="card">
-    <div class="p-2">
       <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
         <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> mb-2 list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
@@ -44,8 +42,6 @@
           </div>
         </li>
       <% end %>
-    </div>
 
-  </div>
 
 </ul>

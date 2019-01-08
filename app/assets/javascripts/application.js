@@ -129,9 +129,7 @@ $(document).on('change paste keyup','.certificate-number', function(e){
     }
 });
 
-$(document).on(click_event,'.navbar-nav .dashboard-btn', function(){
-    e.preventDefault();
-    e.stopImmediatePropagation();
+$(document).on(click_event,'.dashboard-btn', function(){
     $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
     $( this ).parent( 'li' ).addClass( 'active' );
     var btnContent =  $('.nav-button-content');

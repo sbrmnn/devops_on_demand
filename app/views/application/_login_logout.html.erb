@@ -1,7 +1,7 @@
 <ul class="navbar-nav ml-auto">
   <% if user_signed_in? %>
     <li>
-      <%= link_to(t('register_as_a_freelancer'), nil, class: "dashboard-btn btn btn-success px-1 rounded text-light nav-link", id: "register-freelancer-btn") %>
+      <%= link_to(t('register_as_a_freelancer'), nil, class: "dashboard-btn btn btn-warning px-3 rounded text-dark nav-link", id: "register-freelancer-btn") %>
     </li>
     <li>
       <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>

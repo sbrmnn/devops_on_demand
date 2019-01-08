@@ -8,38 +8,44 @@
 </div>
 
 <ul class="list-group">
-  <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
-    <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> mb-2 list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1"><%= cp.participant_names_excluding_user(current_user) %></h5>
-        <span>
+  <div class="card">
+    <div class="card-body">
+      <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
+        <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> mb-2 list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= cp.participant_names_excluding_user(current_user) %></h5>
+            <span>
           <% cp.participants_excluding_user(exclude_user=nil).each do |user| %>
             <% if user.try(:freelancer).try(:profile_photo) %>
               <img class="chat-sender-image" src="<%= cl_image_path(user.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) ? cl_image_path(user.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) : "https://via.placeholder.com/50" %>">
             <% end %>
           <% end %>
         </span>
-      </div>
-      <p class="mb-3"><em><%= cp.last_message.try(:body) %></em></p>
-      <div class="d-flex w-100 justify-content-between">
+          </div>
+          <p class="mb-3"><em><%= cp.last_message.try(:body) %></em></p>
+          <div class="d-flex w-100 justify-content-between">
       <span>
         <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
           <%= t('view_messages') %>
         </button>
       </span>
-      </div>
-      <div class="collapse mt-3" id="collapse<%= cp.id %>">
-        <div id="chatboxID-<%= cp.id %>" data-chatroom="<%= cp.id %>" class="chat-box px-3 chat-box-height bg-secondary">
-        </div>
-        <div class="chat-text-input bg-secondary chat-input-group-height">
-          <div class="input-group msg-input-grp px-3">
-            <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox" data-chatroom="<%= cp.id %>" >
-            <div class="input-group-append">
-              <button data-chatroom="<%= cp.id %>" class="msg_send_btn btn btn-outline-light"  type="button"  ><%= t('send') %></button>
+          </div>
+          <div class="collapse mt-3" id="collapse<%= cp.id %>">
+            <div id="chatboxID-<%= cp.id %>" data-chatroom="<%= cp.id %>" class="chat-box px-3 chat-box-height bg-secondary">
+            </div>
+            <div class="chat-text-input bg-secondary chat-input-group-height">
+              <div class="input-group msg-input-grp px-3">
+                <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox" data-chatroom="<%= cp.id %>" >
+                <div class="input-group-append">
+                  <button data-chatroom="<%= cp.id %>" class="msg_send_btn btn btn-outline-light"  type="button"  ><%= t('send') %></button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </li>
-  <% end %>
+        </li>
+      <% end %>
+    </div>
+
+  </div>
+
 </ul>

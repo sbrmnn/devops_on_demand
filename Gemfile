@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'faraday', '~> 0.15.4'
+
 gem 'mini_racer', '~> 0.2.4'
 
 
@@ -100,5 +102,8 @@ gem 'cloudinary'
 gem "cocoon"
 
 
-gem 'searchkick'
+gem 'searchkick',  '~> 3.1.0'
+
+
+gem 'stripe', '~> 4.5.0'
 

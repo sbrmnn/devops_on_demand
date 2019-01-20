@@ -11,6 +11,9 @@ class User < ApplicationRecord
 
   has_one :freelancer
 
+  has_one :payout_identity, through: :freelancer
+  has_one :tos_acceptance
+
   def generate_unsub_token
     self.unsub_token = SecureRandom.hex
   end

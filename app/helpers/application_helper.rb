@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def stripe_countries
-    CreditCardProcessorClient.supported_countries.map{|k,v| [v , k]}
+    PaymentProcessorAdapter.current_adapter::SUPPORTED_COUNTRIES.map{|k,v| [v , k]}
   end
 
 

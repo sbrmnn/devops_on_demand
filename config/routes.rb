@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :payout_identities
   get 'freelancer_searches',  controller: "freelancer_searches", action: "index"
 
   get 'profile_preview', controller: "profile_preview", action: "index"

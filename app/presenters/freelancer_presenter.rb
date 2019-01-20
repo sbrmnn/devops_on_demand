@@ -1,4 +1,5 @@
 class FreelancerPresenter < ApplicationPresenter
+
   def user_name
     "#{model.user_name}"
   end
@@ -32,13 +33,12 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def location
-    CreditCardProcessorClient.supported_countries[model.location]
+    FreelancerPaymentProcessor.supported_countries[model.location]
   end
 
   def url
     "/freelancers/#{model.id}"
   end
-
 
   private
 

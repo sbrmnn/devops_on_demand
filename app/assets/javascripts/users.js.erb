@@ -129,3 +129,32 @@ function taggifyInput(){
 }
 
 
+function validateFiles(inputFile){
+    var allowedExtension, extError, extErrorMessage, extName, maxExceededMessage, maxFileSize, sizeExceeded;
+    maxExceededMessage = 'This file exceeds the maximum allowed file size (8 MB)';
+    extErrorMessage = 'Only image file with extension: .jpg, or .png is allowed';
+    allowedExtension = ['jpg', 'png'];
+    extName = void 0;
+    maxFileSize = $(inputFile).data('max-file-size');
+    sizeExceeded = false;
+    extError = false;
+    $.each(inputFile.files, function() {
+        if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {
+            sizeExceeded = true;
+        }
+        extName = this.name.split('.').pop();
+        if ($.inArray(extName, allowedExtension) === -1) {
+            extError = true;
+        }
+    });
+    if (sizeExceeded) {
+        window.alert(maxExceededMessage);
+        $(inputFile).val('');
+    }
+    if (extError) {
+        window.alert(extErrorMessage);
+        $(inputFile).val('');
+    }
+};
+
+

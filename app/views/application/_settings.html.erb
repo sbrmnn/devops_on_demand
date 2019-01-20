@@ -1,0 +1,212 @@
+   <div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1">
+      <nav class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarWEX">
+          <div class="nav flex-sm-column flex-row">
+            <a class="nav-item nav-link active" href="#">Home</a>
+            <a href="#" class="nav-item nav-link">Link</a>
+            <a href="#" class="nav-item nav-link">Link</a>
+            <a href="#" class="nav-item nav-link">Link</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="col py-2">
+      <div class="card freelancer-registration">
+        <div class="card-body">
+          <div class="container p-0">
+            <div class="row">
+              <div class="col-12">
+                <div class="rounded">
+                  <% present(@user) do |user_presenter| %>
+                    <% if user_presenter.freelancer.persisted? %>
+                      <%= form_for [user_presenter.model, user_presenter.payout_identity], url: {action: "create"}, multipart: true,  html: {id: 'payout_identity_form'} do |f| %>
+                        <%= f.fields_for :legal_entity do |legal_entity| %>
+                          <div class="form-row">
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :first_name %>
+                              <%= legal_entity.text_field :first_name, class: 'form-control'   %>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :last_name %>
+                              <%= legal_entity.text_field :last_name, class: 'form-control' %>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-4">
+                              <%= legal_entity.label :dob_month, "Birth Month" %>
+                              <%= legal_entity.select(:dob_month, (1..12), {include_blank: 'Select month'}, {:prompt => 'Select month', class: "form-control"})%>
+                            </div>
+                            <div class="form-group col-4">
+                              <%= legal_entity.label :dob_day, "Birth Day" %>
+                              <%= legal_entity.select(:dob_day, (1..31), {include_blank: 'Select day'}, {:prompt => 'Select day', class: "form-control"})%>
+                            </div>
+                            <div class="form-group col-4">
+                              <%= legal_entity.label :dob_year, "Birth Year" %>
+                              <%= legal_entity.select(:dob_year, ((Time.now.year-18).downto(1960)).to_a, {include_blank: 'Select year'}, {:prompt => 'Select year', class: "form-control"})%>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :type %>
+                              <%= legal_entity.select :type, [['Individual', 'individual'], ['Company', 'company'] ], {prompt: "Select Entity Type"}, class: 'form-control' %>
+                            </div>
+                          </div>
+                          <div class="form-row individual-id-tags">
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :social_security_last_4_digits%>
+                              <%= legal_entity.number_field :ssn_last_4, class: 'form-control' %>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :social_security_number %>
+                              <%= text_field_tag 'personal_id_number_text', nil, name: nil, class: 'form-control', maxlength:"9" %>
+                              <%= legal_entity.hidden_field :personal_id_number%>
+                              <div class="alert alert-success mt-2" role="alert">
+                                Your personal identification number is stored securely with our payment provider <a href="https://www.stripe.com">Stripe</a> and bypasses our servers.
+                              </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <div id="personal-number-error-message" role="alert"></div>
+                            </div>
+                          </div>
+                          <div class="form-row business-id-tags">
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :business_name %>
+                              <%= legal_entity.text_field :business_name, class: 'form-control' %>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :business_tax_id, 'EIN (US)' %>
+                              <%= legal_entity.text_field :business_tax_id, class: 'form-control'  %>
+                              <div class="alert alert-success mt-2" role="alert">
+                                Your business tax id is stored securely with our payment provider <a href="https://www.stripe.com">Stripe</a> and bypasses our servers.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-row form-group">
+                            <div class="col-md-12">
+                              <%= legal_entity.label :address%>
+                              <%= legal_entity.text_field :address_line1, class: 'form-control' %>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :city%>
+                              <%= legal_entity.text_field :address_city, class: 'form-control'  %>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <%= legal_entity.label :postal_code %>
+                              <%= legal_entity.text_field :address_postal_code, class: 'form-control'  %>
+                            </div>
+                          </div>
+                          <div class="form-row form-group">
+                            <div class="col-md-6 form-group">
+                              <%= f.label :verification_image, "Identity document" %>
+                              <p class="font-weight-bold">(Color, JPG or PNG, and less than 8MB)</p>
+                              <%= f.file_field :verification_image, class: 'form-control', onchange: "validateFiles(this);"  %>
+                            </div>
+                          </div>
+
+                          <%= legal_entity.fields_for :address do |address| %>
+                            <div class="row">
+                              <div class="col-md-12 form-group">
+                                <%= address.label :address, "Address Line 1"%>
+                                <%= address.text_field :line1, class: 'form-control'  %>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-md-3 form-group">
+                                <%= address.label :city%>
+                                <%= address.text_field :city, class: 'form-control'  %>
+                              </div>
+                              <div class="col-md-3 form-group">
+                                <%= address.label :state%>
+                                <%= address.text_field :state, class: 'form-control' %>
+                              </div>
+                              <div class="col-md-3 form-group">
+                                <%= address.label :postal_code %>
+                                <%= address.text_field :postal_code, class: 'form-control' %>
+                              </div>
+                              <div class="col-md-3 form-group">
+                                <%= address.label :country %>
+                                <%= address.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {:prompt => 'Select Country',class: "form-control"})%>
+                              </div>
+                            </div>
+                          <% end %>
+                        <% end %>
+                        <hr>
+                        <% if sepa_countries.include?(f.object.freelancer.location) %>
+                          <div class="form-row">
+                            <div class="col-md-12 form-group">
+                              <label for="iban-element">
+                                IBAN
+                              </label>
+                              <div id="iban-element">
+                                <!-- A Stripe Element will be inserted here. -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 form-group">
+                              <div id="error-message" role="alert"></div>
+                              <div id="mandate-acceptance" class="alert alert-warning margin-top-md" role="alert">
+                                By providing your IBAN and confirming this payment, you are
+                                authorizing YumFog LLC and Stripe, our payment service
+                                provider, to send instructions to your bank to debit your account and
+                                your bank to debit your account in accordance with those instructions.
+                                You are entitled to a refund from your bank under the terms and
+                                conditions of your agreement with your bank. A refund must be claimed
+                                within 8 weeks starting from the date on which your account was debited.
+                              </div>
+                            </div>
+                          </div>
+                        <% else %>
+                          <div class="row">
+                            <div class="col-md-6 form-group">
+                              <%= f.label :bank_routing_number %>
+                              <%= text_field_tag 'routing_number', nil , name: nil, class: 'form-control'  %>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <%= f.label :bank_account_number %>
+                              <%= text_field_tag 'account_number', nil, name: nil, class: 'form-control' %>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div id="error-message" role="alert"></div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div id="bank-name" role="alert"></div>
+                            </div>
+                          </div>
+                        <% end %>
+                        <div>
+                          <button class="submit btn btn-md btn-primary pull-right">Save</button>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+

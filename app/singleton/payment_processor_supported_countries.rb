@@ -1,6 +1,9 @@
-class CreditCardProcessorClient
-  def self.supported_countries
-    {
+class PaymentProcessorSupportedCountries
+  include Singleton
+  attr_reader :supported_countries
+
+  def initialize
+    @supported_countries = {
         "US"=>"United States",
         "AU"=>"Australia",
         "AT"=>"Austria",

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190104183809) do
+ActiveRecord::Schema.define(version: 20190118005132) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -74,6 +77,33 @@ ActiveRecord::Schema.define(version: 20190104183809) do
     t.string "profile_photo"
     t.string "location"
     t.string "user_name"
+    t.string "merchant_id"
+  end
+
+  create_table "legal_entities", force: :cascade do |t|
+    t.bigint "payout_identifier_id"
+    t.integer "dob_day"
+    t.integer "dob_year"
+    t.integer "dob_month"
+    t.string "type"
+    t.string "address_city"
+    t.string "address_line1"
+    t.string "state"
+    t.string "country"
+    t.string "postal_code"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "ssn_last_4"
+    t.string "verification_document"
+    t.string "business_name"
+    t.string "business_tax_id"
+    t.string "personal_address_city"
+    t.string "personal_address_line1"
+    t.string "personal_address_postal_code"
+    t.string "personal_id_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payout_identifier_id"], name: "index_legal_entities_on_payout_identifier_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -85,6 +115,16 @@ ActiveRecord::Schema.define(version: 20190104183809) do
     t.boolean "notification_sent", default: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "payout_identities", force: :cascade do |t|
+    t.bigint "freelancer_id"
+    t.string "external_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "routing_number"
+    t.string "account_number_last_4"
+    t.index ["freelancer_id"], name: "index_payout_identities_on_freelancer_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -113,6 +153,15 @@ ActiveRecord::Schema.define(version: 20190104183809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["freelancer_id"], name: "index_skills_on_freelancer_id"
+  end
+
+  create_table "tos_acceptances", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "date", null: false
+    t.string "ip", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tos_acceptances_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

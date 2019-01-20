@@ -55,7 +55,7 @@ module PaymentProcessorAdapter
       end
 
       def set_source(customer_id, source_token)
-        bank_account = get_sources(customer_id)&.create({:source : source_token})
+        bank_account = get_sources(customer_id)&.create({source: source_token})
         bank_account&.id
       end
     end

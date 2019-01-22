@@ -1,5 +1,4 @@
 class CustomerPaymentProcessor
-  extend PaymentProcessorAdapter::Customer.current_adapter
 
   attr_reader :user
 
@@ -7,17 +6,29 @@ class CustomerPaymentProcessor
     @user = user
   end
 
-  def get_sources
-    klass.get_sources(merchant_id)
+
+  def customer_info(customer_id)
+    return nil if customer_id.blank?
+    Stripe::Customer.retrieve(customer_id)
   end
 
-  def get_source
-    klass.get_source(merchant_id, bank_id)
+  def add_customer(email)
+    customer = Stripe::Customer.create(
+        email:  email
+    )
+    customer.id
   end
 
-  private
+  def get_sources(customer_id)
+    customer_info(customer_id)&.sources
+  end
 
-  def klass
-    self.class
+  def get_source(customer_id, account_id)
+    get_sources(customer_id)&.retrieve(account_id)
+  end
+
+  def set_source(customer_id, source_token)
+    bank_account = get_sources(customer_id)&.create({source: source_token})
+    bank_account&.id
   end
 end

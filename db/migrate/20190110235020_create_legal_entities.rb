@@ -1,7 +1,7 @@
 class CreateLegalEntities < ActiveRecord::Migration[5.1]
   def change
     create_table :legal_entities do |t|
-      t.belongs_to :payout_identifier
+      t.belongs_to :payout_identity
       t.integer :dob_day
       t.integer :dob_year
       t.integer :dob_month

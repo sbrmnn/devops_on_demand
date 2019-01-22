@@ -6,7 +6,7 @@ var freelancerErrorCard = $('.freelancer-error-card')
   freelancerErrorCard.removeClass('d-none')
   freelancerSuccessCard.addClass('d-none')
 <% else %>
-    $( ".freelancer-registration" ).load( "<%= ENV['HOST_URL'] %>/users/1 .freelancer-registration .card-body", function(){
+    $( "#freelancer-registration" ).load( "<%= ENV['HOST_URL'] %>/users/1 #freelancer-registration .card-body", function(){
         init()
         var freelancerSuccessCard =  $('.freelancer-success-card')
         freelancerSuccessCard.removeClass('d-none')

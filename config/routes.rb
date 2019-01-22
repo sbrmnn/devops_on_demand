@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-
   resources :payout_identities
+
   get 'freelancer_searches',  controller: "freelancer_searches", action: "index"
 
   get 'profile_preview', controller: "profile_preview", action: "index"
@@ -24,13 +24,18 @@ Rails.application.routes.draw do
   resources :conversations
   resources :calendars
   resources :reviews
+
   resources :users do
     scope module: :users do
       resources :freelancers
     end
   end
 
-  resources :freelancers
+  resources :freelancers do
+    scope module: :freelancers do
+      resources :payout_identities
+    end
+  end
 
   resources :messages
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

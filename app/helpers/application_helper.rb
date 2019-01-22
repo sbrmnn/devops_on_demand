@@ -1,13 +1,14 @@
 module ApplicationHelper
 
   def present(model, presenter_class=nil)
+    return nil if model.nil?
     klass = presenter_class || "#{model.class}Presenter".constantize
     presenter = klass.new(model)
     yield(presenter) if block_given?
   end
 
   def stripe_countries
-    PaymentProcessorAdapter.current_adapter::SUPPORTED_COUNTRIES.map{|k,v| [v , k]}
+    FreelancerPaymentProcessor.adapter.supported_countries.map{|k,v| [v , k]}
   end
 
 

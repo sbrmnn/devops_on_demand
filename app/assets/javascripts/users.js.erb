@@ -78,7 +78,7 @@ function renderChatRoomMessages(chatroomId){
 }
 
 function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom){
-    var current_user_id = Cookies.get('current_user_id');
+    var current_user_id = gon.current_user_id;
     var elem = document.getElementById("chatboxID-" + chatroomId);
     if (message_user_id == current_user_id) {
         elem.insertAdjacentHTML( 'beforeend', outgoingMessageHTML(message, time) );
@@ -156,5 +156,45 @@ function validateFiles(inputFile){
         $(inputFile).val('');
     }
 };
+
+var stripe = Stripe('pk_test_W0NqkO9ids4x1iZNvTEMNQ8n')
+
+
+$(document).on('keyup change input paste','#personal_id_number_text', function(e){
+    var $this, lastCharacter, maxCount, val, valLength;
+    $this = $(this);
+    val = $this.val();
+    lastCharacter = val[val.length - 1];
+    if (isNaN(parseInt(lastCharacter))) {
+        $this.val($this.val().slice(0, -1));
+    }
+    valLength = val.length;
+    maxCount = parseInt($this.attr('maxlength'));
+    if (valLength > maxCount) {
+        $this.val($this.val().substring(0, maxCount));
+    } else if (valLength === maxCount) {
+        $('.submit').attr('disabled', true);
+        stripe.createToken('pii', {
+            personal_id_number: $this.val()
+        }).then(function(result) {
+            var errorMessage;
+            errorMessage = document.getElementById('personal-number-error-message');
+            if (result.error) {
+                errorMessage.textContent = result.error.message;
+                errorMessage.classList.add('alert');
+                errorMessage.classList.add('alert-danger');
+            } else {
+                $('#payout_identity_legal_entity_personal_id_number').val(result.token.id);
+                errorMessage.classList.remove('alert');
+                errorMessage.classList.remove('alert-danger');
+            }
+            $('.submit').attr('disabled', false);
+        });
+    }
+});
+
+
+
+
 
 

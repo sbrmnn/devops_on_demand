@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_user
-    cookies[:current_user_id] = current_user.try(:id) || nil
+    gon.current_user_id = current_user.try(:id) || nil
   end
 
   def set_chatroom

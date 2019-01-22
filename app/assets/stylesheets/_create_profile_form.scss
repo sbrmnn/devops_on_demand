@@ -7,35 +7,35 @@
   @include freelancer-form-bg-color
 }
 
-.freelancer-registration input[type=text]{
+#freelancer-registration input[type=text]{
   @include freelancer-form-bg-color
 }
 
-.freelancer-registration input[type=file]{
+#freelancer-registration input[type=file]{
   @include freelancer-form-bg-color
 }
 
-.freelancer-registration input[type=number]{
+#freelancer-registration input[type=number]{
   @include freelancer-form-bg-color
 }
 
-.freelancer-registration textarea{
+#freelancer-registration textarea{
   @include freelancer-form-bg-color
 }
 
-.freelancer-registration select{
+#freelancer-registration select{
   @include freelancer-form-bg-color
 }
 
-.freelancer-registration input[type=number]:focus{
+#freelancer-registration input[type=number]:focus{
   @include freelancer-form-bg-color;
 }
 
-.freelancer-registration textarea:focus{
+#freelancer-registration textarea:focus{
   @include freelancer-form-bg-color;
 }
 
-.freelancer-registration select:focus{
+#freelancer-registration select:focus{
   @include freelancer-form-bg-color;
 }
 

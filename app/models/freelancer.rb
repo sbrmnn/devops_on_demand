@@ -5,6 +5,7 @@ class Freelancer < ApplicationRecord
   has_many :work_experiences, dependent: :destroy
   has_one :skill, dependent: :destroy
   has_one :payout_identity
+  has_one :legal_entity, through: :payout_identity
   has_many :certifications, dependent: :destroy
 
   validates_presence_of :headline

@@ -1,11 +1,11 @@
-<div class="card  mt-3 freelancer-registration">
+<div id="freelancer-registration" class="card  mt-3">
   <div class="card-body">
     <div class="container p-0">
       <div class="row">
         <div class="col-12">
           <div class="rounded">
             <% present(@user) do |user_presenter| %>
-              <%= form_for [user_presenter.model, user_presenter.freelancer], :remote => true do |form| %>
+              <%= form_with(model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
                 <h3 class="mb-4 py-2"><%= t('basic_info')%></h3>
                 <div class="basic-info-nested-fields mb-2">
                   <div class="form-row">
@@ -44,13 +44,13 @@
                 </div>
                 <h3 class="mb-4 py-2"><%= t('skills')%></h3>
                 <div id='skills'>
-                  <%= form.fields_for :skill  do |skill| %>
+                  <%= form.fields_for :skill, @freelancer.build_skill  do |skill| %>
                     <%= render 'skills_fields', f: skill %>
                   <% end %>
                 </div>
                 <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
                 <div id='certifications' class="certifications-nested-fields">
-                  <%= form.fields_for :certifications do |certification| %>
+                  <%= form.fields_for :certifications, @freelancer.certifications.new do |certification| %>
                     <%= render 'certification_fields', :f => certification %>
                   <% end %>
                   <div class='add-btn text-center'>
@@ -59,7 +59,7 @@
                 </div>
                 <h3 class="mb-4 py-2"><%= t('work_experiences')%></h3>
                 <div id='work-experiences' class="work-experiences-nested-fields">
-                  <%= form.fields_for :work_experiences do |work_experience| %>
+                  <%= form.fields_for :work_experiences, @freelancer.work_experiences.new do |work_experience| %>
                     <%= render 'work_experience_fields', :f => work_experience %>
                   <% end %>
                   <div class='add-btn text-center'>

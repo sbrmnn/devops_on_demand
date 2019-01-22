@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190118005132) do
+ActiveRecord::Schema.define(version: 20190122002100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,16 +81,16 @@ ActiveRecord::Schema.define(version: 20190118005132) do
   end
 
   create_table "legal_entities", force: :cascade do |t|
-    t.bigint "payout_identifier_id"
+    t.bigint "payout_identity_id"
     t.integer "dob_day"
     t.integer "dob_year"
     t.integer "dob_month"
     t.string "type"
     t.string "address_city"
     t.string "address_line1"
-    t.string "state"
-    t.string "country"
-    t.string "postal_code"
+    t.string "address_state"
+    t.string "address_country"
+    t.string "address_postal_code"
     t.string "last_name"
     t.string "first_name"
     t.string "ssn_last_4"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20190118005132) do
     t.string "personal_id_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payout_identifier_id"], name: "index_legal_entities_on_payout_identifier_id"
+    t.index ["payout_identity_id"], name: "index_legal_entities_on_payout_identity_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20190118005132) do
     t.boolean "chat_notification_subscription", default: true
     t.boolean "newsletter_subscription", default: true
     t.string "unsub_token"
+    t.string "payment_processor_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

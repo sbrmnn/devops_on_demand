@@ -18,6 +18,7 @@ gem 'material-sass', '4.1.1'
 
 gem 'jquery-rails'
 
+gem 'gon'
 
 # Fast Universal Google Analytics setup for Rails.
 # This gem is mostly intended for small to medium websites with a simple analytics strategy.
@@ -80,7 +81,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "font-awesome-rails"
 
-gem 'js_cookie_rails'
+
 
 gem 'redis', '~> 4.0.3'
 

@@ -32,12 +32,20 @@ class FreelancerPresenter < ApplicationPresenter
     model.work_experiences
   end
 
+  def payout_identity
+    model.payout_identity.present? ? model.payout_identity : model.build_payout_identity
+  end
+
   def location
-    FreelancerPaymentProcessor.supported_countries[model.location]
+    @location ||= FreelancerPaymentProcessor.adapter.supported_countries[model.location]
   end
 
   def url
-    "/freelancers/#{model.id}"
+    @url ||= "/freelancers/#{model.id}"
+  end
+
+  def missing_payout_fields
+    @missing_payout_fields ||= FreelancerPaymentProcessor.new(model).payout_identity_missing_fields
   end
 
   private

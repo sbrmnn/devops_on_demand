@@ -5,6 +5,10 @@ module UsersHelper
     end
   end
 
+  def entity_types
+    [[:Individual, :individual], [:Company, :company]]
+  end
+
   def date_string(day, month, year)
     if day.present? && month.present? && year.present?
       "#{day}/#{month}/#{year}"
@@ -13,7 +17,4 @@ module UsersHelper
     end
   end
 
-  def sepa_countries
-    SepaCountries.instance.list
-  end
 end

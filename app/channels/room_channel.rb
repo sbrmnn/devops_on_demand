@@ -19,7 +19,7 @@ class RoomChannel < ApplicationCable::Channel
   private
 
   def user_can_access_chatroom?
-    ChatroomPolicy.new(current_user.id, chatroom).can_access?
+    ChatroomPolicy.new(current_user, chatroom).can_access?
   end
 
   def save_message(body)

@@ -14,49 +14,48 @@
           <div class="card">
             <div class="card-body">
               <div class="container p-0">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="rounded">
-                      <%= form_with(model: freelancer_presenter.payout_identity, url: [freelancer_presenter.model, freelancer_presenter.payout_identity], remote: true) do |f| %>
-                        <%= f.fields_for :legal_entity do |legal_entity| %>
+                  <%= form_with(model: freelancer_presenter.payout_identity, url: [freelancer_presenter.model, freelancer_presenter.payout_identity], remote: true) do |f| %>
+                        <%= f.hidden_field :external_account, class: :'form-control', id: 'payout_identity_external_account'  %>
+                        <%= f.fields_for :legal_entity, f.object.build_legal_entity do |legal_entity| %>
+                          <h3 class="mb-4 py-3"><%=t('personal_info') %></h3>
                           <div class="form-row">
-                            <div class="col-md-6 form-group legal_entity_first_name d-none">
-                              <%= legal_entity.label :first_name %>
-                              <%= legal_entity.text_field :first_name, class: 'form-control'   %>
-                            </div>
-                            <div class="col-md-6 form-group legal_entity_last_name d-none">
-                              <%= legal_entity.label :last_name %>
-                              <%= legal_entity.text_field :last_name, class: 'form-control' %>
+                            <div class="col-md-6 form-group legal_entity_type">
+                              <%= legal_entity.label :type %>
+                              <%= legal_entity.select :type, entity_types, {prompt: "Select Entity Type"}, class: :'form-control' %>
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-4 legal_entity_dob_month d-none">
+                            <div class="col-md-6 form-group legal_entity_first_name">
+                              <%= legal_entity.label :first_name %>
+                              <%= legal_entity.text_field :first_name, class: :'form-control'  %>
+                            </div>
+                            <div class="col-md-6 form-group legal_entity_last_name">
+                              <%= legal_entity.label :last_name %>
+                              <%= legal_entity.text_field :last_name, class: :'form-control' %>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-4 legal_entity_dob_month">
                               <%= legal_entity.label :dob_month, "Birth Month" %>
-                              <%= legal_entity.select(:dob_month, (1..12), {include_blank: 'Select month'}, {:prompt => 'Select month', class: "form-control"})%>
+                              <%= legal_entity.select(:dob_month, (1..12), {include_blank: 'Select month'}, {:prompt => :'Select month', class: "form-control"})%>
                             </div>
-                            <div class="form-group col-4 legal_entity_dob_day d-none">
+                            <div class="form-group col-4 legal_entity_dob_day">
                               <%= legal_entity.label :dob_day, "Birth Day" %>
-                              <%= legal_entity.select(:dob_day, (1..31), {include_blank: 'Select day'}, {:prompt => 'Select day', class: "form-control"})%>
+                              <%= legal_entity.select(:dob_day, (1..31), {include_blank: 'Select day'}, {:prompt => :'Select day', class: "form-control"})%>
                             </div>
-                            <div class="form-group col-4 legal_entity_dob_year d-none">
+                            <div class="form-group col-4 legal_entity_dob_year">
                               <%= legal_entity.label :dob_year, "Birth Year" %>
                               <%= legal_entity.select(:dob_year, ((Time.now.year-18).downto(1960)).to_a, {include_blank: 'Select year'}, {:prompt => 'Select year', class: "form-control"})%>
                             </div>
                           </div>
-                          <div class="form-row">
-                            <div class="col-md-6 form-group legal_entity_type d-none">
-                              <%= legal_entity.label :type %>
-                              <%= legal_entity.select :type, [['Individual', 'individual'], ['Company', 'company'] ], {prompt: "Select Entity Type"}, class: 'form-control' %>
-                            </div>
-                          </div>
-                          <div class="form-row">
+                          <div class="form-row individual-id-tags d-none">
                             <div class="col-md-6 form-group d-none">
                               <%= legal_entity.label :social_security_last_4_digits%>
-                              <%= legal_entity.number_field :ssn_last_4, class: 'form-control' %>
+                              <%= legal_entity.number_field :ssn_last_4, class: :'form-control' %>
                             </div>
                             <div class="col-md-6 form-group d-none">
                               <%= legal_entity.label :personal_id_number %>
-                              <%= text_field_tag 'personal_id_number_text', nil, name: nil, class: 'form-control', maxlength:"9" %>
+                              <%= text_field_tag 'personal_id_number_text', nil, name: nil, class: :'form-control', maxlength:"9" %>
                               <%= legal_entity.hidden_field :personal_id_number%>
                               <div class="alert alert-success mt-2" role="alert">
                                 Your personal identification number is stored securely with our payment provider <a href="https://www.stripe.com">Stripe</a> and bypasses our servers.
@@ -66,40 +65,23 @@
                               <div id="personal-number-error-message" role="alert"></div>
                             </div>
                           </div>
-                          <div class="form-row business-id-tags">
+                          <div class="form-row business-id-tags d-none">
                             <div class="col-md-6 form-group d-none">
                               <%= legal_entity.label :business_name %>
-                              <%= legal_entity.text_field :business_name, class: 'form-control' %>
+                              <%= legal_entity.text_field :business_name, class: :'form-control' %>
                             </div>
                             <div class="col-md-6 form-group d-none">
                               <%= legal_entity.label :business_tax_id, 'EIN (US)' %>
-                              <%= legal_entity.text_field :business_tax_id, class: 'form-control'  %>
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="col-md-12 form-group d-none">
-                              <%= legal_entity.label :address%>
-                              <%= legal_entity.text_field :address_line1, class: 'form-control' %>
+                              <%= legal_entity.text_field :business_tax_id, class: :'form-control'  %>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="col-md-6 form-group d-none">
-                              <%= legal_entity.label :city%>
-                              <%= legal_entity.text_field :address_city, class: 'form-control'  %>
-                            </div>
-                            <div class="col-md-6 form-group d-none">
-                              <%= legal_entity.label :postal_code %>
-                              <%= legal_entity.text_field :address_postal_code, class: 'form-control'  %>
-                            </div>
-                          </div>
-                          <div class="form-row form-group">
-                            <div class="col-md-6 form-group d-none">
-                              <%= f.label :verification_image, "Identity document" %>
+                              <%= f.label :verification_image, :"Identity document" %>
                               <p class="font-weight-bold">(Color, JPG or PNG, and less than 8MB)</p>
                               <%= f.file_field :verification_image, class: 'form-control', onchange: "validateFiles(this);"  %>
                             </div>
                           </div>
-
                           <%= legal_entity.fields_for :address do |address| %>
                             <div class="form-row">
                               <div class="col-md-12 form-group d-none">
@@ -109,7 +91,7 @@
                             </div>
                             <div class="form-row">
                               <div class="col-md-3 form-group d-none">
-                                <%= address.label :city%>
+                                <%= address.label :city %>
                                 <%= address.text_field :city, class: 'form-control'  %>
                               </div>
                               <div class="col-md-3 form-group d-none">
@@ -122,66 +104,83 @@
                               </div>
                               <div class="col-md-3 form-group d-none">
                                 <%= address.label :country %>
-                                <%= address.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {:prompt => 'Select Country',class: "form-control"})%>
+                                <%= address.select(:country, stripe_countries, {include_blank: 'Select Your Country', :selected => f.try(:object).try(:freelancer).try(:location)}, {:prompt => 'Select Country', disabled: true ,class: :"form-control"})%>
                               </div>
                             </div>
                           <% end %>
                         <% end %>
-                        <hr>
-                        <% if sepa_countries.include?(f.object.freelancer.location) %>
-                          <div class="form-row external_account">
-                            <div class="col-md-12 form-group d-none">
-                              <label for="iban-element">
-                                IBAN
-                              </label>
-                              <div id="iban-element">
-                                <!-- A Stripe Element will be inserted here. -->
+                        <h3 class="mb-4 py-3"><%=t('bank_account_info') %></h3>
+                        <div class="form-row">
+                          <div class="col-md-6 form-group legal_entity_first_name">
+                            <%= f.label :account_name %>
+                            <%= f.text_field :account_name, class: :'form-control', id: :account_name,  placeholder: "Jane Doe or Your Company LLC."  %>
+                          </div>
+                          <div class="col-md-6 form-group legal_entity_first_name">
+                            <%= f.label :account_type %>
+                            <%= f.select :account_type, entity_types, {prompt: "Select Account Type" }, class: 'form-control', id: :account_type %>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <%= hidden_field_tag :currency, freelancer_presenter.settlement_currency, class: :'form-control', id: :bank_account_currency  %>
+                          <% if freelancer_presenter.european? %>
+                            <div class="col-md-6 form-group external_account">
+                              <%= f.label :bank_account_number, :iban %>
+                              <%= text_field_tag :iban, nil, name: nil, class: :'form-control', id: :bank_account_number, placeholder: display_bank_account(f.object.account_number_last_4) %>
+                            </div>
+                            <div class="col-md-6 form-group external_account">
+                              <div class="error-message" role="alert"></div>
+                              <div id="mandate-acceptance" class="alert alert-warning" role="alert">
+                                  <%= t('iban_disclaimer') %>
                               </div>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12 form-group external_account">
-                              <div id="error-message" role="alert"></div>
-                              <div id="mandate-acceptance" class="alert alert-warning margin-top-md" role="alert">
-                                By providing your IBAN and confirming this payment, you are
-                                authorizing YumFog LLC and Stripe, our payment service
-                                provider, to send instructions to your bank to debit your account and
-                                your bank to debit your account in accordance with those instructions.
-                                You are entitled to a refund from your bank under the terms and
-                                conditions of your agreement with your bank. A refund must be claimed
-                                within 8 weeks starting from the date on which your account was debited.
-                              </div>
-                            </div>
-                          </div>
-                        <% else %>
-                          <div class="row">
+                          <% elsif freelancer_presenter.american? %>
                             <div class="col-md-6 form-group external_account">
                               <%= f.label :bank_routing_number %>
-                              <%= text_field_tag 'routing_number', nil , name: nil, class: 'form-control'  %>
+                              <%= text_field_tag :bank_routing_number, nil, name: nil, class: :'form-control', id: :bank_routing_number, placeholder: f.object.routing_number %>
                             </div>
                             <div class="col-md-6 form-group external_account">
-                              <%= f.label :bank_account_number %>
-                              <%= text_field_tag 'account_number', nil, name: nil, class: 'form-control' %>
+                              <%= f.label :checking_account_number %>
+                              <%= text_field_tag :checking_account_number, nil, name: nil, class: :'form-control', id: :checking_account_number, placeholder: display_bank_account(f.object.account_number_last_4) %>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12 external_account">
-                              <div id="error-message" role="alert"></div>
+                          <% elsif freelancer_presenter.canadian? %>
+                            <div class="col-md-6 form-group external_account">
+                              <%= f.label :transit_number, :transit_number %>
+                              <%= text_field_tag :transit_number, nil, name: nil, class: :'form-control', id: :transit_number %>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12 external_account">
-                              <div id="bank-name" role="alert"></div>
+                            <div class="col-md-6 form-group external_account">
+                              <%= f.label :institutional_number, :institutional_number %>
+                              <%= text_field_tag :institutional_number, nil, name: nil, class: :'form-control', id: :institutional_number %>
                             </div>
+                            <div class="col-md-6 form-group external_account">
+                              <%= f.label :checking_account_number, :chequing_account_number %>
+                              <%= text_field_tag :checking_account_number, nil, name: nil, class: :'form-control', id: :checking_account_number, placeholder: display_bank_account(f.object.account_number_last_4) %>
+                            </div>
+                          <% elsif freelancer_presenter.australian? %>
+                            <div class="col-md-6 form-group external_account">
+                              <%= f.label :bank_routing_number, :BSB %>
+                              <%= text_field_tag :bank_routing_number, nil, name: nil, class: :'form-control', id: :bank_routing_number, placeholder: f.object.routing_number %>
+                            </div>
+                            <div class="col-md-6 form-group external_account">
+                              <%= f.label :checking_account_number, :transaction_account_number %>
+                              <%= text_field_tag :checking_account_number, nil, name: nil, class: :'form-control', id: :checking_account_number, placeholder: display_bank_account(f.object.account_number_last_4) %>
+                            </div>
+                          <% end %>
+                        </div>
+                        <div class="form-row">
+                          <div class="col-md-12 external_account">
+                            <div class="alert alert-danger d-none error-message" role="alert"></div>
                           </div>
-                        <% end %>
+                        </div>
+                        <div class="form-row">
+                          <div class="col-md-12 text-center">
+                            <button type="button" onclick="externalAccountToken()" class="btn btn-md btn-info p-2 save_bank_account_btn"><%= t('save_bank_account') %></button>
+                          </div>
+                        </div>
+                        <hr>
                         <div>
                           <button class="submit btn btn-md btn-primary pull-right">Save</button>
                         </div>
                       <% end %>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -191,9 +190,9 @@
 
 
 <script>
-   <% FreelancerPresenter.new(@user.freelancer).missing_payout_fields.each do |mf| %>
-      $(".<%= mf.split('.').join('_') %>").removeClass('d-none');
-   <% end %>
+    <% FreelancerPresenter.new(@user.freelancer).missing_payout_fields.each do |mf| %>
+    $(".<%= mf.split('.').join('_') %>").removeClass('d-none');
+    <% end %>
 </script>
 
 

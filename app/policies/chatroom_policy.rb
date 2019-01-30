@@ -1,11 +1,11 @@
 class ChatroomPolicy
-
-  def initialize(user_id, chatroom)
+  attr_reader :chatroom, :user
+  def initialize(user, chatroom)
     @chatroom = chatroom
-    @user = User.find(user_id)
+    @user = user
   end
 
   def can_access?
-    ChatroomUser.where(chatroom: @chatroom, user: @user).any?
+    ChatroomUser.where(chatroom: chatroom, user: user).any?
   end
 end

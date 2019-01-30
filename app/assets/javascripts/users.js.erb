@@ -1,10 +1,8 @@
 
 function bindCloudinaryElement(){
     $.cloudinary.config({ cloud_name: 'yumfog-com',  api_key: '165496118466817'});
-    <% dim = ProfileImageDimensions.instance %>
     $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
-        <% dim = ProfileImageDimensions.instance %>
-        renderProfileImagePreview(data.result.public_id)
+         renderProfileImagePreview(data.result.public_id)
         return true;
     });
 
@@ -15,7 +13,8 @@ function bindCloudinaryElement(){
 
 function renderProfileImagePreview(public_id){
     if (Boolean(public_id)){
-      var options = {crop: "<%= dim.crop %>", gravity: "<%= dim.gravity %>", width: <%= dim.width %>, height: <%= dim.height %> }
+        <% dim = ProfileImageDimensions.instance %>
+        var options = {crop: "<%= dim.crop %>", gravity: "<%= dim.gravity %>", width: <%= dim.width %>, height: <%= dim.height %> }
       $('.profile-image-preview').html(
           $.cloudinary.image(public_id, options)
       );
@@ -157,41 +156,7 @@ function validateFiles(inputFile){
     }
 };
 
-var stripe = Stripe('pk_test_W0NqkO9ids4x1iZNvTEMNQ8n')
 
-
-$(document).on('keyup change input paste','#personal_id_number_text', function(e){
-    var $this, lastCharacter, maxCount, val, valLength;
-    $this = $(this);
-    val = $this.val();
-    lastCharacter = val[val.length - 1];
-    if (isNaN(parseInt(lastCharacter))) {
-        $this.val($this.val().slice(0, -1));
-    }
-    valLength = val.length;
-    maxCount = parseInt($this.attr('maxlength'));
-    if (valLength > maxCount) {
-        $this.val($this.val().substring(0, maxCount));
-    } else if (valLength === maxCount) {
-        $('.submit').attr('disabled', true);
-        stripe.createToken('pii', {
-            personal_id_number: $this.val()
-        }).then(function(result) {
-            var errorMessage;
-            errorMessage = document.getElementById('personal-number-error-message');
-            if (result.error) {
-                errorMessage.textContent = result.error.message;
-                errorMessage.classList.add('alert');
-                errorMessage.classList.add('alert-danger');
-            } else {
-                $('#payout_identity_legal_entity_personal_id_number').val(result.token.id);
-                errorMessage.classList.remove('alert');
-                errorMessage.classList.remove('alert-danger');
-            }
-            $('.submit').attr('disabled', false);
-        });
-    }
-});
 
 
 

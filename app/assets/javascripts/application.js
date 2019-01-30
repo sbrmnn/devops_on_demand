@@ -20,6 +20,7 @@
 //= require jquery-ui
 //= require cloudinary
 //= require cocoon
+//= require payment_processor
 //= require_tree .
 
 $.ajaxSetup({
@@ -227,7 +228,7 @@ function getSelectedPill(){
         }
     }
     $(document).on(click_event,'a[data-toggle="tab"]', function(e){
-        window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
+         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }
 

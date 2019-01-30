@@ -26,21 +26,15 @@ class FreelancerPaymentProcessor
           "AU":"Australia",
           "AT":"Austria",
           "BE":"Belgium",
-          "BR":"Brazil ",
           "CA":"Canada",
           "DK":"Denmark",
           "FI":"Finland",
-          "FR":"France",
           "DE":"Germany",
-          "HK":"Hong Kong",
           "IE":"Ireland",
-          "JP":"Japan",
           "LU":"Luxembourg",
-          "MX":"Mexico",
           "NL":"Netherlands",
           "NZ":"New Zealand",
           "NO":"Norway",
-          "SG":"Singapore",
           "ES":"Spain",
           "SE":"Sweden",
           "CH":"Switzerland",
@@ -50,6 +44,33 @@ class FreelancerPaymentProcessor
       }
     end
 
+    def self.supported_currencies
+       {
+           "US": :usd,
+           "AU": :aud,
+           "AT": :eur,
+           "BE": :eur,
+           "CA": :cad,
+           "DK": :dkk,
+           "FI": :eur,
+           "DE": :eur,
+           "IE": :eur,
+           "LU": :eur,
+           "NL": :eur,
+           "NZ": :nzd,
+           "NOK": :nok,
+           "ES": :eur,
+           "SE": :sek,
+           "CH": :chf,
+           "GB": :gpb,
+           "IT": :eur,
+           "PT": :eur
+       }
+    end
+
+    def settlement_currency
+      self.class.adapter.supported_currencies[freelancer.location.to_sym]
+    end
 
     def upload_verification_doc(file_path)
       file_upload = Stripe::FileUpload.create(
@@ -67,6 +88,7 @@ class FreelancerPaymentProcessor
       return nil if merchant_id.blank? || legal_entity.blank? || account_info.blank?
       account_info.legal_entity = legal_entity_formatter(legal_entity)
       account_info.legal_entity.verification.document = legal_entity.verification_document
+      Rails.cache.write(missing_field_cache_key, nil)
       account_info.save
     end
 
@@ -75,7 +97,13 @@ class FreelancerPaymentProcessor
     end
 
     def payout_identity_missing_fields
-      account_info.verification.fields_needed
+      cache = Rails.cache.read(missing_field_cache_key)
+      if cache.nil?
+        fields_needed = account_info.verification.fields_needed
+        Rails.cache.write(missing_field_cache_key, fields_needed)
+        return Rails.cache.read(missing_field_cache_key)
+      end
+      cache
     end
 
     def account_info
@@ -99,6 +127,10 @@ class FreelancerPaymentProcessor
     end
 
     private
+
+    def missing_field_cache_key
+      "#{merchant_id}_missing_fields"
+    end
 
     def add_account
       acct = Stripe::Account.create(

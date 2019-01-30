@@ -16,6 +16,10 @@ class FreelancerPresenter < ApplicationPresenter
     "$#{model.rate}/hr"
   end
 
+  def location
+    @location ||= model.location.to_sym
+  end
+
   def profile_photo
     ImageProcessorClient.get_profile_image_url(model.profile_photo)
   end
@@ -32,12 +36,28 @@ class FreelancerPresenter < ApplicationPresenter
     model.work_experiences
   end
 
-  def payout_identity
-    model.payout_identity.present? ? model.payout_identity : model.build_payout_identity
+  def european?
+    SepaCountries.instance.list.include?(model.location)
   end
 
-  def location
-    @location ||= FreelancerPaymentProcessor.adapter.supported_countries[model.location]
+  def american?
+    location == :US
+  end
+
+  def canadian?
+    location == :CA
+  end
+
+  def australian?
+    location == :AU
+  end
+
+  def settlement_currency
+    FreelancerPaymentProcessor.new(model).settlement_currency
+  end
+
+  def payout_identity
+    model.payout_identity.present? ? model.payout_identity : model.build_payout_identity
   end
 
   def url

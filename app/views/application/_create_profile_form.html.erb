@@ -6,7 +6,7 @@
           <div class="rounded">
             <% present(@user) do |user_presenter| %>
               <%= form_with(model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
-                <h3 class="mb-4 py-2"><%= t('basic_info')%></h3>
+                <h3 class="mb-4 py-3"><%= t('basic_info')%></h3>
                 <div class="basic-info-nested-fields mb-2">
                   <div class="form-row">
                     <div class="form-group col-12">
@@ -15,7 +15,7 @@
                     </div>
                   </div>
                   <div class="form-row">
-                    <div class="form-group  col-12">
+                    <div class="form-group col-12">
                       <%= form.label :about_me %>
                       <%= form.text_area :about_me, class: "form-control bg-orange whitesmoke-border" %>
                     </div>
@@ -42,24 +42,24 @@
                     </div>
                   </div>
                 </div>
-                <h3 class="mb-4 py-2"><%= t('skills')%></h3>
+                <h3 class="mb-4 py-3"><%= t('skills')%></h3>
                 <div id='skills'>
-                  <%= form.fields_for :skill, @freelancer.build_skill  do |skill| %>
+                  <%= form.fields_for :skill, form.object.build_skill  do |skill| %>
                     <%= render 'skills_fields', f: skill %>
                   <% end %>
                 </div>
-                <h3 class="mb-4 py-2"><%= t('certifications')%></h3>
+                <h3 class="mb-4 py-3"><%= t('certifications')%></h3>
                 <div id='certifications' class="certifications-nested-fields">
-                  <%= form.fields_for :certifications, @freelancer.certifications.new do |certification| %>
+                  <%= form.fields_for :certifications, form.object.certifications.new do |certification| %>
                     <%= render 'certification_fields', :f => certification %>
                   <% end %>
                   <div class='add-btn text-center'>
                     <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
                   </div>
                 </div>
-                <h3 class="mb-4 py-2"><%= t('work_experiences')%></h3>
+                <h3 class="mb-4 py-3"><%= t('work_experiences')%></h3>
                 <div id='work-experiences' class="work-experiences-nested-fields">
-                  <%= form.fields_for :work_experiences, @freelancer.work_experiences.new do |work_experience| %>
+                  <%= form.fields_for :work_experiences, form.object.work_experiences.new do |work_experience| %>
                     <%= render 'work_experience_fields', :f => work_experience %>
                   <% end %>
                   <div class='add-btn text-center'>

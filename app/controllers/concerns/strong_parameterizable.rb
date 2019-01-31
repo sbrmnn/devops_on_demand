@@ -15,9 +15,13 @@ module StrongParameterizable
                      certifications_attributes:   whitelist_certifications_attributes(preview),
                      work_experiences_attributes: whitelist_work_experiences_attributes(preview)],
         freelancer_searches: [:value],
-        payout_identities: []
+        payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes]
 
     }[controller_name]
+  end
+
+  def legal_entity_attributes
+    [:type, :first_name, :last_name, :dob_month, :dob_day, :dob_year, :ssn_last_4, :personal_id_number, :business_name, :business_tax_id, :address_line1, :address_city, :address_state, :address_postal_code, :address_country]
   end
 
   def whitelist_work_experiences_attributes(preview)

@@ -1,9 +1,9 @@
 var freelancerSuccessCard =  $('.freelancer-success-card')
 var freelancerErrorCard = $('.freelancer-error-card')
+$('form').find('.text-danger').remove() // Removing all previous errors before rendering new ones.
 
 <% if @freelancer.errors.full_messages.present? %>
-  $('#new_freelancer').find('.text-danger').remove() // Removing all previous errors before rendering new ones.
-  freelancerErrorCard.removeClass('d-none')
+   freelancerErrorCard.removeClass('d-none')
   freelancerSuccessCard.addClass('d-none')
 <% else %>
     $( "#freelancer-registration" ).load( "<%= ENV['HOST_URL'] %>/users/1 #freelancer-registration .card-body", function(){

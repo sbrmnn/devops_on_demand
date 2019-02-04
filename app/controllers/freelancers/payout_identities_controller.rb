@@ -2,6 +2,11 @@ class Freelancers::PayoutIdentitiesController < ApplicationController
   before_action :authenticate_user!
   include StrongParameterizable
 
+
+  def update
+    current_user.freelancer.payout_identity.update_attributes(payout_identities_params)
+  end
+
   def create
     current_user.freelancer.build_payout_identity(payout_identities_params)
   end

@@ -10,18 +10,18 @@
       </nav>
     </div>
     <div class="col py-2">
-      <% present(@user.freelancer) do |freelancer_presenter| %>
+      <%  present(@user.freelancer) do |freelancer_presenter| %>
           <div class="card">
             <div class="card-body">
               <div class="container p-0">
                   <%= form_with(model: freelancer_presenter.payout_identity, url: [freelancer_presenter.model, freelancer_presenter.payout_identity], remote: true) do |f| %>
                         <%= f.hidden_field :external_account, class: :'form-control', id: 'payout_identity_external_account'  %>
-                        <%= f.fields_for :legal_entity, f.object.build_legal_entity do |legal_entity| %>
+                        <%= f.fields_for :legal_entity do |legal_entity| %>
                           <h3 class="mb-4 py-3"><%=t('personal_info') %></h3>
                           <div class="form-row">
                             <div class="col-md-6 form-group legal_entity_type">
-                              <%= legal_entity.label :type %>
-                              <%= legal_entity.select :type, entity_types, {prompt: "Select Entity Type"}, class: :'form-control' %>
+                              <%= legal_entity.label :entity_type %>
+                              <%= legal_entity.select :entity_type, entity_types, {prompt: "Select Entity Type"}, class: :'form-control' %>
                             </div>
                           </div>
                           <div class="form-row">
@@ -182,16 +182,15 @@
               </div>
             </div>
           </div>
+          <script>
+              <% FreelancerPresenter.new(@user.freelancer).missing_payout_fields.each do |mf| %>
+              $(".<%= mf.split('.').join('_') %>").removeClass('d-none');
+              <% end %>
+          </script>
       <% end %>
     </div>
   </div>
 
-
-<script>
-    <% FreelancerPresenter.new(@user.freelancer).missing_payout_fields.each do |mf| %>
-    $(".<%= mf.split('.').join('_') %>").removeClass('d-none');
-    <% end %>
-</script>
 
 
 

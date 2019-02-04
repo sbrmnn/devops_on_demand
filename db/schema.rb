@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190122002100) do
+ActiveRecord::Schema.define(version: 20190204062004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20190122002100) do
   end
 
   create_table "certifications", force: :cascade do |t|
-    t.integer "freelancer_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "certification_name_id"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20190122002100) do
   end
 
   create_table "chatroom_users", force: :cascade do |t|
-    t.integer "chatroom_id"
-    t.integer "user_id"
+    t.bigint "chatroom_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20190122002100) do
   create_table "educations", force: :cascade do |t|
     t.string "school_name"
     t.integer "graduation_year"
-    t.integer "freelancer_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["freelancer_id"], name: "index_educations_on_freelancer_id"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20190122002100) do
     t.integer "dob_day"
     t.integer "dob_year"
     t.integer "dob_month"
-    t.string "type"
+    t.string "entity_type"
     t.string "address_city"
     t.string "address_line1"
     t.string "address_state"
@@ -107,8 +107,8 @@ ActiveRecord::Schema.define(version: 20190122002100) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "chatroom_id"
-    t.integer "user_id"
+    t.bigint "chatroom_id"
+    t.bigint "user_id"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20190122002100) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.integer "freelancer_id"
+    t.bigint "freelancer_id"
     t.text "types", default: "--- []\n"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -183,7 +183,6 @@ ActiveRecord::Schema.define(version: 20190122002100) do
     t.boolean "chat_notification_subscription", default: true
     t.boolean "newsletter_subscription", default: true
     t.string "unsub_token"
-    t.string "payment_processor_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -194,10 +193,14 @@ ActiveRecord::Schema.define(version: 20190122002100) do
     t.string "achievements"
     t.string "from", null: false
     t.string "to"
-    t.integer "freelancer_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["freelancer_id"], name: "index_work_experiences_on_freelancer_id"
   end
 
+  add_foreign_key "chatroom_users", "chatrooms"
+  add_foreign_key "chatroom_users", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end

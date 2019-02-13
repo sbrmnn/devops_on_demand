@@ -80,20 +80,17 @@ class FreelancerPaymentProcessor
           },
           {stripe_account: merchant_id}
       )
-      freelancer.legal_entity.update_attribute(:verification_document, file_upload["id"])
       file_upload
     end
 
-    def update_account(legal_entity)
-      return nil if merchant_id.blank? || legal_entity.blank? || account_info.blank?
-      account_info.legal_entity = legal_entity_formatter(legal_entity)
-      account_info.legal_entity.verification.document = legal_entity.verification_document
-      Rails.cache.write(missing_field_cache_key, nil)
-      account_info.save
+    def update_payout_identity(payout_identity)
+      return nil if merchant_id.blank? || payout_identity.blank? || account_info.blank?
+      update_payout_identity_on_account(payout_identity)
     end
 
-    def merchant_id
-      @merchant_id ||= (freelancer.merchant_id || add_account.id)
+    def update_legal_entity(legal_entity)
+      return nil if merchant_id.blank? || legal_entity.blank? || account_info.blank?
+      update_legal_entity_on_account(legal_entity)
     end
 
     def payout_identity_missing_fields
@@ -111,22 +108,58 @@ class FreelancerPaymentProcessor
       @account_info ||= Stripe::Account.retrieve(merchant_id)
     end
 
-    def legal_entity_formatter(legal_entity)
-      {
-        "dob": dob_formatter(legal_entity),
-        "type": legal_entity.type,
-        "address": address_formatter(legal_entity),
-        "last_name": legal_entity.last_name,
-        "first_name": legal_entity.first_name,
-        "ssn_last_4": legal_entity.ssn_last_4,
-        "business_name": legal_entity.business_name,
-        "business_tax_id": legal_entity.business_tax_id,
-        "personal_address": personal_address_formatter(legal_entity),
-        "personal_id_number": legal_entity.personal_id_number
-      }
+    private
+
+    def update_payout_identity_on_account(payout_identity)
+      if payout_identity.external_account.present?
+        account_info.external_account = payout_identity.external_account
+        account_info.save
+      end
     end
 
-    private
+    def update_legal_entity_on_account(legal_entity)
+      account_info.legal_entity.dob.day   = legal_entity.dob_day if legal_entity.dob_day.present?
+      account_info.legal_entity.dob.year  = legal_entity.dob_year if legal_entity.dob_year.present?
+      account_info.legal_entity.dob.month = legal_entity.dob_month if legal_entity.dob_month.present?
+      account_info.legal_entity.type      = legal_entity.entity_type if legal_entity.entity_type.present?
+      account_info.legal_entity.address.city = legal_entity.address_city if legal_entity.address_city.present?
+      account_info.legal_entity.address.line1 = legal_entity.address_line1 if legal_entity.address_line1.present?
+      account_info.legal_entity.address.state = legal_entity.address_state if legal_entity.address_state.present?
+      account_info.legal_entity.address.country = country(legal_entity)
+      account_info.legal_entity.address.postal_code = legal_entity.address_postal_code if legal_entity.address_postal_code.present?
+      account_info.legal_entity.last_name = legal_entity.last_name if legal_entity.last_name.present?
+      account_info.legal_entity.first_name = legal_entity.first_name if legal_entity.first_name.present?
+      account_info.legal_entity.ssn_last_4 = legal_entity.ssn_last_4 if legal_entity.ssn_last_4.present?
+      account_info.legal_entity.business_name = legal_entity.business_name if legal_entity.business_name.present?
+      account_info.legal_entity.business_tax_id = legal_entity.business_tax_id if legal_entity.business_tax_id.present?
+      account_info.legal_entity.personal_id_number = legal_entity.personal_id_number if legal_entity.personal_id_number.present?
+      account_info.legal_entity.personal_address.city = legal_entity.personal_address_city if legal_entity.personal_address_city.present?
+      account_info.legal_entity.personal_address.line1 = legal_entity.personal_address_line1 if legal_entity.personal_address_line1.present?
+      account_info.legal_entity.personal_address.postal_code = legal_entity.personal_address_postal_code if legal_entity.personal_address_postal_code.present?
+      account_info.legal_entity.verification.document = upload_verification_doc(legal_entity.verification_image.path) if legal_entity.verification_image.try(:path).present?
+      Rails.cache.write(missing_field_cache_key, nil) if account_info.save
+      account_info
+    end
+
+    def country(legal_entity)
+      if FreelancerPaymentProcessor.adapter.supported_countries.keys.include?(legal_entity.address_country)
+        legal_entity.address_country
+      else
+        freelancer.location
+      end
+    end
+
+    def get_legal_entity_value(field)
+      if field.present?
+        field
+      else
+        nil
+      end
+    end
+
+    def merchant_id
+      @merchant_id ||= (freelancer.merchant_id || add_account.id)
+    end
 
     def missing_field_cache_key
       "#{merchant_id}_missing_fields"
@@ -142,33 +175,6 @@ class FreelancerPaymentProcessor
       account_id = acct.id
       freelancer.update_attribute(:merchant_id, account_id )
       acct
-    end
-
-    def personal_address_formatter(legal_entity)
-      {
-        "city": legal_entity.personal_address_city,
-        "line1": legal_entity.personal_address_line1,
-        "postal_code": legal_entity.personal_address_postal_code
-      }
-    end
-
-
-    def dob_formatter(legal_entity)
-      {
-        "day": legal_entity.dob_day,
-        "year": legal_entity.dob_year,
-        "month": legal_entity.dob_month
-      }
-    end
-
-    def address_formatter(legal_entity)
-      {
-        "city": legal_entity.address_city,
-        "line1": legal_entity.address_line1,
-        "state": legal_entity.address_state,
-        "country": legal_entity.address_country,
-        "postal_code": legal_entity.address_postal_code
-      }
     end
   end
 end

@@ -25,7 +25,7 @@ $(document).on('keyup change input paste','#personal_id_number_text', function(e
                 errorMessage.classList.add('alert');
                 errorMessage.classList.add('alert-danger');
             } else {
-                $('#payout_identity_legal_entity_personal_id_number').val(result.token.id);
+                $('#payout_identity_legal_entity_attributes_personal_id_number').val(result.token.id);
                 errorMessage.classList.remove('alert');
                 errorMessage.classList.remove('alert-danger');
             }
@@ -83,7 +83,7 @@ function setOutcome(result) {
     var token = result.token;
 
     if (result.token) {
-        $('.save_bank_account_btn').text('Saved!')
+        $('.save_bank_account_btn').text('Saved!');
         $('#payout_identity_external_account').val(token.id)
     }
     else {

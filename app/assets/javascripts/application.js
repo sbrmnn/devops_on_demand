@@ -95,7 +95,9 @@ function init() {
     bindChatroomToRecieveMessages();
     subscribeToRooms();
     bindScrollFunctionToFrom();
+    getEntityTypeFields();
 }
+
 
 $(document).on('change paste keyup','.work-experience-title', function(e){
     if ($(this).val() === ""){
@@ -157,12 +159,14 @@ $(document).keyup(function (e) {
 $(document).on(click_event,'.preview-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    var serializedValue = $('.edit_freelancer').serialize().trim() || $('.new_freelancer').serialize();
+    var serializedValue = $('#freelancer-registration-form').serialize().trim();
     var modalIframe = $("#modal-iframe");
     var iframeUrl = "/profile_preview?" + serializedValue;
     var lightbox = lity(iframeUrl);
     return false;
 });
+
+
 
 $(document).on('change paste keyup','.work-experience-from', function(e){
     if (date.test($(this).val())){

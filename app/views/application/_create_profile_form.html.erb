@@ -5,7 +5,7 @@
         <div class="col-12">
           <div class="rounded">
             <% present(@user) do |user_presenter| %>
-              <%= form_with(model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
+              <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
                 <h3 class="mb-4 py-3"><%= t('basic_info')%></h3>
                 <div class="basic-info-nested-fields mb-2">
                   <div class="form-row">

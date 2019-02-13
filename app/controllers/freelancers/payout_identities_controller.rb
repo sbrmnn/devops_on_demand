@@ -8,7 +8,7 @@ class Freelancers::PayoutIdentitiesController < ApplicationController
   end
 
   def create
-    current_user.freelancer.build_payout_identity(payout_identities_params)
+    current_user.freelancer.build_payout_identity(payout_identities_params).save
   end
 
   def payout_identities_params

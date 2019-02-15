@@ -123,7 +123,8 @@
                           <% if freelancer_presenter.european? %>
                             <div class="col-md-12 form-group external_account">
                               <%= f.label :bank_account_number, :IBAN %>
-                              <%= text_field_tag :iban, nil, name: nil, class: :'form-control', id: :bank_account_number, placeholder: display_bank_account(f.object.account_number_last_4) %>
+                              <%= text_field_tag :iban, nil, name: nil, class: :'form-control', id: :checking_account_number, placeholder: display_bank_account(f.object.account_number_last_4) %>
+                              <div id="error-message" role="alert"></div>
                             </div>
                           <% elsif freelancer_presenter.american? %>
                             <div class="col-md-6 form-group external_account">
@@ -160,8 +161,7 @@
                         </div>
                         <div class="form-row">
                           <% if freelancer_presenter.european? %>
-                            <div class="col-md-6 form-group external_account">
-                              <div class="error-message" role="alert"></div>
+                            <div class="col-md-12 form-group external_account">
                               <div id="mandate-acceptance" class="alert alert-warning" role="alert">
                                 <%= t('iban_disclaimer') %>
                               </div>

@@ -43,22 +43,20 @@ function setOutcome(result) {
     if (result.token) {
         $('.save_bank_account_btn').text('Saved!');
         $('#payout_identity_external_account').val(token.id)
-    }
-    else {
-        if (result.error.param === 'bank_account[routing_number]' && result.error.code === 'parameter_invalid_empty'){
-            if ($('#bank_routing_number').length > 0){
-                $('#bank_routing_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-            }else if($('#transit_number').length > 0 && $('#institutional_number').length > 0){
-                $('#transit_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-                $('#institutional_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-            }
-        }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'parameter_invalid_empty'){
-            $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-        }else if(result.error.param === "bank_account[account_holder_type]" && result.error.type === 'invalid_request_error'){
-            $('#account_type').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-        }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'account_number_invalid'){
-            $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid number</span>");
+    }else if(result.error.param === 'bank_account[routing_number]' && result.error.code === 'parameter_invalid_empty'){
+        if ($('#bank_routing_number').length > 0){
+            $('#bank_routing_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+        }else if($('#transit_number').length > 0 && $('#institutional_number').length > 0){
+            $('#transit_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+            $('#institutional_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
         }
+    }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'parameter_invalid_empty'){
+      $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+    }else if(result.error.param === "bank_account[account_holder_type]" && result.error.type === 'invalid_request_error'){
+      $('#account_type').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+    }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'account_number_invalid'){
+      $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid number</span>");
+    }
 }
 
 function externalAccountToken(){

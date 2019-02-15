@@ -34,48 +34,6 @@ $(document).on('keyup change input paste','#personal_id_number_text', function(e
     }
 });
 
-
-var bankName, errorMessage, iban, stripeSourceHandler;
-
-stripeSourceHandler = function(source) {
-    var externalAccountHiddenInput, form;
-    form = document.getElementById('payout_identity_form');
-    externalAccountHiddenInput = document.createElement('input');
-    externalAccountHiddenInput.setAttribute('type', 'hidden');
-    externalAccountHiddenInput.setAttribute('name', 'payout_identity[external_account]');
-    externalAccountHiddenInput.setAttribute('value', source.id);
-    form.appendChild(externalAccountHiddenInput);
-    form.submit();
-};
-
-if ($('#iban-element').length > 0) {
-    iban = elements.create('iban', {
-        supportedCountries: ['SEPA']
-    });
-    iban.mount('#iban-element');
-    errorMessage = document.getElementById('error-message');
-    bankName = document.getElementById('bank-name');
-    iban.on('change', function(event) {
-        if (event.error) {
-            errorMessage.textContent = event.error.message;
-            errorMessage.classList.add('visible');
-            errorMessage.classList.add('alert');
-            return errorMessage.classList.add('alert-danger');
-        }
-        else {
-            errorMessage.classList.remove('visible');
-            errorMessage.classList.remove('alert');
-            errorMessage.classList.remove('alert-danger');
-            if (event.bankName) {
-                bankName.textContent = event.bankName;
-                bankName.classList.add('visible');
-            } else {
-                bankName.classList.remove('visible');
-            }
-        }
-    });
-}
-
 function setOutcome(result) {
     $('.bank-account-error').remove();
 
@@ -98,8 +56,9 @@ function setOutcome(result) {
             $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
         }else if(result.error.param === "bank_account[account_holder_type]" && result.error.type === 'invalid_request_error'){
             $('#account_type').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+        }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'account_number_invalid'){
+            $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid number</span>");
         }
-    }
 }
 
 function externalAccountToken(){

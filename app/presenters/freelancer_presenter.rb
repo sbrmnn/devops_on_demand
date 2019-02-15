@@ -37,7 +37,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def european?
-    SepaCountries.instance.list.include?(model.location)
+    SepaCountries.instance.list.include?(location)
   end
 
   def american?

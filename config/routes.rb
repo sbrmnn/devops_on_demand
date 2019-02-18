@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :webhooks
-  
+
   devise_for :users
   resources :photos
   resources :revenues

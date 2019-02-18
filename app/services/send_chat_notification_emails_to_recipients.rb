@@ -11,7 +11,7 @@ class SendChatNotificationEmailsToRecipients
       next if m.notification_sent
       emailable_message_recipients(m).each do |er|
         begin
-          ChatNotificationMailer.send_chatroom_msg_to_user(m, er).deliver
+          ChatNotificationMailer.send(m, er).deliver
           m.update_attribute(:notification_sent, true)
         rescue Exception => e
           Rails.logger.error "Email Error: SendChatNotificationEmailsToRecipients #{e.message}"

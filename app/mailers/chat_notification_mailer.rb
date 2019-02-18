@@ -1,7 +1,7 @@
 class ChatNotificationMailer < ApplicationMailer
   default from: "YumFog LLC <webmaster@yumfog.com>"
 
-  def send_chatroom_msg_to_user(message, user)
+  def send(message, user)
     set_template_variables(message, user)
     mail(to: @email, subject: "You\'ve received a new message from #{@chat_sender_name}")
   end

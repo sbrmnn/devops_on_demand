@@ -9,9 +9,11 @@ class WebhooksController < ApplicationController
           payload, sig_header, ENV['STRIPE_WEBHOOK_SECRET']
       )
     rescue JSON::ParserError => e
-      render status: 400 and return
+      Rails.logger.error e
+      head :ok and return
     rescue Stripe::SignatureVerificationError => e
-      render status: 400 and return
+      Rails.logger.error e
+      head :ok and return
     end
     event_json = JSON.parse(request.body.read)
     render json: event_json, status: 200

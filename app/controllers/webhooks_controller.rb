@@ -6,7 +6,7 @@ class WebhooksController < ApplicationController
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     begin
      Stripe::Webhook.construct_event(
-          payload, sig_header, endpoint_secret
+          payload, sig_header, ENV['STRIPE_WEBHOOK_SECRET']
       )
     rescue JSON::ParserError => e
       render status: 400 and return
@@ -17,3 +17,5 @@ class WebhooksController < ApplicationController
     render json: event_json, status: 200
   end
 end
+
+

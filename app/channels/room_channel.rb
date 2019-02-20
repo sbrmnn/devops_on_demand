@@ -32,7 +32,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def broadcast_message(message)
-    BroadcastMessage.call(message)
+     BroadcastMessage.call(message)
   end
 
   def chatroom

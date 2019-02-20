@@ -1,0 +1,4 @@
+$( "#payout-identity" ).load( "<%= ENV['HOST_URL'] %>/users/<%= current_user.id %> #payout-identity .card-body", function(){
+
+   <%= render 'missing_fields_payment_identity' %>
+});

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_user
-
+  before_action :set_freelancer_id
 
   def after_sign_in_path_for(resource)
     user_path(current_user)
@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def set_user
     gon.current_user_id = current_user.try(:id) || nil
+  end
+
+  def set_freelancer_id
+    gon.freelancer_id = current_user.freelancer.try(:id) || nil
   end
 
   def set_chatroom

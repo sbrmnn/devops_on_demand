@@ -68,6 +68,14 @@ class FreelancerPaymentProcessor
        }
     end
 
+    def self.confirm_webhook_signature(request)
+      payload = request.body.read
+      signature = request.env['HTTP_STRIPE_SIGNATURE']
+      Stripe::Webhook.construct_event(
+          payload, signature, ENV['STRIPE_WEBHOOK_SECRET']
+      )
+    end
+
     def settlement_currency
       self.class.adapter.supported_currencies[freelancer.location.to_sym]
     end
@@ -93,10 +101,10 @@ class FreelancerPaymentProcessor
       update_legal_entity_on_account(legal_entity)
     end
 
-    def payout_identity_missing_fields
+    def payout_identity_missing_fields(fields_needed=nil)
       cache = Rails.cache.read(missing_field_cache_key)
       if cache.nil?
-        fields_needed = account_info.verification.fields_needed
+        fields_needed = account_info.verification.fields_needed if fields_needed.nil?
         Rails.cache.write(missing_field_cache_key, fields_needed)
         return Rails.cache.read(missing_field_cache_key)
       end
@@ -137,7 +145,7 @@ class FreelancerPaymentProcessor
       account_info.legal_entity.personal_address.line1 = legal_entity.personal_address_line1 if legal_entity.personal_address_line1.present?
       account_info.legal_entity.personal_address.postal_code = legal_entity.personal_address_postal_code if legal_entity.personal_address_postal_code.present?
       account_info.legal_entity.verification.document = upload_verification_doc(legal_entity.verification_image.path) if legal_entity.verification_image.try(:path).present?
-      Rails.cache.write(missing_field_cache_key, nil) if account_info.save
+      account_info.save
       account_info
     end
 

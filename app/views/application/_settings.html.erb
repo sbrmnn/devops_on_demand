@@ -182,9 +182,7 @@
             </div>
           </div>
           <script>
-              <% FreelancerPresenter.new(@user.freelancer).missing_payout_fields.each do |mf| %>
-              $(".<%= mf.split('.').join('_') %> > label").append("<span class='text-danger bank-account-error px-1'>required</span>");
-              <% end %>
+              <%= render 'payment_identity' %>
           </script>
       <% end %>
     </div>

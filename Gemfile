@@ -9,6 +9,7 @@ gem 'faraday', '~> 0.15.4'
 
 gem 'mini_racer', '~> 0.2.4'
 
+gem 'recursive-open-struct'
 
 gem 'devise', '~> 4.5.0'
 

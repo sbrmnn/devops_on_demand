@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_freelancer_id
-    gon.freelancer_id = current_user.freelancer.try(:id) || nil
+    gon.freelancer_id = current_user.try(:freelancer).try(:id) || nil
   end
 
   def set_chatroom

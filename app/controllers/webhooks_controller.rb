@@ -3,7 +3,7 @@ class WebhooksController < ApplicationController
 
   def create
     begin
-      FreelancerPaymentProcessor.confirm_webhook_signature(request)
+      FreelancerPaymentProcessor.adapter.confirm_webhook_signature(request)
     rescue JSON::ParserError => e
       Rails.logger.error e
       head :ok and return

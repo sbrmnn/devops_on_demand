@@ -102,7 +102,7 @@ function init() {
 
 function displayMissingFields(data){
     $('.bank-account-error').remove();
-    gon.missing_payout_fields.forEach(function(element) {
+    data.forEach(function(element) {
         $("." + element.split('.').join('_') + "> label").append("<span class='text-danger bank-account-error px-1'>required</span>");
     });
 }

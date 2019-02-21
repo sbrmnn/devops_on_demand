@@ -103,7 +103,7 @@ class FreelancerPaymentProcessor
 
     def payout_identity_missing_fields(fields_needed=nil)
       cache = Rails.cache.read(missing_field_cache_key)
-      if fields_needed.present?
+      unless fields_needed.nil?
         Rails.cache.write(missing_field_cache_key, fields_needed)
         MissingFieldsPayoutIdentityChannel.broadcast(fields_needed, freelancer.id)
         return Rails.cache.read(missing_field_cache_key)

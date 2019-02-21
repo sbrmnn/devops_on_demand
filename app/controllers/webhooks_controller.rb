@@ -12,6 +12,7 @@ class WebhooksController < ApplicationController
       head :ok and return
     end
     event_json = JSON.parse(request.body.read)
+    assign_fields_needed_to_freelancer(event_json)
     render json: event_json, status: 200
   end
 
@@ -20,8 +21,9 @@ class WebhooksController < ApplicationController
   def assign_fields_needed_to_freelancer(json)
     json_resp = RecursiveOpenStruct.new(json)
     fields_needed = json_resp.try(:data).try(:object).try(:verification).try(:fields_needed)
+    return if fields_needed.nil?
     freelancer = Freelancer.where(merchant_id: json_resp.data.object.id)
-    FreelancerPaymentProcessor.new(freelancer).payout_identity_missing_fields(fields_needed) if fields_needed.present?
+    FreelancerPaymentProcessor.new(freelancer).payout_identity_missing_fields(fields_needed)
   end
 end
 

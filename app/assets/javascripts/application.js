@@ -97,6 +97,14 @@ function init() {
     bindScrollFunctionToFrom();
     getEntityTypeFields();
     subscribeToMissingFieldsChannel();
+    displayMissingFields(gon.missing_payout_fields)
+}
+
+function displayMissingFields(data){
+    $('.bank-account-error').remove();
+    gon.missing_payout_fields.forEach(function(element) {
+        $("." + element.split('.').join('_') + "> label").append("<span class='text-danger bank-account-error px-1'>required</span>");
+    });
 }
 
 

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_user
   before_action :set_freelancer_id
+  before_action :set_missing_payout_fields
 
   def after_sign_in_path_for(resource)
     user_path(current_user)
@@ -20,6 +21,14 @@ class ApplicationController < ActionController::Base
 
   def set_freelancer_id
     gon.freelancer_id = current_user.try(:freelancer).try(:id) || nil
+  end
+
+  def set_missing_payout_fields
+    if current_user.try(:freelancer).present?
+     gon.missing_payout_fields = FreelancerPaymentProcessor.new(current_user.try(:freelancer)).payout_identity_missing_fields
+    else
+      gon.missing_payout_fields = []
+    end
   end
 
   def set_chatroom

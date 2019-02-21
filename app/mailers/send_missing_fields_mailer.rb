@@ -1,5 +1,9 @@
 class SendMissingFieldsMailer < ApplicationMailer
-  def send
-    mail(to: @email, subject: "You\'ve received a new message from #{@chat_sender_name}")
+  default from: "YumFog LLC <webmaster@yumfog.com>"
+
+  def send_to_freelancer(freelancer)
+    @user = freelancer.user
+    @freelancer_name = @user.first_name
+    mail(to: @user.email, subject: "We need more information from you.")
   end
 end

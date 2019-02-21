@@ -22,8 +22,8 @@ class WebhooksController < ApplicationController
     json_resp = RecursiveOpenStruct.new(json)
     fields_needed = json_resp.try(:data).try(:object).try(:verification).try(:fields_needed)
     return if fields_needed.nil?
-    freelancer = Freelancer.where(merchant_id: json_resp.data.object.id)
-    FreelancerPaymentProcessor.new(freelancer).payout_identity_missing_fields(fields_needed)
+    freelancer = Freelancer.find_by(merchant_id: json_resp.account)
+    FreelancerPaymentProcessor.new(freelancer).payout_identity_missing_fields(fields_needed) if freelancer.present?
   end
 end
 

@@ -140,23 +140,6 @@ $(document).on('change paste keyup','.certificate-number', function(e){
     }
 });
 
-$(document).on(click_event,'.dashboard-btn', function(){
-    $( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
-    $( this ).parent( 'li' ).addClass( 'active' );
-    var btnContent =  $('.nav-button-content');
-    btnContent.find('.content').not('.d-none').addClass('d-none');
-    $('#tabs-freelancer-registration').addClass('d-none');
-    btnContent.find($(this).data('target')).removeClass('d-none');
-    return false;
-});
-
-
-$(document).on(click_event,'#register-freelancer-btn', function(){
-    var btnContent =  $('.nav-button-content');
-    btnContent.find('.content').not('.d-none').addClass('d-none');
-    $('#tabs-freelancer-registration').removeClass('d-none');
-    return false;
-});
 
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {

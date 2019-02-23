@@ -1,64 +1,28 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="messages-tab">
-    <div class="shadow-sm card mb-2">
-      <div class="card-body">
-        <h5 class="card-title"><%= t('read_and_reply_to_messages') %></h5>
-        <h6 class="card-subtitle text-muted"><%= t('messages_tagline') %></h6>
-      </div>
-    </div>
     <%= render "chat_box" %>
   </div>
+
   <div class="tab-pane fade"  id="find-freelancers" role="tabpanel" aria-labelledby="find_freelancers-tab">
-    <div class="shadow-sm card mb-2">
-      <div class="card-body">
-        <h5 class="card-title"><%= t('find_freelancers') %></h5>
-        <h6 class="card-subtitle text-muted"><%= t('freelance_search_tagline') %></h6>
-      </div>
-    </div>
     <%= render 'find_freelancers' %>
   </div>
 
   <div class="tab-pane fade"  id="pills-payments" role="tabpanel" aria-labelledby="settings-tab">
-    <div class="shadow-sm card mb-2">
-      <div class="card-body">
-        <h5 class="card-title"><%= t('freelancer_payout') %></h5>
-        <h6 class="card-subtitle text-muted"><%= t('payments_tagline') %></h6>
-      </div>
-    </div>
     <%= render 'billing_and_payments' %>
   </div>
 
   <div class="tab-pane fade"  id="pills-settings" role="tabpanel" aria-labelledby="settings-tab">
-    <div class="shadow-sm card mb-2">
-      <div class="card-body">
-        <h5 class="card-title"><%= t('settings') %></h5>
-        <h6 class="card-subtitle text-muted"><%= t('settings_tagline') %></h6>
-      </div>
-    </div>
     <%= render 'settings' %>
   </div>
 
 
   <div class="tab-pane fade"  id="pills-create-profile" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
-    <div class="shadow-sm card mb-2">
-      <div class="card-body">
-        <h5 class="card-title"><%= t('register_as_a_freelancer') %></h5>
-        <h6 class="card-subtitle text-muted"><%= t('freelance_form_tagline') %></h6>
-      </div>
-    </div>
     <%= render "create_profile_form" %>
   </div>
 
 
   <div class="tab-pane fade"  id="pills-billing" role="tabpanel" aria-labelledby="pills-billing-tab">
-    <div class="shadow-sm card mb-2">
-      <div class="card-body">
-        <h5 class="card-title"><%= t('billing') %></h5>
-        <h6 class="card-subtitle text-muted"><%= t('freelance_form_tagline') %></h6>
-      </div>
-    </div>
     <%= render "billing" %>
   </div>
-
- </div>
+</div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190204062004) do
+ActiveRecord::Schema.define(version: 20190223201519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,14 @@ ActiveRecord::Schema.define(version: 20190204062004) do
     t.boolean "notification_sent", default: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "missing_payout_fields", force: :cascade do |t|
+    t.bigint "payout_identity_id"
+    t.string "field"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payout_identity_id"], name: "index_missing_payout_fields_on_payout_identity_id"
   end
 
   create_table "payout_identities", force: :cascade do |t|

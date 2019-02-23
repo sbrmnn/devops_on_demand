@@ -102,14 +102,16 @@ class FreelancerPaymentProcessor
     end
 
     def payout_identity_missing_fields(fields_needed=nil)
-      cache = Rails.cache.read(missing_field_cache_key) || []
+      payout_identity = freelancer.payout_identity
+      return [] if payout_identity.nil?
+      missing_payout_fields = payout_identity.missing_payout_fields
       unless fields_needed.nil?
-        Rails.cache.write(missing_field_cache_key, fields_needed)
+        missing_payout_fields.destroy_all
+        missing_payout_fields.create(fields_needed.map{|l| {field: l}})
         MissingFieldsPayoutIdentityChannel.broadcast(fields_needed, freelancer.id)
         SendMissingFieldsMailer.send_to_freelancer(freelancer).deliver
-        return Rails.cache.read(missing_field_cache_key)
       end
-      cache
+      missing_payout_fields.pluck(:field)
     end
 
     def account_info

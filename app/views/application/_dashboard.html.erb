@@ -1,50 +1,53 @@
-<div class="container-fluid p-0">
-  <div class="row">
-      <div class="col-12 mb-3">
-        <ul class="nav nav-pills" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link" id="pills-reviews-tab" data-toggle="tab" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><%= t("reviews") %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-messages-tab" data-toggle="tab" href="#pills-payments" role="tab" aria-controls="pills-payments" aria-selected="false"><%= t("revenue_and_payments") %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-jobs-tab" data-toggle="tab" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><%= t('jobs') %></a>
-          </li>
-        </ul>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <div>
-            <label  for="contractor-search"><%= t('search_label') %></label>
-            <div class="input-group">
-              <input type="text" id="contractor-search" class="form-control" placeholder="<%=t('search_placeholder')%>" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button"><%= t("search") %></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-3">
-        <div class="card-header">
-          <%= t('reviews') %>
-        </div>
-        <div class="card-body">
-
-            <label  for="contractor-search"><%= t('search_label') %></label>
-            <div class="input-group">
-              <input type="text" id="contractor-search" class="form-control" placeholder="<%=t('search_placeholder')%>" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button"><%= t("search") %></button>
-              </div>
-            </div>
-
-        </div>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="messages-tab">
+    <div class="shadow-sm card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= t('read_and_reply_to_messages') %></h5>
+        <h6 class="card-subtitle text-muted"><%= t('messages_tagline') %></h6>
       </div>
     </div>
+    <%= render "chat_box" %>
   </div>
-</div>
+  <div class="tab-pane fade"  id="find-freelancers" role="tabpanel" aria-labelledby="find_freelancers-tab">
+    <div class="shadow-sm card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= t('find_freelancers') %></h5>
+        <h6 class="card-subtitle text-muted"><%= t('freelance_search_tagline') %></h6>
+      </div>
+    </div>
+    <%= render 'find_freelancers' %>
+  </div>
+
+  <div class="tab-pane fade"  id="pills-payments" role="tabpanel" aria-labelledby="settings-tab">
+    <div class="shadow-sm card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= t('payments') %></h5>
+        <h6 class="card-subtitle text-muted"><%= t('payments_tagline') %></h6>
+      </div>
+    </div>
+    <%= render 'billing_and_payments' %>
+  </div>
+
+  <div class="tab-pane fade"  id="pills-settings" role="tabpanel" aria-labelledby="settings-tab">
+    <div class="shadow-sm card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= t('settings') %></h5>
+        <h6 class="card-subtitle text-muted"><%= t('settings_tagline') %></h6>
+      </div>
+    </div>
+    <%= render 'settings' %>
+  </div>
+
+
+  <div class="tab-pane fade"  id="pills-create-profile" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
+    <div class="shadow-sm card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= t('register_as_a_freelancer') %></h5>
+        <h6 class="card-subtitle text-muted"><%= t('freelance_form_tagline') %></h6>
+      </div>
+    </div>
+    <%= render "create_profile_form" %>
+  </div>
+
+ </div>
+

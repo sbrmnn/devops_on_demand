@@ -1,39 +1,7 @@
 <% present(@user) do |up| %>
   <div class="container nav-button-content">
     <div class="mt-3">
-      <div class="content d-none"  id="tabs-dashboard" role="tabpanel" aria-labelledby="profile-tab">
-        <%= render 'dashboard', up: up %>
-      </div>
-      <div class="content d-none"  id="tabs-messages" role="tabpanel" aria-labelledby="messages-tab">
-        <div class="shadow-sm card mb-2">
-          <div class="card-body">
-            <h5 class="card-title"><%= t('read_and_reply_to_messages') %></h5>
-            <h6 class="card-subtitle text-muted"><%= t('messages_tagline') %></h6>
-          </div>
-        </div>
-        <%= render "chat_box" %>
-      </div>
-      <div class="content d-none"  id="tabs-find-freelancers" role="tabpanel" aria-labelledby="pills-find_freelancers-tab">
-        <div class="shadow-sm card mb-2">
-          <div class="card-body">
-            <h5 class="card-title"><%= t('find_freelancers') %></h5>
-            <h6 class="card-subtitle text-muted"><%= t('freelance_search_tagline') %></h6>
-          </div>
-        </div>
-        <%= render 'find_freelancers' %>
-      </div>
-      <div class="content d-none"  id="tabs-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-        <%= render "settings" %>
-      </div>
-      <div class="content d-none"  id="tabs-freelancer-registration" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
-        <div class="shadow-sm card mb-2">
-          <div class="card-body">
-            <h5 class="card-title"><%= t('register_as_a_freelancer') %></h5>
-            <h6 class="card-subtitle text-muted"><%= t('freelance_form_tagline') %></h6>
-          </div>
-        </div>
-        <%= render "create_profile_form" %>
-      </div>
+      <%= render 'dashboard', up: up %>
    </div>
   </div>
 <% end %>

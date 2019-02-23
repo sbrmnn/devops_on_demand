@@ -171,11 +171,7 @@ class FreelancerPaymentProcessor
     def merchant_id
       @merchant_id ||= (freelancer.merchant_id || add_account.id)
     end
-
-    def missing_field_cache_key
-      "#{merchant_id}_missing_fields"
-    end
-
+    
     def add_account
       acct = Stripe::Account.create(
           type: 'custom',

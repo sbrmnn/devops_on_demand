@@ -11,57 +11,57 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
-
-<% if render_navbar_and_footer? %>
-  <nav class="navbar navbar-light bg-light navbar-expand-lg">
-    <div class="container">
-      <a href="/" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-        <strong>YumFog</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <%= render 'login_logout' %>
+  <% if render_navbar_and_footer? %>
+    <nav class="navbar navbar-light bg-light navbar-expand-lg">
+      <div class="container">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+          <strong>YumFog</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <%= render 'login_logout' %>
+        </div>
+      </div>
+    </nav>
+  <% end %>
+  <% if user_signed_in? %>
+    <div id="bg-sub-nav" class="row">
+      <div class="col-12">
+        <div class="container py-1">
+          <ul class="nav nav-pills nav-pills-underline" id="pills-tab" role="tablist">
+            <li class="nav-item my-1 py-1">
+              <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
+            </li>
+            <li class="nav-item ml-3 py-1 my-1">
+              <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
+            </li>
+            <li class="nav-item ml-3 py-1 my-1">
+              <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><i class="fa fa-pencil mr-1" aria-hidden="true"></i><%= t("reviews") %></a>
+            </li>
+            <li class="nav-item ml-3 py-1 my-1">
+              <a class="nav-link" id="pills-jobs-tab" data-toggle="pill" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i><%= t('jobs') %></a>
+            </li>
+            <li class="nav-item dropdown ml-3 py-1 my-1">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-money mr-1" aria-hidden="true"></i><%= t('payments') %></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" id="pills-billing-tab" data-toggle="pill" href="#pills-billing" role="tab" aria-controls="pills-billing-card" aria-selected="false"><i class="fa fa-credit-card mr-1"></i><%= t('billing') %></a>
+                <a class="dropdown-item" id="pills-payout-tab" data-toggle="pill" href="#pills-payments" role="tab" aria-controls="pills-payout" aria-selected="false"><i class="fa fa-exchange mr-1"></i><%= t('freelancer_payout') %></a>
+              </div>
+            </li>
+            <li class="nav-item ml-3 py-1 my-1">
+              <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('settings') %></a>
+            </li>
+            <li class="nav-item ml-3 px-2 py-1 my-1 bg-warning rounded">
+              <a class="nav-link text-dark" id="pills-create_profile-tab" data-toggle="pill" href="#pills-create-profile" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </nav>
-<% end %>
-<div id="bg-sub-nav" class="row">
-    <div class="col-12">
-      <div class="container py-2">
-        <ul class="nav nav-pills nav-pills-underline" id="pills-tab" role="tablist">
-          <li class="nav-item my-1 py-1">
-            <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
-          </li>
-          <li class="nav-item ml-3 py-1 my-1">
-            <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
-          </li>
-          <li class="nav-item ml-3 py-1 my-1">
-            <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><i class="fa fa-pencil mr-1" aria-hidden="true"></i><%= t("reviews") %></a>
-          </li>
-          <li class="nav-item ml-3 py-1 my-1">
-            <a class="nav-link" id="pills-jobs-tab" data-toggle="pill" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i><%= t('jobs') %></a>
-          </li>
-          <li class="nav-item dropdown ml-3 py-1 my-1">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-money mr-1" aria-hidden="true"></i><%= t('payments') %></a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" id="pills-payout-tab" data-toggle="pill" href="#pills-payments" role="tab" aria-controls="pills-payout" aria-selected="false"><i class="fa fa-exchange mr-1"></i><%= t('freelancer_payout') %></a>
-              <a class="dropdown-item" id="pills-credit-card-tab" data-toggle="pill" href="#pills-credit-card" role="tab" aria-controls="pills-credit-card" aria-selected="false"><i class="fa fa-credit-card mr-1"></i><%= t('credit_card') %></a>
-            </div>
-          </li>
-          <li class="nav-item ml-3 py-1 my-1">
-            <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('settings') %></a>
-          </li>
-          <li class="nav-item ml-3 px-2 py-1 my-1 bg-warning rounded">
-            <a class="nav-link text-dark" id="pills-create_profile-tab" data-toggle="pill" href="#pills-create-profile" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-</div>
+  <% end %>
 <%= yield %>
 </body>
 </html>

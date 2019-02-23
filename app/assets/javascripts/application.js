@@ -237,10 +237,10 @@ function getSelectedPill(){
             $('#' + activePillId).tab('show');
             window.localStorage.removeItem("activeTab");
         }else{
-            $('#pills-home-tab').tab('show');
+            $('#pills-find-freelancers-tab').tab('show');
         }
     }
-    $(document).on(click_event,'a[data-toggle="tab"]', function(e){
+    $(document).on(click_event,'a[data-toggle="pill"]', function(e){
          window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }

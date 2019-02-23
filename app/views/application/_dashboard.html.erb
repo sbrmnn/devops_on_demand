@@ -21,7 +21,7 @@
   <div class="tab-pane fade"  id="pills-payments" role="tabpanel" aria-labelledby="settings-tab">
     <div class="shadow-sm card mb-2">
       <div class="card-body">
-        <h5 class="card-title"><%= t('payments') %></h5>
+        <h5 class="card-title"><%= t('freelancer_payout') %></h5>
         <h6 class="card-subtitle text-muted"><%= t('payments_tagline') %></h6>
       </div>
     </div>
@@ -47,6 +47,17 @@
       </div>
     </div>
     <%= render "create_profile_form" %>
+  </div>
+
+
+  <div class="tab-pane fade"  id="pills-billing" role="tabpanel" aria-labelledby="pills-billing-tab">
+    <div class="shadow-sm card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= t('billing') %></h5>
+        <h6 class="card-subtitle text-muted"><%= t('freelance_form_tagline') %></h6>
+      </div>
+    </div>
+    <%= render "billing" %>
   </div>
 
  </div>

@@ -43,7 +43,7 @@ $nav-pills-underline-border-color:    whitesmoke;
 
       border-bottom-width: $nav-pills-underline-border-width;
       border-bottom-style: solid;
-      border-bottom-color: $nav-pills-underline-border-color;
+      color: #ffc107;
     }
 
     // bg
@@ -54,7 +54,9 @@ $nav-pills-underline-border-color:    whitesmoke;
 
 
     // color
-    > a.nav-link.active:hover,
+    > a.nav-link.active:hover{
+      color: #ffc107;
+    }
     > a.nav-link:hover
     {
       color: $nav-pills-underline-link-hover-color;

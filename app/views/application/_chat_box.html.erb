@@ -9,7 +9,7 @@
 
 <ul class="list-group">
       <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
-        <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> mb-2 list-group-item-action flex-column align-items-start">
+        <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1"><%= cp.participant_names_excluding_user(current_user) %></h5>
             <span>

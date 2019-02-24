@@ -28,39 +28,38 @@
     </nav>
   <% end %>
   <% if user_signed_in? %>
-    <div id="bg-sub-nav" class="row">
-      <div class="col-12">
-        <div class="container py-1">
-          <ul class="nav nav-pills nav-pills-underline" id="pills-tab" role="tablist">
-            <li class="nav-item my-1 py-1">
-              <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
-            </li>
-            <li class="nav-item ml-3 py-1 my-1">
-              <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
-            </li>
-            <li class="nav-item ml-3 py-1 my-1">
-              <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><i class="fa fa-pencil mr-1" aria-hidden="true"></i><%= t("reviews") %></a>
-            </li>
-            <li class="nav-item ml-3 py-1 my-1">
-              <a class="nav-link" id="pills-jobs-tab" data-toggle="pill" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i><%= t('jobs') %></a>
-            </li>
-            <li class="nav-item dropdown ml-3 py-1 my-1">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-money mr-1" aria-hidden="true"></i><%= t('payments') %></a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" id="pills-billing-tab" data-toggle="pill" href="#pills-billing" role="tab" aria-controls="pills-billing-card" aria-selected="false"><i class="fa fa-credit-card mr-1"></i><%= t('billing') %></a>
-                <a class="dropdown-item" id="pills-payout-tab" data-toggle="pill" href="#pills-payments" role="tab" aria-controls="pills-payout" aria-selected="false"><i class="fa fa-exchange mr-1"></i><%= t('freelancer_payout') %></a>
-              </div>
-            </li>
-            <li class="nav-item ml-3 py-1 my-1">
-              <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('settings') %></a>
-            </li>
-            <li class="nav-item ml-3 px-2 py-1 my-1 bg-warning rounded">
-              <a class="nav-link text-dark" id="pills-create_profile-tab" data-toggle="pill" href="#pills-create-profile" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <nav class="navbar  bg-dark navbar-expand">
+    <div class="container py-3">
+        <ul  class="nav nav-pills nav-pills-underline nav-fill w-100" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><i class="fa fa-pencil mr-1" aria-hidden="true"></i><%= t("reviews") %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-jobs-tab" data-toggle="pill" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i><%= t('jobs') %></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-money mr-1" aria-hidden="true"></i><%= t('payments') %></a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" id="pills-billing-tab" data-toggle="pill" href="#pills-billing" role="tab" aria-controls="pills-billing-card" aria-selected="false"><i class="fa fa-credit-card mr-1"></i><%= t('billing') %></a>
+              <a class="dropdown-item" id="pills-payout-tab" data-toggle="pill" href="#pills-payments" role="tab" aria-controls="pills-payout" aria-selected="false"><i class="fa fa-exchange mr-1"></i><%= t('freelancer_payout') %></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('settings') %></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" id="pills-create_profile-tab" data-toggle="pill" href="#pills-create-profile" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
+          </li>
+        </ul>
+
     </div>
+  </nav>
   <% end %>
 <%= yield %>
 </body>

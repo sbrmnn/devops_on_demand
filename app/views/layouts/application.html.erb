@@ -13,7 +13,7 @@
 <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
     <nav class="navbar navbar-light bg-light navbar-expand-lg">
-      <div class="container">
+      <div class="container p-2">
         <a href="/" class="navbar-brand d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
           <strong>YumFog</strong>
@@ -29,21 +29,21 @@
   <% end %>
   <% if user_signed_in? %>
   <nav class="navbar  bg-dark navbar-expand">
-    <div class="container py-3">
-        <ul  class="nav nav-pills nav-pills-underline nav-fill w-100" id="pills-tab" role="tablist">
+    <div class="container p-2">
+        <ul  class="nav nav-pills nav-pills-underline nav-fill" id="pills-tab" role="tablist">
           <li class="nav-item">
+            <a class="nav-link d-none" id="pills-create_profile-tab" data-toggle="pill" href="#pills-create-profile" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
+          </li>
+          <li class="nav-item  mr-4 ">
             <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  mr-4 ">
             <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><i class="fa fa-pencil mr-1" aria-hidden="true"></i><%= t("reviews") %></a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item  mr-3 ">
             <a class="nav-link" id="pills-jobs-tab" data-toggle="pill" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i><%= t('jobs') %></a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown mr-3">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-money mr-1" aria-hidden="true"></i><%= t('payments') %></a>
             <div class="dropdown-menu">
               <a class="dropdown-item" id="pills-billing-tab" data-toggle="pill" href="#pills-billing" role="tab" aria-controls="pills-billing-card" aria-selected="false"><i class="fa fa-credit-card mr-1"></i><%= t('billing') %></a>
@@ -52,9 +52,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('settings') %></a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" id="pills-create_profile-tab" data-toggle="pill" href="#pills-create-profile" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
           </li>
         </ul>
 

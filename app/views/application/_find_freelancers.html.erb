@@ -1,5 +1,6 @@
 <div class="card">
-  <div class="container">
+  <div class="container" style="padding-left: 0px;padding-right: 0px;
+  ">
     <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
       <div class="input-group py-3">
         <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>

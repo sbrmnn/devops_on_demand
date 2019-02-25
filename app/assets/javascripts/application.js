@@ -159,6 +159,14 @@ $(document).on(click_event,'.preview-btn', function(e){
 });
 
 
+$(document).on(click_event,'.freelancer-signup-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $('#pills-create_profile-tab').tab('show');
+    return false;
+});
+
+
 
 $(document).on('change paste keyup','.work-experience-from', function(e){
     if (date.test($(this).val())){

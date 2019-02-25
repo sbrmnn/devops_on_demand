@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+
   resources :payout_identities
 
   get 'freelancer_searches',  controller: "freelancer_searches", action: "index"
 
   get 'profile_preview', controller: "profile_preview", action: "index"
+
 
   resources :certification_names, only: [:index]
 
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
   resources :conversations
   resources :calendars
   resources :reviews
-
+  
   resources :users do
     scope module: :users do
       resources :freelancers

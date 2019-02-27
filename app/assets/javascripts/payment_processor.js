@@ -99,3 +99,56 @@ $(document).on('change', '#payout_identity_legal_entity_attributes_type', functi
 });
 
 
+new Card({
+    form: 'form',
+    container: '.card',
+    formSelectors: {
+        numberInput: 'input[name=number]',
+        expiryInput: 'input[name=expiry]',
+        cvcInput: 'input[name=cvv]',
+        nameInput: 'input[name=name]'
+    },
+
+    width: 390, // optional — default 350px
+    formatting: true,
+
+    placeholders: {
+        number: '•••• •••• •••• ••••',
+        name: 'Full Name',
+        expiry: '••/••',
+        cvc: '•••'
+    }
+});
+
+$(document).on('change', '#payout_identity_legal_entity_attributes_entity_type' ,function() {
+    if (this.value === 'individual') {
+        $('.individual-id-tags').removeClass('d-none');
+        $('.business-id-tags').addClass('d-none');
+    }
+    if (this.value === 'company') {
+        $('.business-id-tags').removeClass('d-none');
+        $('.individual-id-tags').addClass('d-none');
+        if (this.value === '') {
+            $('.business-id-tags').addClass('d-none');
+            $('.individual-id-tags').addClass('d-none');
+        }
+    }
+});
+
+
+function getEntityTypeFields(){
+    var value = $('#payout_identity_legal_entity_attributes_entity_type').val();
+    if (value === 'individual') {
+        $('.individual-id-tags').removeClass('d-none');
+        $('.business-id-tags').addClass('d-none');
+    }
+    if (value === 'company') {
+        $('.business-id-tags').removeClass('d-none');
+        $('.individual-id-tags').addClass('d-none');
+        if (value === '') {
+            $('.business-id-tags').addClass('d-none');
+            $('.individual-id-tags').addClass('d-none');
+        }
+    }
+}
+

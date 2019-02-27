@@ -162,7 +162,7 @@ $(document).on(click_event,'.preview-btn', function(e){
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $('#pills-create_profile-tab').tab('show');
+    $('#pills-freelancer-registration-tab').tab('show');
     return false;
 });
 
@@ -236,6 +236,27 @@ function getSelectedPill(){
     });
 }
 
+
+new Card({
+    form: 'form',
+    container: '.card',
+    formSelectors: {
+        numberInput: 'input[name=number]',
+        expiryInput: 'input[name=expiry]',
+        cvcInput: 'input[name=cvv]',
+        nameInput: 'input[name=name]'
+    },
+
+    width: 390, // optional — default 350px
+    formatting: true,
+
+    placeholders: {
+        number: '•••• •••• •••• ••••',
+        name: 'Full Name',
+        expiry: '••/••',
+        cvc: '•••'
+    }
+})
 
 
 

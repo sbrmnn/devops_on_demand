@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :conversations
   resources :calendars
   resources :reviews
-  
+
   resources :users do
     scope module: :users do
       resources :freelancers

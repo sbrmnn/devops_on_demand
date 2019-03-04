@@ -1,6 +1,7 @@
 var stripe = Stripe('pk_test_W0NqkO9ids4x1iZNvTEMNQ8n');
 
 
+
 $(document).on('keyup change input paste','#personal_id_number_text', function(e){
     var $this, lastCharacter, maxCount, val, valLength;
     $this = $(this);
@@ -99,26 +100,6 @@ $(document).on('change', '#payout_identity_legal_entity_attributes_type', functi
 });
 
 
-new Card({
-    form: 'form',
-    container: '.card',
-    formSelectors: {
-        numberInput: 'input[name=number]',
-        expiryInput: 'input[name=expiry]',
-        cvcInput: 'input[name=cvv]',
-        nameInput: 'input[name=name]'
-    },
-
-    width: 390, // optional — default 350px
-    formatting: true,
-
-    placeholders: {
-        number: '•••• •••• •••• ••••',
-        name: 'Full Name',
-        expiry: '••/••',
-        cvc: '•••'
-    }
-});
 
 $(document).on('change', '#payout_identity_legal_entity_attributes_entity_type' ,function() {
     if (this.value === 'individual') {
@@ -151,4 +132,98 @@ function getEntityTypeFields(){
         }
     }
 }
+
+
+var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+    base: {
+        color: '#32325d',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+            color: '#aab7c4'
+        }
+    },
+    invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+    }
+};
+
+
+function mountCreditCardElement() {
+// Create an instance of the card Element.
+    var card = elements.create('card', {hidePostalCode: true});
+// Add an instance of the card Element into the `card-element` <div>.
+    card.mount('#card-element');
+
+// Handle real-time validation errors from the card Element.
+    card.addEventListener('change', function (event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+// Handle form submission.
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var custData = {
+            name: $('#credit-card-name').val(),
+            address_line1: $('#credit-card-line1').val(),
+            address_line2: $('#credit-card-line2').val(),
+            address_city: $('#credit-card-city').val(),
+            address_state: $('#credit-card-state').val(),
+            address_zip: $('#credit-card-zip').val(),
+            address_country: $('#credit-card-country').val()
+        };
+
+
+
+            stripe.createToken(card, custData).then(function (result) {
+                if (result.error) {
+                    // Inform the user if there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+
+
+
+
+
+
+    });
+
+// Submit the form with the token ID.
+    function stripeTokenHandler(token) {
+        // Insert the token ID into the form so it gets submitted to the server
+        var hiddenInput = document.getElementById('credit-card-token');
+
+        hiddenInput.setAttribute('value', token.id);
+
+        $.ajax({
+            type: 'POST',
+            url: '/users/'+ gon.current_user_id +'/credit_cards',
+            data: $('#payment-form').serialize(),
+            dataType: 'script',
+            async: false
+        });
+
+    }
+
+}
+
 

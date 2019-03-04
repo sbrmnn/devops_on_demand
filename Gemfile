@@ -84,6 +84,7 @@ gem "font-awesome-rails"
 
 
 
+
 gem 'redis', '~> 4.0.3'
 
 gem 'whenever', require: false

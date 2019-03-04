@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :messages
 
   has_one :freelancer
+  has_one :credit_card
 
   has_one :payout_identity, through: :freelancer
   has_one :tos_acceptance

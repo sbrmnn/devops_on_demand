@@ -14,6 +14,7 @@
 @import "blog";
 @import "_pills_underline";
 
+
 .cloudinary-fileupload {
   height: auto; // This css code fixes a UI issue  where the file selector on Firefox extends past its border. https://stackoverflow.com/questions/22049739/fix-for-firefox-file-input-using-bootstrap-3-1
 }
@@ -36,10 +37,9 @@ body {
   font-family: 'Arial', sans-serif !important;
  }
 
-.users_show{
+.users_show {
   background-color: whitesmoke;
 }
-
 
 .navbar{
   padding: 0 !important;
@@ -131,6 +131,8 @@ form h3{
 #bg-sub-nav{
   background-color: #3a3838;
 }
+
+
 
 
 

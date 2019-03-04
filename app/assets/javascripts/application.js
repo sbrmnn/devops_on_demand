@@ -10,14 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+//= require jquery3
+//= require jquery-ui
+
 //= require rails-ujs
 //= require turbolinks
-//= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 //= require material
 //= require bootstrap-datepicker
-//= require jquery-ui
 //= require cloudinary
 //= require cocoon
 //= require payment_processor
@@ -25,7 +27,7 @@
 
 $.ajaxSetup({
     beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-      token']").attr('content'));
+        xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
     }
 });
 
@@ -83,7 +85,8 @@ var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
 $( document ).ready(function() {
-    init()
+    init();
+    mountCreditCardElement();
 });
 
 function init() {
@@ -98,6 +101,7 @@ function init() {
     getEntityTypeFields();
     subscribeToMissingFieldsChannel();
     displayMissingFields(gon.missing_payout_fields)
+
 }
 
 function displayMissingFields(data){
@@ -162,7 +166,7 @@ $(document).on(click_event,'.preview-btn', function(e){
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $('#pills-freelancer-registration-tab').tab('show');
+    $('#pills-freelancer-registration-tab').click()
     return false;
 });
 

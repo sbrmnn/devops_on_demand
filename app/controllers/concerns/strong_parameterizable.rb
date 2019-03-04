@@ -15,6 +15,7 @@ module StrongParameterizable
                      certifications_attributes:   whitelist_certifications_attributes(preview),
                      work_experiences_attributes: whitelist_work_experiences_attributes(preview)],
         freelancer_searches: [:value],
+        credit_card: [:token, :name, :line1, :line2, :city, :state, :zip, :country],
         payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes]
 
     }[controller_name]

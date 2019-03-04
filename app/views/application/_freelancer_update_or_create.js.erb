@@ -1,18 +1,17 @@
-var freelancerSuccessCard =  $('.freelancer-success-card')
-var freelancerErrorCard = $('.freelancer-error-card')
-$('form').find('.text-danger').remove() // Removing all previous errors before rendering new ones.
-
 <% if @freelancer.errors.full_messages.present? %>
-   freelancerErrorCard.removeClass('d-none')
+  var freelancerSuccessCard =  $('.freelancer-success-card')
+  var freelancerErrorCard = $('.freelancer-error-card')
+  freelancerErrorCard.removeClass('d-none')
   freelancerSuccessCard.addClass('d-none')
 <% else %>
-    $( "#freelancer-registration" ).load( "<%= ENV['HOST_URL'] %>/users/1 #freelancer-registration .card-body", function(){
-        init()
-        var freelancerSuccessCard =  $('.freelancer-success-card')
-        freelancerSuccessCard.removeClass('d-none')
-        freelancerErrorCard.addClass('d-none')
-        freelancerSuccessCard.html("<div class=\"card-header bg-success text-light\"><%= t('form_success_msg') %> <a target='_blank' class='text-light' href=\" <%= profile_url(@freelancer) %> \">  <u> <%= profile_url(@freelancer) %>. </u>      </a></div>")
-    } );
+    $("#pills-freelancer-registration").html("<%= escape_javascript(render partial: 'freelancer_registration', locals: { user: @user } ) %>");
+    _freelancerRegistrationInit()
+    var freelancerSuccessCard =  $('.freelancer-success-card')
+     var freelancerErrorCard = $('.freelancer-error-card')
+     freelancerErrorCard.addClass('d-none')
+     freelancerSuccessCard.removeClass('d-none')
+     freelancerSuccessCard.html("<div class=\"card-header bg-success text-light\"><%= t('form_success_msg') %> <a target='_blank' class='text-light' href=\" <%= profile_url(@freelancer) %> \">  <u> <%= profile_url(@freelancer) %>. </u>      </a></div>")
+
  <% end %>
  <% @freelancer.errors.messages.each do |key ,values| %>
 

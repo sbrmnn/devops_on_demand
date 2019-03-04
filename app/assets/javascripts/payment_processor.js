@@ -135,6 +135,7 @@ function getEntityTypeFields(){
 
 
 var elements = stripe.elements();
+var card = elements.create('card', {hidePostalCode: true});
 
 // Custom styling can be passed to options when creating an Element.
 // (Note that this demo uses a wider set of styles than the guide below.)
@@ -157,8 +158,8 @@ var style = {
 
 function mountCreditCardElement() {
 // Create an instance of the card Element.
-    var card = elements.create('card', {hidePostalCode: true});
-// Add an instance of the card Element into the `card-element` <div>.
+
+ // Add an instance of the card Element into the `card-element` <div>.
     card.mount('#card-element');
 
 // Handle real-time validation errors from the card Element.

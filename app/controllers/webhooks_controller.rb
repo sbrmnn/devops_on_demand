@@ -11,7 +11,9 @@ class WebhooksController < ApplicationController
       Rails.logger.error e
       head :ok and return
     end
-    event_json = JSON.parse(request.body.read)
+    request_body = request.body.read
+    event_json = JSON.parse(request_body)
+    Rails.logger.info request_body
     assign_fields_needed_to_freelancer(event_json)
     render json: event_json, status: 200
   end

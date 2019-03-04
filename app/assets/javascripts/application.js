@@ -86,23 +86,20 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
 $( document ).ready(function() {
     init();
-    mountCreditCardElement();
 });
 
 function init() {
-    bindCloudinaryElement();
-    var public_id = $('#freelancer_profile_photo').data("public-id");
-    renderProfileImagePreview(public_id);
-    taggifyInput();
+    _freelancerRegistrationInit();
+    _billingInit();
     getSelectedPill();
     bindChatroomToRecieveMessages();
     subscribeToRooms();
-    bindScrollFunctionToFrom();
     getEntityTypeFields();
     subscribeToMissingFieldsChannel();
     displayMissingFields(gon.missing_payout_fields)
-
 }
+
+
 
 function displayMissingFields(data){
     $('.bank-account-error').remove();
@@ -215,7 +212,7 @@ $(document).on(click_event,'.msg_send_btn', function(){
 });
 
 
-function bindScrollFunctionToFrom(){
+function bindScrollFunctionToForm(){
      $('form').submit(function() {
          $('.fa-spin').removeClass('d-none')
      });

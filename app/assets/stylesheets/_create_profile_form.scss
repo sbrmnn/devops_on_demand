@@ -1,43 +1,5 @@
-@mixin freelancer-form-bg-color{
-  background-color: rgba(255, 191, 40, 0.50) !important;
-  border: 0 !important;
-}
 
-.tagsinput{
-  @include freelancer-form-bg-color
-}
 
-#freelancer-registration input[type=text]{
-  @include freelancer-form-bg-color
-}
-
-#freelancer-registration input[type=file]{
-  @include freelancer-form-bg-color
-}
-
-#freelancer-registration input[type=number]{
-  @include freelancer-form-bg-color
-}
-
-#freelancer-registration textarea{
-  @include freelancer-form-bg-color
-}
-
-#freelancer-registration select{
-  @include freelancer-form-bg-color
-}
-
-#freelancer-registration input[type=number]:focus{
-  @include freelancer-form-bg-color;
-}
-
-#freelancer-registration textarea:focus{
-  @include freelancer-form-bg-color;
-}
-
-#freelancer-registration select:focus{
-  @include freelancer-form-bg-color;
-}
 
 .header{
   min-height: 30vh;

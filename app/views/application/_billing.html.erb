@@ -1,6 +1,7 @@
-<div class="container p-2">
+
   <div  class="card">
     <div class="card-body">
+      <div class="container p-0">
       <% present(user) do |user_presenter| %>
         <%= form_with(model: user_presenter.credit_card, url: "/users/#{user_presenter.id}/credit_cards", html: {id: "payment-form"}, remote: true) do |f| %>
           <h3 class="mb-4 py-3"><%=t('credit_card_form') %></h3>
@@ -58,12 +59,13 @@
 
           <hr>
 
-          <div class="card freelancer-error-card   mb-2">
+          <div class="card credit-card-error-card d-none  mb-2">
             <div class="card-header bg-danger text-light">
               <%= t('form_error_msg') %>
             </div>
           </div>
-          <div class="card freelancer-success-card d-none mb-2">
+          <div class="card credit-card-success-card d-none mb-2">
+            <div class="card-header bg-success text-light"><%= t('saved') %></div>
           </div>
 
           <div class="pull-right">
@@ -71,6 +73,7 @@
           </div>
           <% end %>
       <% end %>
+         </div>
       </div>
       </div>
 

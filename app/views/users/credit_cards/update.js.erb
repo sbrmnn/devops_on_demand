@@ -1,1 +1,9 @@
-$("#pills-billing").html("<%= escape_javascript(render partial: 'billing', locals: { user: @user } ) %>");
+<% if @credit_card.errors.full_messages.present? %>
+  $('.credit-card-error-card').removeClass('d-none')
+  $('.credit-card-success-card').addClass('d-none')
+<% else %>
+  $("#pills-billing").html("<%= escape_javascript(render partial: 'billing', locals: { user: @user } ) %>");
+  _billingInit();
+  $('.credit-card-error-card').addClass('d-none')
+  $('.credit-card-success-card').removeClass('d-none')
+<% end %>

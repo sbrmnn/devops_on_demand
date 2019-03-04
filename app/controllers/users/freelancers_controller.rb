@@ -1,5 +1,6 @@
 class Users::FreelancersController < ApplicationController
   before_action :authenticate_user!
+  before_action :user
   include StrongParameterizable
 
 
@@ -7,7 +8,7 @@ class Users::FreelancersController < ApplicationController
   end
 
   def create
-    @freelancer = current_user.build_freelancer(freelancer_params)
+    @freelancer = user.build_freelancer(freelancer_params)
     @freelancer.save
   end
 
@@ -15,7 +16,7 @@ class Users::FreelancersController < ApplicationController
   end
 
   def update
-    @freelancer = current_user.freelancer
+    @freelancer = user.freelancer
     @freelancer.update_attributes(freelancer_params)
   end
 
@@ -23,6 +24,10 @@ class Users::FreelancersController < ApplicationController
   end
 
   private
+
+  def user
+    @user = current_user
+  end
 
   def freelancer_params
     whitelist_params(params, :freelancer)

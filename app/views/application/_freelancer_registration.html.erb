@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12">
           <div class="rounded">
-            <% present(@user) do |user_presenter| %>
+            <% present(user) do |user_presenter| %>
               <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
                 <h3 class="mb-4 py-3"><%= t('basic_info')%></h3>
                 <div class="basic-info-nested-fields mb-2">
@@ -34,7 +34,7 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12">
-                      <%= form.hidden_field :profile_photo, "data-public-id": ImageProcessorClient.get_public_id(form.object.profile_photo) %>
+                      <%= form.hidden_field :profile_photo, id: 'freelancer_profile_photo' ,"data-public-id": ImageProcessorClient.get_public_id(form.object.profile_photo) %>
                       <%= form.label :profile_photo %>
                       <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control", accept: ".png,.jpg,.jpeg"}} ) %>
                       <div class="mt-3 profile-image-preview">

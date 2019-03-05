@@ -6,7 +6,7 @@
           <div class="rounded">
             <% present(user) do |user_presenter| %>
               <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
-                <h3 class="mb-4 py-3"><%= t('basic_info')%></h3>
+                <h3 class="mb-4 py-3"><%= t('freelancer_registration_form')%></h3>
                 <div class="basic-info-nested-fields mb-2">
                   <div class="form-row">
                     <div class="form-group col-12">
@@ -42,28 +42,28 @@
                     </div>
                   </div>
                 </div>
-                <h3 class="mb-4 py-3"><%= t('skills')%></h3>
+                <h4 class="mb-4 py-3 blackborder"><%= t('skills')%></h4>
                 <div id='skills'>
                   <%= form.fields_for :skill, form.object.skill.present? ?  form.object.skill : form.object.build_skill  do |skill| %>
                     <%= render 'skills_fields', f: skill %>
                   <% end %>
                 </div>
-                <h3 class="mb-4 py-3"><%= t('certifications')%></h3>
+                <h4 class="mb-4 py-3 blackborder"><%= t('certifications')%></h4>
                 <div id='certifications' class="certifications-nested-fields">
                   <%= form.fields_for :certifications, form.object.certifications.present? ? form.object.certifications : form.object.certifications.new do |certification| %>
                     <%= render 'certification_fields', :f => certification %>
                   <% end %>
                   <div class='add-btn text-center'>
-                    <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn btn-lg btn-outline-dark"} %>
+                    <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn btn-lg btn-warning"} %>
                   </div>
                 </div>
-                <h3 class="mb-4 py-3"><%= t('work_experiences')%></h3>
+                <h4 class="mb-4 py-3 blackborder"><%= t('work_experiences')%></h4>
                 <div id='work-experiences' class="work-experiences-nested-fields">
                   <%= form.fields_for :work_experiences, form.object.work_experiences.present? ? form.object.work_experiences : form.object.work_experiences.new do |work_experience| %>
                     <%= render 'work_experience_fields', :f => work_experience %>
                   <% end %>
                   <div class='add-btn text-center'>
-                    <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-outline-dark"} %>
+                    <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-warning"} %>
                   </div>
                 </div>
                 <hr>

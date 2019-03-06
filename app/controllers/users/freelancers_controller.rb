@@ -25,10 +25,6 @@ class Users::FreelancersController < ApplicationController
 
   private
 
-  def user
-    @user = current_user
-  end
-
   def freelancer_params
     whitelist_params(params, :freelancer)
   end

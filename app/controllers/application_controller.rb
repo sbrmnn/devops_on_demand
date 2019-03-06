@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def user
+    @user = current_user
+  end
+
   def set_user
     gon.current_user_id = current_user.try(:id) || nil
   end

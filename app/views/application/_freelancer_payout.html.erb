@@ -5,7 +5,10 @@
             <%= form_with(model: freelancer_presenter.payout_identity, url: [freelancer_presenter.model, freelancer_presenter.payout_identity], remote: true) do |f| %>
                   <%= f.hidden_field :external_account, class: :'form-control', id: 'payout_identity_external_account'  %>
                   <%= f.fields_for :legal_entity, f.object.legal_entity.present? ?  f.object.legal_entity : f.object.build_legal_entity do |legal_entity| %>
-                    <h3 class="mb-4 py-3"><%=t('freelancer_payout') %></h3>
+                  <h2 class="pt-3"><%=t('freelancer_payout') %></h2>
+                  <hr class="mb-4">
+                  <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('personal_info') %></h4>
+
                     <div class="form-row">
                       <div class="col-md-6 form-group legal_entity_type">
                         <%= legal_entity.label :entity_type %>
@@ -63,13 +66,15 @@
                         <%= legal_entity.text_field :business_tax_id, class: :'form-control'  %>
                       </div>
                     </div>
+                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('identity_document_upload') %></h4>
                     <div class="form-row">
                       <div class="col-md-6 form-group legal_entity_verification_document ">
-                        <%= legal_entity.label :verification_image, :"Identity document" %>
-                        <p class="font-weight-bold">(Color, JPG or PNG, and less than 8MB)</p>
+                        <%= legal_entity.label :verification_image, "(Color, JPG or PNG, and less than 8MB)" %>
                         <%= legal_entity.file_field :verification_image, class: 'form-control', onchange: "validateFiles(this);"  %>
                       </div>
                     </div>
+                  <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('Address') %></h4>
+
                       <div class="form-row">
                         <div class="col-md-12 form-group  legal_entity_address_line1">
                           <%= legal_entity.label :address, "Address Line 1"%>
@@ -95,7 +100,7 @@
                         </div>
                       </div>
                   <% end %>
-                  <h4 class="mb-4 py-3 blackborder"><%=t('bank_account_info') %></h4>
+                  <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('bank_account_info') %></h4>
                   <div class="form-row">
                     <div class="col-md-6 form-group legal_entity_first_name">
                       <%= f.label :account_name %>

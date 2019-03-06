@@ -4,6 +4,10 @@ class UserPresenter < ApplicationPresenter
     model.freelancer.present? ? model.freelancer : model.build_freelancer
   end
 
+  def setting
+    model.setting
+  end
+
   def id
     model.id
   end

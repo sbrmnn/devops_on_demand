@@ -16,7 +16,8 @@ module StrongParameterizable
                      work_experiences_attributes: whitelist_work_experiences_attributes(preview)],
         freelancer_searches: [:value],
         credit_card: [:token, :name, :line1, :line2, :city, :state, :zip, :country],
-        payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes]
+        payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes],
+        setting: [:newsletter_subscription, :chat_notification_subscription]
 
     }[controller_name]
   end

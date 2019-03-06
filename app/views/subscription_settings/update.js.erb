@@ -1,0 +1,11 @@
+<% if @setting.errors.present? %>
+$('.settings-success-card').addClass('d-none')
+$('.settings-error-card').removeClass('d-none')
+<% else %>
+$('.settings-error-card').addClass('d-none')
+$('.settings-success-card').removeClass('d-none')
+<% end %>
+
+
+$('#newsletter_subscription_checkbox').prop( "checked", <%= @setting.newsletter_subscription %> );
+$('#chat_notification_checkbox').prop( "checked", <%= @setting.chat_notification_subscription %> );

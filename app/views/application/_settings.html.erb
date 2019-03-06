@@ -1,0 +1,50 @@
+<div  class="card">
+  <div class="card-body">
+    <div class="container p-0">
+      <% present(user) do |user_presenter| %>
+        <%= form_with(model: user_presenter.setting, url: "/users/#{user_presenter.id}/settings", remote: true) do |form| %>
+          <h2 class="pt-3"><%=t('settings') %></h2>
+          <hr class="mb-4">
+          <div class="row ">
+            <div class="col-12">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= form.hidden_field :newsletter_subscription, value: false %>
+                  <%= form.check_box :newsletter_subscription, {class: 'form-check-input', checked: user_presenter.setting.newsletter_subscription}, true, false %>
+                  <%= t('newsletters') %>
+                </label>
+                <p class="text-muted"><small><%= t('newsletters_subscription_description') %></small></p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= form.hidden_field :chat_notification_subscription, value: false %>
+                  <%= form.check_box :chat_notification_subscription, {class: 'form-check-input', checked:  user_presenter.setting.chat_notification_subscription}, true, false  %>
+                  <%= t('chat_notifications') %>
+                </label>
+                <p class="text-muted"><small><%= t('chat_subscription_description') %></small></p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="card settings-error-card d-none  mb-2">
+            <div class="card-header bg-danger text-light">
+              <%= t('error') %>
+            </div>
+          </div>
+          <div class="card settings-success-card d-none mb-2">
+            <div class="card-header bg-success text-light"><%= t('saved') %></div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12 text-right">
+              <%= form.submit t('update_settings') , :class => 'btn btn-lg btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

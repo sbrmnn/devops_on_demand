@@ -158,7 +158,9 @@ var style = {
 
 function mountCreditCardElement() {
 // Create an instance of the card Element.
-
+    if ($('#card-element').length === 0 || $('#payment-form').length === 0){
+        return null
+    }
  // Add an instance of the card Element into the `card-element` <div>.
     card.mount('#card-element');
 
@@ -188,42 +190,34 @@ function mountCreditCardElement() {
             address_country: $('#credit-card-country').val()
         };
 
-
-
-            stripe.createToken(card, custData).then(function (result) {
-                if (result.error) {
-                    // Inform the user if there was an error.
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server.
-                    stripeTokenHandler(result.token);
-                }
-            });
-
-
-
-
-
-
+        stripe.createToken(card, custData).then(function (result) {
+            if (result.error) {
+                // Inform the user if there was an error.
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server.
+                stripeTokenHandler(result.token);
+            }
+        });
     });
 
-// Submit the form with the token ID.
-    function stripeTokenHandler(token) {
-        // Insert the token ID into the form so it gets submitted to the server
-        var hiddenInput = document.getElementById('credit-card-token');
+}
 
-        hiddenInput.setAttribute('value', token.id);
 
-        $.ajax({
-            type: 'POST',
-            url: '/users/'+ gon.current_user_id +'/credit_cards',
-            data: $('#payment-form').serialize(),
-            dataType: 'script',
-            async: false
-        });
+function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var hiddenInput = document.getElementById('credit-card-token');
 
-    }
+    hiddenInput.setAttribute('value', token.id);
+
+    $.ajax({
+        type: 'POST',
+        url: '/users/'+ gon.current_user_id +'/credit_cards',
+        data: $('#payment-form').serialize(),
+        dataType: 'script',
+        async: false
+    });
 
 }
 

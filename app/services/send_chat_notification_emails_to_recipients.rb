@@ -27,6 +27,6 @@ class SendChatNotificationEmailsToRecipients
   end
 
   def emailable_message_recipients(m)
-    m.chatroom.users.where.not(id: m.user_id).where(chat_notification_subscription: true)
+    m.chatroom.users.where.not(id: m.user_id).joins(:setting).where("settings.chat_notification_subscription =?", true)
   end
 end

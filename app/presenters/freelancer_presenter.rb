@@ -12,12 +12,21 @@ class FreelancerPresenter < ApplicationPresenter
     model.about_me || default_about_me
   end
 
+
+  def truncated_about_me
+    about_me.truncate_words(25)
+  end
+
   def rate
     "$#{model.rate}/hr"
   end
 
   def location
     @location ||= model.location.to_sym
+  end
+
+  def full_name_location
+    FreelancerPaymentProcessor.adapter.supported_countries[location.to_sym]
   end
 
   def profile_photo

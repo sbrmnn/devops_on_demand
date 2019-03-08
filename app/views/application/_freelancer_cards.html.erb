@@ -2,26 +2,30 @@
    <% freelancer_presenter =  FreelancerPresenter.new(freelancer) %>
       <div class="container p-0">
         <div class="d-flex bd-highlight flex-row card shadow-sm">
-          <div class="p-2 flex-shrink-1 bd-highlight">
+          <div class="p-4 text-center flex-shrink-1 bd-highlight">
             <% if freelancer.try(:profile_photo) %>
-              <img src="<%= cl_image_path(freelancer_presenter.image_public_id, :width=>100, :crop=>"scale") ? cl_image_path(freelancer_presenter.image_public_id, :width=>100, :crop=>"scale") : "https://via.placeholder.com/100" %>">
+              <img src="<%= cl_image_path(freelancer_presenter.image_public_id, :width=>120, :crop=>"scale") ? cl_image_path(freelancer_presenter.image_public_id, :width=>100, radius: :max ,:crop=>"scale") : "https://via.placeholder.com/100" %>">
             <% end %>
-          </div>
-          <div class="pt-2 pl-1 flex-shrink-1">
-            <h4 class="card-title"><strong><%= freelancer.user_name %></strong></h4>
-            <h5><%= freelancer.headline %></h5>
-            <ul class="list-inline pt-1">
-              <li><a href="#" class="p-0">View Profile</a></li>
-            </ul>
-
-          </div>
-
-          <div class="p-2 flex-grow-1 text-right">
+            <br>
             <div class="btn-group-vertical">
-              <button class="btn  btn-success mt-1" >Hire Me <% freelancer.rate %></button>
-              <button class="btn btn-info mt-1" >Message</button>
+              <button class="btn btn   btn-dark mt-2" >Save</button>
+              <button class="btn btn  btn-info mt-1" >Message</button>
             </div>
           </div>
+
+
+          <div class="py-4 px-2 flex-grow-1">
+            <h6><a class="namelink" href="/freelancers/<%= freelancer.id %>"><%= freelancer.user_name %></a></h6>
+            <h5><strong><%= freelancer.headline %></strong></h5>
+            <ul class="list-inline">
+              <li class="list-inline-item"><strong><%= freelancer.rate %></strong></li>
+              <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
+            </ul>
+            <p class="lead">
+              <%= freelancer.truncated_about_me %>
+            </p>
+           </div>
+
         </div>
 
        <br>

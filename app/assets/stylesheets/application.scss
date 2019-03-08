@@ -71,6 +71,10 @@ body {
   color: #FCBB43
 }
 
+.list-inline{display:block;}
+.list-inline li{display:inline-block;}
+.list-inline li:not(:last-child):after{content:'|'; margin:0 10px;}
+
 
 
 
@@ -123,7 +127,9 @@ body {
 }
 
 
-
+.bg-pattern {
+  background-color: #FCBB43;
+}
 
 
 #bg-sub-nav{
@@ -132,6 +138,11 @@ body {
 
 .blackborder{
   border-left: 4px solid black;
+}
+
+.freelancer-profile-entry{
+  border-style: solid;
+  border-width: 5px;
 }
 
 

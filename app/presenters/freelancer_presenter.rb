@@ -21,7 +21,11 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def profile_photo
-    ImageProcessorClient.get_profile_image_url(model.profile_photo)
+    model.profile_photo
+  end
+
+  def image_public_id
+    model&.profile_photo&.split("/")&.last&.split(".")&.first
   end
 
   def skill

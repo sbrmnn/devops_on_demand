@@ -1,8 +1,8 @@
-<div class="card">
+<div class="bg-white">
   <div class="container" style="padding-left: 0px;padding-right: 0px;
   ">
     <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
-      <div class="input-group py-3">
+      <div class="input-group py-3 px-1">
         <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
         <div class="input-group-append">
           <%= button_tag :submit, class: 'btn btn-dark' do %>
@@ -15,6 +15,6 @@
 </div>
 
 
-<div class="row freelancer-search-results mt-3">
+<div class="bg-white freelancer-search-results">
 </div>
 

@@ -6,24 +6,28 @@
             <% if freelancer.try(:profile_photo) %>
               <img src="<%= cl_image_path(freelancer_presenter.image_public_id, :width=>120, :crop=>"scale") ? cl_image_path(freelancer_presenter.image_public_id, :width=>100, radius: :max ,:crop=>"scale") : "https://via.placeholder.com/100" %>">
             <% end %>
-            <br>
-            <div class="btn-group-vertical">
-              <button class="btn btn   btn-dark mt-2" >Save</button>
-              <button class="btn btn  btn-info mt-1" >Message</button>
+            <div class="d-flex flex-column bd-highlight mt-1">
+              <div class="bd-highlight"><button class="btn btn btn-outline-dark mt-2 w-100" >Save</button></div>
+              <div class="bd-highlight"><button class="btn btn-info mt-1 w-100" >Message</button></div>
             </div>
           </div>
 
 
-          <div class="py-4 px-2 flex-grow-1">
+          <div class="py-4 px-2 mt-2 flex-grow-1">
             <h6><a class="namelink" href="/freelancers/<%= freelancer.id %>"><%= freelancer.user_name %></a></h6>
             <h5><strong><%= freelancer.headline %></strong></h5>
             <ul class="list-inline">
               <li class="list-inline-item"><strong><%= freelancer.rate %></strong></li>
               <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
             </ul>
-            <p class="lead">
+            <p>
               <%= freelancer.truncated_about_me %>
             </p>
+            <ul class="list-inline">
+              <% freelancer.skill.each do |skill| %>
+                <li class="list-inline-item"><span class="badge badge-light"><%= skill %></span></li>
+              <% end %>
+            </ul>
            </div>
 
         </div>

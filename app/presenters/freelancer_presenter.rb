@@ -14,7 +14,7 @@ class FreelancerPresenter < ApplicationPresenter
 
 
   def truncated_about_me
-    about_me.truncate_words(25)
+    about_me.truncate_words(75)
   end
 
   def rate
@@ -38,7 +38,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def skill
-    model.skill
+    model.skill&.types&.split(',')&.first(8)
   end
 
   def certifications

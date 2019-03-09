@@ -20,12 +20,12 @@
               <li class="list-inline-item"><strong><%= freelancer.rate %></strong></li>
               <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
             </ul>
-            <p style="min-height: 48px">
+            <p>
               <%= freelancer.truncated_about_me %>
             </p>
             <ul class="list-inline">
               <% freelancer.skill.each do |skill| %>
-                <li class="list-inline-item"><span class="badge badge-light"><%= skill %></span></li>
+                <li class="list-inline-item"><span class="badge badge-warning"><%= skill %></span></li>
               <% end %>
             </ul>
            </div>

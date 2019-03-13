@@ -32,6 +32,15 @@ $.ajaxSetup({
 });
 
 
+$(document).keyup(function (e) {
+
+    if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
+        var chatroomId = $(document.activeElement).data("chatroom");
+        broadcastMessage(chatroomId, $(document.activeElement).closest('.msg-input-grp').find('.msg_send_btn'))
+    }
+});
+
+
 $.fn.scrollToBottom = function() {
     return this.each(function (i, element) {
         $(element).scrollTop($(element)[0].scrollHeight);

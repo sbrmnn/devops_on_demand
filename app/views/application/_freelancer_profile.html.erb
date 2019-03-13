@@ -85,7 +85,7 @@
             <div class="resume-section-content">
               <div class="resume-skill-item">
                 <ul class="list-inline">
-                  <% freelancer.skill.each do |skill| %>
+                  <% freelancer.skill.try(:each) do |skill| %>
                     <li class="list-inline-item"><span class="badge badge-warning"><%= skill %></span></li>
                   <% end %>
                 </ul>

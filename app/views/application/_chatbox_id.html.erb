@@ -1,0 +1,10 @@
+<div data-chatroom="<%= cp.id %>" class="chatboxID-<%= cp.id %> chat-box px-3 chat-box-height bg-secondary">
+</div>
+<div class="chat-text-input bg-secondary chat-input-group-height">
+  <div class="input-group msg-input-grp px-3">
+    <input type="text" class="form-control write_msg" placeholder="Type a message and hit send" aria-label="Chat textbox" data-chatroom="<%= cp.id %>" >
+    <div class="input-group-append">
+      <button data-chatroom="<%= cp.id %>" class="msg_send_btn btn btn-outline-light"  type="button"  ><%= t('send') %></button>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@
   ">
     <header class="resume-header pt-4 h-sm-100 pt-md-0">
       <div class="media flex-column flex-md-row">
-        <img class="mr-3 img-fluid picture mx-auto" src="<%= freelancer.profile_photo %>">
+        <img class="mr-3 img-fluid picture mx-auto" src="<%= cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 250, height: 250, crop: "scale")%>">
         <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
           <div class="primary-info">
             <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase"><%= freelancer.user_name %></h1>
@@ -85,8 +85,8 @@
             <div class="resume-section-content">
               <div class="resume-skill-item">
                 <ul class="list-inline">
-                  <% freelancer.skill&.types&.split(",")&.each do |skill| %>
-                    <li class="list-inline-item"><span class="badge badge-light"><%= skill %></span></li>
+                  <% freelancer.skill.each do |skill| %>
+                    <li class="list-inline-item"><span class="badge badge-warning"><%= skill %></span></li>
                   <% end %>
                 </ul>
               </div><!--//resume-skill-item-->

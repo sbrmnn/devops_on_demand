@@ -17,7 +17,8 @@ module StrongParameterizable
         freelancer_searches: [:value],
         credit_card: [:token, :name, :line1, :line2, :city, :state, :zip, :country],
         payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes],
-        setting: [:newsletter_subscription, :chat_notification_subscription]
+        setting: [:newsletter_subscription, :chat_notification_subscription],
+        chatrooms: [:freelancer_user]
 
     }[controller_name]
   end

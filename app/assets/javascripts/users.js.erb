@@ -44,9 +44,9 @@ function subscribeToRooms(){
     }
 }
 
-function broadcastMessage(chatroomId){
+function broadcastMessage(chatroomId, element){
     var roomId = chatroomId;
-    var messageInput = $('.write_msg[data-chatroom="'+ chatroomId +'"]');
+    var messageInput =  element.closest('.msg-input-grp').find('.write_msg')
     var message = messageInput.val().trim();
     var roomName = 'room' + roomId;
     if (!$.isEmptyObject(message)){
@@ -78,14 +78,14 @@ function renderChatRoomMessages(chatroomId){
 
 function appendMessageHistory(message, time , message_user_id, chatroomId, toBottom){
     var current_user_id = gon.current_user_id;
-    var elem = document.getElementById("chatboxID-" + chatroomId);
+    var elem = $(".chatboxID-" + chatroomId);
     if (message_user_id == current_user_id) {
-        elem.insertAdjacentHTML( 'beforeend', outgoingMessageHTML(message, time) );
+        elem.append( outgoingMessageHTML(message, time))
     }else{
-        elem.insertAdjacentHTML( 'beforeend', incomingMessageHTML(message, time) );
+        elem.append( incomingMessageHTML(message, time))
     }
     if (toBottom === true){
-        $(elem).scrollToBottom()
+        elem.scrollToBottom()
     }
 }
 

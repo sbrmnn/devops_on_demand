@@ -142,13 +142,6 @@ $(document).on('change paste keyup','.certificate-number', function(e){
 });
 
 
-$(document).keyup(function (e) {
-    if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
-        var chatroomId = $(document.activeElement).data("chatroom");
-        broadcastMessage(chatroomId)
-    }
-});
-
 $(document).on(click_event,'.preview-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -207,10 +200,31 @@ $(document).on(click_event,'.chatroom-list-elem', function(e){
 });
 
 
-$(document).on(click_event,'.msg_send_btn', function(){
-    broadcastMessage($(this).data('chatroom'))
+$(document).on(click_event,'button.toggle_message_box', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var self = $(this);
+    var chatbox = $('.'+self.data('messagebox'));
+    if (chatbox.hasClass('d-none')){
+        chatbox.removeClass('d-none');
+        $.ajax({
+            type: 'POST',
+            url: '/chatrooms',
+            data: {chatrooms: {freelancer_user: $(this).data('freelancer-user')}},
+            dataType: 'script',
+            async: false
+        })
+
+    }else{
+        chatbox.addClass('d-none');
+    }
+
+    return false;
 });
 
+$(document).on(click_event,'.msg_send_btn', function(){
+    broadcastMessage($(this).data('chatroom'), $(this))
+});
 
 function bindScrollFunctionToForm(){
      $('form').submit(function() {

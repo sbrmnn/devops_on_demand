@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resource :chatrooms, only: :create
+
   resources :payout_identities
 
   get 'freelancer_searches',  controller: "freelancer_searches", action: "index"

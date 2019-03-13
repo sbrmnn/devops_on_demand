@@ -1,17 +1,16 @@
  <% freelancers.each do |freelancer| %>
    <% freelancer_presenter =  FreelancerPresenter.new(freelancer) %>
       <div class="container p-0">
-        <div class="d-flex bd-highlight flex-row card shadow-sm">
+        <div style="border-radius: 0" class="d-flex bd-highlight flex-row card">
           <div class="p-4 text-center flex-shrink-1 bd-highlight">
             <% if freelancer.try(:profile_photo) %>
               <img src="<%= cl_image_path(freelancer_presenter.image_public_id, width: 100, height: 100, crop: "scale") ? cl_image_path(freelancer_presenter.image_public_id, width: 100, height: 100, radius: :max, crop: :scale) : "https://via.placeholder.com/100" %>">
             <% end %>
             <div class="d-flex flex-column bd-highlight mt-1">
               <div class="bd-highlight"><button class="btn btn btn-outline-dark mt-2 w-100" >Save</button></div>
-              <div class="bd-highlight"><button class="btn btn-info mt-1 w-100" >Message</button></div>
+              <div class="bd-highlight"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn w-100 mt-2 toggle_message_box">Message</button></div>
             </div>
           </div>
-
 
           <div class="py-4 px-2 mt-2 flex-grow-1">
             <h6><a class="namelink" href="/freelancers/<%= freelancer.id %>"><%= freelancer.user_name %></a></h6>
@@ -29,15 +28,11 @@
               <% end %>
             </ul>
            </div>
-
         </div>
 
-       <br>
+        <div class="message_box_freelancer_<%= freelancer.id %> d-none">
 
-
-
-
-
+        </div>
      </div>
 
 

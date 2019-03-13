@@ -12,6 +12,9 @@ class FreelancerPresenter < ApplicationPresenter
     model.about_me || default_about_me
   end
 
+  def user
+    @user ||= model.user
+  end
 
   def truncated_about_me
     about_me.truncate_words(75)
@@ -43,6 +46,10 @@ class FreelancerPresenter < ApplicationPresenter
 
   def certifications
     model.certifications
+  end
+
+  def chatroom_with(user)
+
   end
 
   def work_experiences
@@ -83,9 +90,6 @@ class FreelancerPresenter < ApplicationPresenter
 
   private
 
-  def user
-    @user ||= model.user
-  end
 
   def default_headline
     "Cloud Engineer"

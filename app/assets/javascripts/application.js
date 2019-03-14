@@ -165,7 +165,7 @@ $(document).on(click_event,'.preview-btn', function(e){
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $('#pills-freelancer-registration-tab').click()
+    $('#pills-freelancer-registration-tab').click();
     return false;
 });
 
@@ -215,15 +215,15 @@ $(document).on(click_event,'button.toggle_message_box', function(e){
     var self = $(this);
     var chatbox = $('.'+self.data('messagebox'));
     if (chatbox.hasClass('d-none')){
-        chatbox.removeClass('d-none');
         $.ajax({
             type: 'POST',
             url: '/chatrooms',
             data: {chatrooms: {freelancer_user: $(this).data('freelancer-user')}},
             dataType: 'script',
             async: false
-        })
-
+        });
+        chatbox.removeClass('d-none');
+        chatbox[0].scrollIntoView(false);
     }else{
         chatbox.addClass('d-none');
     }

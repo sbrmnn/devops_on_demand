@@ -147,6 +147,138 @@ body {
 }
 
 
+.profile {
+  overflow: hidden !important;
+}
+
+.resume-wrapper {
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+.resume-wrapper-inner {
+  max-width: 1000px;
+}
+
+.resume-header {
+  background: #434E5E;
+  color: rgba(255, 255, 255, 0.9);
+  height: 250px;
+}
+
+.resume-header .picture {
+  width: 250px;
+}
+.resume-header .hire-contact-btns{
+  position: relative;
+  bottom: 0px;
+}
+
+.resume-header .name {
+  font-size: 2.25rem;
+  letter-spacing: 0.175rem;
+  font-weight: 900;
+}
+
+.resume-header .rate{
+  font-size: large;
+}
+
+.resume-header .title {
+  font-size: 1.5rem;
+}
+
+.resume-header a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.resume-header a:hover {
+  color: white;
+}
+
+.resume-social {
+  font-size: 0.875rem;
+}
+
+.resume-social .fa-container {
+  font-size: 1rem;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 0.125rem;
+  background: white;
+  color: #434E5E;
+}
+
+.resume-section-title {
+  font-size: 1.25rem;
+  position: relative;
+  color: #434E5E;
+}
+
+.resume-section-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #8d9aad;
+}
+
+.resume-section-content {
+  color: #58677c;
+}
+
+.resume-progress {
+  height: 0.6rem;
+}
+
+.resume-company-name {
+  color: #58677c;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.resume-position-time {
+  font-size: 0.875rem;
+  color: #aab4c3;
+}
+
+.resume-position-title {
+  font-size: 1.125rem;
+  color: #434E5E;
+}
+
+.resume-timeline-item-desc-heading {
+  font-size: 1rem;
+}
+
+
+
+
+
+
+@media (max-width: 767.98px) {
+  .resume-wrapper {
+    padding-top: 0;
+  }
+  .resume-header {
+    height: auto;
+  }
+  .resume-header .picture {
+    width: 120px;
+    border-radius: 4px;
+  }
+
+}
+
+.font-underline{
+  text-decoration: underline;
+}
+
+
+
 
 
 

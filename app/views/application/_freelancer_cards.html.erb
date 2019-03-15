@@ -9,22 +9,58 @@
             <div class="d-flex flex-column bd-highlight mt-1">
               <div class="bd-highlight"><button class="btn btn btn-outline-dark mt-2 w-100" >Save</button></div>
               <div class="bd-highlight"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn w-100 mt-2 toggle_message_box">Message</button></div>
+              <div class="bd-highlight"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-success btn w-100 mt-2 toggle_message_box">Hire Me</button></div>
             </div>
           </div>
 
           <div class="py-4 px-2 mt-2 flex-grow-1">
-            <h6><a class="namelink" href="/freelancers/<%= freelancer.id %>"> <%= freelancer.user_name %></a></h6>
+            <h6><%= freelancer.user_name %></h6>
             <h5><strong><%= freelancer.headline %></strong></h5>
             <ul class="list-inline">
               <li class="list-inline-item"><strong><%= freelancer.rate %></strong></li>
               <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
             </ul>
-            <p class="mb-2">
-              <%= freelancer.truncated_about_me %>
-            </p>
-            <ul class="list-inline">
+            <div class="profile">
+              <div class="about_me">
+                <%= freelancer.about_me %>
+              </div>
+              <div class="my-3 work_experience">
+                <h5 class="font-underline py-2">Work Experience</h5>
+                <div class="resume-section-content">
+                  <div class="resume-timeline">
+
+                      <% freelancer.work_experiences.each do |we| %>
+
+                          <article class="resume-timeline-item pb-2">
+                            <div class="resume-timeline-item-header mb-2">
+                              <div class="d-flex flex-column flex-md-row">
+                                <h3 class="resume-position-title text-dark mb-1 mr-1"><%= we.title %> @</h3><h3 class="resume-position-title text-dark font-weight-bold"><%= we.employer %></h3>
+                              </div><!--//row-->
+                              <div class="resume-position-time"><%= we.from %> - <%= we.to.present? ?  we.to : "Present" %></div>
+                            </div><!--//resume-timeline-item-header-->
+                            <div class="resume-timeline-item-desc">
+                              <h4 class="resume-timeline-item-desc-heading font-weight-bold text-dark">Achievements:</h4>
+                              <p class="mb-0 text-dark"><%= we.achievements %></p>
+                            </div><!--//resume-timeline-item-desc-->
+
+                          </article><!--//resume-timeline-item-->
+
+                      <% end %>
+
+                  </div><!--//resume-timeline-->
+                </div>
+              </div>
+            </div>
+            <!--//resume-timeline
+            <ul class="list-inline my-2">
               <% freelancer.skill.try(:each) do |skill| %>
                 <li class="list-inline-item"><span class="badge badge-warning"><%= skill %></span></li>
+              <% end %>
+            </ul>
+            -->
+            <ul class="list-inline my-2">
+              <% freelancer.certifications.try(:each) do |cert| %>
+                <li class="list-inline-item"><span class="badge badge-warning"><%= cert.certification_name.provider%> <%= cert.certification_name.name %></span></li>
               <% end %>
             </ul>
            </div>

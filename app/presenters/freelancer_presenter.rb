@@ -16,10 +16,6 @@ class FreelancerPresenter < ApplicationPresenter
     @user ||= model.user
   end
 
-  def truncated_about_me
-    about_me.truncate_words(75)
-  end
-
   def rate
     "$#{model.rate}/hr"
   end

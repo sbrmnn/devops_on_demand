@@ -23,12 +23,18 @@
 //= require cloudinary
 //= require cocoon
 //= require payment_processor
+//= require readmore
 //= require_tree .
 
 $.ajaxSetup({
     beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
     }
+});
+
+$('article').readmore({
+    speed: 75,
+    lessLink: '<a href="#">Read less</a>'
 });
 
 
@@ -161,6 +167,15 @@ $(document).on(click_event,'.preview-btn', function(e){
     return false;
 });
 
+$(document).on(click_event,'.name-link', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var modalIframe = $("#modal-iframe");
+    var iframeUrl = $(this).attr('href');
+    lity(iframeUrl);
+    return false;
+});
+
 
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
     e.preventDefault();
@@ -259,6 +274,9 @@ function getSelectedPill(){
          window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }
+
+
+
 
 
 

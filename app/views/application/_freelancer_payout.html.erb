@@ -39,23 +39,25 @@
                         <%= legal_entity.select(:dob_year, ((Time.now.year-18).downto(1960)).to_a, {include_blank: 'Select year'}, {:prompt => 'Select year', class: "form-control"})%>
                       </div>
                     </div>
-                    <div class="form-row individual-id-tags ">
-                      <div class="col-md-6 form-group legal_entity_ssn_last_4 ">
-                        <%= legal_entity.label :social_security_last_4_digits%>
-                        <%= legal_entity.number_field :ssn_last_4, class: :'form-control' %>
-                      </div>
-                      <div class="col-md-6 form-group legal_entity_personal_id_number ">
-                        <%= legal_entity.label :personal_id_number, 'Social Security Number (US) / Social Insurance Number (CN)' %>
-                        <%= text_field_tag 'personal_id_number_text', nil, name: nil, class: :'form-control', maxlength:"9" %>
-                        <%= legal_entity.hidden_field :personal_id_number%>
-                        <div class="alert alert-success mt-2" role="alert">
-                          Your personal identification number is stored securely with our payment provider <a href="https://www.stripe.com">Stripe</a> and bypasses our servers.
+                    <% if freelancer_presenter.canadian? || freelancer_presenter.american? %>
+                      <div class="form-row individual-id-tags ">
+                        <div class="col-md-6 form-group legal_entity_ssn_last_4 ">
+                          <%= legal_entity.label :social_security_last_4_digits%>
+                          <%= legal_entity.number_field :ssn_last_4, class: :'form-control' %>
+                        </div>
+                        <div class="col-md-6 form-group legal_entity_personal_id_number ">
+                          <%= legal_entity.label :personal_id_number, 'Social Security Number (US) / Social Insurance Number (CN)' %>
+                          <%= text_field_tag 'personal_id_number_text', nil, name: nil, class: :'form-control', maxlength:"9" %>
+                          <%= legal_entity.hidden_field :personal_id_number%>
+                          <div class="alert alert-success mt-2" role="alert">
+                            Your personal identification number is stored securely with our payment provider <a href="https://www.stripe.com">Stripe</a> and bypasses our servers.
+                          </div>
+                        </div>
+                        <div class="col-md-6 form-group ">
+                          <div id="personal-number-error-message" role="alert"></div>
                         </div>
                       </div>
-                      <div class="col-md-6 form-group ">
-                        <div id="personal-number-error-message" role="alert"></div>
-                      </div>
-                    </div>
+                    <% end %>
                     <div class="form-row business-id-tags ">
                       <div class="col-md-6 form-group legal_entity_business_name ">
                         <%= legal_entity.label :business_name %>

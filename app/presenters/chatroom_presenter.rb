@@ -5,7 +5,7 @@ class ChatroomPresenter < ApplicationPresenter
   end
 
   def participant_names_excluding_user(exclude_user=nil)
-    participants(exclude_user).map{|u| "#{u.try(:first_name)} #{u.try(:last_name)}"}.join(', ')
+    participants_excluding_user(exclude_user).map{|u| "#{u.try(:first_name)} #{u.try(:last_name)}" }.join(', ')
   end
 
   def participants_excluding_user(exclude_user=nil)

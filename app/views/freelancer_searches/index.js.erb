@@ -3,3 +3,8 @@ freelancerSearchResultsDiv.empty()
 freelancerSearchResultsDiv.append("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
 $('.fa-spin').addClass('d-none')
 
+$('.profile').readmore({
+    speed: 75,
+    collapsedHeight: 48,
+    lessLink: '<a href="#">Read less</a>'
+});

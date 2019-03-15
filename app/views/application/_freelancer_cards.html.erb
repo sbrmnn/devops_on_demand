@@ -30,7 +30,8 @@
                   <div class="resume-timeline">
 
                       <% freelancer.work_experiences.each do |we| %>
-
+                      <ul class="px-3">
+                        <li>
                           <article class="resume-timeline-item pb-2">
                             <div class="resume-timeline-item-header mb-2">
                               <div class="d-flex flex-column flex-md-row">
@@ -42,8 +43,10 @@
                               <h4 class="resume-timeline-item-desc-heading font-weight-bold text-dark">Achievements:</h4>
                               <p class="mb-0 text-dark"><%= we.achievements %></p>
                             </div><!--//resume-timeline-item-desc-->
-
                           </article><!--//resume-timeline-item-->
+                        </li>
+                      </ul>
+
 
                       <% end %>
 

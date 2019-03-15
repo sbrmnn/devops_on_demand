@@ -7,7 +7,7 @@
             <% present(user) do |user_presenter| %>
               <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user_presenter.freelancer, url: [user_presenter.model, @freelancer], remote: true) do |form| %>
                 <h2 class="pt-3"><%=t('freelancer_registration_form') %></h2>
-                <hr class="mb-4">
+                <hr class="mb-2">
                 <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">About me</h4>
                 <div class="basic-info-nested-fields mb-2">
                   <div class="form-row">

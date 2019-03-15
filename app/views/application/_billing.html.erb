@@ -5,7 +5,7 @@
       <% present(user) do |user_presenter| %>
         <%= form_with(model: user_presenter.credit_card, url: "/users/#{user_presenter.id}/credit_cards", html: {id: "payment-form"}, remote: true) do |f| %>
             <h2 class="pt-3"><%=t('credit_card_form') %></h2>
-            <hr class="mb-4">
+            <hr class="mb-2">
             <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('card_info')%></h4>
           <%= f.hidden_field  :token, id: "credit-card-token" ,class: :'form-control' %>
           <div class="form-row mt-1">

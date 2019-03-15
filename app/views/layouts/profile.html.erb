@@ -1,28 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title><%= @freelancer.try(:name) ? @freelancer.try(:name) << " - Profile" : "Profile" %></title>
-
-  <!-- Meta -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Responsive Resume Template">
-
-
-
-
-  <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-
-
-  <!-- Theme CSS -->
-  <link id="theme-style" rel="stylesheet" href="/vendor/profile.css">
+  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevopsOnDemand</title>
+  <%= csrf_meta_tags %>
+  <%= Gon::Base.render_data %>
+  <script src="https://js.stripe.com/v3/"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-
-<body>
-   <%= yield %>
+<body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
+<%= yield %>
 </body>
 </html>

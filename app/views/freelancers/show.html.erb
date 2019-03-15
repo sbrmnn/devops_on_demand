@@ -27,26 +27,25 @@
           <div class="pl-0">
 
             <% @freelancer.work_experiences.each do |we| %>
-
               <ul class="px-3">
                 <li>
                   <article class="resume-timeline-item pb-2">
-                    <div class="resume-timeline-item-header mb-2">
+                    <div class="resume-timeline-item-header mb-1">
                       <div class="d-flex flex-column flex-md-row">
-                        <h3 class="resume-position-title text-dark mb-1 mr-1"><%= we.title %> @</h3><h3 class="resume-position-title text-dark font-weight-bold"><%= we.employer %></h3>
+                        <h3 class="resume-position-title text-dark font-weight-bold"><%= we.title %></h3>
+                      </div><!--//row-->
+                      <div class="d-flex flex-column flex-md-row">
+                        <h4 class="resume-position-title text-dark"><%= we.employer %></h4>
                       </div><!--//row-->
                       <div class="resume-position-time"><%= we.from %> - <%= we.to.present? ?  we.to : "Present" %></div>
                     </div><!--//resume-timeline-item-header-->
                     <div class="resume-timeline-item-desc">
-                      <h4 class="resume-timeline-item-desc-heading font-weight-bold text-dark">Achievements:</h4>
                       <p class="mb-0 text-dark"><%= we.achievements %></p>
                     </div><!--//resume-timeline-item-desc-->
                   </article><!--//resume-timeline-item-->
                 </li>
               </ul>
-
             <% end %>
-
           </div><!--//resume-timeline-->
         </div>
       </div>
@@ -58,7 +57,7 @@
               <% end %>
             </ul>
             -->
-    <h5 class="font-underline pt-2">Certifications</h5>
+    <h5 class="font-underline py-2">Certifications</h5>
     <ul class="list-inline">
       <% @freelancer.certifications.try(:each) do |cert| %>
         <li class="list-inline-item"><span class="badge badge-warning"><%= cert.certification_name.provider%> <%= cert.certification_name.name %></span></li>

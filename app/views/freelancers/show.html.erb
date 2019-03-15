@@ -58,7 +58,8 @@
               <% end %>
             </ul>
             -->
-    <ul class="list-inline my-2">
+    <h5 class="font-underline pt-2">Certifications</h5>
+    <ul class="list-inline">
       <% @freelancer.certifications.try(:each) do |cert| %>
         <li class="list-inline-item"><span class="badge badge-warning"><%= cert.certification_name.provider%> <%= cert.certification_name.name %></span></li>
       <% end %>

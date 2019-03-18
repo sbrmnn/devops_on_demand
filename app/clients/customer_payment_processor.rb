@@ -7,28 +7,36 @@ class CustomerPaymentProcessor
   end
 
 
-  def customer_info(customer_id)
-    return nil if customer_id.blank?
-    Stripe::Customer.retrieve(customer_id)
+  def customer_info
+    if stripe_id.blank?
+      customer = add_customer(user.email)
+      user.update_attributes(stripe_id: customer.id)
+      return customer
+    end
+    Stripe::Customer.retrieve(user.stripe_id)
   end
+
+  def get_sources
+    customer_info&.sources
+  end
+
+  def get_source(account_id)
+    get_sources&.retrieve(account_id)
+  end
+
+  def set_source(source_token)
+    get_sources&.create({source: source_token})
+  end
+
+  def stripe_id
+    user.stripe_id
+  end
+
+  private
 
   def add_customer(email)
-    customer = Stripe::Customer.create(
+    Stripe::Customer.create(
         email:  email
     )
-    customer.id
-  end
-
-  def get_sources(customer_id)
-    customer_info(customer_id)&.sources
-  end
-
-  def get_source(customer_id, account_id)
-    get_sources(customer_id)&.retrieve(account_id)
-  end
-
-  def set_source(customer_id, source_token)
-    bank_account = get_sources(customer_id)&.create({source: source_token})
-    bank_account&.id
   end
 end

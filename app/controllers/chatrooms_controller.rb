@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_freelancer
 
-  include StrongParameterizable
+
 
   def create
     chatrooms = current_user.chatrooms
@@ -22,6 +22,7 @@ class ChatroomsController < ApplicationController
   def get_freelancer
     @freelancer = User.find_by(id: chatroom_params[:freelancer_user]).freelancer
   end
+
   def chatroom_params
     whitelist_params(params, :chatrooms)
   end

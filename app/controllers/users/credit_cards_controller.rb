@@ -1,19 +1,20 @@
 class Users::CreditCardsController < ApplicationController
 
   before_action :authenticate_user!
-  include StrongParameterizable
+  before_action :user
+  layout 'profile'
 
+  def show
 
+  end
 
   def create
-    @user = current_user
-    @credit_card = current_user.build_credit_card(credit_card_params)
+    @credit_card = user.build_credit_card(credit_card_params)
     @credit_card.save
   end
 
   def update
-    @user = current_user
-    @credit_card = current_user.credit_card
+    @credit_card = user.credit_card
     @credit_card.update_attributes(credit_card_params)
   end
 

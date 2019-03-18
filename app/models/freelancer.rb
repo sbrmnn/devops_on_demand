@@ -7,7 +7,7 @@ class Freelancer < ApplicationRecord
   has_one :payout_identity
   has_one :legal_entity, through: :payout_identity
   has_many :certifications, dependent: :destroy
-
+  has_many :jobs
   validates_presence_of :headline
   validates_presence_of :location
   validates_presence_of :about_me

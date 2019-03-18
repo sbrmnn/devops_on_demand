@@ -1,7 +1,7 @@
 class Users::SettingsController < ApplicationController
   before_action :authenticate_user!
   before_action :user
-  include StrongParameterizable
+
 
   def update
     @setting = user.setting

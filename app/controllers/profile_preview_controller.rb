@@ -1,7 +1,7 @@
 class ProfilePreviewController < ApplicationController
   layout 'profile'
   before_action :authenticate_user!
-  include StrongParameterizable
+
 
   def index
     freelancer = Freelancer.new(freelancer_params)

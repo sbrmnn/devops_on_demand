@@ -1,7 +1,5 @@
 var stripe = Stripe('pk_test_W0NqkO9ids4x1iZNvTEMNQ8n');
 
-
-
 $(document).on('keyup change input paste','#personal_id_number_text', function(e){
     var $this, lastCharacter, maxCount, val, valLength;
     $this = $(this);
@@ -156,13 +154,11 @@ var style = {
 };
 
 
-function mountCreditCardElement() {
+function mountCreditCardElement(jobform) {
 // Create an instance of the card Element.
-    if ($('#card-element').length === 0 || $('#payment-form').length === 0){
-        return null
-    }
  // Add an instance of the card Element into the `card-element` <div>.
-    card.mount('#card-element');
+    card.unmount();
+    card.mount(jobform + ' > .card > .container > #payment-form > div.form-row.mt-1 > div:nth-child(2) > div.card-element.form-control');
 
 // Handle real-time validation errors from the card Element.
     card.addEventListener('change', function (event) {

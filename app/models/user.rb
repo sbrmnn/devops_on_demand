@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
   has_many :messages
+  has_many :jobs
   has_one :setting
   has_one :freelancer
   has_one :credit_card

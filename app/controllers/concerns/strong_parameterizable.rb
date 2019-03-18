@@ -15,10 +15,11 @@ module StrongParameterizable
                      certifications_attributes:   whitelist_certifications_attributes(preview),
                      work_experiences_attributes: whitelist_work_experiences_attributes(preview)],
         freelancer_searches: [:value],
-        credit_card: [:token, :name, :line1, :line2, :city, :state, :zip, :country],
+        credit_card: [:front_end_token, :name, :line1, :line2, :city, :state, :zip, :country],
         payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes],
         setting: [:newsletter_subscription, :chat_notification_subscription],
-        chatrooms: [:freelancer_user]
+        chatrooms: [:freelancer_user],
+        job: [:freelancer_id, :description, :hours, :from, :to]
 
     }[controller_name]
   end

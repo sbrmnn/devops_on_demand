@@ -105,7 +105,6 @@ $( document ).ready(function() {
 
 function init() {
     _freelancerRegistrationInit();
-    _billingInit();
     getSelectedPill();
     bindChatroomToRecieveMessages();
     subscribeToRooms();
@@ -167,11 +166,29 @@ $(document).on(click_event,'.preview-btn', function(e){
     return false;
 });
 
+$(document).on(click_event,'.billing-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $('.jobs-info-form').addClass('d-none');
+    $('.billing-info-form').removeClass('d-none');
+    return false;
+});
+
 $(document).on(click_event,'.name-link', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     var modalIframe = $("#modal-iframe");
     var iframeUrl = $(this).attr('href');
+    lity(iframeUrl);
+    return false;
+});
+
+
+$(document).on(click_event,'.hire-me-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var modalIframe = $("#modal-iframe");
+    var iframeUrl = "./1/jobs/new"
     lity(iframeUrl);
     return false;
 });

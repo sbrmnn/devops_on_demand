@@ -1,5 +1,5 @@
 class FreelancerSearchesController < ApplicationController
-  include StrongParameterizable
+
 
   def index
     @freelancer_searches = Freelancer.search(freelancer_searches[:value])

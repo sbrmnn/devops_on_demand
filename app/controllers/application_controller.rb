@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_user
   before_action :set_freelancer_id
   before_action :set_missing_payout_fields
+  include StrongParameterizable
 
   def after_sign_in_path_for(resource)
     user_path(current_user)

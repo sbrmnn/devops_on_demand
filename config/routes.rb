@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   resource :chatrooms, only: :create
 
   resources :payout_identities
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :photos
   resources :revenues
-  resources :reservations
+  resource :reservations, only: [:new, :create, :update]
   resources :conversations
   resources :calendars
   resources :reviews
@@ -35,7 +36,8 @@ Rails.application.routes.draw do
     scope module: :users do
       resources :freelancers
       resource :settings, only: [:create, :update]
-      resource :credit_cards, only: [:create, :update]
+      resource :credit_cards, only: [:show, :create, :update]
+      resource :jobs, only: [:new, :show, :create, :update]
     end
   end
 

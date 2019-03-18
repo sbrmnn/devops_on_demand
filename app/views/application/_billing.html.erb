@@ -1,31 +1,23 @@
-
-   <div  class="card">
-    <div class="card-body">
+ <div class="card card-body">
       <div class="container p-0">
       <% present(user) do |user_presenter| %>
         <%= form_with(model: user_presenter.credit_card, url: "/users/#{user_presenter.id}/credit_cards", html: {id: "payment-form"}, remote: true) do |f| %>
-            <h2 class="pt-3"><%=t('credit_card_form') %></h2>
-            <hr class="mb-2">
-            <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('card_info')%></h4>
-          <%= f.hidden_field  :token, id: "credit-card-token" ,class: :'form-control' %>
+          <h2 class="mt-1"><%=t('billing_form') %></h2>
+          <hr>
+          <%= f.hidden_field  :front_end_token, id: "credit-card-token", class: :'form-control' %>
           <div class="form-row mt-1">
             <div class="col-md-6 form-group">
               <label>Card Holder Name</label>
-              <%= f.text_field :name, id: 'credit-card-name' ,class: 'form-control'  %>
+              <%= f.text_field :name, id: 'credit-card-name', class: 'form-control'  %>
             </div>
-          </div>
-          <div class="form-row pt-2">
-            <div class="col-md-12 form-group">
+            <div class="col-md-6 form-group">
               <label>Credit or Debit Card</label>
-              <div id="card-element" class="form-control">
+              <div class="card-element form-control">
                 <!-- A Stripe Element will be inserted here. -->
               </div>
               <div id="card-errors" role="alert"></div>
             </div>
           </div>
-
-          <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%= t('billing_address')%></h4>
-
           <div class="form-row">
             <div class="col-md-6 form-group">
               <label>Address Line 1</label>
@@ -55,7 +47,7 @@
             </div>
             <div class="col-md-6 form-group">
               <label>Country</label>
-              <%= f.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {:prompt => 'Select Country', id: 'credit-card-country', class: "form-control"})%>
+              <%= f.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {prompt: 'Select Country', id: 'credit-card-country', class: "form-control"})%>
             </div>
           </div>
 
@@ -71,13 +63,13 @@
           </div>
 
           <div class="pull-right">
-            <%= f.submit  id: 'credit-card-form-submit-btn', :class => "btn btn-primary btn-lg" %>
+            <%= f.submit  id: 'credit-card-form-submit-btn', class:  "btn btn-primary" %>
           </div>
           <% end %>
-      <% end %>
+        <% end %>
          </div>
       </div>
-      </div>
+
 
 
 

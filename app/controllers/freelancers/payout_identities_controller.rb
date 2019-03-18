@@ -1,6 +1,6 @@
 class Freelancers::PayoutIdentitiesController < ApplicationController
   before_action :authenticate_user!
-  include StrongParameterizable
+
 
 
   def update

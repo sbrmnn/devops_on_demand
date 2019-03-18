@@ -1,3 +1,3 @@
-function _billingInit(){
-    mountCreditCardElement();
+function _billingInit(div){
+    mountCreditCardElement(div);
 }

@@ -174,6 +174,9 @@ $(document).on(click_event,'.billing-btn', function(e){
     return false;
 });
 
+
+
+
 $(document).on(click_event,'.name-link', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -187,9 +190,7 @@ $(document).on(click_event,'.name-link', function(e){
 $(document).on(click_event,'.hire-me-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    var modalIframe = $("#modal-iframe");
-    var iframeUrl = "./1/jobs/new"
-    lity(iframeUrl);
+    $($(this).attr("href")).removeClass("d-none");
     return false;
 });
 
@@ -200,6 +201,21 @@ $(document).on(click_event,'.freelancer-signup-btn', function(e){
     $('#pills-freelancer-registration-tab').click();
     return false;
 });
+
+$(document).on("change",'#different-card-checkbox', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if ($(this).is(":checked") === true){
+      $(".new-card-section").removeClass('d-none');
+        mountCreditCardElement("#card-element-for-freelancer-" + $(this).data('freelancer'))
+    }else{
+        $(".new-card-section").addClass('d-none')
+    }
+
+    return false;
+});
+
+
 
 
 

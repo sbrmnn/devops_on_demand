@@ -1,7 +1,5 @@
  <% freelancers.each do |freelancer| %>
-   <div id="job-form<%=freelancer.id%>" style="background:#fff" class="lity-hide">
-     <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
-   </div>
+
    <% freelancer_presenter =  FreelancerPresenter.new(freelancer) %>
       <div class="container p-0">
         <div style="border-radius: 0" class="d-flex bd-highlight flex-row card">
@@ -12,8 +10,7 @@
             <div class="d-flex flex-column bd-highlight mt-1">
               <div class="bd-highlight"><button class="btn btn btn-outline-dark mt-2 w-100" >Save</button></div>
               <div class="bd-highlight"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn w-100 mt-2 toggle_message_box">Message</button></div>
-
-              <div class="bd-highlight"><a href="#job-form<%=freelancer.id%>" class="btn-success btn w-100 mt-2" data-lity>Hire Me</a></div>
+              <div class="bd-highlight"><a href="#job-form<%=freelancer.id%>" class="btn-success btn w-100 mt-2 hire-me-btn" >Hire Me</a></div>
             </div>
           </div>
           <div class="py-4 px-2 mt-2 flex-grow-1">
@@ -77,7 +74,7 @@
         <div class="message_box_freelancer_<%= freelancer.id %> d-none">
 
         </div>
-        <div class="job-form<%=freelancer.id%>" style="background:#fff">
+        <div id="job-form<%=freelancer.id%>" style="background:#fff" class="d-none">
           <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
         </div>
      </div>

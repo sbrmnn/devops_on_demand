@@ -158,7 +158,7 @@ function mountCreditCardElement(jobform) {
 // Create an instance of the card Element.
  // Add an instance of the card Element into the `card-element` <div>.
     card.unmount();
-    card.mount(jobform + ' > .card > .container > #payment-form > div.form-row.mt-1 > div:nth-child(2) > div.card-element.form-control');
+    card.mount(jobform);
 
 // Handle real-time validation errors from the card Element.
     card.addEventListener('change', function (event) {

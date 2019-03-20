@@ -48,7 +48,7 @@
                     <%= form.text_field :name, class: 'credit-card-name form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>Credit or Debit Card</label>
+                    <label>Card Number</label>
                     <div id="card-element-for-freelancer-<%= freelancer_id %>" class="card-element form-control">
                       <!-- A Stripe Element will be inserted here. -->
                     </div>
@@ -89,7 +89,7 @@
                 </div>
                   <div class="form-row">
                   <div class="col-md-12 text-center">
-                    <button type="button" onclick="externalAccountToken()" class="btn btn-md btn-info p-2 save_card_btn">+ Save Card</button>
+                    <button type="button" data-freelancer="<%= freelancer_id %>"   class="btn d-none btn-md btn-info p-2 save_card_btn">+ Save Card</button>
                   </div>
                   </div>
                 </div>

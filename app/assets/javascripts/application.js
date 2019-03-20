@@ -212,8 +212,7 @@ $(document).on(click_event,'.freelancer-signup-btn', function(e){
 $(document).on(click_event,'.save_card_btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    getCreditCardToken();
-    $(this).html("Saved!");
+    getCreditCardToken("#job-form" + $(this).data("freelancer"));
 
     return false;
 });
@@ -224,8 +223,10 @@ $(document).on(click_event,'.save_card_btn', function(e){
 $(document).on(click_event,'.card-element', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    if ($(".card-element").children().length === 0) {
+    if ($(this).children().length === 0) {
+        $(this).closest("form").find(".save_card_btn").removeClass("d-none")
         mountCreditCardElement("#" + $(this).attr("id"));
+
     }
     return false;
 });

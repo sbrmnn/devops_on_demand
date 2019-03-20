@@ -153,22 +153,24 @@ var style = {
     }
 };
 
-function getCreditCardToken(){
+function getCreditCardToken(jobform){
     var custData = {
-        name: $('#credit-card-name').val(),
-        address_line1: $('#credit-card-line1').val(),
-        address_line2: $('#credit-card-line2').val(),
-        address_city: $('#credit-card-city').val(),
-        address_state: $('#credit-card-state').val(),
-        address_zip: $('#credit-card-zip').val(),
-        address_country: $('#credit-card-country').val()
+        name: $('.credit-card-name').val(),
+        address_line1: $('.credit-card-line1').val(),
+        address_line2: $('.credit-card-line2').val(),
+        address_city: $('.credit-card-city').val(),
+        address_state: $('.credit-card-state').val(),
+        address_zip: $('.credit-card-zip').val(),
+        address_country: $('.credit-card-country').val()
     };
 
     stripe.createToken(card, custData).then(function (result) {
         if (result.error) {
-            // Inform the user if there was an error.
-            var errorElement = document.getElementById('card-errors');
-            errorElement.textContent = result.error.message;
+          var errorElement = $(jobform).find(".card-errors");
+          errorElement.text(result.error.message);
+        }else{
+            $(jobform).find(".credit-card-token").val(result.token.id);
+            $(jobform).find('.save_card_btn').text("Saved!")
         }
     });
 }
@@ -181,11 +183,11 @@ function mountCreditCardElement(jobform) {
 
 // Handle real-time validation errors from the card Element.
     card.addEventListener('change', function (event) {
-        var displayError = document.getElementById('card-errors');
+        var displayError = $(jobform).find(".card-errors");
         if (event.error) {
-            displayError.textContent = event.error.message;
+            displayError.text(event.error.message);
         } else {
-            displayError.textContent = '';
+            displayError.text(" ");
         }
     });
 }

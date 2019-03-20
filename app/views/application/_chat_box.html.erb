@@ -15,7 +15,7 @@
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">
                       <% if participant.try(:freelancer) %>
-                        <a class="name-link" href="/freelancers/<%= participant.try(:freelancer).id %>"><%= participant %></a>
+                        <a class="name-link" href="/freelancers/<%= participant.try(:freelancer).id %>"><%= participant.try(:first_name) << " " << participant.try(:last_name) %></a>
                       <% elsif participant.present? %>
                         <%= participant.try(:first_name) << " " << participant.try(:last_name) %>
                       <% end %>

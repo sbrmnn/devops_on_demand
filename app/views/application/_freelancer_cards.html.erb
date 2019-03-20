@@ -74,7 +74,7 @@
         <div class="message_box_freelancer_<%= freelancer.id %> d-none">
 
         </div>
-        <div id="job-form<%=freelancer.id%>" style="background:#fff" class="d-none">
+        <div id="job-form<%=freelancer.id%>"  class="d-none">
           <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
         </div>
      </div>

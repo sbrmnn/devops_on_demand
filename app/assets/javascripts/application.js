@@ -190,7 +190,13 @@ $(document).on(click_event,'.name-link', function(e){
 $(document).on(click_event,'.hire-me-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    $($(this).attr("href")).removeClass("d-none");
+    var jobForm = $($(this).attr("href"))
+    if (jobForm.hasClass("d-none")){
+        $($(this).attr("href")).removeClass("d-none");
+    }else{
+        $($(this).attr("href")).addClass("d-none");
+    }
+
     return false;
 });
 
@@ -202,14 +208,39 @@ $(document).on(click_event,'.freelancer-signup-btn', function(e){
     return false;
 });
 
-$(document).on("change",'#different-card-checkbox', function(e){
+
+$(document).on(click_event,'.save_card_btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    getCreditCardToken();
+    $(this).html("Saved!");
+
+    return false;
+});
+
+
+
+
+$(document).on(click_event,'.card-element', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if ($(".card-element").children().length === 0) {
+        mountCreditCardElement("#" + $(this).attr("id"));
+    }
+    return false;
+});
+
+
+
+
+$(document).on("change",'.different-card-checkbox', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     if ($(this).is(":checked") === true){
-      $(".new-card-section").removeClass('d-none');
-        mountCreditCardElement("#card-element-for-freelancer-" + $(this).data('freelancer'))
+        $(this).closest(".form-row").siblings(".new-card-section").removeClass('d-none');
+        //mountCreditCardElement("#card-element-for-freelancer-" + $(this).data('freelancer'))
     }else{
-        $(".new-card-section").addClass('d-none')
+        $(this).closest(".form-row").siblings(".new-card-section").addClass('d-none')
     }
 
     return false;

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="border-radius: 0">
   <div class="card-body">
     <div class="container p-0">
       <div class="row">
@@ -36,57 +36,62 @@
                     <%= form.label :credit_card %>
                     <%= form.text_field :credit_card, class: 'form-control', disabled: true, value: "**** **** **** #{user.credit_card.try(:last_4)}" %>
                     <div class="checkbox mt-3">
-                      <label><input type="checkbox" data-freelancer="<%= freelancer_id %>" id="different-card-checkbox" class="mr-2" value="">Use Different Card</label>
+                      <label><input type="checkbox" data-freelancer="<%= freelancer_id %>" class="different-card-checkbox mr-2" value="">Use Different Card</label>
                     </div>
                   </div>
                 </div>
                 <div class = "new-card-section d-none">
-                <%= form.hidden_field  :front_end_token, id: "credit-card-token", class: :'form-control' %>
+                <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
                 <div class="form-row mt-1">
                   <div class="col-md-6 form-group">
                     <label>Card Holder Name</label>
-                    <%= form.text_field :name, id: 'credit-card-name', class: 'form-control'  %>
+                    <%= form.text_field :name, class: 'credit-card-name form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
                     <label>Credit or Debit Card</label>
                     <div id="card-element-for-freelancer-<%= freelancer_id %>" class="card-element form-control">
                       <!-- A Stripe Element will be inserted here. -->
                     </div>
-                    <div id="card-errors" role="alert"></div>
+                    <div class="card-errors" role="alert"></div>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-md-6 form-group">
                     <label>Address Line 1</label>
-                    <%= form.text_field :line1, id: 'credit-card-line1',  class: 'form-control'  %>
+                    <%= form.text_field :line1, class: 'credit-card-line1 form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
                     <label>Address Line 2 </label>
-                    <%= form.text_field :line2, id: 'credit-card-line2' ,class: 'form-control' %>
+                    <%= form.text_field :line2,class: 'credit-card-line2 form-control' %>
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-md-6 form-group">
                     <label>City</label>
-                    <%= form.text_field :city, id: 'credit-card-city', class: 'form-control'  %>
+                    <%= form.text_field :city, class: 'credit-card-city form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
                     <label>State/Province</label>
-                    <%= form.text_field :state, id: 'credit-card-state', class: 'form-control'  %>
+                    <%= form.text_field :state, class: 'credit-card-state form-control'  %>
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-md-6 form-group">
                     <label>Zip</label>
-                    <%= form.text_field :zip, id: 'credit-card-zip', class: 'form-control'  %>
+                    <%= form.text_field :zip, class: 'credit-card-zip form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
                     <label>Country</label>
-                    <%= form.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {prompt: 'Select Country', id: 'credit-card-country', class: "form-control"})%>
+                    <%= form.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {prompt: 'Select Country', class: "credit-card-country form-control"})%>
                   </div>
                 </div>
+                  <div class="form-row">
+                  <div class="col-md-12 text-center">
+                    <button type="button" onclick="externalAccountToken()" class="btn btn-md btn-info p-2 save_card_btn">+ Save Card</button>
+                  </div>
+                  </div>
                 </div>
                 <hr>
 

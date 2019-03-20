@@ -153,6 +153,25 @@ var style = {
     }
 };
 
+function getCreditCardToken(){
+    var custData = {
+        name: $('#credit-card-name').val(),
+        address_line1: $('#credit-card-line1').val(),
+        address_line2: $('#credit-card-line2').val(),
+        address_city: $('#credit-card-city').val(),
+        address_state: $('#credit-card-state').val(),
+        address_zip: $('#credit-card-zip').val(),
+        address_country: $('#credit-card-country').val()
+    };
+
+    stripe.createToken(card, custData).then(function (result) {
+        if (result.error) {
+            // Inform the user if there was an error.
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+        }
+    });
+}
 
 function mountCreditCardElement(jobform) {
 // Create an instance of the card Element.
@@ -169,35 +188,6 @@ function mountCreditCardElement(jobform) {
             displayError.textContent = '';
         }
     });
-
-// Handle form submission.
-    var form = document.getElementById('payment-form');
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        var custData = {
-            name: $('#credit-card-name').val(),
-            address_line1: $('#credit-card-line1').val(),
-            address_line2: $('#credit-card-line2').val(),
-            address_city: $('#credit-card-city').val(),
-            address_state: $('#credit-card-state').val(),
-            address_zip: $('#credit-card-zip').val(),
-            address_country: $('#credit-card-country').val()
-        };
-
-        stripe.createToken(card, custData).then(function (result) {
-            if (result.error) {
-                // Inform the user if there was an error.
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                // Send the token to your server.
-                stripeTokenHandler(result.token);
-            }
-        });
-    });
-
 }
 
 

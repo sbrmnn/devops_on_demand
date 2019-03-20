@@ -10,21 +10,19 @@
 <ul class="list-group">
       <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
         <div class="container pl-2 py-3">
-
+          <% participant = cp.participants_excluding_user(current_user) %>
           <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">
-                      <% if cp.participants_excluding_user(current_user).try(:first).try(:freelancer) %>
-                        <a class="name-link" href="/freelancers/<%= cp.participants_excluding_user(current_user).try(:first).try(:freelancer).id %>"><%= cp.participant_names_excluding_user(current_user) %></a>
-                      <% else %>
-                        <%= cp.participant_names_excluding_user(current_user) %>
+                      <% if participant.try(:freelancer) %>
+                        <a class="name-link" href="/freelancers/<%= participants.try(:freelancer).id %>"><%= participant %></a>
+                      <% elsif participant.present? %>
+                        <%= participant.try(:first_name) << " " << participant.try(:last_name) %>
                       <% end %>
                     </h5>
                     <span>
-                      <% cp.participants_excluding_user(exclude_user=nil).each do |user| %>
-                        <% if user.try(:freelancer).try(:profile_photo) %>
-                          <img class="chat-sender-image" src="<%= cl_image_path(user.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) ? cl_image_path(user.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) : "https://via.placeholder.com/50" %>">
-                        <% end %>
+                      <% if participant.try(:freelancer).try(:profile_photo) %>
+                        <img class="chat-sender-image" src="<%= cl_image_path(participant.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) ? cl_image_path(participant.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) : "https://via.placeholder.com/50" %>">
                       <% end %>
                     </span>
                   </div>

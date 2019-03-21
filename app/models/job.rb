@@ -4,7 +4,7 @@ class Job < ApplicationRecord
   has_one :credit_card, through: :user
   attr_accessor :front_end_token, :name, :line1, :line2, :city, :state, :zip, :country
   after_save :create_credit_card
-  validates_presence_of :description, :hours
+  validates_presence_of :description, :hours, :from, :to
 
 
   def create_credit_card

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190318224031) do
+ActiveRecord::Schema.define(version: 20190321155402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20190318224031) do
     t.string "location"
     t.string "user_name"
     t.string "merchant_id"
+    t.string "source_control_url"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -102,8 +103,8 @@ ActiveRecord::Schema.define(version: 20190318224031) do
     t.text "description"
     t.decimal "hours", precision: 10, scale: 2
     t.string "credit_card_transaction"
-    t.date "from"
-    t.date "to"
+    t.string "from"
+    t.string "to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["freelancer_id"], name: "index_jobs_on_freelancer_id"

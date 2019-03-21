@@ -1,4 +1,4 @@
-<% if @job.errors %>
+<% if @job.errors.messages.present? %>
 $(".credit-card-error.<%= @job.freelancer_id %>").removeClass('d-none')
 $(".credit-card-success.<%= @job.freelancer_id %>").addClass('d-none')
 <% else %>

@@ -22,12 +22,25 @@
             </ul>
             <div class="profile">
               <div class="about_me">
-                <%= freelancer.about_me %>
+               <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
               </div>
-              <div class="my-3 work_experience">
-                <h5 class="font-underline py-2">Work Experience</h5>
+
+              <div class="mb-2 work_experience">
+                <h5 class="font-weight-bold my-3">Source Control / Portfolio</h5>
                 <div class="resume-section-content">
                   <div class="resume-timeline">
+
+
+
+                  </div><!--//resume-timeline-->
+                </div>
+              </div>
+
+
+              <div class="mb-2 work_experience">
+                <h5 class="font-weight-bold my-3">Work Experience</h5>
+                <div class="resume-section-content">
+
 
                       <% freelancer.work_experiences.each do |we| %>
                       <ul class="px-3">
@@ -52,15 +65,13 @@
 
                       <% end %>
 
-                  </div><!--//resume-timeline-->
+
                 </div>
               </div>
             </div>
             <!--//resume-timeline
             <ul class="list-inline my-2">
-              <% freelancer.skill.try(:each) do |skill| %>
-                <li class="list-inline-item"><span class="badge badge-warning"><%= skill %></span></li>
-              <% end %>
+
             </ul>
             -->
             <ul class="list-inline my-2">

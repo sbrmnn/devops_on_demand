@@ -6,8 +6,8 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :description
       t.decimal :hours, precision: 10, scale: 2
       t.string :credit_card_transaction
-      t.date :from
-      t.date :to
+      t.string :from
+      t.string :to
       t.timestamps
     end
   end

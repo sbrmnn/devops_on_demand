@@ -18,7 +18,7 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12">
-                      <%= form.label :about_me %>
+                      <%= form.label :about_me, "Describe your skills" %>
                       <%= form.text_area :about_me, class: "form-control  whitesmoke-border" %>
                     </div>
                   </div>
@@ -36,6 +36,12 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12">
+                      <%= form.label :source_control_url, "Source Control/Portfolio URL" %>
+                      <%= form.text_field :source_control_url, class: "form-control  whitesmoke-border" %>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12">
                       <%= form.hidden_field :profile_photo, id: 'freelancer_profile_photo' ,"data-public-id": ImageProcessorClient.get_public_id(form.object.profile_photo) %>
                       <%= form.label :profile_photo %>
                       <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control", accept: ".png,.jpg,.jpeg"}} ) %>
@@ -43,12 +49,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('skills')%></h4>
-                <div id='skills'>
-                  <%= form.fields_for :skill, form.object.skill.present? ?  form.object.skill : form.object.build_skill  do |skill| %>
-                    <%= render 'skills_fields', f: skill %>
-                  <% end %>
                 </div>
                 <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('certifications')%></h4>
                 <div id='certifications' class="certifications-nested-fields">
@@ -78,7 +78,7 @@
                 </div>
                 <div class="pull-right">
                   <button class="preview-btn btn btn-link btn-lg"><%=t('preview')%></button>
-                  <%= form.submit :class => "btn btn-primary btn-lg" %>
+                  <%= form.submit class: "btn btn-primary btn-lg" %>
                 </div>
               <% end %>
             <% end %>

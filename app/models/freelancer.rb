@@ -11,6 +11,7 @@ class Freelancer < ApplicationRecord
   validates_presence_of :headline
   validates_presence_of :location
   validates_presence_of :about_me
+  validates :source_control_url, allow_blank: true ,format: { with: /(http|https):\/\/[a-zA-Z0-9\-\#\/\_]+[\.][a-zA-Z0-9\-\.\#\/\_]+/i }
 
   validates :rate, numericality: { only_integer: true, greater_than_or_equal_to: 30 }
   validates_presence_of :profile_photo

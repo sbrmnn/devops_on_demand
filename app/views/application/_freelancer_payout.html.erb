@@ -8,7 +8,6 @@
                   <h2 class="pt-3"><%=t('freelancer_payout') %></h2>
                   <hr class="mb-2">
                   <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('personal_info') %></h4>
-
                     <div class="form-row">
                       <div class="col-md-6 form-group legal_entity_type">
                         <%= legal_entity.label :entity_type %>
@@ -68,13 +67,15 @@
                         <%= legal_entity.text_field :business_tax_id, class: :'form-control'  %>
                       </div>
                     </div>
-                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('identity_document_upload') %></h4>
-                    <div class="form-row">
-                      <div class="col-md-6 form-group legal_entity_verification_document ">
-                        <%= legal_entity.label :verification_image, "(Color, JPG or PNG, and less than 8MB)" %>
-                        <%= legal_entity.file_field :verification_image, class: 'form-control', onchange: "validateFiles(this);"  %>
+                   <% unless freelancer_presenter.american? || freelancer_presenter.canadian?  %>
+                      <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('identity_document_upload') %></h4>
+                      <div class="form-row">
+                        <div class="col-md-6 form-group legal_entity_verification_document ">
+                          <%= legal_entity.label :verification_image, "(Color, JPG or PNG, and less than 8MB)" %>
+                          <%= legal_entity.file_field :verification_image, class: 'form-control', onchange: "validateFiles(this);"  %>
+                        </div>
                       </div>
-                    </div>
+                   <% end %>
                   <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('Address') %></h4>
 
                       <div class="form-row">

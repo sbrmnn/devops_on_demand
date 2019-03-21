@@ -15,17 +15,17 @@
           </div>
           <div class="py-4 px-2 mt-2 flex-grow-1">
             <h6><%= freelancer.user_name %></h6>
-            <h5><strong><%= freelancer.headline %></strong></h5>
-            <ul class="list-inline">
-              <li class="list-inline-item"><strong><%= freelancer.rate %></strong></li>
-              <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
+            <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
+            <ul class="list-inline pt-1">
+              <li class="list-inline-item"><span class="badge-info-size badge badge-info"> <%= freelancer.rate %> </span></li>
+              <li class="list-inline-item"><span class="badge-info-size badge badge-info"><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></span></li>
             </ul>
             <div class="profile">
               <div class="about_me">
                <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
               </div>
 
-              <div class="mb-2 work_experience">
+              <div class="mb-2 source_control">
                 <h5 class="font-weight-bold my-3">Source Control / Portfolio</h5>
                 <div class="resume-section-content">
                   <div class="resume-timeline">
@@ -40,10 +40,10 @@
               <div class="mb-2 work_experience">
                 <h5 class="font-weight-bold my-3">Work Experience</h5>
                 <div class="resume-section-content">
-
+                  <ul class="px-3">
 
                       <% freelancer.work_experiences.each do |we| %>
-                      <ul class="px-3">
+
                         <li>
                           <article class="resume-timeline-item pb-2">
                             <div class="resume-timeline-item-header mb-1">
@@ -60,11 +60,11 @@
                             </div><!--//resume-timeline-item-desc-->
                           </article><!--//resume-timeline-item-->
                         </li>
-                      </ul>
+
 
 
                       <% end %>
-
+                  </ul>
 
                 </div>
               </div>

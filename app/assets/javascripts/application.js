@@ -36,7 +36,6 @@ $.ajaxSetup({
 
 
 $(document).keyup(function (e) {
-
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
         var chatroomId = $(document.activeElement).data("chatroom");
         broadcastMessage(chatroomId, $(document.activeElement).closest('.msg-input-grp').find('.msg_send_btn'))
@@ -174,6 +173,9 @@ $(document).on(click_event,'.billing-btn', function(e){
 
 
 
+
+
+
 $(document).on(click_event,'.name-link', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -226,6 +228,7 @@ $(document).on(click_event,'.card-element', function(e){
         mountCreditCardElement("#" + $(this).attr("id"));
 
     }
+
     return false;
 });
 

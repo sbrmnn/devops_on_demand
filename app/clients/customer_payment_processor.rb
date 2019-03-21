@@ -32,6 +32,13 @@ class CustomerPaymentProcessor
     user.stripe_id
   end
 
+  def detach_source(source)
+    Stripe::Customer.detach_source(
+        user.stripe_id,
+        source
+    )
+  end
+
   private
 
   def add_customer(email)

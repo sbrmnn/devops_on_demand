@@ -9,8 +9,9 @@ class Users::CreditCardsController < ApplicationController
   end
 
   def create
-    @credit_card = user.build_credit_card(credit_card_params)
-    @credit_card.save
+    @credit_card = CreditCard.new(credit_card_params)
+    user.credit_cards << @credit_card
+    @credit_card
   end
 
   def update

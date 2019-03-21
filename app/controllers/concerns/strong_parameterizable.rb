@@ -19,7 +19,7 @@ module StrongParameterizable
         payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes],
         setting: [:newsletter_subscription, :chat_notification_subscription],
         chatrooms: [:freelancer_user],
-        job: [:freelancer_id, :description, :hours, :from, :to]
+        job: [:freelancer_id, :description, :hours, :from, :to, :front_end_token, :name, :line1, :line2, :city, :state, :zip, :country]
 
     }[controller_name]
   end

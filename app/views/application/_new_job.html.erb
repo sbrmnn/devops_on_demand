@@ -3,11 +3,10 @@
     <div class="container p-0">
       <div class="row">
         <div class="col-12">
-          <div>
-            <%= form_with(model: [user, job], remote: true) do |form| %>
+            <%= form_with(model: [user, job], class: "#{freelancer_id} new-job-form", remote: true) do |form| %>
               <div class="basic-info-nested-fields mb-2">
                 <div class="form-row">
-                  <%= form.hidden_field :freelancer_id, value: freelancer_id %>
+                  <%= form.hidden_field :freelancer_id, class:"job-form-freelancer-id", value: freelancer_id %>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-12">
@@ -18,7 +17,7 @@
                 <div class="form-row">
                   <div class="form-group col-12">
                     <%= form.label :hours, "Job Duration (hrs)" %>
-                    <%= form.number_field :hours, class: "form-control  whitesmoke-border" %>
+                    <%= form.number_field :hours, class: "form-control  whitesmoke-border", min: 1 %>
                   </div>
                 </div>
                 <div class="form-row">
@@ -34,7 +33,7 @@
                 <div class="form-row">
                   <div class="form-group col-12">
                     <%= form.label :credit_card %>
-                    <%= form.text_field :credit_card, class: 'form-control', disabled: true, value: "**** **** **** #{user.credit_card.try(:last_4)}" %>
+                    <%= form.text_field :credit_cards, class: 'form-control', disabled: true, value: "**** **** **** #{user.credit_card.try(:last_4)}" %>
                     <div class="checkbox mt-3">
                       <label><input type="checkbox" data-freelancer="<%= freelancer_id %>" class="different-card-checkbox mr-2" value="">Use Different Card</label>
                     </div>
@@ -95,12 +94,12 @@
                 </div>
                 <hr>
 
-                <div class="card credit-card-error-card d-none  mb-2">
+                <div class="card credit-card-error <%= freelancer_id %> d-none  mb-2">
                   <div class="card-header bg-danger text-light">
                     <%= t('form_error_msg') %>
                   </div>
                 </div>
-                <div class="card credit-card-success-card d-none mb-2">
+                <div class="card credit-card-success <%= freelancer_id %> d-none mb-2">
                   <div class="card-header bg-success text-light"><%= t('saved') %></div>
                 </div>
               </div>
@@ -108,7 +107,6 @@
                 <%= form.button class: "btn btn-primary " %>
               </div>
             <% end %>
-          </div>
         </div>
       </div>
     </div>

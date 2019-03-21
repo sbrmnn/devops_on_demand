@@ -1,2 +1,13 @@
-$(".job-form" + <%= params[:job][:freelancer_id] %>).html("<%= escape_javascript(render partial: 'billing', locals: { user: @user } ) %>");
-_billingInit(".job-form" + <%= params[:job][:freelancer_id] %>)
+<% if @job.errors %>
+$(".credit-card-error.<%= @job.freelancer_id %>").removeClass('d-none')
+$(".credit-card-success.<%= @job.freelancer_id %>").addClass('d-none')
+<% else %>
+$(".credit-card-error.<%= @job.freelancer_id %>").addClass('d-none')
+$(".credit-card-success.<%= @job.freelancer_id %>").removeClass('d-none')
+<% end %>
+
+$(".label-error-msgs").remove()
+
+<% @job.errors.try(:messages).try(:each) do |key, val| %>
+  $(".new-job-form.<%= @job.freelancer_id %>").find("label[for='job_<%= key.to_s %>']").append("<span class='text-danger label-error-msgs ml-1'><%= raw val.first %></span>")
+<% end %>

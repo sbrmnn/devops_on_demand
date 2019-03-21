@@ -110,7 +110,7 @@ function init() {
     subscribeToRooms();
     getEntityTypeFields();
     subscribeToMissingFieldsChannel();
-    displayMissingFields(gon.missing_payout_fields)
+    displayMissingFields(gon.missing_payout_fields);
 }
 
 
@@ -212,6 +212,7 @@ $(document).on(click_event,'.freelancer-signup-btn', function(e){
 $(document).on(click_event,'.save_card_btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
+    $(".card-errors").empty()
     getCreditCardToken("#job-form" + $(this).data("freelancer"));
 
     return false;
@@ -339,6 +340,9 @@ function getSelectedPill(){
          window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
     });
 }
+
+
+
 
 
 

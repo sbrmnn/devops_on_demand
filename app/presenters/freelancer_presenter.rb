@@ -72,6 +72,10 @@ class FreelancerPresenter < ApplicationPresenter
     FreelancerPaymentProcessor.new(model).settlement_currency
   end
 
+  def source_control_url
+    model.source_control_url
+  end
+
   def payout_identity
     model.payout_identity.present? ? model.payout_identity : model.build_payout_identity
   end

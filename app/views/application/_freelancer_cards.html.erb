@@ -16,26 +16,26 @@
           <div class="py-4 px-2 mt-2 flex-grow-1">
             <h6><%= freelancer.user_name %></h6>
             <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
-            <ul class="list-inline pt-1">
-              <li class="list-inline-item"><span class="badge-info-size badge badge-dark"> <%= freelancer.rate %> </span></li>
-              <li class="list-inline-item"><span class="badge-info-size badge badge-dark"><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></span></li>
+            <ul class="list-inline">
+              <li class="list-inline-item"><strong><%= freelancer.rate %></strong></li>
+              <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
             </ul>
             <div class="profile">
               <div class="about_me">
-               <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
+                <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
               </div>
-
+              <% if freelancer.source_control_url.present? %>
               <div class="mb-2 source_control">
-                <h5 class="font-weight-bold my-3">Source Control / Portfolio</h5>
+                <h5 class="font-weight-bold my-3">Source Control</h5>
                 <div class="resume-section-content">
-                  <div class="resume-timeline">
-
-
-
-                  </div><!--//resume-timeline-->
+                  <ul class="px-3">
+                      <li>
+                        <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
+                      </li>
+                  </ul>
                 </div>
               </div>
-
+              <% end %>
 
               <div class="mb-2 work_experience">
                 <h5 class="font-weight-bold my-3">Work Experience</h5>

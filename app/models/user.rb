@@ -18,6 +18,9 @@ class User < ApplicationRecord
 
   before_save :configure_settings
   before_save :generate_relay_user_name
+  before_save :downcase_email
+
+  auto_strip_attributes :first_name, :last_name, :email
 
   def generate_unsub_token
     self.unsub_token = SecureRandom.hex
@@ -25,11 +28,15 @@ class User < ApplicationRecord
 
   private
 
+  def downcase_email
+    self.email = self.email.downcase
+  end
+
   def generate_relay_user_name
     if relay_user_name.blank?
-      self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com"
+      self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com".downcase
       while User.exists?(relay_user_name: relay_user_name)
-        self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com"
+        self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com".downcase
       end
     end
   end

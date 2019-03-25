@@ -20,6 +20,8 @@ class Freelancer < ApplicationRecord
   accepts_nested_attributes_for :skill, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :certifications, reject_if: :all_blank, allow_destroy: true
 
+  auto_strip_attributes :headline, :about_me, :source_control_url ,:rate, :location
+  
   before_save :create_user_name
 
 

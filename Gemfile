@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+gem "auto_strip_attributes", "~> 2.5"
+
 gem 'faraday', '~> 0.15.4'
 
 gem 'mini_racer', '~> 0.2.4'

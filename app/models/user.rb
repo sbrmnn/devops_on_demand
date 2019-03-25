@@ -17,12 +17,22 @@ class User < ApplicationRecord
   has_one :tos_acceptance
 
   before_save :configure_settings
+  before_save :generate_relay_user_name
 
   def generate_unsub_token
     self.unsub_token = SecureRandom.hex
   end
 
   private
+
+  def generate_relay_user_name
+    if relay_user_name.blank?
+      self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com"
+      while User.exists?(relay_user_name: relay_user_name)
+        self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com"
+      end
+    end
+  end
 
   def configure_settings
     if self.setting.blank?

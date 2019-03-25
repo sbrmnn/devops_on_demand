@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :certification_names, only: [:index]
 
   resources :healthcheck, only: [:index]
-
+  resource :email_relay_mapper, only: [:show]
   resource :subscription_settings, only: [:show, :update]
 
   resources :chatrooms, module: "chatrooms" do

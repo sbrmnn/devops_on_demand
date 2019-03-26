@@ -8,11 +8,12 @@
               <img src="<%= cl_image_path(cl_image_path(freelancer_presenter.image_public_id, width: 104, height: 104, radius: :max, crop: :scale)) %>">
             <% else %>
               <img src="https://via.placeholder.com/100">
-          <% end %>
+            <% end %>
             <div class="d-flex flex-column bd-highlight mt-1">
-              <div class="bd-highlight"><a href="#job-form<%=freelancer.id%>" class="btn-info btn btn-lg w-100 mt-1 hire-me-btn" >Hire Me</a></div>
-              <div class="bd-highlight"><button class="btn btn-lg btn-outline-dark mt-2 w-100" >Save</button></div>
-              <div class="bd-highlight d-none"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn w-100 mt-2 toggle_message_box">Message</button></div>
+               <div class="bd-highlight"><a href="#job-form<%=freelancer.id%>" class="btn-info btn   w-100 mt-1 hire-me-btn" >Hire Me</a></div>
+              <div class="bd-highlight"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-success btn w-100 mt-2 toggle_message_box">Video Chat</button></div>
+
+              <div class="bd-highlight"><button class="btn   btn-outline-dark mt-2 w-100" >Save</button></div>
             </div>
           </div>
           <div class="py-4 px-2 mt-2 flex-grow-1">
@@ -22,7 +23,7 @@
               <li class="list-inline-item"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %></strong></li>
               <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
               <li class="list-inline-item"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
-            </ul>
+             </ul>
             <div class="profile">
               <div class="about_me">
                 <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
@@ -93,5 +94,14 @@
         </div>
      </div>
   <% end %>
+
+
+ <script>
+     gapi.hangout.render('placeholder-rr', {
+         'render': 'createhangout',
+         'initial_apps': [{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }],
+         'widget_size': 175
+     });
+ </script>
 
 

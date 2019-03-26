@@ -9,6 +9,7 @@
   <script src="https://js.stripe.com/v3/"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
@@ -37,7 +38,7 @@
           <li class="nav-item  mr-3">
             <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
           </li>
-          <li class="nav-item  mr-3">
+          <li class="d-none nav-item  mr-3">
             <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
           </li>
           <li class="nav-item  mr-3">

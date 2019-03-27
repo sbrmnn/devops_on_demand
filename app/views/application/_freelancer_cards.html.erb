@@ -88,20 +88,30 @@
 
         <div class="message_box_freelancer_<%= freelancer.id %> d-none">
 
+            <div class="d-flex flex-column bg-light py-1 flex-row">
+              <div class="m-2 ml-3"><strong>Video Chat</strong></div>
+              <div class="ml-3">
+                <div id="placeholder-rr-<%=freelancer.id%>">
+
+                </div>
+              </div>
+            </div>
+
         </div>
         <div id="job-form<%=freelancer.id%>"  class="d-none">
           <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
         </div>
      </div>
+
+   <script>
+       gapi.hangout.render("placeholder-rr-<%=freelancer.id%>", {
+           'render': 'createhangout',
+           'invites':[{ id : "<%= freelancer.user.relay_user_name%>", invite_type : 'EMAIL' }],
+           'initial_apps': [{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }],
+           'widget_size': 175
+       });
+   </script>
   <% end %>
 
-
- <script>
-     gapi.hangout.render('placeholder-rr', {
-         'render': 'createhangout',
-         'initial_apps': [{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }],
-         'widget_size': 175
-     });
- </script>
 
 

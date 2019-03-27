@@ -1,3 +1,7 @@
-$('.message_box_freelancer_<%= @freelancer.id %>').html("<%= escape_javascript render(partial: 'chatbox_id', locals: { cp:  ChatroomPresenter.new(@chatroom) }) %>")
+if ($('.message_box_freelancer_<%= @freelancer.id %> > .chat-box').length === 0){
+    $('.message_box_freelancer_<%= @freelancer.id %>').append("<%= escape_javascript render(partial: 'chatbox_id', locals: { cp:  ChatroomPresenter.new(@chatroom) }) %>")
+
+}
+
 renderChatRoomMessages(<%= @chatroom.id %>)
 subscribeToRoom(<%= @chatroom.id %>)

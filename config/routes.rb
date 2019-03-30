@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
 
+  namespace :freelancers do
+    get 'jobs/update'
+  end
+
   resource :chatrooms, only: :create
 
   resources :payout_identities

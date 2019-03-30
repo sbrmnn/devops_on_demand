@@ -7,40 +7,30 @@
   </button>
 </div>
 
-<ul class="list-group">
-      <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
-        <div class="container pl-2 py-3">
-          <% participant = cp.participants_excluding_user(current_user) %>
-          <li class=" list-group-item <%= cp.latest_message_type_for_user(current_user) %> list-group-item-action flex-column align-items-start">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">
-                      <% if participant.try(:freelancer) %>
-                        <a class="name-link" href="/freelancers/<%= participant.try(:freelancer).id %>"><%= participant.try(:first_name) << " " << participant.try(:last_name) %></a>
-                      <% elsif participant.present? %>
-                        <%= participant.try(:first_name) << " " << participant.try(:last_name) %>
-                      <% end %>
-                    </h5>
-                    <span>
-                      <% if participant.try(:freelancer).try(:profile_photo) %>
-                        <img class="chat-sender-image" src="<%= cl_image_path(participant.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) ? cl_image_path(participant.try(:freelancer).try(:profile_photo), :width => 50, :height => 50, :gravity=>:face, :radius=> :max, :crop=> :crop) : "https://via.placeholder.com/50" %>">
-                      <% end %>
-                    </span>
-                  </div>
-                  <p class="mb-3"><em><%= cp.last_message.try(:body) %></em></p>
-                  <div class="d-flex w-100 justify-content-between">
-                    <span>
-                      <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
-                        <%= t('view_messages') %>
-                      </button>
-                    </span>
-                  </div>
-                  <div class="collapse mt-3" id="collapse<%= cp.id %>">
-                    <%= render 'chatbox_id', cp: cp %>
-                  </div>
-
-              </li>
-       </div>
-      <% end %>
-
-
+<ul class="list-group list-group-flush">
+  <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
+    <% participant = cp.participants_excluding_user(current_user) %>
+    <li class="list-group-item px-3 py-1">
+      <div class="px-4 mx-1">
+        <div class="card-body">
+          <h5 class="card-title">
+            <% if participant.try(:freelancer) %>
+              <a class="name-link" href="/freelancers/<%= participant.try(:freelancer).id %>"><%= participant.try(:first_name) << " " << participant.try(:last_name) %></a>
+            <% elsif participant.present? %>
+              <%= participant.try(:first_name) << " " << participant.try(:last_name) %>
+            <% end %>
+          </h5>
+          <p class="my-2"><em><%= cp.last_message.try(:body) %></em></p>
+          <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
+            <%= t('view_messages') %>
+          </button>
+          <div class="collapse mt-3" id="collapse<%= cp.id %>">
+            <%= render 'chatbox_id', cp: cp %>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
 </ul>
+
+

@@ -1,0 +1,36 @@
+<% @user.jobs.each do |job| %>
+<div style="border-radius: 0" class="d-flex bd-highlight flex-row card">
+  <div class="px-4 py-2 text-center flex-shrink-1 bd-highlight">
+
+    <div class="d-flex flex-column bd-highlight mt-1">
+      <div class="bd-highlight"><a href="#job-form<%=job.id%>" class="btn-success btn w-100 mt-1" >Accept</a></div>
+      <div class="bd-highlight"><button class="btn   btn-danger mt-2 w-100" >Reject</button></div>
+    </div>
+  </div>
+  <div class="py-2 mt-2 flex-grow-1">
+    <h5>Job ID #<%= job.id %></h5>
+    <ul class="list-inline mb-2">
+      <li class="list-inline-item"><strong><i class="fa fa-user mr-1"></i><%= UserPresenter.new(job.user).full_name%></strong></li>
+      <li class="list-inline-item"><i class="fas fa-calendar mr-1"></i> <strong> <%= job.from %> to <%= job.to %> </strong></li>
+      <li class="list-inline-item"><i class="fas fa-stopwatch mr-1"></i><strong><%= job.hours.to_i %> hours</strong></li>
+    </ul>
+    <div class="job-description">
+      <p><%= job.description %></p>
+    </div>
+
+  </div>
+</div>
+<% end %>
+
+<script>
+
+    $( document ).ready(function() {
+        $('.job-description').readmore({
+            speed: 75,
+            collapsedHeight: 48,
+            lessLink: '<a href="#">Read less</a>'
+        });
+    });
+
+
+</script>

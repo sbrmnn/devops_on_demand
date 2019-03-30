@@ -146,9 +146,10 @@ body {
 }
 
 
-.profile {
+.profile, .job-description {
   overflow: hidden !important;
 }
+
 
 .resume-wrapper {
   padding-top: 30px;
@@ -294,6 +295,8 @@ body {
 .font-weight-bold {
   font-weight: bold !important;
 }
+
+
 
 .badge-info-size{
   font-size: .9rem;

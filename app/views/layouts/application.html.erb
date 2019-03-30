@@ -15,7 +15,7 @@
 <body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
     <nav class="navbar navbar-light bg-light navbar-expand-lg">
-      <div class="container p-2">
+      <div class="container-fluid px-4 py-2">
         <a href="/" class="navbar-brand d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
           <strong>YumFog</strong>
@@ -30,29 +30,29 @@
     </nav>
   <% end %>
   <% if user_signed_in? %>
-  <nav class="navbar  bg-dark navbar-expand">
-    <div class="container p-2">
+  <nav class="navbar d-flex flex-row  bg-dark navbar-expand">
+    <div class="container-fluid px-4">
         <ul  class="nav nav-pills nav-pills-underline nav-fill" id="pills-tab" role="tablist">
-          <li class="nav-item">
+          <li class="nav-item py-2">
             <a class="nav-link d-none" id="pills-freelancer-registration-tab" data-toggle="pill" href="#pills-freelancer-registration" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
           </li>
-          <li class="nav-item  mr-3">
+          <li class="nav-item py-2 pr-4">
             <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
           </li>
-          <li class="nav-item  mr-3">
+          <li class="nav-item py-2 pr-4">
             <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false"><i class="fa fa-comments mr-1"></i><%= t('messages') %></a>
           </li>
-          <li class="nav-item  mr-3">
+          <li class="nav-item py-2 pr-4">
             <a class="nav-link" id="pills-jobs-tab" data-toggle="pill" href="#pills-jobs" role="tab" aria-controls="pills-jobs" aria-selected="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i><%= t('jobs') %></a>
           </li>
 
 
-          <li class="nav-item  mr-3">
+          <li class="nav-item  py-2 pr-4">
             <a class="nav-link"  id="pills-payout-tab" data-toggle="pill" href="#pills-payments" role="tab" aria-controls="pills-payout" aria-selected="false"><i class="fa fa-exchange-alt mr-1"></i><%= t('freelancer_payout') %></a>
           </li>
 
 
-          <li class="nav-item">
+          <li class="nav-item py-2 pr-4">
             <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('settings') %></a>
           </li>
         </ul>
@@ -61,5 +61,7 @@
   </nav>
   <% end %>
 <%= yield %>
+
 </body>
+
 </html>

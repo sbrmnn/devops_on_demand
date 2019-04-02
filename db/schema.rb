@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190325064811) do
+ActiveRecord::Schema.define(version: 20190401203353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 20190325064811) do
     t.string "to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "acceptance"
+    t.integer "total"
     t.index ["freelancer_id"], name: "index_jobs_on_freelancer_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
@@ -210,6 +212,22 @@ ActiveRecord::Schema.define(version: 20190325064811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tos_acceptances_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "credit_card_id"
+    t.bigint "job_id"
+    t.string "merchant_id"
+    t.integer "amount"
+    t.integer "amount_refunded"
+    t.bigint "freelancer_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["credit_card_id"], name: "index_transactions_on_credit_card_id"
+    t.index ["freelancer_id"], name: "index_transactions_on_freelancer_id"
+    t.index ["job_id"], name: "index_transactions_on_job_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

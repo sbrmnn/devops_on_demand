@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :jobs
   has_one :setting
   has_one :freelancer
-  has_one :credit_card
+  has_many :credit_cards
+  has_many :transactions
 
   has_one :payout_identity, through: :freelancer
   has_one :tos_acceptance

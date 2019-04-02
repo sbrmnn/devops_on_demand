@@ -20,7 +20,7 @@ gem 'bootstrap', '~> 4.1.1'
 
 gem 'material-sass', '4.1.1'
 
-gem 'jquery-rails'
+gem 'cocoon'
 
 gem 'gon'
 
@@ -83,7 +83,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 
-gem "font-awesome-rails"
 
 
 
@@ -96,16 +95,16 @@ gem 'whenever', require: false
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 
 
-gem 'bootstrap-datepicker-rails'
+
 
 gem 'jquery-ui-rails'
 
-gem 'attachinary'
+
 
 gem 'cloudinary'
 
 
-gem "cocoon"
+
 
 
 gem 'searchkick',  '~> 3.1.0'

@@ -11,16 +11,12 @@
 // about supported directives.
 //
 
-//= require jquery3
-//= require jquery-ui
-
 //= require rails-ujs
 //= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
 //= require material
-//= require bootstrap-datepicker
-//= require cloudinary
+ //= require cloudinary
 //= require cocoon
 //= require payment_processor
 //= require readmore
@@ -269,6 +265,17 @@ $(document).on('change paste keyup','.work-experience-to', function(e){
 });
 
 
+$(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
+    if($(e.target).is("#pills-jobs-tab")) {
+        $('.job-description').readmore({
+            speed: 75,
+            collapsedHeight: 48,
+            lessLink: '<a href="#">Read less</a>'
+        });
+    }
+});
+
+
 $(document).on('change paste keyup','.work-experience-achievements', function(e){
     if ($(this).val() === ""){
         $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
@@ -286,6 +293,33 @@ $(document).on(click_event,'.chatroom-list-elem', function(e){
     $(this).addClass('active_chat');
     $('.type_msg').show();
     renderChatRoomMessages($(this).data('chatroom_id'));
+    return false;
+});
+
+
+$(document).on(click_event,'.reject-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $.ajax({
+        type: 'PUT',
+        url: $(this).attr('href'),
+        data: {freelancer_job: {acceptance: false}},
+        dataType: 'script',
+        async: false
+    });
+    return false;
+});
+
+$(document).on(click_event,'.accept-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $.ajax({
+        type: 'PUT',
+        url: $(this).attr('href'),
+        data: {freelancer_job: {acceptance: true}},
+        dataType: 'script',
+        async: false
+    });
     return false;
 });
 

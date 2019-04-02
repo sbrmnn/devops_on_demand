@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-  namespace :freelancers do
-    get 'jobs/update'
-  end
-
   resource :chatrooms, only: :create
-
-  resources :payout_identities
 
   get 'freelancer_searches',  controller: "freelancer_searches", action: "index"
 
@@ -45,9 +37,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :freelancers do
+  resources :freelancers
+
+
+  resource :freelancers do
     scope module: :freelancers do
-      resources :payout_identities
+      resources :payout_identities, only: [:update, :create]
+      resources :jobs, only: :update
     end
   end
 

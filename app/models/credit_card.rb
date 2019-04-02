@@ -1,5 +1,6 @@
 class CreditCard < ApplicationRecord
   belongs_to :user
+  has_many :transactions
   before_save :insert_card_to_customer_account
   attr_accessor :front_end_token
 
@@ -11,3 +12,5 @@ class CreditCard < ApplicationRecord
     end
   end
 end
+
+

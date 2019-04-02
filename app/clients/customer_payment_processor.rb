@@ -39,6 +39,17 @@ class CustomerPaymentProcessor
     )
   end
 
+
+  def charge_source(amount, description)
+     Stripe::Charge.create({
+                            amount: amount,
+                            currency: 'usd',
+                            description: description,
+                            customer: stripe_id || customer_info.id,
+                            source: user.credit_cards.last.token
+                           })
+  end
+
   private
 
   def add_customer(email)

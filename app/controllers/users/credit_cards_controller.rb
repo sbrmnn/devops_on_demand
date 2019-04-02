@@ -15,7 +15,7 @@ class Users::CreditCardsController < ApplicationController
   end
 
   def update
-    @credit_card = user.credit_card
+    @credit_card = user.credit_cards.find(params[:id])
     @credit_card.update_attributes(credit_card_params)
   end
 

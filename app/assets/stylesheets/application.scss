@@ -5,9 +5,10 @@
 @import "users";
 @import "subscription_settings";
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
-@import 'bootstrap-datepicker';
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css');
+//@import 'bootstrap-datepicker';
 @import "jquery-ui";
-@import "jquery.tagsinput";
+//@import "jquery.tagsinput";
 @import "lity";
 @import "find-freelancers";
 @import "blog";
@@ -302,6 +303,21 @@ body {
   font-size: .9rem;
 }
 
+.fa-check-circle{
+  color: green;
+}
+
+.fa-times-circle{
+  color: red;
+}
+
+.approval-col{
+  min-width: 144px;
+}
+
+.approval-col{
+  min-width: 144px;
+}
 
 
 

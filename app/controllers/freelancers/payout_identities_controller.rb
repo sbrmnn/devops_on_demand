@@ -1,8 +1,6 @@
 class Freelancers::PayoutIdentitiesController < ApplicationController
   before_action :authenticate_user!
 
-
-
   def update
     current_user.freelancer.payout_identity.update_attributes(payout_identities_params)
   end

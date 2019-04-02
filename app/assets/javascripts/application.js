@@ -14,9 +14,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require popper
-//= require bootstrap-sprockets
 //= require material
- //= require cloudinary
+//= require cloudinary
 //= require cocoon
 //= require payment_processor
 //= require readmore

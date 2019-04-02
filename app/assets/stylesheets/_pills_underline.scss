@@ -12,7 +12,6 @@ $nav-pills-underline-border-color:    whitesmoke;
 
 .nav-pills-underline{
   .nav-link {
-    @include border-radius(0);
     color: $nav-pills-underline-link-active-color;
     &.active,
     .show > & {

@@ -1,13 +1,13 @@
 @import "_chat_box";
 @import "_create_profile_form";
-@import "bootstrap";
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
 @import "freelancers";
 @import "users";
 @import "subscription_settings";
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css');
 //@import 'bootstrap-datepicker';
-@import "jquery-ui";
+//@import "jquery-ui";
 //@import "jquery.tagsinput";
 @import "lity";
 @import "find-freelancers";

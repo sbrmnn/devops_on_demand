@@ -13,7 +13,6 @@
 
 //= require rails-ujs
 //= require turbolinks
-//= require popper
 //= require material
 //= require cloudinary
 //= require cocoon

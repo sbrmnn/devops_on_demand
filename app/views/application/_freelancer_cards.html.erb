@@ -1,7 +1,7 @@
  <% freelancers.each do |freelancer| %>
 
    <% freelancer_presenter =  FreelancerPresenter.new(freelancer) %>
-      <div class="container p-0">
+      <div class="container-fluid p-0">
         <div style="border-radius: 0" class="d-flex bd-highlight flex-row card">
           <div class="p-4 text-center flex-shrink-1 bd-highlight">
             <% if freelancer.try(:profile_photo) %>

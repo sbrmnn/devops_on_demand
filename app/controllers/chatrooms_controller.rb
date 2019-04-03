@@ -6,7 +6,7 @@ class ChatroomsController < ApplicationController
 
   def create
     chatrooms = current_user.chatrooms
-    @chatroom = ChatroomUser.where(chatroom: chatrooms, user_id: chatroom_params[:freelancer_user]).first.try(:chatroom)
+    @chatroom = ChatroomUser.find_by(chatroom: chatrooms, user_id: chatroom_params[:freelancer_user]).try(:chatroom)
     if @chatroom.blank?
      @chatroom = Chatroom.create
      @chatroom.chatroom_users << [ChatroomUser.new(user: current_user, chatroom: @chatroom), [ChatroomUser.new(user: User.find_by_id(chatroom_params[:freelancer_user]), chatroom: @chatroom)]]

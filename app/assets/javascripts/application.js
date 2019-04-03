@@ -301,7 +301,7 @@ $(document).on(click_event,'.reject-btn', function(e){
     $.ajax({
         type: 'PUT',
         url: $(this).attr('href'),
-        data: {freelancer_job: {acceptance: false}},
+        data: {job_approvals: {acceptance: false}},
         dataType: 'script',
         async: false
     });
@@ -314,7 +314,7 @@ $(document).on(click_event,'.accept-btn', function(e){
     $.ajax({
         type: 'PUT',
         url: $(this).attr('href'),
-        data: {freelancer_job: {acceptance: true}},
+        data: {job_approvals: {acceptance: true}},
         dataType: 'script',
         async: false
     });

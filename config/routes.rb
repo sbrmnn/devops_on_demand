@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   resource :freelancers do
     scope module: :freelancers do
       resources :payout_identities, only: [:update, :create]
-      resources :jobs, only: :update
+      resources :job_approvals, only: :update
     end
   end
 

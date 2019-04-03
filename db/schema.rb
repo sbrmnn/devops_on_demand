@@ -226,7 +226,7 @@ ActiveRecord::Schema.define(version: 20190401203353) do
     t.datetime "updated_at", null: false
     t.index ["credit_card_id"], name: "index_transactions_on_credit_card_id"
     t.index ["freelancer_id"], name: "index_transactions_on_freelancer_id"
-    t.index ["job_id"], name: "index_transactions_on_job_id"
+    t.index ["job_id"], name: "index_transactions_on_job_id", unique: true
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 

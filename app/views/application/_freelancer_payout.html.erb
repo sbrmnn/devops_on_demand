@@ -1,14 +1,14 @@
 <%  present(@user.freelancer) do |freelancer_presenter| %>
     <div id ="payout-identity" class="card">
       <div class="card-body">
-        <div class="container-fluid px-4 py-2">
+        <div class="container-fluid px-4">
             <%= form_with(model: freelancer_presenter.payout_identity, url: "/freelancers/payout_identities/#{freelancer_presenter.payout_identity.id}", remote: true) do |f| %>
                   <%= f.hidden_field :external_account, class: :'form-control', id: 'payout_identity_external_account'  %>
                   <%= f.fields_for :legal_entity, f.object.legal_entity.present? ?  f.object.legal_entity : f.object.build_legal_entity do |legal_entity| %>
                   <h2><%=t('freelancer_payout') %></h2>
                   <hr class="mb-2">
                   <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 mt-2 blackborder"><%=t('personal_info') %></h4>
-                    <div class="form-row">
+                    <div class="form-row mt-2">
                       <div class="col-md-6 form-group legal_entity_type">
                         <%= legal_entity.label :entity_type %>
                         <%= legal_entity.select :entity_type, entity_types, {prompt: "Select Entity Type"}, class: :'form-control' %>

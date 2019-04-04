@@ -1,20 +1,20 @@
-<% user.jobs.order(:id).each do |job| %>
-<div style="border-radius: 0" class="d-flex bd-highlight flex-row card">
-  <div class="pl-5 pr-3 py-2 text-center  approval-col approval-col-job-<%= job.id %> bd-highlight">
-    <%= render 'job_approval_btns', job: job %>
-  </div>
-  <div class="py-1 mt-2 flex-grow-1">
-    <h5>Job ID #<%= job.id %></h5>
-    <ul class="list-inline mb-2">
-      <li class="list-inline-item"><strong><i class="fa fa-user mr-1"></i><%= UserPresenter.new(job.user).full_name%></strong></li>
-      <li class="list-inline-item"><i class="fas fa-calendar mr-1"></i> <strong> <%= job.from %> to <%= job.to %> </strong></li>
-      <li class="list-inline-item"><i class="fas fa-stopwatch mr-1"></i><strong><%= job.hours.to_i %> hours</strong></li>
-    </ul>
-    <div class="job-description">
-      <p><%= job.description %></p>
-    </div>
-
-  </div>
+<div class="container-fluid p-0">
+  <% JobPresenter.wrap(user.jobs.where(acceptance: [true, nil]).order(:id)).each do |job_presenter| %>
+      <div class="card rounded-0 border-bottom-0">
+        <div class="card-body px-5 job-card-body">
+          <h5 class="card-title mb-2">Job #<%= job_presenter.id %></h5>
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item text-black"><small><i class="fa fa-user mr-1"></i><%= job_presenter.poster %> (<%= job_presenter.poster_email%>)</small></li>
+              <li class="list-inline-item text-black"><small><i class="fas fa-calendar mr-1"></i> <%= job_presenter.from %> to <%= job_presenter.to %></small></li>
+              <li class="list-inline-item text-black"><small><i class="fas fa-stopwatch mr-1"></i><%= job_presenter.hours.to_i %> hours</small></li>
+              <li class="list-inline-item text-black"><small><i class="fas fa-dollar-sign mr-1"></i><%= job_presenter.total %> Total</small></li>
+            </ul>
+          <p class="card-text text-justify bg-dark p-1" style="color:#41FF00"><%= job_presenter.description %></p>
+          <span class="approval-col approval-col-job-<%= job_presenter.id %>">
+          <%= render 'job_approval_btns', job_presenter: job_presenter %>
+          </span>
+        </div>
+      </div>
+  <% end %>
 </div>
-<% end %>
 

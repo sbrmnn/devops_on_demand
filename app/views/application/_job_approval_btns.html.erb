@@ -1,10 +1,10 @@
-<div class="d-flex flex-column mt-1">
-  <% if job.acceptance.nil? %>
-    <div class="bd-highlight"><a href="/freelancers/job_approvals/<%=job.id%>" class="btn-success accept-btn btn w-100 mt-1" >Accept</a></div>
-    <div class="bd-highlight"><a href="/freelancers/job_approvals/<%=job.id%>" class="btn-danger reject-btn btn w-100 mt-1" >Reject</a></div>
-  <% elsif job.acceptance %>
-    <i class="fas fa-3x p-3 fa-check-circle"></i>
-  <% else %>
-    <i class="fas fa-3x p-3 fa-times-circle"></i>
-  <% end %>
-</div>
+<% if job_presenter.acceptance.nil? %>
+  <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-success accept-btn btn" >Accept</a>
+  <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger reject-btn btn" >Reject</a>
+<% elsif job_presenter.acceptance %>
+  <p class="text-success m-0">Approved</p>
+
+<% else %>
+  <p class="text-danger m-0">Rejected</p>
+
+<% end %>

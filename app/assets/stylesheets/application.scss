@@ -133,7 +133,7 @@ body {
 }
 
 .blackborder{
-  border-left: 4px solid black;
+ // border-left: 4px solid black;
 }
 
 .freelancer-profile-entry{
@@ -312,13 +312,11 @@ body {
   color: red;
 }
 
-.approval-col{
-  min-width: 144px;
-}
 
-.approval-col{
-  min-width: 144px;
-}
+
+
+
+
 
 
 .subnav{
@@ -326,7 +324,9 @@ body {
  }
 
 
-
+.approval-col{
+  min-height: 38px;
+}
 
 
 

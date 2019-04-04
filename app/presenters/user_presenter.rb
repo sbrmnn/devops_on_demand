@@ -8,8 +8,17 @@ class UserPresenter < ApplicationPresenter
     model.setting
   end
 
+
+  def email
+    model.email
+  end
+
   def id
     model.id
+  end
+
+  def relay_user_name
+    model.relay_user_name
   end
 
   def full_name

@@ -33,30 +33,6 @@
 </div>
 
 
-<ul class="list-group list-group-flush">
-  <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
-    <% participant = cp.participants_excluding_user(current_user) %>
-    <li class="list-group-item px-3 py-1">
-      <div class="px-4 mx-1">
-        <div class="card-body">
-          <h5 class="card-title">
-            <% if participant.try(:freelancer) %>
-              <a class="name-link" href="/freelancers/<%= participant.try(:freelancer).id %>"><%= participant.try(:first_name) << " " << participant.try(:last_name) %></a>
-            <% elsif participant.present? %>
-              <%= participant.try(:first_name) << " " << participant.try(:last_name) %>
-            <% end %>
-          </h5>
-          <p class="my-2"><em><%= cp.last_message.try(:body) %></em></p>
-          <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
-            <%= t('view_messages') %>
-          </button>
-          <div class="collapse mt-3" id="collapse<%= cp.id %>">
-            <%= render 'chatbox_id', cp: cp %>
-          </div>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+ 
 
 

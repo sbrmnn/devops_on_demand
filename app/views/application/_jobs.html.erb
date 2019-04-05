@@ -2,7 +2,7 @@
   <% JobPresenter.wrap(user.jobs.where(acceptance: [true, nil]).order(:id)).each do |job_presenter| %>
       <div class="card rounded-0 border-bottom-0">
         <div class="card-body px-5 job-card-body">
-           <div class="bg-light px-1 py-2">
+           <div class="bg-light p-3">
             <p class="card-text lead text-justify bg-light" style="color:black"><%= job_presenter.description %></p>
           </div>
           <div class="bg-secondary text-center text-light">

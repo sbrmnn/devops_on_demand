@@ -263,15 +263,7 @@ $(document).on('change paste keyup','.work-experience-to', function(e){
 });
 
 
-$(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
-    if($(e.target).is("#pills-jobs-tab")) {
-        $('.job-description').readmore({
-            speed: 75,
-            collapsedHeight: 48,
-            lessLink: '<a href="#">Read less</a>'
-        });
-    }
-});
+
 
 
 $(document).on('change paste keyup','.work-experience-achievements', function(e){

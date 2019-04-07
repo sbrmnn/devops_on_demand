@@ -93,13 +93,6 @@ $( document ).ready(function() {
     init();
 
 
-
-    $('.profile-chat').readmore({
-        speed: 75,
-        collapsedHeight: 0,
-        lessLink: '<a href="#">Read less</a>'
-    });
-
 });
 
 function init() {
@@ -371,7 +364,21 @@ $(document).on(click_event,'a[data-toggle="pill"]', function(e){
     window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
 });
 
+$(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
+    if($(e.target).is("#pills-messages-tab")) {
 
+
+            $('.profile-chat').readmore({
+                speed: 75,
+                collapsedHeight: 0,
+                lessLink: '<a href="#">Read less</a>'
+            });
+
+
+  
+
+    }
+});
 
 
 

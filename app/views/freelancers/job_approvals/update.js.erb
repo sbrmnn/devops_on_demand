@@ -1,1 +1,1 @@
-$(".approval-col-job-<%= @job.id %>").html("<%= escape_javascript render(partial: 'job_approval_btns', locals: { job_presenter: JobPresenter.new(@job)}) %>")
+$(".approval-col-job-<%= @job.id %>").html("<%= escape_javascript render(partial: 'job_approval_btns', locals: { job_presenter: JobPresenter.new(@job), cancel_btn: false}) %>")

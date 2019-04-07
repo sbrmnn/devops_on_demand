@@ -30,10 +30,16 @@ function bindChatroomToRecieveMessages(){
             var chatroomId = $(this).data('chatroom');
             $(document).on('show.bs.collapse', target, function () {
                 renderChatRoomMessages(chatroomId);
+
             });
         });
     }
 }
+
+
+
+
+
 
 function subscribeToRooms(){
     var chatroomNames = $(".chat-box");

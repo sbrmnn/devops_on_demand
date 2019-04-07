@@ -1,10 +1,18 @@
-<% if job_presenter.acceptance.nil? %>
-  <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-success accept-btn btn" >Accept</a>
-  <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger reject-btn btn" >Reject</a>
-<% elsif job_presenter.acceptance %>
-  <p class="text-success m-0">Approved</p>
-
+<% if cancel_btn.present? %>
+  <% if job_presenter.acceptance %>
+    <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger  btn" >Dispute</a>
+  <% else %>
+    <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger  btn" >Cancel</a>
+  <% end %>
 <% else %>
-  <p class="text-danger m-0">Rejected</p>
-
+  <% if job_presenter.acceptance.nil? %>
+    <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-success accept-btn btn" >Accept</a>
+    <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger reject-btn btn" >Reject</a>
+  <% elsif job_presenter.acceptance %>
+    <p class="text-success m-0">Approved</p>
+  <% else %>
+    <p class="text-danger m-0">Rejected</p>
+  <% end %>
 <% end %>
+
+

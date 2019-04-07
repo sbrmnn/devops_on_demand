@@ -11,28 +11,30 @@
 <div class="container-fluid p-0">
   <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
-    <div class="card rounded-0 border-bottom-0">
-      <div class="card-body px-5 job-card-body">
-        <h3>
-          <% if participant.try(:freelancer) %>
-            <a class="name-link" href="/freelancers/<%= participant.try(:freelancer).id %>"><%= participant.try(:first_name) << " " << participant.try(:last_name) %></a>
-          <% elsif participant.present? %>
+    <% if participant.try(:freelancer) %>
+      <%= render 'freelancer_card', freelancer: participant.try(:freelancer) %>
+     <% elsif participant.present?%>
+      <div class="card rounded-0 border-bottom-0">
+        <div class="card-body px-5 job-card-body">
+          <h3>
             <%= participant.try(:first_name) << " " << participant.try(:last_name) %>
-          <% end %>
-        </h3>
-        <p class="my-2"><em><%= cp.last_message.try(:body) %></em></p>
-        <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
-          <%= t('view_messages') %>
-        </button>
-        <div class="collapse mt-3" id="collapse<%= cp.id %>">
-          <%= render 'chatbox_id', cp: cp %>
+          </h3>
+          <p class="my-2"><em><%= cp.last_message.try(:body) %></em></p>
+          <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
+            <%= t('view_messages') %>
+          </button>
+          <div class="collapse mt-3" id="collapse<%= cp.id %>">
+            <%= render 'chatbox_id', cp: cp %>
+          </div>
         </div>
       </div>
-    </div>
+      <% end %>
   <% end %>
 </div>
 
 
- 
+
+
+
 
 

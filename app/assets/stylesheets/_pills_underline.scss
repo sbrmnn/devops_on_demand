@@ -8,7 +8,7 @@ $nav-pills-underline-active-bg:    transparent !default;
 $nav-pills-underline-hover-bg:    transparent !default;
 
 $nav-pills-underline-border-width:    3px !default;
-$nav-pills-underline-border-color:    whitesmoke;
+$nav-pills-underline-border-color:    black;
 
 .nav-pills-underline{
   .nav-link {
@@ -28,6 +28,7 @@ $nav-pills-underline-border-color:    whitesmoke;
       border-bottom-width: $nav-pills-underline-border-width;
       border-bottom-style: solid;
       border-bottom-color: transparent;
+      color: black;
       padding-top: 1px !important;
       padding-bottom: 1px !important;
       padding-left: 0px !important;

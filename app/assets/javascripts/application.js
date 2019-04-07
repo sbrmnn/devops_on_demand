@@ -165,11 +165,6 @@ $(document).on(click_event,'.billing-btn', function(e){
 });
 
 
-
-
-
-
-
 $(document).on(click_event,'.name-link', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -360,10 +355,12 @@ function getSelectedPill(){
             $('#pills-find-freelancers-tab').tab('show');
         }
     }
-    $(document).on(click_event,'a[data-toggle="pill"]', function(e){
-         window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
-    });
 }
+
+
+$(document).on(click_event,'a[data-toggle="pill"]', function(e){
+    window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
+});
 
 
 

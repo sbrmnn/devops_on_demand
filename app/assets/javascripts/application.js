@@ -91,6 +91,15 @@ var months = [ "January", "February", "March", "April", "May", "June",
 
 $( document ).ready(function() {
     init();
+
+ 
+
+    $('.profile').readmore({
+        speed: 75,
+        collapsedHeight: 24*2,
+        lessLink: '<a href="#">Read less</a>'
+    });
+
 });
 
 function init() {

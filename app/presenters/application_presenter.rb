@@ -10,6 +10,7 @@ class ApplicationPresenter
   end
 
   def self.wrap(collection)
+    return [] if collection.blank?
     collection.map do |obj|
        new(obj)
     end

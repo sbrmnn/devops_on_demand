@@ -148,7 +148,7 @@ body {
 }
 
 
-.profile, .job-description {
+.profile, .job-description, .profile-chat {
   overflow: hidden !important;
 }
 
@@ -328,6 +328,16 @@ body {
   min-height: 38px;
 }
 
+
+
+@media screen and (max-width: 768px) {
+  #bars {
+    flex-direction: column !important;
+  }
+  .port-item {
+    width: 100%;
+  }
+}
 
 
 

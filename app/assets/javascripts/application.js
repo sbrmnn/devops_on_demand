@@ -92,11 +92,11 @@ var months = [ "January", "February", "March", "April", "May", "June",
 $( document ).ready(function() {
     init();
 
- 
 
-    $('.profile').readmore({
+
+    $('.profile-chat').readmore({
         speed: 75,
-        collapsedHeight: 24*2,
+        collapsedHeight: 0,
         lessLink: '<a href="#">Read less</a>'
     });
 

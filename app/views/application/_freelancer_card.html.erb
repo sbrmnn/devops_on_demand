@@ -19,7 +19,7 @@
       <ul class="list-inline">
         <li class="list-inline-item"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %> <span class="text-muted mr-1" style="height: 25px">HOUR</span><%= freelancer.rate.to_i * 8 %><span class="ml-1 text-muted" style="height: 25px">DAY</span></strong></li>
         <li class="list-inline-item"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
-        <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= freelancer.full_name_location %></strong></li>
+        <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
       </ul>
       <div class="profile">
         <div class="about_me">

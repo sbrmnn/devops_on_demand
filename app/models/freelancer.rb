@@ -1,6 +1,6 @@
 class Freelancer < ApplicationRecord
   searchkick
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :educations, dependent: :destroy
   has_many :work_experiences, dependent: :destroy
   has_one :skill, dependent: :destroy
@@ -34,6 +34,6 @@ class Freelancer < ApplicationRecord
   end
 
   def create_user_name
-    self.user_name = UserPresenter.new(self.user).full_name
+    self.user_name = UserPresenter.new(self.user).full_name if user.present?
   end
 end

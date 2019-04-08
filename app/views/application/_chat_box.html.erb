@@ -14,23 +14,25 @@
 
       <% freelancer =   participant.try(:freelancer) %>
       <% if participant %>
-      <div id="bars" class=" px-4 d-flex flex-row text-dark card  bg-white">
+      <div  class=" px-4 d-flex bars flex-row text-dark card  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">
         <div class="port-item p-4 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
           <% if freelancer.try(:profile_photo) %>
-            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 125, height: 125, radius: :max, crop: :scale)) %>">
+            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 110, height: 110, crop: :scale)) %>">
           <% else %>
             <img src="https://via.placeholder.com/125">
           <% end %>
         </div>
-        <div class="port-item px-1 py-4" data-toggle="collapse" data-target="#resume">
+        <div class="port-item py-4" data-toggle="collapse" data-target="#resume">
           <h6><%= UserPresenter.new(participant).full_name %></h6>
-          <ul class="list-inline mb-1">
-            <li class="list-inline-item"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %> <span class="text-muted mr-1" style="height: 25px">HOUR</span><%= freelancer.rate.to_i * 8 %><span class="ml-1 text-muted" style="height: 25px">DAY</span></strong></li>
-            <li class="list-inline-item"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
-            <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
-          </ul>
-          <blockquote >
-            <p><%= cp.last_message.body %></p>
+          <% if freelancer %>
+            <ul class="list-inline mb-1">
+              <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %> <span class="text-muted mr-1" style="height: 25px">HOUR</span><%= freelancer.rate.to_i * 8 %><span class="ml-1 text-muted" style="height: 25px">DAY</span></strong></li>
+              <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
+              <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
+            </ul>
+          <% end %>
+          <blockquote class="pl-1 mb-2">
+            <p>Last message: <em><%= cp.last_message.body %></em></p>
           </blockquote>
           <% if freelancer %>
             <div class="profile-chat">
@@ -85,18 +87,24 @@
             </div>
           <% end %>
           <div class="mt-2">
-            <button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn btn-info btn-sm    toggle_message_box"><%= t('view_messages') %></button>
-            <a href="#job-form<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
+            <button data-chatroom="<%= cp.id %>" class="mt-2 view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
+              <%= t('view_messages') %>
+            </button>
+            <% if freelancer %>
+              <a href="#job-form<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
+            <% end %>
           </div>
         </div>
       </div>
-      <div class="message_box_freelancer_<%= freelancer.id %> d-none">
+      <div class="collapse" id="collapse<%= cp.id %>">
+        <%= render 'chatbox_id', cp: cp %>
       </div>
-      <div id="job-form<%=freelancer.id%>"  class="d-none">
-        <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
-      </div>
-
-  <% end %>
+      <% if freelancer %>
+        <div id="job-form<%=freelancer.id%>"  class="d-none">
+          <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 

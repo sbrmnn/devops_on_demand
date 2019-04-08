@@ -30,7 +30,7 @@
             <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
           </ul>
           <blockquote >
-            <%= cp.last_message.body %>
+            <p><%= cp.last_message.body %></p>
           </blockquote>
           <% if freelancer %>
             <div class="profile-chat">

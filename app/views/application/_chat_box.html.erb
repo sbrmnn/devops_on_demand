@@ -22,7 +22,7 @@
             <img src="https://via.placeholder.com/125">
           <% end %>
         </div>
-        <div class="port-item py-4" data-toggle="collapse" data-target="#resume">
+        <div class="port-item py-4 w-50" data-toggle="collapse" data-target="#resume">
           <h6><%= UserPresenter.new(participant).full_name %></h6>
           <% if freelancer %>
             <ul class="list-inline mb-1">
@@ -35,7 +35,7 @@
             <p>Last message: <em><%= cp.last_message.body %></em></p>
           </blockquote>
           <% if freelancer %>
-            <div class="profile-chat w-100">
+            <div class="profile-chat">
               <div class="about_me">
                 <h5 class="font-weight-bold font-underline my-3">About me</h5>
                 <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>

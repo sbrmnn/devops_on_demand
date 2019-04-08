@@ -9,7 +9,7 @@
 
 
 <div class="container-fluid p-0">
-  <% ChatroomPresenter.wrap(@user.chatrooms).reverse.each do |cp| %>
+  <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
 
       <% freelancer =   participant.try(:freelancer) %>
@@ -35,7 +35,7 @@
             <p>Last message: <em><%= cp.last_message.body %></em></p>
           </blockquote>
           <% if freelancer %>
-            <div class="profile-chat">
+            <div class="profile-chat w-100">
               <div class="about_me">
                 <h5 class="font-weight-bold font-underline my-3">About me</h5>
                 <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>

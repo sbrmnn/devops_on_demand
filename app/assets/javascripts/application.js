@@ -311,7 +311,7 @@ $(document).on(click_event,'.accept-btn', function(e){
 });
 
 
-$(document).on(click_event,'button.toggle_message_box', function(e){
+$(document).on(click_event,'a.toggle_message_box', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     var self = $(this);

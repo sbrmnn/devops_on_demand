@@ -17,19 +17,21 @@
       <div  class=" px-4 d-flex bars flex-row text-dark card  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">
         <div class="port-item p-4 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
           <% if freelancer.try(:profile_photo) %>
-            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 125, height: 125, crop: :scale)) %>">
+            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 125, height: 125,  radius: :max, crop: :scale)) %>">
           <% else %>
             <img src="https://via.placeholder.com/125">
           <% end %>
         </div>
-        <div class="port-item py-4 w-50" data-toggle="collapse" data-target="#resume">
-          <h6><%= UserPresenter.new(participant).full_name %></h6>
+        <div class="port-item py-4 w-100" data-toggle="collapse" data-target="#resume">
           <% if freelancer %>
+            <h6><%= freelancer.user_name %></h6>
             <ul class="list-inline mb-1">
               <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %> <span class="text-muted mr-1" style="height: 25px">HOUR</span><%= freelancer.rate.to_i * 8 %><span class="ml-1 text-muted" style="height: 25px">DAY</span></strong></li>
               <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
               <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
             </ul>
+          <% else %>
+            <h6><%= UserPresenter.new(participant).full_name %></h6>
           <% end %>
           <blockquote class="pl-1 mb-2">
             <p>Last message: <em><%= cp.last_message.body %></em></p>

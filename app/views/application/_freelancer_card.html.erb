@@ -1,52 +1,45 @@
-  <div style="border-radius: 0" class="d-flex bd-highlight flex-row card">
-    <div class="p-4 text-center flex-shrink-1 bd-highlight">
-      <% if freelancer.try(:profile_photo) %>
-        <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 104, height: 104, radius: :max, crop: :scale)) %>">
-      <% else %>
-        <img src="https://via.placeholder.com/100">
-      <% end %>
-      <div class="d-flex flex-column bd-highlight mt-1">
-        <div class="bd-highlight"><a href="#job-form<%=freelancer.id%>" class="btn-info btn  w-100 mt-1 hire-me-btn" >Hire Me</a></div>
-        <div class="bd-highlight"><button data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-success btn w-100 mt-2 toggle_message_box">Chat</button></div>
-
-        <div class="bd-highlight"><button class="btn btn-outline-dark mt-2 w-100" >Save</button></div>
+<div  class=" px-4 d-flex bars flex-row text-dark card bg-white">
+  <div class="port-item p-4 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
+    <% if freelancer.try(:profile_photo) %>
+      <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105, radius: :max, crop: :scale)) %>">
+    <% else %>
+      <img src="https://via.placeholder.com/100">
+    <% end %>
+  </div>
+  <div class="port-item py-4 w-100" data-toggle="collapse" data-target="#resume">
+    <h6><%= freelancer.user_name %></h6>
+    <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
+    <ul class="list-inline mb-1">
+      <li class="list-inline-item"><i class="fas fa-dollar-sign mr-1"></i><strong><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%></strong></li>
+      <li class="list-inline-item"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
+      <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
+    </ul>
+    <div class="profile">
+      <div class="about_me">
+         <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
       </div>
-    </div>
-    <div class="py-4 px-2 mt-2 flex-grow-1">
-      <h6><%= freelancer.user_name %></h6>
-      <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
-      <ul class="list-inline">
-        <li class="list-inline-item"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %> <span class="text-muted mr-1" style="height: 25px">HOUR</span><%= freelancer.rate.to_i * 8 %><span class="ml-1 text-muted" style="height: 25px">DAY</span></strong></li>
-        <li class="list-inline-item"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
-        <li class="list-inline-item"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
-      </ul>
-      <div class="profile">
-        <div class="about_me">
-          <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
-        </div>
-        <% if freelancer.source_control_url.present? %>
-          <div class="mb-2 source_control">
-            <h5 class="font-weight-bold font-underline my-3">Source Control</h5>
-            <div class="resume-section-content">
-              <ul class="px-3">
-                <li>
-                  <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        <% end %>
-
-        <div class="mb-2 work_experience">
-          <h5 class="font-underline font-weight-bold my-3">Work Experience</h5>
+      <% if freelancer.source_control_url.present? %>
+        <div class="mb-2 source_control">
+          <h5 class="font-weight-bold font-underline my-3">Source Control</h5>
           <div class="resume-section-content">
+            <ul class="px-3">
+              <li>
+                <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      <% if freelancer.work_experiences.present? %>
+        <div class="work_experience">
+          <h5 class="font-underline font-weight-bold my-3">Work Experience</h5>
             <ul class="px-3">
 
               <% freelancer.work_experiences.each do |we| %>
 
                 <li>
-                  <article class="resume-timeline-item pb-2">
-                    <div class="resume-timeline-item-header mb-1">
+                  <article class="pb-2">
+                    <div class=" mb-1">
                       <div class="d-flex flex-column flex-md-row">
                         <h3 class="resume-position-title text-dark font-weight-bold"><%= we.title %></h3>
                       </div><!--//row-->
@@ -60,36 +53,36 @@
                     </div><!--//resume-timeline-item-desc-->
                   </article><!--//resume-timeline-item-->
                 </li>
-
-
-
               <% end %>
             </ul>
-
-          </div>
         </div>
+      <% end %>
+      <% if freelancer.certifications.present? %>
+        <div class="certifications">
+          <h5 class="font-underline font-weight-bold my-3">Certifications</h5>
+          <ul class="list-inline">
+            <% freelancer.certifications.try(:each) do |cert| %>
+              <li class="list-inline-item"><span class="badge badge-warning"><%= cert.certification_name.provider%> <%= cert.certification_name.name %></span></li>
+            <% end %>
+          </ul>
+        </div>
+      <%  end %>
+      <div style="min-height: 1.25em">
       </div>
-      <!--//resume-timeline
-      <ul class="list-inline my-2">
-
-      </ul>
-      -->
-      <ul class="list-inline my-2">
-        <% freelancer.certifications.try(:each) do |cert| %>
-          <li class="list-inline-item"><span class="badge badge-warning"><%= cert.certification_name.provider%> <%= cert.certification_name.name %></span></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <div class="message_box_freelancer_<%= freelancer.id %> d-none">
-
-    <div class="d-flex flex-column bg-light">
-
     </div>
 
+    <div class="mt-2">
+       <a data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn btn-sm toggle_message_box">Chat</a>
+      <% if freelancer %>
+        <a href="#job-form<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
+      <% end %>
+    </div>
   </div>
-  <div id="job-form<%=freelancer.id%>"  class="d-none">
-    <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
-  </div>
+</div>
+<div class="message_box_freelancer_<%= freelancer.id %> d-none">
+</div>
+<div id="job-form<%=freelancer.id%>"  class="d-none">
+  <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
+</div>
+
 

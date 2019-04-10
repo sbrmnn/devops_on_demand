@@ -60,9 +60,18 @@
       <% if freelancer.certifications.present? %>
         <div class="certifications">
           <h5 class="font-underline font-weight-bold my-3">Certifications</h5>
-          <ul class="list-inline">
-            <% freelancer.certifications.try(:each) do |cert| %>
-              <li class="list-inline-item"><span class="badge badge-warning"><%= cert.certification_name.provider%> <%= cert.certification_name.name %></span></li>
+          <ul  class="px-3">
+            <% freelancer.certifications.eager_load(:certification_name).each do |cert| %>
+              <li>
+                <article class="pb-2">
+                  <div class=" mb-1">
+                    <div class="d-flex flex-column flex-md-row">
+                      <h3 class="resume-position-title text-dark font-weight-bold"><%= cert.certification_name.provider %> - <%= cert.certification_name.name %> </h3>
+                    </div><!--//row-->
+
+                  </div><!--//resume-timeline-item-header-->
+                </article><!--//resume-timeline-item-->
+              </li>
             <% end %>
           </ul>
         </div>

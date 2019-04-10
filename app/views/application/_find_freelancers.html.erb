@@ -1,8 +1,7 @@
 <div>
-  <div class="container" style="padding-left: 0px;padding-right: 0px;
-  ">
+  <div class="container-fluid px-5">
     <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
-      <div class="input-group py-3 px-1">
+      <div class="input-group w-75 py-3">
         <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
         <div class="input-group-append">
           <%= button_tag :submit, class: 'btn btn-dark' do %>

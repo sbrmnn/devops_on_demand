@@ -6,7 +6,7 @@
       <img src="https://via.placeholder.com/100">
     <% end %>
   </div>
-  <div class="port-item py-4 w-100" data-toggle="collapse" data-target="#resume">
+  <div class="port-item py-4 w-100" data-toggle="collapse">
     <h6><%= freelancer.user_name %></h6>
     <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
     <ul class="list-inline mb-1">
@@ -14,74 +14,10 @@
       <li class="list-inline-item pb-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
       <li class="list-inline-item pb-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
     </ul>
-    <div class="profile">
-      <div class="about_me">
-         <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
-      </div>
-      <% if freelancer.source_control_url.present? %>
-        <div class="mb-2 source_control">
-          <h5 class="font-weight-bold font-underline my-3">Source Control</h5>
-          <div class="resume-section-content">
-            <ul class="px-3">
-              <li>
-                <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      <% end %>
-      <% if freelancer.work_experiences.present? %>
-        <div class="work_experience">
-          <h5 class="font-underline font-weight-bold my-3">Work Experience</h5>
-            <ul class="px-3">
-
-              <% freelancer.work_experiences.each do |we| %>
-
-                <li>
-                  <article class="pb-2">
-                    <div class=" mb-1">
-                      <div class="d-flex flex-column flex-md-row">
-                        <h3 class="resume-position-title text-dark font-weight-bold"><%= we.title %></h3>
-                      </div><!--//row-->
-                      <div class="d-flex flex-column flex-md-row">
-                        <h4 class="resume-position-title text-dark"><%= we.employer %></h4>
-                      </div><!--//row-->
-                      <div class="resume-position-time"><%= we.from %> - <%= we.to.present? ?  we.to : "Present" %></div>
-                    </div><!--//resume-timeline-item-header-->
-                    <div class="resume-timeline-item-desc">
-                      <p class="mb-0 text-dark"><%= we.achievements %></p>
-                    </div><!--//resume-timeline-item-desc-->
-                  </article><!--//resume-timeline-item-->
-                </li>
-              <% end %>
-            </ul>
-        </div>
-      <% end %>
-      <% if freelancer.certifications.present? %>
-        <div class="certifications">
-          <h5 class="font-underline font-weight-bold my-3">Certifications</h5>
-          <ul  class="px-3">
-            <% freelancer.certifications.eager_load(:certification_name).each do |cert| %>
-              <li>
-                <article class="pb-2">
-                  <div class=" mb-1">
-                    <div class="d-flex flex-column flex-md-row">
-                      <h3 class="resume-position-title text-dark font-weight-bold"><%= cert.certification_name.provider %> - <%= cert.certification_name.name %> </h3>
-                    </div><!--//row-->
-
-                  </div><!--//resume-timeline-item-header-->
-                </article><!--//resume-timeline-item-->
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <%  end %>
-      <div style="min-height: 1.25em">
-      </div>
-    </div>
+    <%= render 'profile', freelancer: freelancer %>
 
     <div class="mt-2">
-       <a data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn btn-sm toggle_message_box">Chat</a>
+       <a data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn text-light btn-sm toggle_message_box">Chat</a>
       <% if freelancer %>
         <a href="#job-form<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
       <% end %>

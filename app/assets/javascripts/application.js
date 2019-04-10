@@ -365,8 +365,19 @@ $(document).on(click_event,'a[data-toggle="pill"]', function(e){
 });
 
 $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
+
+    if($(e.target).is("#pills-find-freelancers-tab")) {
+        $('.profile').readmore({
+            speed: 75,
+            collapsedHeight: 24,
+            lessLink: '<a href="#">Read less</a>',
+            moreLink: '<a href="#">Read Profile</a>'
+        });
+
+    }
+
     if($(e.target).is("#pills-messages-tab")) {
-            $('.profile-chat').readmore({
+            $('.profile').readmore({
                 speed: 75,
                 collapsedHeight: 0,
                 lessLink: '<a href="#">Read less</a>',

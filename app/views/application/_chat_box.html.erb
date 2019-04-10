@@ -32,60 +32,11 @@
           <% else %>
             <h6><%= UserPresenter.new(participant).full_name %></h6>
           <% end %>
-          <blockquote class="pl-1 mb-2">
+          <blockquote class="pl-1 mb-3">
             <p>Last message: <em><%= cp.last_message.body %></em></p>
           </blockquote>
           <% if freelancer %>
-            <div class="profile-chat">
-              <div class="about_me">
-                <h5 class="font-weight-bold font-underline my-3">About me</h5>
-                <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
-              </div>
-              <% if freelancer.source_control_url.present? %>
-                <div class="mb-2 source_control">
-                  <h5 class="font-weight-bold font-underline my-3">Source Control</h5>
-                  <div class="resume-section-content">
-                    <ul class="px-3">
-                      <li>
-                        <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              <% end %>
-
-              <div class="mb-2 work_experience">
-                <h5 class="font-underline font-weight-bold my-3">Work Experience</h5>
-                <div class="resume-section-content">
-                  <ul class="px-3">
-
-                    <% freelancer.work_experiences.each do |we| %>
-
-                      <li>
-                        <article class="resume-timeline-item pb-2">
-                          <div class="resume-timeline-item-header mb-1">
-                            <div class="d-flex flex-column flex-md-row">
-                              <h3 class="resume-position-title text-dark font-weight-bold"><%= we.title %></h3>
-                            </div><!--//row-->
-                            <div class="d-flex flex-column flex-md-row">
-                              <h4 class="resume-position-title text-dark"><%= we.employer %></h4>
-                            </div><!--//row-->
-                            <div class="resume-position-time"><%= we.from %> - <%= we.to.present? ?  we.to : "Present" %></div>
-                          </div><!--//resume-timeline-item-header-->
-                          <div class="resume-timeline-item-desc">
-                            <p class="mb-0 text-dark"><%= we.achievements %></p>
-                          </div><!--//resume-timeline-item-desc-->
-                        </article><!--//resume-timeline-item-->
-                      </li>
-
-
-
-                    <% end %>
-                  </ul>
-
-                </div>
-              </div>
-            </div>
+            <%= render 'profile', freelancer: freelancer %>
           <% end %>
           <div class="mt-2">
             <button data-chatroom="<%= cp.id %>" class="view-messages-btn btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">

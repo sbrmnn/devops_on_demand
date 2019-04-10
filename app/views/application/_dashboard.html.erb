@@ -16,11 +16,11 @@
   </div>
 
   <div class="tab-pane fade"  id="pills-posted-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-    <%= render 'jobs', jobs: JobPresenter.wrap(@user.jobs.where(acceptance: [true, nil]).order(:id)), cancel_btn: true %>
+    <%= render 'jobs', jobs: JobPresenter.wrap(@user.jobs.eager_load(:user).where(acceptance: [true, nil]).order(:id)), cancel_btn: true %>
   </div>
 
   <div class="tab-pane fade"  id="pills-received-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-    <%= render 'jobs', jobs: JobPresenter.wrap(@user.freelancer&.jobs&.order(:id)), cancel_btn: false %>
+    <%= render 'jobs', jobs: JobPresenter.wrap(@user.freelancer&.jobs&.eager_load(:user)&.order(:id)), cancel_btn: false %>
   </div>
 
   <div class="tab-pane fade" id="pills-freelancer-registration" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">

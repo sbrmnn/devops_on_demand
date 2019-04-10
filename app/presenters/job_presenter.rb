@@ -1,7 +1,7 @@
 class JobPresenter < ApplicationPresenter
 
   def poster
-    UserPresenter.new(model.user).full_name
+    "#{model.user.first_name} #{model.user.last_name}"
   end
 
 

@@ -30,11 +30,12 @@
                     <%= form.text_field :to, class: 'form-control', "data-provide":'datepicker', id: nil %>
                   </div>
                 </div>
-                <% if user.credit_cards.last.try(:last_4).present? %>
+                <% last_4 = user.credit_cards.last.try(:last_4) %>
+                <% if last_4.present? %>
                   <div class="form-row">
                     <div class="form-group col-12">
                       <%= form.label :credit_card %>
-                      <%= form.text_field :credit_cards, class: 'form-control', disabled: true, value: "**** **** **** #{user.credit_cards.last.try(:last_4)}" %>
+                      <%= form.text_field :credit_cards, class: 'form-control', disabled: true, value: "**** **** **** #{last_4}" %>
                       <div class="checkbox mt-3">
                         <label><input type="checkbox" data-freelancer="<%= freelancer_id %>" class="different-card-checkbox mr-2" value="">Use Different Card</label>
                       </div>
@@ -42,7 +43,7 @@
                   </div>
                 <% end %>
 
-                <div class = "new-card-section <%= user.credit_cards.last.try(:last_4).present? ? "d-none" : '' %>">
+                <div class = "new-card-section <%= last_4.present? ? "d-none" : '' %>">
                 <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
                 <div class="form-row mt-1">
                   <div class="col-md-6 form-group">

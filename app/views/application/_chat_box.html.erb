@@ -11,7 +11,6 @@
 <div class="container-fluid p-0">
   <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
-
       <% freelancer =   participant.try(:freelancer) %>
       <% if participant %>
       <div  class=" px-4 d-flex bars flex-row text-dark card  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">

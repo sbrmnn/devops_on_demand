@@ -180,11 +180,11 @@ $(document).on(click_event,'.name-link', function(e){
 $(document).on(click_event,'.hire-me-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    var jobForm = $($(this).attr("href"))
+    var jobForm = $($(this).attr("href"));
     if (jobForm.hasClass("d-none")){
-        $($(this).attr("href")).removeClass("d-none");
+        jobForm.removeClass("d-none");
     }else{
-        $($(this).attr("href")).addClass("d-none");
+        jobForm.addClass("d-none");
     }
 
     return false;

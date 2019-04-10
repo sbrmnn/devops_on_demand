@@ -5,7 +5,11 @@
           <div class="bg-secondary text-center text-light">
             <ul class="list-inline m-0">
               <li class="list-inline-item px-3 py-2">Job #<%= job_presenter.id %></li>
-              <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i><%= job_presenter.poster %> (<%= job_presenter.poster_email%>)</li>
+              <% if cancel_btn %>
+                <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i><%= job_presenter.freelancer.user_name %> (<%= job_presenter.freelancer.user.relay_user_name %>)</li>
+            <% else %>
+                <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i><%= job_presenter.poster %> (<%= job_presenter.poster_email%>)</li>
+            <% end %>
               <li class="list-inline-item px-3 py-2"><i class="fa fa-calendar mr-1"></i><%= job_presenter.from %> to <%= job_presenter.to %></li>
               <li class="list-inline-item px-3 py-2"> <i class="fa fa-stopwatch mr-1"></i><%= job_presenter.hours.to_i %> hours</li>
               <li class="list-inline-item px-3 py-2"> <i class="fa fa-dollar-sign mr-1"></i><%= job_presenter.total %> Total</li>

@@ -9,14 +9,14 @@
 
 
 <div class="container-fluid p-0">
-  <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
+  <% ChatroomPresenter.wrap(@user.chatrooms.eager_load(:users)).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
-      <% freelancer =   participant.try(:freelancer) %>
+      <% freelancer = participant.try(:freelancer) %>
       <% if participant %>
       <div  class=" px-4 d-flex bars flex-row text-dark card  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">
         <div class="port-item p-4 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
           <% if freelancer.try(:profile_photo) %>
-            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 125, height: 125,  radius: :max, crop: :scale)) %>">
+            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105,  radius: :max, crop: :scale)) %>">
           <% else %>
             <img src="https://via.placeholder.com/125">
           <% end %>

@@ -16,7 +16,7 @@
   </div>
 
   <div class="tab-pane fade"  id="pills-posted-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-    <%= render 'jobs', jobs: JobPresenter.wrap(@user.jobs.eager_load(:user).where(acceptance: [true, nil]).order(:id)), cancel_btn: true %>
+    <%= render 'jobs', jobs: JobPresenter.wrap(@user.jobs.eager_load(:freelancer).where(acceptance: [true, nil]).order(:id)), cancel_btn: true %>
   </div>
 
   <div class="tab-pane fade"  id="pills-received-jobs" role="tabpanel" aria-labelledby="jobs-tab">

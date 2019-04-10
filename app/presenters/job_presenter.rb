@@ -38,5 +38,10 @@ class JobPresenter < ApplicationPresenter
   end
 
 
+  def freelancer
+    model.freelancer
+  end
+
+
 
 end

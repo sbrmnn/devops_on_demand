@@ -92,7 +92,7 @@
               <%= t('view_messages') %>
             </button>
             <% if freelancer %>
-              <a href="#job-form<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
+              <a href="#msg-job-form-<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
             <% end %>
           </div>
         </div>
@@ -101,7 +101,7 @@
         <%= render 'chatbox_id', cp: cp %>
       </div>
       <% if freelancer %>
-        <div id="job-form<%=freelancer.id%>"  class="d-none">
+        <div id="msg-job-form-<%=freelancer.id%>"  class="d-none">
           <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
         </div>
       <% end %>

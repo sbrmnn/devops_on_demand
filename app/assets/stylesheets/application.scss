@@ -9,7 +9,7 @@
 //@import 'bootstrap-datepicker';
 //@import "jquery-ui";
 //@import "jquery.tagsinput";
-@import "lity";
+//@import "lity";
 @import "find-freelancers";
 @import "blog";
 @import "_pills_underline";
@@ -328,7 +328,15 @@ body {
   min-height: 38px;
 }
 
-
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
 
 @media screen and (max-width: 768px) {
   .bars {

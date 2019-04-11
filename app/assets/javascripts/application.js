@@ -122,6 +122,17 @@ $(document).on('change paste keyup','.work-experience-title', function(e){
         $(this).closest('.form-row').addClass("work-experience-title-selected");
     }
 });
+
+$(document).on('keyup input','.job-total', function(e){
+    console.log('h5.' + $(this).attr('total_field'));
+    var total = $(this).val() * $(this).attr('rate')
+    $('h5.' + $(this).attr('total_field')).text('$'+ total);
+    $("." + $(this).attr('total_field') + "[type='hidden']").val(total * 100)
+});
+
+
+
+
 $(document).on('change paste keyup','.work-experience-employer', function(e){
     if ($(this).val() === ""){
         $(this).closest('.form-row').removeClass("work-experience-employer-selected");
@@ -148,15 +159,7 @@ $(document).on('change paste keyup','.certificate-number', function(e){
 });
 
 
-$(document).on(click_event,'.preview-btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var serializedValue = $('#freelancer-registration-form').serialize().trim();
-    var modalIframe = $("#modal-iframe");
-    var iframeUrl = "/profile_preview?" + serializedValue;
-    var lightbox = lity(iframeUrl);
-    return false;
-});
+
 
 $(document).on(click_event,'.billing-btn', function(e){
     e.preventDefault();
@@ -167,28 +170,10 @@ $(document).on(click_event,'.billing-btn', function(e){
 });
 
 
-$(document).on(click_event,'.name-link', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var modalIframe = $("#modal-iframe");
-    var iframeUrl = $(this).attr('href');
-    lity(iframeUrl);
-    return false;
-});
 
 
-$(document).on(click_event,'.hire-me-btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var jobForm = $($(this).attr("href"));
-    if (jobForm.hasClass("d-none")){
-        jobForm.removeClass("d-none");
-    }else{
-        jobForm.addClass("d-none");
-    }
 
-    return false;
-});
+
 
 
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
@@ -372,6 +357,7 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
             collapsedHeight: 24,
             lessLink: '<a href="#">Read less</a>',
             moreLink: '<a href="#">Read Profile</a>'
+
         });
 
     }
@@ -382,6 +368,7 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
                 collapsedHeight: 0,
                 lessLink: '<a href="#">Read less</a>',
                 moreLink: '<a href="#">Read Profile</a>'
+
             });
 
     }

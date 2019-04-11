@@ -8,12 +8,12 @@
 </div>
 
 
-<div class="container-fluid p-0">
+<div class="container-fluid px-5 py-2">
   <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
       <% freelancer = participant.try(:freelancer) %>
       <% if participant %>
-      <div  class=" px-4 d-flex bars flex-row text-dark card  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">
+      <div  class=" px-4 mb-2 d-flex bars flex-row text-dark card  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">
         <div class="port-item p-4 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
           <% if freelancer.try(:profile_photo) %>
             <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105,  radius: :max, crop: :scale)) %>">
@@ -25,7 +25,7 @@
           <% if freelancer %>
             <h6><%= freelancer.user_name %></h6>
             <ul class="list-inline mb-1">
-              <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= freelancer.rate %> <span class="text-muted mr-1" style="height: 25px">HOUR</span><%= freelancer.rate.to_i * 8 %><span class="ml-1 text-muted" style="height: 25px">DAY</span></strong></li>
+              <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%></strong></li>
               <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
               <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
             </ul>
@@ -43,7 +43,7 @@
               <%= t('view_messages') %>
             </button>
             <% if freelancer %>
-              <a href="#msg-job-form-<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
+              <button class="btn-warning btn btn-sm" data-toggle="modal" data-target="#msg-job-form-<%=freelancer.id%>" >Hire Me</button>
             <% end %>
           </div>
         </div>
@@ -52,8 +52,18 @@
         <%= render 'chatbox_id', cp: cp %>
       </div>
       <% if freelancer %>
-        <div id="msg-job-form-<%=freelancer.id%>"  class="d-none">
-          <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
+        <div id="msg-job-form-<%=freelancer.id%>"  class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title w-75">New Job for <%= freelancer.user_name %> </h5>
+                <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
+              </div>
+              <div class="new_job-<%=freelancer.id%>">
+                <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id, freelancer_rate: freelancer.rate %>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>

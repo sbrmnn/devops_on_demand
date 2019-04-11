@@ -1,4 +1,4 @@
-<div  class=" px-4 d-flex bars flex-row text-dark card bg-white">
+<div  class=" px-4 mb-2 d-flex bars flex-row text-dark card bg-white">
   <div class="port-item p-4 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
     <% if freelancer.try(:profile_photo) %>
       <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105, radius: :max, crop: :scale)) %>">
@@ -19,15 +19,25 @@
     <div class="mt-2">
        <a data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn text-light btn-sm toggle_message_box">Chat</a>
       <% if freelancer %>
-        <a href="#job-form<%=freelancer.id%>" class="btn-warning btn btn-sm hire-me-btn" >Hire Me</a>
+        <button class="btn-warning btn btn-sm hire-me-btn" data-toggle="modal" data-target="#job-form<%=freelancer.id%>" >Hire Me</button>
       <% end %>
     </div>
   </div>
 </div>
 <div class="message_box_freelancer_<%= freelancer.id %> d-none">
 </div>
-<div id="job-form<%=freelancer.id%>"  class="d-none">
-  <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id %>
+<div id="job-form<%=freelancer.id%>" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title w-75">New Job for <%= freelancer.user_name %> </h5>
+        <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
+      </div>
+      <div class="new_job-<%=freelancer.id%>">
+        <%= render 'new_job', {user: current_user, job: Job.new, freelancer_rate: freelancer.rate, freelancer_id: freelancer.id}  %>
+      </div>
+    </div>
+  </div>
 </div>
 
 

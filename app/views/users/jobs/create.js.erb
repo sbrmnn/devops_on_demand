@@ -1,13 +1,15 @@
 <% if @job.errors.messages.present? %>
-$(".credit-card-error.<%= @job.freelancer_id %>").removeClass('d-none')
-$(".credit-card-success.<%= @job.freelancer_id %>").addClass('d-none')
+  $(".credit-card-error.<%= @job.freelancer_id %>").removeClass('d-none')
+  $(".credit-card-success.<%= @job.freelancer_id %>").addClass('d-none')
+  $(".label-error-msgs").remove()
+  <% @job.errors.try(:messages).try(:each) do |key, val| %>
+     $(".new-job-form.<%= @job.freelancer_id %>").find("label[for='job_<%= key.to_s %>']").append("<span class='text-danger label-error-msgs ml-1'><%= raw val.first %></span>")
+  <% end %>
 <% else %>
-$(".credit-card-error.<%= @job.freelancer_id %>").addClass('d-none')
-$(".credit-card-success.<%= @job.freelancer_id %>").removeClass('d-none')
+  $(".credit-card-error.<%= @job.freelancer_id %>").addClass('d-none')
+  $(".credit-card-success.<%= @job.freelancer_id %>").removeClass('d-none')
+  $("#job-form<%=@job.freelancer_id%>").modal('hide');
+  $(".new_job-<%=@job.freelancer.id%>").html("<%= escape_javascript(render partial: 'new_job', locals: {user: @job.user, job: Job.new, freelancer_rate: @job.freelancer.rate , freelancer_id: @job.freelancer.id} ) %>")
 <% end %>
 
-$(".label-error-msgs").remove()
 
-<% @job.errors.try(:messages).try(:each) do |key, val| %>
-  $(".new-job-form.<%= @job.freelancer_id %>").find("label[for='job_<%= key.to_s %>']").append("<span class='text-danger label-error-msgs ml-1'><%= raw val.first %></span>")
-<% end %>

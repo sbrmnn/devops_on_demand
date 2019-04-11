@@ -1,9 +1,9 @@
-<div class="card" style="border-radius: 0">
-  <div class="card-body px-4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
+
+    <div class="container">
+      <div class="row p-0">
+        <div class="col-12 p-0">
             <%= form_with(model: [user, job], class: "#{freelancer_id} new-job-form", remote: true) do |form| %>
+            <div class="modal-body">
               <div class="basic-info-nested-fields mb-2">
                 <div class="form-row">
                   <%= form.hidden_field :freelancer_id, class:"job-form-freelancer-id", value: freelancer_id %>
@@ -17,17 +17,19 @@
                 <div class="form-row">
                   <div class="form-group col-12">
                     <%= form.label :hours, "Job Duration (hrs)" %>
-                    <%= form.number_field :hours, class: "form-control  whitesmoke-border", min: 1 %>
+                    <%= form.number_field :hours, total_field: "job-total-#{freelancer_id}", rate: "#{freelancer_rate}" , class: "form-control job-total  whitesmoke-border", min: 1, max: 80 %>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-12">
-                    <%= form.label :from %>
-                    <%= form.text_field :from, class: 'form-control', "data-provide":'datepicker', id: nil %>
+                    <%= form.label :total %>
+                    <h5 class="job-total-<%= freelancer_id %>">$0</h5>
                   </div>
+                </div>
+                <div class="form-row">
                   <div class="form-group col-12">
-                    <%= form.label :to %>
-                    <%= form.text_field :to, class: 'form-control', "data-provide":'datepicker', id: nil %>
+                    <%= form.label :from, "Job Start Date" %>
+                    <%= form.text_field :from, class: 'form-control', "data-provide":'datepicker', id: nil %>
                   </div>
                 </div>
                 <% last_4 = user.credit_cards.last.try(:last_4) %>
@@ -43,9 +45,11 @@
                   </div>
                 <% end %>
 
+
                 <div class = "new-card-section <%= last_4.present? ? "d-none" : '' %>">
-                <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
-                <div class="form-row mt-1">
+                  <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
+                  <%= form.hidden_field  :total,  class: "job-total-#{freelancer_id}  form-control" %>
+                  <div class="form-row mt-1">
                   <div class="col-md-6 form-group">
                     <label>Card Holder Name</label>
                     <%= form.text_field :name, class: 'credit-card-name form-control'  %>
@@ -96,7 +100,7 @@
                   </div>
                   </div>
                 </div>
-                <hr>
+
 
                 <div class="card credit-card-error <%= freelancer_id %> d-none  mb-2">
                   <div class="card-header bg-danger text-light">
@@ -107,15 +111,17 @@
                   <div class="card-header bg-success text-light"><%= t('saved') %></div>
                 </div>
               </div>
+            </div>
+            <div class="modal-footer">
               <div class="pull-right">
                 <%= form.button class: "btn btn-primary " %>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
+            </div>
             <% end %>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 
 

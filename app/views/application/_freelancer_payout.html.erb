@@ -1,5 +1,6 @@
+
 <%  present(@user.freelancer) do |freelancer_presenter| %>
-    <div id ="payout-identity" class="card">
+    <div id ="payout-identity" class="card border-left-0 border-right-0 rounded-0">
       <div class="card-body py-3">
         <div class="container-fluid px-4">
             <%= form_with(model: freelancer_presenter.payout_identity, url: "/freelancers/payout_identities/#{freelancer_presenter.payout_identity.id}", remote: true) do |f| %>
@@ -25,18 +26,11 @@
                       </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group col-4 legal_entity_dob_month">
-                        <%= legal_entity.label :dob_month, "Birth Month" %>
-                        <%= legal_entity.select(:dob_month, (1..12), {include_blank: 'Select month'}, {:prompt => :'Select month', class: "form-control"})%>
+                      <div class="form-group col-md-4 legal_entity_dob_month">
+                        <%= legal_entity.label :dob, "Date of Birth" %>
+                         <%= legal_entity.date_field(:dob, class: "form-control"  )%>
                       </div>
-                      <div class="form-group col-4 legal_entity_dob_day">
-                        <%= legal_entity.label :dob_day, "Birth Day" %>
-                        <%= legal_entity.select(:dob_day, (1..31), {include_blank: 'Select day'}, {:prompt => :'Select day', class: "form-control"})%>
-                      </div>
-                      <div class="form-group col-4 legal_entity_dob_year">
-                        <%= legal_entity.label :dob_year, "Birth Year" %>
-                        <%= legal_entity.select(:dob_year, ((Time.now.year-18).downto(1960)).to_a, {include_blank: 'Select year'}, {:prompt => 'Select year', class: "form-control"})%>
-                      </div>
+
                     </div>
                     <% if freelancer_presenter.canadian? || freelancer_presenter.american? %>
                       <div class="form-row individual-id-tags ">
@@ -172,11 +166,12 @@
                   <hr>
                   <div class="card payout-success-card d-none mb-2">
                     <div class="card-header bg-success text-light">
-
                     </div>
                   </div>
-                  <div>
-                    <button class="submit btn btn-lg btn-primary pull-right">Save</button>
+                  <div class="form-row">
+                    <div class="col-md-12 text-right">
+                      <button class="submit btn btn-lg btn-primary">Save</button>
+                    </div>
                   </div>
             <% end %>
         </div>

@@ -1,16 +1,15 @@
-
-  <div class="container-fluid px-5">
-    <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
-      <div class="input-group py-3">
-        <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
-        <div class="input-group-append">
-          <%= button_tag :submit, class: 'btn btn-dark' do %>
-            <i class="d-none fa fa-circle-o-notch fa-spin mr-1"></i>Search
-          <% end %>
-        </div>
+<div class="container-fluid px-5 py-3">
+  <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
+    <div class="input-group">
+      <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
+      <div class="input-group-append">
+        <%= button_tag :submit, class: 'btn btn-dark' do %>
+          <i class="d-none fa fa-circle-o-notch fa-spin mr-1"></i>Search
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 
 
 

@@ -1,7 +1,7 @@
 class LegalEntity < ApplicationRecord
   belongs_to :payout_identity
   has_one :freelancer, through: :payout_identity
-  attr_accessor :verification_image
+  attr_accessor :verification_image, :dob
   before_save :update_legal_entity_with_payment_provider
 
 

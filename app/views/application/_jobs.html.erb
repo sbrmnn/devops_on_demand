@@ -1,4 +1,4 @@
-<div class="container-fluid px-5 py-2">
+<div class="container-fluid px-5 py-3">
   <% jobs.each do |job_presenter| %>
       <div class="card mb-2 rounded-0">
         <div class="card-body p-0 job-card-body">
@@ -18,7 +18,7 @@
           <div class="bg-light px-2 py-4">
             <p class="card-text lead text-justify bg-light" style="color:black"><%= job_presenter.description %></p>
           </div>
-          <div class="approval-col text-right mt-2 px-2 py-2 approval-col-job-<%= job_presenter.id %>">
+          <div class="approval-col text-right bg-light  px-2 py-2 approval-col-job-<%= job_presenter.id %>">
             <% if cancel_btn.present? %>
               <% if job_presenter.acceptance %>
                 <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger  btn" >Dispute</a>

@@ -1,12 +1,47 @@
 <div class="container-fluid px-5 py-3">
-  <div class="card">
-    <div class="card-header">
-      Past Hires
+
+    <div class="card">
+      <div class="card-header">
+        Past Hires
+      </div>
+      <ul class="list-group list-group-flush">
+        <% UserPresenter.new(@user).transactions.each do |t| %>
+          <li class="list-group-item">
+            <% freelancer = t.freelancer %>
+            <div  class="mb-2 d-flex bars flex-row text-dark  rounded-0">
+              <div class="port-item py-4 px-2 text-center flex-shrink-1" data-toggle="collapse" data-target="#home">
+
+              </div>
+              <div class="port-item px-2 py-4 w-100" data-toggle="collapse">
+                <h6><%= freelancer.user_name %></h6>
+                <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
+                <ul class="list-inline mb-1">
+                  <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%></strong></li>
+                  <li class="list-inline-item pb-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
+                  <li class="list-inline-item pb-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
+                </ul>
+
+
+
+              </div>
+            </div>
+            <div class="message_box_freelancer_<%= freelancer.id %> d-none">
+            </div>
+            <div id="job-form<%=freelancer.id%>" class="modal fade" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title w-75">New Job for <%= freelancer.user_name %> </h5>
+                    <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
+                  </div>
+                  <div class="new_job-<%=freelancer.id%>">
+                    <%= render 'new_job', {user: current_user, job: Job.new, freelancer_rate: freelancer.rate, freelancer_id: freelancer.id}  %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
 </div>

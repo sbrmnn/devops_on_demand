@@ -8,6 +8,9 @@ class UserPresenter < ApplicationPresenter
     model.setting
   end
 
+  def transactions
+    model.transactions
+  end
 
   def email
     model.email

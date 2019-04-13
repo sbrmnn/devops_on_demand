@@ -44,10 +44,6 @@ class FreelancerPresenter < ApplicationPresenter
     model.certifications
   end
 
-  def chatroom_with(user)
-
-  end
-
   def work_experiences
     model.work_experiences
   end

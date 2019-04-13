@@ -1,8 +1,10 @@
-
 <%  present(@user.freelancer) do |freelancer_presenter| %>
-    <div id ="payout-identity" class="card border-left-0 border-right-0 rounded-0">
-      <div class="card-body py-3">
-        <div class="container-fluid px-4">
+    <div id ="payout-identity" class="border-left-0 border-right-0 rounded-0">
+
+      <div class="container-fluid px-5 py-3">
+        <div class="card rounded-0 shadow-sm">
+      <div class="card-body">
+
             <%= form_with(model: freelancer_presenter.payout_identity, url: "/freelancers/payout_identities/#{freelancer_presenter.payout_identity.id}", remote: true) do |f| %>
                   <%= f.hidden_field :external_account, class: :'form-control', id: 'payout_identity_external_account'  %>
                   <%= f.fields_for :legal_entity, f.object.legal_entity.present? ?  f.object.legal_entity : f.object.build_legal_entity do |legal_entity| %>
@@ -170,10 +172,11 @@
                   </div>
                   <div class="form-row">
                     <div class="col-md-12 text-right">
-                      <button class="submit btn btn-lg btn-primary">Save</button>
+                      <button class="submit btn  btn-primary">Save</button>
                     </div>
                   </div>
             <% end %>
+        </div>
         </div>
       </div>
     </div>

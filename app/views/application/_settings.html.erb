@@ -1,50 +1,50 @@
-<div  class="card border-left-0 border-right-0 border-bottom-0 rounded-0">
-  <div class="card-body py-3">
-    <div class="container-fluid px-4">
-      <% present(user) do |user_presenter| %>
-        <%= form_with(model: user_presenter.setting, url: "/users/#{user_presenter.id}/settings", remote: true) do |form| %>
-          <h2><%=t('settings') %></h2>
-          <hr class="mb-2">
-          <div class="row mt-4 ">
-            <div class="col-12">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <%= form.hidden_field :newsletter_subscription, value: false %>
-                  <%= form.check_box :newsletter_subscription, {class: 'form-check-input', checked: user_presenter.setting.newsletter_subscription}, true, false %>
-                  <%= t('newsletters') %>
-                </label>
-                <p class="text-muted"><small><%= t('newsletters_subscription_description') %></small></p>
+<div class="container-fluid px-5 py-3">
+  <div  class="card  rounded-0 shadow-sm">
+    <div class="card-body">
+        <% present(user) do |user_presenter| %>
+          <%= form_with(model: user_presenter.setting, url: "/users/#{user_presenter.id}/settings", remote: true) do |form| %>
+            <h2><%=t('settings') %></h2>
+            <hr class="mb-2">
+            <div class="row mt-4 ">
+              <div class="col-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <%= form.hidden_field :newsletter_subscription, value: false %>
+                    <%= form.check_box :newsletter_subscription, {class: 'form-check-input', checked: user_presenter.setting.newsletter_subscription}, true, false %>
+                    <%= t('newsletters') %>
+                  </label>
+                  <p class="text-muted"><small><%= t('newsletters_subscription_description') %></small></p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-12">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <%= form.hidden_field :chat_notification_subscription, value: false %>
-                  <%= form.check_box :chat_notification_subscription, {class: 'form-check-input', checked:  user_presenter.setting.chat_notification_subscription}, true, false  %>
-                  <%= t('chat_notifications') %>
-                </label>
-                <p class="text-muted"><small><%= t('chat_subscription_description') %></small></p>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <%= form.hidden_field :chat_notification_subscription, value: false %>
+                    <%= form.check_box :chat_notification_subscription, {class: 'form-check-input', checked:  user_presenter.setting.chat_notification_subscription}, true, false  %>
+                    <%= t('chat_notifications') %>
+                  </label>
+                  <p class="text-muted"><small><%= t('chat_subscription_description') %></small></p>
+                </div>
               </div>
             </div>
-          </div>
-          <hr>
-          <div class="card settings-error-card d-none  mb-2">
-            <div class="card-header bg-danger text-light">
-              <%= t('error') %>
+            <hr>
+            <div class="card settings-error-card d-none  mb-2">
+              <div class="card-header bg-danger text-light">
+                <%= t('error') %>
+              </div>
             </div>
-          </div>
-          <div class="card settings-success-card d-none mb-2">
-            <div class="card-header bg-success text-light"><%= t('saved') %></div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-12 text-right">
-              <%= form.submit t('update_settings') , class: 'btn btn-lg btn-primary' %>
+            <div class="card settings-success-card d-none mb-2">
+              <div class="card-header bg-success text-light"><%= t('saved') %></div>
             </div>
-          </div>
+            <div class="row mt-4">
+              <div class="col-12 text-right">
+                <%= form.submit t('update_settings') , class: 'btn  btn-primary' %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
   </div>
 </div>

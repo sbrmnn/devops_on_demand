@@ -1,8 +1,9 @@
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
-    <%= render "home", transactions: UserPresenter.new(@user).transactions  %>
-  </div>
-
+  <% if false %>
+    <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
+     <%= render "home", transactions: UserPresenter.new(@user).transactions  %>
+    </div>
+  <%end%>
   <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="messages-tab">
     <%= render "chat_box" %>
   </div>

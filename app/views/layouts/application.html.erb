@@ -40,9 +40,11 @@
           <li class="nav-item py-2">
             <a class="nav-link d-none" id="pills-freelancer-registration-tab" data-toggle="pill" href="#pills-freelancer-registration" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
           </li>
-          <li class="nav-item py-2 pr-4">
-            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false"><i class="fa fa-home mr-1"></i><%= t('home') %></a>
-          </li>
+          <% if false %>
+            <li class="nav-item py-2 pr-4">
+             <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false"><i class="fa fa-home mr-1"></i><%= t('home') %></a>
+           </li>
+          <%end%>
           <li class="nav-item py-2 pr-4">
             <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
           </li>

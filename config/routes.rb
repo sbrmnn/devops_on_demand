@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  resources :cloud_services, only: :index
+
   resource :chatrooms, only: :create
 
   get 'freelancer_searches',  controller: "freelancer_searches", action: "index"

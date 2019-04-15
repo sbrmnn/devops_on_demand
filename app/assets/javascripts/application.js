@@ -170,6 +170,18 @@ $(document).on(click_event,'.billing-btn', function(e){
 });
 
 
+$(document).on('show.bs.collapse','.multi-collapse', function(e){
+
+    $.ajax({
+        type: 'GET',
+        url: '/cloud_services',
+        data: {provider: $(e.target).data('provider')},
+        dataType: 'script',
+        async: false
+    });
+});
+
+
 
 
 
@@ -223,10 +235,6 @@ $(document).on("change",'.different-card-checkbox', function(e){
 
     return false;
 });
-
-
-
-
 
 $(document).on('change paste keyup','.work-experience-from', function(e){
     if (date.test($(this).val())){

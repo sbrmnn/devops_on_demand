@@ -1,0 +1,8 @@
+<ul class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
+  <% cloud_services.each do |cs| %>
+    <li  class="col-12 list-inline-item px-0 my-2">
+      <%= form.check_box("skills", {:multiple => true}, cs[0], nil) %>
+      <label><%= cs[1] %></label>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,7 @@
+
+<%= @cloud_services.to_json.html_safe %>.forEach(function(e){
+
+   $("#<%= params[:provider].upcase.gsub(' ', '')%>-list").append("<li class='col-12 list-inline-item px-0 my-2'><input type='checkbox' class='mr-1' value="+  e[0] + " name='freelancer[skills][]'><label>"+e[1]+"</label></li>");
+})
+
+

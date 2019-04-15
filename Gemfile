@@ -80,22 +80,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'honeycomb-beeline'
-
 gem 'redis', '~> 4.0.3'
-
 gem 'whenever', require: false
-
-
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
-
-
-
 gem 'cloudinary'
-
-
-
-
-
 gem 'searchkick',  '~> 3.1.0'
 
 

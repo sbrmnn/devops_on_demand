@@ -29,3 +29,16 @@ CertificationName.where(provider: GOOGLE_CERT, name: 'Associate Cloud Engineer')
 CertificationName.where(provider: GOOGLE_CERT, name: 'Professional Cloud Architect').first_or_create
 CertificationName.where(provider: GOOGLE_CERT, name: 'Professional Data Engineer').first_or_create
 CertificationName.where(provider: GOOGLE_CERT, name: 'Professional Cloud Developer').first_or_create
+
+
+CSV.foreach("#{Rails.root}/public/AWSservices.csv") do |r|
+  CloudService.where(provider: 'AWS', name: r ).first_or_create
+end
+
+CSV.foreach("#{Rails.root}/public/Azure.csv") do |r|
+  CloudService.where(provider: 'MS Azure', name: r ).first_or_create
+end
+
+CSV.foreach("#{Rails.root}/public/GoogleServices.csv") do |r|
+  CloudService.where(provider: 'Google Cloud', name: r ).first_or_create
+end

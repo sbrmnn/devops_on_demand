@@ -1,0 +1,2 @@
+class CloudService < ApplicationRecord
+end

@@ -4,9 +4,13 @@
         <div class="card-body p-0 job-card-body">
           <div class="bg-secondary text-center text-light">
             <ul class="list-inline m-0">
+
               <li class="list-inline-item px-3 py-2">Job #<%= job_presenter.id %></li>
               <% if cancel_btn %>
-                <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i><%= job_presenter.freelancer.user_name %> (<%= job_presenter.freelancer.user.relay_user_name %>)</li>
+                <div class="modal fade" id="freelancer-modal-<%= job_presenter.freelancer.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <%=render "freelancer_card_modal", freelancer:  job_presenter.freelancer %>
+                </div>
+                <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i><a href="#" class="text-light" data-toggle="modal" data-target="#freelancer-modal-<%= job_presenter.freelancer.id %>"><%= job_presenter.freelancer.user_name %> (<%= job_presenter.freelancer.user.relay_user_name %>)</a></li>
             <% else %>
                 <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i><%= job_presenter.poster %> (<%= job_presenter.poster_email%>)</li>
             <% end %>

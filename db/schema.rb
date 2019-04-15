@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190401203353) do
+ActiveRecord::Schema.define(version: 20190415025041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20190401203353) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cloud_services", force: :cascade do |t|
+    t.string "name"
+    t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -109,6 +116,7 @@ ActiveRecord::Schema.define(version: 20190401203353) do
     t.datetime "updated_at", null: false
     t.boolean "acceptance"
     t.integer "total"
+    t.bigint "cloud_service_id"
     t.index ["freelancer_id"], name: "index_jobs_on_freelancer_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end

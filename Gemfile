@@ -16,7 +16,7 @@ gem 'recursive-open-struct'
 
 gem 'devise', '~> 4.5.0'
 
-
+gem 'csv'
 
 gem 'material-sass', '4.1.1'
 

@@ -18,8 +18,6 @@ gem 'devise', '~> 4.5.0'
 
 gem 'csv'
 
-gem 'material-sass', '4.1.1'
-
 gem 'cocoon'
 
 gem 'gon'
@@ -33,8 +31,7 @@ gem 'wannabe_bool'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -82,11 +79,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
-
-
-
-
+gem 'honeycomb-beeline'
 
 gem 'redis', '~> 4.0.3'
 
@@ -94,11 +87,6 @@ gem 'whenever', require: false
 
 
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
-
-
-
-
-gem 'jquery-ui-rails'
 
 
 

@@ -51,6 +51,39 @@
                         </div>
                       </div>
                     </div>
+                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">Skills</h4>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+
+                          <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">AWS</button>
+                          <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Google Cloud</button>
+                          <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">MS Azure</button>
+
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                          <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-12">
+                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                          <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-12">
+                        <div class="collapse multi-collapse" id="multiCollapseExample3">
+                          <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('certifications')%></h4>
                     <div id='certifications' class="certifications-nested-fields">
                       <%= form.fields_for :certifications, form.object.certifications.present? ? form.object.certifications : form.object.certifications.new do |certification| %>

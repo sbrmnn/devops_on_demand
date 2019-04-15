@@ -13,7 +13,7 @@
 
 //= require rails-ujs
 //= require turbolinks
-//= require material
+
 //= require cloudinary
 //= require cocoon
 //= require payment_processor

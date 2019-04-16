@@ -171,14 +171,15 @@ $(document).on(click_event,'.billing-btn', function(e){
 
 
 $(document).on('show.bs.collapse','.multi-collapse', function(e){
-
-    $.ajax({
-        type: 'GET',
-        url: '/cloud_services',
-        data: {provider: $(e.target).data('provider')},
-        dataType: 'script',
-        async: false
-    });
+    if ($(e.target).find("ul > li").length === 0){
+        $.ajax({
+            type: 'GET',
+            url: '/cloud_services',
+            data: {provider: $(e.target).data('provider'), freelancer: gon.freelancer_id},
+            dataType: 'script',
+            async: false
+        });
+    }
 });
 
 

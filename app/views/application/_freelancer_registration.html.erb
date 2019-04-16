@@ -54,35 +54,25 @@
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">Skills</h4>
                     <div class="form-row">
                       <div class="form-group col-12">
-
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">AWS</button>
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Google Cloud</button>
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">MS Azure</button>
-
+                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">AWS <i class="fas fa-caret-down"></i></button>
+                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Google Cloud <i class="fas fa-caret-down"></i></button>
+                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">MS Azure <i class="fas fa-caret-down"></i></button>
                       </div>
-                    </div>
-                    <div class="form-row">
                       <div class="form-group col-12">
                         <div class="collapse multi-collapse" data-provider="AWS" id="multiCollapseExample1">
-                            <ul id = "AWS-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-
-                             </ul>
+                          <ul id = "AWS-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
+                          </ul>
                         </div>
-                      </div>
-                      <div class="form-group col-12">
+
                         <div class="collapse multi-collapse" data-provider="Google Cloud" id="multiCollapseExample2">
                           <ul id = "GOOGLECLOUD-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-
                           </ul>
                         </div>
-                      </div>
-                      <div class="form-group col-12">
                         <div class="collapse multi-collapse" id="multiCollapseExample3" data-provider="MS Azure">
                           <ul id = "MSAZURE-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-
                           </ul>
                         </div>
-                      </div>
+                       </div>
                     </div>
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('certifications')%></h4>
                     <div id='certifications' class="certifications-nested-fields">

@@ -1,9 +1,10 @@
 class Freelancer < ApplicationRecord
   searchkick
+  attr_accessor :cloud_services
   belongs_to :user, optional: true
   has_many :educations, dependent: :destroy
   has_many :work_experiences, dependent: :destroy
-  has_one :skill, dependent: :destroy
+  has_many :skills, dependent: :destroy
   has_one :payout_identity
   has_one :legal_entity, through: :payout_identity
   has_many :certifications, dependent: :destroy
@@ -18,19 +19,26 @@ class Freelancer < ApplicationRecord
   validates_presence_of :profile_photo
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :work_experiences, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :skill, reject_if: :all_blank, allow_destroy: true
+  #accepts_nested_attributes_for :skill, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :certifications, reject_if: :all_blank, allow_destroy: true
 
   auto_strip_attributes :headline, :about_me, :source_control_url ,:rate, :location
   
   before_save :create_user_name
-
+  before_save :create_skills
 
   def search_data
     attributes.merge(
-        skill: skill(&:types),
         achievements: work_experiences(&:achievements),
     )
+  end
+
+  def create_skills
+    skills_array = []
+    self.cloud_services&.map{|l|
+      skills_array  << Skill.new(cloud_service_id: l.to_i)
+    }
+    self.skills = skills_array
   end
 
   def create_user_name

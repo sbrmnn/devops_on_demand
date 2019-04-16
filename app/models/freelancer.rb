@@ -1,13 +1,15 @@
 class Freelancer < ApplicationRecord
   searchkick
-  attr_accessor :cloud_services
+  attr_accessor :cloud_service_array
   belongs_to :user, optional: true
   has_many :educations, dependent: :destroy
   has_many :work_experiences, dependent: :destroy
   has_many :skills, dependent: :destroy
+  has_many :cloud_services, through: :skills
   has_one :payout_identity
   has_one :legal_entity, through: :payout_identity
   has_many :certifications, dependent: :destroy
+  has_many :certification_names, through: :certifications, dependent: :destroy
   has_many :jobs
   has_many :transactions
   validates_presence_of :headline
@@ -35,7 +37,7 @@ class Freelancer < ApplicationRecord
 
   def create_skills
     skills_array = []
-    self.cloud_services&.map{|l|
+    self.cloud_service_array&.map{|l|
       skills_array  << Skill.new(cloud_service_id: l.to_i)
     }
     self.skills = skills_array

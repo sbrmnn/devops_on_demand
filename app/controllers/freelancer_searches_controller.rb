@@ -2,7 +2,7 @@ class FreelancerSearchesController < ApplicationController
 
 
   def index
-    @freelancer_searches = Freelancer.search(freelancer_searches[:value])
+    @freelancer_searches = Freelancer.search(freelancer_searches[:value], includes: [:cloud_services,:certification_names, :work_experiences] )
   end
 
 

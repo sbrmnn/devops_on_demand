@@ -31,7 +31,7 @@
           <% else %>
             <h6><%= UserPresenter.new(participant).full_name %></h6>
           <% end %>
-          <blockquote class="pl-1 mb-3">
+          <blockquote class="pl-1 mb-2">
             <p>Last message: <em><%= cp.last_message.body %></em></p>
           </blockquote>
           <% if freelancer %>

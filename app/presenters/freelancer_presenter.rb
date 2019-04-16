@@ -40,12 +40,20 @@ class FreelancerPresenter < ApplicationPresenter
     model.skill&.types&.split(',')&.first(8)
   end
 
-  def certifications
-    model.certifications
+  def certification_names
+    model.certification_names
   end
 
   def work_experiences
     model.work_experiences
+  end
+
+  def skills
+    model.skills
+  end
+
+  def cloud_services
+    model.cloud_services
   end
 
   def european?

@@ -1,10 +1,10 @@
 <%= @cloud_services.to_json.html_safe %>.forEach(function(e){
-  console.log(flatten([<%= @cloud_services_skills %>]))
+
   if(flatten([<%= @cloud_services_skills %>]).includes(e[0])){
-      $("#<%= params[:provider].upcase.gsub(' ', '')%>-list").append("<li class='col-12 list-inline-item px-0 my-2'> <input checked type='checkbox'  class='mr-1' value="+  e[0] + " name='freelancer[cloud_services][]'><label>"+e[1]+"</label></li>");
+      $("#<%= params[:provider].upcase.gsub(' ', '')%>-list").append("<li class='col-12 list-inline-item px-0 my-2'> <input checked type='checkbox'  class='mr-1' value="+  e[0] + " name='freelancer[cloud_service_array][]'><label>"+e[1]+"</label></li>");
 
   }else{
-      $("#<%= params[:provider].upcase.gsub(' ', '')%>-list").append("<li class='col-12 list-inline-item px-0 my-2'> <input   type='checkbox'  class='mr-1' value="+  e[0] + " name='freelancer[cloud_services][]'><label>"+e[1]+"</label></li>");
+      $("#<%= params[:provider].upcase.gsub(' ', '')%>-list").append("<li class='col-12 list-inline-item px-0 my-2'> <input   type='checkbox'  class='mr-1' value="+  e[0] + " name='freelancer[cloud_service_array][]'><label>"+e[1]+"</label></li>");
 
   }
 

@@ -1,12 +1,12 @@
-<div class="profile pr-5 text-justify">
+<div class="profile pr-2 text-justify">
   <div class="about_me">
-    <p> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
+    <p class="mb-0"> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
   </div>
   <% if freelancer.source_control_url.present? %>
-    <div class="source_control">
+    <div class="source_control mb-3">
       <h4 class="font-weight-bold font-underline my-3">Source Control</h4>
       <div>
-        <ul class="px-3">
+        <ul class="px-3 mb-0">
           <li>
             <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
           </li>
@@ -15,14 +15,13 @@
     </div>
   <% end %>
   <% if freelancer.work_experiences.present? %>
-    <div class="work_experience">
+    <div class="work_experience mb-3">
       <h4 class="font-underline font-weight-bold my-3">Work Experience</h4>
-      <ul class="px-3">
+      <ul class="px-3 mb-0">
 
         <% freelancer.work_experiences.each do |we| %>
 
           <li>
-            <article class="pb-2">
               <div class=" mb-1">
                 <div class="d-flex flex-column flex-md-row">
                   <h5 class="text-dark font-weight-bold"><%= we.title %></h5>
@@ -35,19 +34,18 @@
               <div class="resume-timeline-item-desc">
                 <p class="mb-0 text-dark"><%= we.achievements %></p>
               </div><!--//resume-timeline-item-desc-->
-            </article><!--//resume-timeline-item-->
           </li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <% if freelancer.certification_names.present? %>
-    <div class="certifications">
+    <div class="certifications mb-3">
       <h4 class="font-underline font-weight-bold my-3">Certifications</h4>
       <% freelancer.certification_names.group_by(&:provider).each do |k, v| %>
-        <em><%= k %></em>
+        <strong><%= k %></strong>
 
-        <ul class="list-inline pl-0">
+        <ul class="list-inline pl-0 mb-0">
           <% v.each do |cert| %>
             <li class="list-inline-item">
               <span class="badge badge-secondary"><%= cert.name %></span>
@@ -60,12 +58,12 @@
   <% end %>
 
   <% if freelancer.cloud_services.present? %>
-    <div class="source_control">
+    <div class="source_control mb-2">
       <h4 class="font-weight-bold font-underline my-3">Skills</h4>
       <div>
         <% freelancer.cloud_services.group_by(&:provider).each do |k, v| %>
-          <em><%= k %></em>
-          <ul class="list-inline pl-0">
+          <strong><%= k %></strong>
+          <ul class="list-inline pl-0 mb-0">
           <% v.each do |cs| %>
             <li class="list-inline-item"><span class="badge badge-warning"><%= cs.name %></span></li>
           <% end %>

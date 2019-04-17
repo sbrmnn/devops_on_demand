@@ -29,6 +29,10 @@ class Freelancer < ApplicationRecord
   before_save :create_user_name
   before_save :create_skills
 
+
+  default_scope { includes(:certifications, :certification_names  ) }
+
+
   def search_data
     attributes.merge(
         achievements: work_experiences(&:achievements),

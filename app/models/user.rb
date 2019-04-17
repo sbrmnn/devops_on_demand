@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :credit_cards
   has_many :transactions
 
+  default_scope { includes(:chatroom_users, :chatrooms, :messages, :jobs, :setting, :freelancer, :credit_cards ) }
+
   has_one :payout_identity, through: :freelancer
   has_one :tos_acceptance
 

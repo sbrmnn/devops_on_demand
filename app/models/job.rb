@@ -8,6 +8,9 @@ class Job < ApplicationRecord
   validate :check_for_credit_card, on: :create
   before_save :create_credit_card
 
+  default_scope { includes(:credit_cards, :transactions) }
+
+
   def check_for_credit_card
     if user.try(:credit_cards).blank? && front_end_token.blank?
       errors.add(:front_end_token, :blank, message: "cannot be blank")

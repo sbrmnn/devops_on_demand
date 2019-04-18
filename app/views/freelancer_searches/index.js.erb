@@ -8,18 +8,12 @@ var delay = 25;
 
 setTimeout(function() {
     var profile = $('.profile')
-
-    profile.each(function() {
-        profile.readmore({
-            speed: 200,
-            collapsedHeight: 24,
-            lessLink: '<a href="#">Read less</a>'
-        });
-
-        $('.port-item').removeClass('d-none')
-
+    profile.readmore({
+        speed: 200,
+        collapsedHeight: 24,
+        lessLink: '<a href="#">Read less</a>'
     });
-
+    $('.port-item').removeClass('d-none')
 }, delay);
 
 

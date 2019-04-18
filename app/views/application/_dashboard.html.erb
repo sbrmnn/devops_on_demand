@@ -1,35 +1,35 @@
 <div class="tab-content" id="pills-tabContent">
   <% if false %>
-    <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
-     <%= render "home", transactions: UserPresenter.new(@user).transactions  %>
+    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+
     </div>
   <%end%>
-  <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="messages-tab">
-    <%= render "chat_box" %>
+  <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+
   </div>
 
   <div class="tab-pane fade"  id="find-freelancers" role="tabpanel" aria-labelledby="find_freelancers-tab">
-    <%= render 'find_freelancers' %>
+
   </div>
 
-  <div class="tab-pane fade"  id="pills-payments" role="tabpanel" aria-labelledby="settings-tab">
-    <%= render 'freelancer_payout' %>
+  <div class="tab-pane fade"  id="freelancer-payout" role="tabpanel" aria-labelledby="settings-tab">
+
   </div>
 
-  <div class="tab-pane fade"  id="pills-settings" role="tabpanel" aria-labelledby="settings-tab">
-    <%= render 'settings', user: @user %>
+  <div class="tab-pane fade"  id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
   </div>
 
-  <div class="tab-pane fade"  id="pills-posted-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-    <%= render 'jobs', jobs: JobPresenter.wrap(@user.jobs.where(acceptance: [true, nil]).order(:id)), cancel_btn: true %>
+  <div class="tab-pane fade"  id="posted-jobs" role="tabpanel" aria-labelledby="jobs-tab">
+
   </div>
 
-  <div class="tab-pane fade"  id="pills-received-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-    <%= render 'jobs', jobs: JobPresenter.wrap(@user.freelancer&.jobs.order(:id)), cancel_btn: false %>
+  <div class="tab-pane fade"  id="received-jobs" role="tabpanel" aria-labelledby="jobs-tab">
+
   </div>
 
-  <div class="tab-pane fade" id="pills-freelancer-registration" role="tabpanel" aria-labelledby="pills-freelancer-registration-tab">
-    <%= render "freelancer_registration", user: @user %>
+  <div class="tab-pane fade" id="freelancer-registration" role="tabpanel" aria-labelledby="freelancer-registration-tab">
+
   </div>
 </div>
 

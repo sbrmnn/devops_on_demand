@@ -1,7 +1,7 @@
-class UsersController < ApplicationController
+class TabsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
+  def index
     @user = current_user
   end
 end

@@ -5,7 +5,7 @@
         Past Hires
       </div>
       <ul class="list-group list-group-flush">
-        <% UserPresenter.new(@user).transactions.each do |t| %>
+        <% UserPresenter.new(user).transactions.each do |t| %>
           <li class="list-group-item">
             <% freelancer = t.freelancer %>
             <div  class="mb-2 d-flex bars flex-row text-dark  rounded-0">

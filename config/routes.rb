@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :tabs, only: :index
+
   resources :cloud_services, only: :index
 
   resource :chatrooms, only: :create

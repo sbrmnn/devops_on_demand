@@ -30,7 +30,7 @@ class Freelancer < ApplicationRecord
   before_save :create_skills
 
 
-  default_scope { includes(:certifications, :certification_names  ) }
+
 
 
   def search_data

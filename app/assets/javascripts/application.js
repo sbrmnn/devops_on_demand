@@ -78,7 +78,7 @@ function formatAMPM(date) {
 
 function preSelectChatroom(){
     if (getUrlParameter('respond_to_room') !== undefined){
-        $('#pills-messages-tab').trigger('click');
+        $('#messages-tab').trigger('click');
         var roomName = '#' + getUrlParameter('respond_to_room') + '_name';
         $(roomName).trigger(click_event);
         return true
@@ -360,6 +360,14 @@ $(document).on(click_event,'a[data-toggle="pill"]', function(e){
 
 $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 
+    $.ajax({
+        type: 'GET',
+        url: '/tabs',
+        data: {target_div: $(e.target).attr('href')},
+        dataType: 'script',
+        async: false
+    });
+
     if($(e.target).is("#pills-find-freelancers-tab")) {
         $('.profile').readmore({
             speed: 75,
@@ -371,7 +379,7 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 
     }
 
-    if($(e.target).is("#pills-messages-tab")) {
+    if($(e.target).is("#messages-tab")) {
             $('.profile').readmore({
                 speed: 75,
                 collapsedHeight: 0,
@@ -382,6 +390,9 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 
     }
 });
+
+
+
 
 
 

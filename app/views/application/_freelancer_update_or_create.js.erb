@@ -4,7 +4,7 @@
   freelancerErrorCard.removeClass('d-none')
   freelancerSuccessCard.addClass('d-none')
 <% else %>
-    $("#pills-freelancer-registration").html("<%= escape_javascript(render partial: 'freelancer_registration', locals: { user: @user } ) %>");
+    $("#freelancer-registration").html("<%= escape_javascript(render partial: 'freelancer_registration', locals: { user: @user } ) %>");
     _freelancerRegistrationInit()
     var freelancerSuccessCard =  $('.freelancer-success-card')
      var freelancerErrorCard = $('.freelancer-error-card')

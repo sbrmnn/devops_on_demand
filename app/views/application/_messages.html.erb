@@ -8,7 +8,7 @@
 </div>
 
 <div class="container-fluid px-5 py-3">
-  <% ChatroomPresenter.wrap(@user.chatrooms).each do |cp| %>
+  <% ChatroomPresenter.wrap(user.chatrooms).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
       <% freelancer = participant.try(:freelancer) %>
       <% if participant %>

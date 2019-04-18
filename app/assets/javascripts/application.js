@@ -26,9 +26,6 @@ $.ajaxSetup({
     }
 });
 
-
-
-
 $(document).keyup(function (e) {
     if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
         var chatroomId = $(document.activeElement).data("chatroom");
@@ -36,13 +33,11 @@ $(document).keyup(function (e) {
     }
 });
 
-
 $.fn.scrollToBottom = function() {
     return this.each(function (i, element) {
         $(element).scrollTop($(element)[0].scrollHeight);
     });
 };
-
 
 var ua = navigator.userAgent;
 
@@ -92,7 +87,6 @@ var months = [ "January", "February", "March", "April", "May", "June",
 $( document ).ready(function() {
     init();
 
-
 });
 
 function init() {
@@ -114,7 +108,6 @@ function displayMissingFields(data){
     });
 }
 
-
 $(document).on('change paste keyup','.work-experience-title', function(e){
     if ($(this).val() === ""){
         $(this).closest('.form-row').removeClass("work-experience-title-selected");
@@ -129,9 +122,6 @@ $(document).on('keyup input','.job-total', function(e){
     $('h5.' + $(this).attr('total_field')).text('$'+ total);
     $("." + $(this).attr('total_field') + "[type='hidden']").val(total * 100)
 });
-
-
-
 
 $(document).on('change paste keyup','.work-experience-employer', function(e){
     if ($(this).val() === ""){
@@ -158,9 +148,6 @@ $(document).on('change paste keyup','.certificate-number', function(e){
     }
 });
 
-
-
-
 $(document).on(click_event,'.billing-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -168,7 +155,6 @@ $(document).on(click_event,'.billing-btn', function(e){
     $('.billing-info-form').removeClass('d-none');
     return false;
 });
-
 
 $(document).on('show.bs.collapse','.multi-collapse', function(e){
     if ($(e.target).find("ul > li").length === 0){
@@ -181,13 +167,6 @@ $(document).on('show.bs.collapse','.multi-collapse', function(e){
         });
     }
 });
-
-
-
-
-
-
-
 
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
     e.preventDefault();
@@ -206,9 +185,6 @@ $(document).on(click_event,'.save_card_btn', function(e){
     return false;
 });
 
-
-
-
 $(document).on(click_event,'.card-element', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -220,9 +196,6 @@ $(document).on(click_event,'.card-element', function(e){
 
     return false;
 });
-
-
-
 
 $(document).on("change",'.different-card-checkbox', function(e){
     e.preventDefault();
@@ -253,10 +226,6 @@ $(document).on('change paste keyup','.work-experience-to', function(e){
     }
 });
 
-
-
-
-
 $(document).on('change paste keyup','.work-experience-achievements', function(e){
     if ($(this).val() === ""){
         $(this).closest('.form-row').removeClass("work-experience-achievements-selected");
@@ -264,7 +233,6 @@ $(document).on('change paste keyup','.work-experience-achievements', function(e)
         $(this).closest('.form-row').addClass("work-experience-achievements-selected");
     }
 });
-
 
 $(document).on(click_event,'.chatroom-list-elem', function(e){
     e.preventDefault();
@@ -390,17 +358,3 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-

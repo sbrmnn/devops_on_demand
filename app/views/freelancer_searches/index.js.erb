@@ -1,18 +1,29 @@
 var freelancerSearchResultsDiv = $('.freelancer-search-results')
 freelancerSearchResultsDiv.empty()
-freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
-$('.fa-spin').addClass('d-none')
+freelancerSearchResultsDiv.replaceWith("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
+
+$('.port-item').addClass('d-none')
+
+var delay = 25;
+
+setTimeout(function() {
+    var profile = $('.profile')
+
+    profile.each(function() {
+        profile.readmore({
+            speed: 200,
+            collapsedHeight: 24,
+            lessLink: '<a href="#">Read less</a>'
+        });
+
+        $('.port-item').removeClass('d-none')
+
+    });
+
+}, delay);
 
 
-var profile = $('.profile')
 
-
-profile.readmore({
-    speed: 75,
-    collapsedHeight: 24,
-    lessLink: '<a href="#">Read less</a>'
-
-});
 
 
 

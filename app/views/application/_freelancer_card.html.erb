@@ -1,12 +1,12 @@
 <div  class="mb-2 d-flex bars flex-row text-dark card bg-white rounded-0">
-  <div class="port-item p-4 text-center flex-shrink-1">
+  <div class="port-item   p-4 text-center flex-shrink-1">
     <% if freelancer.try(:profile_photo) %>
       <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105, radius: :max, crop: :scale)) %>">
     <% else %>
       <img src="https://via.placeholder.com/100">
     <% end %>
   </div>
-  <div class="port-item px-2 py-4 w-100 text-left">
+  <div class="port-item   px-2 py-4 w-100 text-left">
     <h6><%= freelancer.user_name %></h6>
     <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
     <ul class="list-inline mb-1">

@@ -2,18 +2,19 @@ var freelancerSearchResultsDiv = $('.freelancer-search-results')
 freelancerSearchResultsDiv.empty()
 freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
 
-$('.port-item').addClass('d-none')
+var delay = 500;
 
-var delay = 25;
+$(".port-item").css('visibility', 'hidden')
 
 setTimeout(function() {
     var profile = $('.profile')
     profile.readmore({
-        speed: 200,
+        speed: 75,
         collapsedHeight: 24,
         lessLink: '<a href="#">Read less</a>'
     });
-    $('.port-item').removeClass('d-none')
+    $(".port-item").css("visibility", "visible")
+
 }, delay);
 
 

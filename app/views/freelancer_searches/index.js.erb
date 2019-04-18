@@ -1,6 +1,6 @@
 var freelancerSearchResultsDiv = $('.freelancer-search-results')
 freelancerSearchResultsDiv.empty()
-freelancerSearchResultsDiv.replaceWith("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
+freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
 
 $('.port-item').addClass('d-none')
 

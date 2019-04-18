@@ -4,7 +4,7 @@ freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'freel
 
 var delay = 500;
 
-$(".port-item").css('visibility', 'hidden')
+$(".bars").css('visibility', 'hidden')
 
 setTimeout(function() {
     var profile = $('.profile')
@@ -13,7 +13,7 @@ setTimeout(function() {
         collapsedHeight: 24,
         lessLink: '<a href="#">Read less</a>'
     });
-    $(".port-item").css("visibility", "visible")
+    $(".bars").css("visibility", "visible")
 
 }, delay);
 

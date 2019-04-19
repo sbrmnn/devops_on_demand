@@ -1,10 +1,16 @@
 var freelancerSearchResultsDiv = $('.freelancer-search-results')
 freelancerSearchResultsDiv.empty()
 freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
+$(".bars").css('visibility', 'hidden')
+
+
+// There was an issue of readmore.js cutting of text in each of the profile cards. This might've been caused by the fact that the
+// readmore function is called on the profile div before it is fully rendered.  We set a 500 second delay to make sure the div fully renders
+// before calling the readmore function.
 
 var delay = 500;
 
-$(".bars").css('visibility', 'hidden')
+
 
 setTimeout(function() {
     var profile = $('.profile')

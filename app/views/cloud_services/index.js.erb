@@ -1,6 +1,8 @@
+var flattened_cloud_services_skills = flatten([<%= @cloud_services_skills %>])
+
 <%= @cloud_services.to_json.html_safe %>.forEach(function(e){
 
-  if(flatten([<%= @cloud_services_skills %>]).includes(e[0])){
+  if(flattened_cloud_services_skills.includes(e[0])){
       $("#<%= params[:provider].upcase.gsub(' ', '')%>-list").append("<li class='col-12 list-inline-item px-0 my-2'> <input checked type='checkbox'  class='mr-1' value="+  e[0] + " name='freelancer[cloud_service_array][]'><label>"+e[1]+"</label></li>");
 
   }else{

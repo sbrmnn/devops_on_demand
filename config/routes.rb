@@ -26,10 +26,10 @@ Rails.application.routes.draw do
   resources :webhooks
 
   devise_for :users
-  resources :photos
+
   resources :revenues
   resource :reservations, only: [:new, :create, :update]
-  resources :conversations
+
   resources :calendars
   resources :reviews
 

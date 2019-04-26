@@ -54,7 +54,7 @@
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
                   <li class="list-inline-item">
-                    <span class="badge badge-warning"><%= cert.name %></span>
+                    <h5><span class="badge badge-warning"><%= cert.name %></span></h5>
 
                   </li>
                 <% end %>
@@ -76,8 +76,7 @@
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
                   <li class="list-inline-item">
-                    <span class="badge badge-warning"><%= cert.name %></span>
-
+                    <h5><span class="badge badge-info"><%= cert.name %></span></h5>
                   </li>
                 <% end %>
               </ul>

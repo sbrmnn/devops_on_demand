@@ -11,6 +11,9 @@ module ApplicationHelper
     FreelancerPaymentProcessor.adapter.supported_countries.map{|k,v| [v , k]}
   end
 
+  def freelancer?
+    current_user.try(:freelancer).present?
+  end
 
 
   def bootstrap_class_for_flash(flash_type)

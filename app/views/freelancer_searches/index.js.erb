@@ -1,7 +1,6 @@
 var freelancerSearchResultsDiv = $('.freelancer-search-results')
 freelancerSearchResultsDiv.empty()
 freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'freelancer_cards', :locals => { :freelancers => FreelancerPresenter.wrap(@freelancer_searches) }) %>")
-$(".bars").css('visibility', 'hidden')
 
 
 // There was an issue of readmore.js cutting of text in each of the profile cards. This might've been caused by the fact that the

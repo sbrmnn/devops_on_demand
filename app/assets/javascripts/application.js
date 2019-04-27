@@ -326,6 +326,11 @@ $(document).on(click_event,'a[data-toggle="pill"]', function(e){
     window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
 });
 
+
+$(document).on('show.bs.tab','a[data-toggle="pill"]', function(e){
+    $($(e.target).attr('href')).empty()
+});
+
 $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 
     $.ajax({
@@ -336,27 +341,7 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
         async: false
     });
 
-    if($(e.target).is("#pills-find-freelancers-tab")) {
-        $('.profile').readmore({
-            speed: 75,
-            collapsedHeight: 24,
-            lessLink: '<a href="#">Read less</a>',
-            moreLink: '<a href="#">Read Profile</a>'
 
-        });
-
-    }
-
-    if($(e.target).is("#messages-tab")) {
-        var bars = $(".bars");
-            $('.profile').readmore({
-                speed: 75,
-                collapsedHeight: 0,
-                lessLink: '<a href="#">Read less</a>',
-                moreLink: '<a href="#">Read Profile</a>'
-
-            });
-        bars.css("visibility", "visible")
-
-    }
 });
+
+

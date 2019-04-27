@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   before_save :generate_unsub_token, if: lambda{ unsub_token.blank? }
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users

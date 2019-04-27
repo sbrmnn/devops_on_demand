@@ -1,4 +1,4 @@
-<div  class="mb-2 d-flex bars flex-row text-dark card bg-white rounded-0">
+<div  class="mb-2 d-flex bars flex-row text-dark card bg-white rounded-0" style="visibility: hidden">
   <div class="port-item   p-4 text-center flex-shrink-1">
     <% if freelancer.try(:profile_photo) %>
       <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105, radius: :max, crop: :scale)) %>">

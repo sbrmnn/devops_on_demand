@@ -1,8 +1,11 @@
 class MissingFieldsPayoutIdentityChannel < ApplicationCable::Channel
   def subscribed
-    room_name = "missing_fields_payout_identity_#{params[:freelancer_id]}"
-    stream_from room_name
-    reject unless user_can_access?
+    if user_can_access?
+      room_name = "missing_fields_payout_identity_#{params[:freelancer_id]}"
+      stream_from room_name
+    else
+      reject
+    end
   end
 
   def unsubscribed
@@ -16,6 +19,11 @@ class MissingFieldsPayoutIdentityChannel < ApplicationCable::Channel
   private
 
   def user_can_access?
-    current_user.freelancer.id == params[:freelancer_id].try(:to_i)
-  end
+
+    if current_user.freelancer.blank?
+      false
+    else
+      current_user.freelancer.id == params[:freelancer_id].try(:to_i)
+    end
+   end
 end

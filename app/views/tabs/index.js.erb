@@ -1,4 +1,23 @@
 <% partial = params[:target_div][1..-1]&.gsub('-', '_') %>
 $('<%= params[:target_div] %>').html("<%= escape_javascript render(partial: partial, locals: { user:  @user }) %>")
 
+<% if params[:target_div] == '#find-freelancers'  %>
+  $('.profile').readmore({
+      speed: 75,
+      collapsedHeight: 24,
+      lessLink: '<a href="#">Read less</a>',
+      moreLink: '<a href="#">Read Profile</a>'
+
+  });
+<% elsif params[:target_div] == '#messages' %>
+  var bars = $(".bars");
+  $('.profile').readmore({
+      speed: 75,
+      collapsedHeight: 0,
+      lessLink: '<a href="#">Read less</a>',
+      moreLink: '<a href="#">Read Profile</a>',
+
+  });
+  bars.css("visibility", "visible")
+<% end %>
 

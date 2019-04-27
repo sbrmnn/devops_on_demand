@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :revenues
   resource :reservations, only: [:new, :create, :update]
-
+  resource :dashboard, only: :show, controller: :dashboard
   resources :calendars
   resources :reviews
 

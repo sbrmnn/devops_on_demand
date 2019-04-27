@@ -9,13 +9,17 @@
   <div class="port-item   px-2 py-4 w-100 text-left">
     <h6><%= freelancer.user_name %></h6>
     <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
-    <ul class="list-inline mb-1">
-      <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%></strong></li>
-      <li class="list-inline-item pb-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
-      <li class="list-inline-item pb-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
+    <ul class="list-inline bg-light mb-0 text-dark">
+      <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%></strong></li>
+      <% if  user_signed_in?  %>
+        <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
+      <% else %>
+        <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i>Login for Contact Info</strong></li>
+    <% end %>
+      <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
     </ul>
     <%= render 'profile', freelancer: freelancer %>
-    <% if show_buttons.present? %>
+    <% if show_buttons.present? && user_signed_in?  %>
       <div class="mt-2">
          <a data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn text-light   toggle_message_box">Chat</a>
         <% if freelancer %>
@@ -25,20 +29,21 @@
     <% end %>
   </div>
 </div>
-<div class="message_box_freelancer_<%= freelancer.id %> d-none">
-</div>
-<div id="job-form<%=freelancer.id%>" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title w-75">New Job for <%= freelancer.user_name %> </h5>
-        <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
-      </div>
-      <div class="new_job-<%=freelancer.id%>">
-        <%= render 'new_job', {user: current_user, job: Job.new, freelancer_rate: freelancer.rate, freelancer_id: freelancer.id}  %>
+<% if user_signed_in? %>
+  <div class="message_box_freelancer_<%= freelancer.id %> d-none">
+  </div>
+  <div id="job-form<%=freelancer.id%>" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-75">New Job for <%= freelancer.user_name %> </h5>
+          <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
+        </div>
+        <div class="new_job-<%=freelancer.id%>">
+          <%= render 'new_job', {user: current_user, job: Job.new, freelancer_rate: freelancer.rate, freelancer_id: freelancer.id}  %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+<% end %>
 

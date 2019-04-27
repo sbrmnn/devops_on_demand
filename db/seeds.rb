@@ -42,3 +42,7 @@ end
 CSV.foreach("#{Rails.root}/public/GoogleServices.csv") do |r|
   CloudService.where(provider: 'Google Cloud', name: r ).first_or_create
 end
+
+CSV.foreach("#{Rails.root}/public/ProgramingLanguages.csv") do |r|
+  CloudService.where(provider: 'Programing Languages', name: r ).first_or_create
+end

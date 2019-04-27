@@ -1,0 +1,7 @@
+<% if @user.present? %>
+  <% present(@user) do |up| %>
+    <%= render 'dashboard', up: up %>
+  <% end %>
+<% else %>
+   <%= render 'dashboard' %>
+<% end %>

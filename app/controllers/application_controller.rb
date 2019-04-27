@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include StrongParameterizable
 
   def after_sign_in_path_for(resource)
-    user_path(current_user)
+    dashboard_path
   end
 
   def configure_permitted_parameters

@@ -348,6 +348,7 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
     }
 
     if($(e.target).is("#messages-tab")) {
+        var bars = $(".bars");
             $('.profile').readmore({
                 speed: 75,
                 collapsedHeight: 0,
@@ -355,6 +356,7 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
                 moreLink: '<a href="#">Read Profile</a>'
 
             });
+        bars.css("visibility", "visible")
 
     }
 });

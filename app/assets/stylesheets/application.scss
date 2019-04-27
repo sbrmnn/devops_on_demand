@@ -38,6 +38,7 @@ input::-ms-value{ // Extra input styling for IE browsers.
 
 body {
   font-family: 'Arial', sans-serif !important;
+  overflow-y: overlay;
  }
 
 .users_show, .subscription_settings_show, .dashboard_show {

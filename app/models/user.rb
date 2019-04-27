@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :credit_cards
   has_many :transactions
 
+  validates_presence_of :first_name, :last_name
+
 
   has_one :payout_identity, through: :freelancer
   has_one :tos_acceptance

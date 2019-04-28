@@ -91,8 +91,6 @@ $( document ).ready(function() {
 
 function init() {
     getSelectedPill();
-    bindChatroomToRecieveMessages();
-    subscribeToRooms();
     getEntityTypeFields();
 
 }

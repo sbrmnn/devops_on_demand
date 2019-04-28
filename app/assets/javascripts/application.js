@@ -90,7 +90,6 @@ $( document ).ready(function() {
 });
 
 function init() {
-    _freelancerRegistrationInit();
     getSelectedPill();
     bindChatroomToRecieveMessages();
     subscribeToRooms();

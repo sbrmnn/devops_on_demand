@@ -54,7 +54,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'devise-bootstrap-views', '~> 1.0'
 group :production do
   gem 'pg', '~> 1.1.3'
 end

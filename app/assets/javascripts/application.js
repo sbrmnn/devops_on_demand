@@ -94,8 +94,7 @@ function init() {
     bindChatroomToRecieveMessages();
     subscribeToRooms();
     getEntityTypeFields();
-    subscribeToMissingFieldsChannel();
-    displayMissingFields(gon.missing_payout_fields);
+
 }
 
 

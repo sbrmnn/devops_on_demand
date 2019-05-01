@@ -56,19 +56,17 @@
                 <a class="dropdown-item" id="pills-received-jobs-tab" data-toggle="pill" role="tab" aria-controls="pills-received-jobs-tab" href="#received-jobs" aria-selected="false">Received</a>
               </div>
             </li>
-            <% if freelancer? %>
+
               <li class="nav-item dropdown py-2 pr-4">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-cog  "></i> Freelancer Settings</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false">Profile</a>
-                  <a class="dropdown-item" id="pills-freelancer-payout-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-payout-tab" href="#freelancer-payout" aria-selected="false">Payout</a>
+                  <% if freelancer? %>
+                    <a class="dropdown-item" id="pills-freelancer-payout-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-payout-tab" href="#freelancer-payout" aria-selected="false">Payout</a>
+                  <% end %>
                 </div>
               </li>
-            <% else %>
-              <li class="nav-item py-2">
-                <a class="nav-link d-none" id="pills-freelancer-registration-tab" data-toggle="pill" href="#freelancer-registration" role="tab" aria-controls="pills-freelancer-registration-tab" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
-              </li>
-            <% end %>
+
             <li class="nav-item py-2 pr-4">
               <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('account_settings') %></a>
             </li>

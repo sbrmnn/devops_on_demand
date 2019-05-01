@@ -33,8 +33,11 @@
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-4 legal_entity_dob_month">
-                        <%= legal_entity.label :dob, "Date of Birth" %>
-                         <%= legal_entity.date_field(:dob, class: "form-control"  )%>
+                        <%= legal_entity.label :dob, "Date of Birth (mm/dd/yyyy)" %>
+                        <%= legal_entity.date_field(:dob, class: "form-control", name: nil, min: 55.years.ago, max: 18.years.ago, value: LegalEntityPresenter.new(legal_entity.object).dob )%>
+                        <%= legal_entity.text_field(:dob_year, class: "form-control", hidden: true   )%>
+                        <%= legal_entity.text_field(:dob_month, class: "form-control", hidden: true   )%>
+                        <%= legal_entity.text_field(:dob_day, class: "form-control", hidden: true  )%>
                       </div>
 
                     </div>

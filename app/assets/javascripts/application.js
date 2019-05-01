@@ -340,4 +340,16 @@ $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 
 });
 
+$(document).on('change','#payout_identity_legal_entity_attributes_dob', function(e){
+    if ($(this).val()){
+        var dateArray = $(this).val().split("-");
+        $("#payout_identity_legal_entity_attributes_dob_year").val(dateArray[0]);
+        $("#payout_identity_legal_entity_attributes_dob_month").val(dateArray[1]);
+        $("#payout_identity_legal_entity_attributes_dob_day").val(dateArray[2]);
+    }else{
+        $("#payout_identity_legal_entity_attributes_dob_year").val(null);
+        $("#payout_identity_legal_entity_attributes_dob_month").val(null);
+        $("#payout_identity_legal_entity_attributes_dob_day").val(null);
+    }
+});
 

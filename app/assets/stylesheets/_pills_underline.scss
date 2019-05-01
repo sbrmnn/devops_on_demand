@@ -35,6 +35,19 @@ $nav-pills-underline-border-color:    black;
       padding-right: 0px !important;
     }
 
+    > .freelancer-registration-link.nav-link{
+
+      background-color: #3d9bff !important;
+      border-bottom-width: $nav-pills-underline-border-width;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+      color: white;
+      padding-top: 1px !important;
+      padding-bottom: 1px !important;
+      padding-left: 5px !important;
+      padding-right: 5px !important;
+    }
+
     > a.nav-link.active,
     > a.nav-link.active:hover,
     > a.nav-link:hover

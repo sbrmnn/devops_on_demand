@@ -20,7 +20,7 @@ $('<%= params[:target_div] %>').html("<%= escape_javascript render(partial: part
   });
   bars.css("visibility", "visible")
 <% elsif params[:target_div] == '#freelancer-payout' && current_user.try(:freelancer).present? %>
-   displayMissingFields(<%= FreelancerPaymentProcessor.new(current_user.try(:freelancer)).payout_identity_missing_fields %>);
+   displayMissingFields(<%= raw FreelancerPaymentProcessor.new(current_user.try(:freelancer)).payout_identity_missing_fields %>);
 <% end %>
 
 

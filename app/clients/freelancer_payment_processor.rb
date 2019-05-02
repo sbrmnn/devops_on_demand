@@ -101,16 +101,16 @@ class FreelancerPaymentProcessor
       update_legal_entity_on_account(legal_entity)
     end
 
-    def payout_identity_missing_fields(fields_needed=nil)
+    def payout_identity_missing_fields
       payout_identity = freelancer.payout_identity
       return [] if payout_identity.nil?
-      missing_payout_fields = payout_identity.missing_payout_fields
-      unless fields_needed.nil?
-        missing_payout_fields.destroy_all
-        missing_payout_fields.create(fields_needed.map{|l| {field: l}})
-        MissingFieldsPayoutIdentityChannel.broadcast(fields_needed, freelancer.id)
-        SendMissingFieldsMailer.send_to_freelancer(freelancer).deliver
-      end
+      payout_identity.missing_payout_fields.pluck(:field)
+    end
+
+    def set_payout_identity_missing_fields(fields_needed=nil)
+      missing_payout_fields.destroy_all
+      missing_payout_fields.create(fields_needed.map{|l| {field: l}})
+      SendMissingFieldsMailer.send_to_freelancer(freelancer).deliver
       missing_payout_fields.pluck(:field)
     end
 

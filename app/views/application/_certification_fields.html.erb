@@ -1,7 +1,7 @@
 <div class="form-row  mb-3">
   <div class="form-group col-12">
     <%= f.label :certification_name_id %>
-    <%= f.select(:certification_name_id, grouped_options_for_select(CertificationName.all.map{|l| [l.name, l.provider, l.id]}.group_by { |c| c[1] }, f.object.certification_name_id), {include_blank: 'Select Certificate' }, { class: 'form-control select-certificate', id: nil }) %>
+    <%= f.select(:certification_name_id, grouped_options_for_select( CertificationNames.instance.certifications, f.object.certification_name_id), {include_blank: 'Select Certificate' }, { class: 'form-control select-certificate', id: nil }) %>
   </div>
   <div class="form-group col-12">
     <%= f.label :vendor_identifier, "Certification no." %>

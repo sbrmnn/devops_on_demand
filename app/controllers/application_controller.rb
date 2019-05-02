@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_user
   before_action :set_freelancer_id
-  before_action :set_missing_payout_fields
+
   include StrongParameterizable
 
   def after_sign_in_path_for(resource)
@@ -17,23 +17,15 @@ class ApplicationController < ActionController::Base
   private
 
   def user
-    @user = current_user
+    @user ||= current_user
   end
 
   def set_user
-    gon.current_user_id = current_user.try(:id) || nil
+    gon.current_user_id = user.try(:id) || nil
   end
 
   def set_freelancer_id
-    gon.freelancer_id = current_user.try(:freelancer).try(:id) || nil
-  end
-
-  def set_missing_payout_fields
-    if current_user.try(:freelancer).present?
-     gon.missing_payout_fields = FreelancerPaymentProcessor.new(current_user.try(:freelancer)).payout_identity_missing_fields
-    else
-      gon.missing_payout_fields = []
-    end
+    gon.freelancer_id = user.try(:freelancer).try(:id) || nil
   end
 
   def set_chatroom

@@ -29,8 +29,8 @@
                 <div class="form-row">
                   <div class="form-group col-12">
                     <%= form.label :from, "Job Start Date" %>
-                    <%= form.text_field :from, class: 'form-control', "data-provide":'datepicker', id: nil %>
-                  </div>
+                    <%= form.date_field(:from, class: "form-control", min: Date.today, max: 1.year.from_now ,id: nil )%>
+                   </div>
                 </div>
                 <% last_4 = user.credit_cards.last.try(:last_4) %>
                 <% if last_4.present? %>

@@ -13,7 +13,6 @@
 
 //= require rails-ujs
 //= require turbolinks
-
 //= require cloudinary
 //= require cocoon
 //= require payment_processor
@@ -152,17 +151,6 @@ $(document).on(click_event,'.billing-btn', function(e){
     return false;
 });
 
-$(document).on('show.bs.collapse','.multi-collapse', function(e){
-    if ($(e.target).find("ul > li").length === 0){
-        $.ajax({
-            type: 'GET',
-            url: '/cloud_services',
-            data: {provider: $(e.target).data('provider'), freelancer: gon.freelancer_id},
-            dataType: 'script',
-            async: false
-        });
-    }
-});
 
 $(document).on(click_event,'.freelancer-signup-btn', function(e){
     e.preventDefault();

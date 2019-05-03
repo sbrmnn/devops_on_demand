@@ -1,6 +1,7 @@
 <script>
     _freelancerRegistrationInit();
 </script>
+
 <div id="freelancer-registration" class="rounded-0">
   <div class="container-fluid px-5 py-3">
      <div class="card rounded-0 shadow-sm">
@@ -9,7 +10,9 @@
             <div class="col-12">
               <div class="rounded">
                   <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user.freelancer, url: [user, @freelancer], remote: true) do |form| %>
-                    <h2  ><%=t('freelancer_registration_form') %></h2>
+                  <% cs = form.object.cloud_services.pluck(:id) %>
+
+                  <h2><%=t('freelancer_registration_form') %></h2>
                     <hr class="mb-2">
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">About me</h4>
                     <div class="basic-info-nested-fields mb-2">
@@ -54,34 +57,60 @@
                       </div>
                     </div>
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">Skills</h4>
-                    <div class="form-row">
-                      <div class="form-group col-12">
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">AWS <i class="fas fa-caret-down"></i></button>
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Google Cloud <i class="fas fa-caret-down"></i></button>
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">MS Azure <i class="fas fa-caret-down"></i></button>
-                          <button class="btn btn-info" type="button" data-toggle="collapse"   data-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Programing Languages<i class="fas fa-caret-down"></i></button>
+                     <div class="form-row">
+                      <div class="form-group col-12" id="Skills">
+                        <p>
+                          <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseAWS" role="button" aria-expanded="false" aria-controls="collapseAWS">
+                            AWS
+                          </a>
+                          <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseAzure" role="button" aria-expanded="false" aria-controls="collapseAzure">
+                            MZ Azure
+                          </a>
+                          <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseGoogle" role="button" aria-expanded="false" aria-controls="collapseGoogle">
+                            Google
+                          </a>
+                          <a class="btn  btn-info my-1" data-toggle="collapse" href="#collapseProgrammingLanguage" role="button" aria-expanded="false" aria-controls="collapseGoogle">
+                            Programming Languages
+                          </a>
+                        </p>
+                        <div class="collapse" id="collapseAWS" data-parent="#Skills">
+                          <div class="card p-2 card-body">
+                            <ul  class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
+                              <% CloudServices.instance.services["AWS"].each do |e| %>
+                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></li>
+                              <% end %>
+                            </ul>
+                           </div>
+                        </div>
+                        <div class="collapse" id="collapseAzure" data-parent="#Skills">
+                          <div class="card p-2 card-body">
+                            <ul  class="list-inline bg-light p-2 text-secondary">
+                              <% CloudServices.instance.services["MS Azure"].each do |e| %>
+                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div class="collapse" id="collapseGoogle" data-parent="#Skills">
+                          <div class="card p-2 card-body">
+                            <ul  class="list-inline bg-light p-2 text-secondary">
+                              <% CloudServices.instance.services["Google Cloud"].each do |e| %>
+                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="collapse" id="collapseProgrammingLanguage" data-parent="#Skills">
+                          <div class="card p-2 card-body">
+                            <ul  class="list-inline bg-light p-2 text-secondary">
+                              <% CloudServices.instance.services["Programing Languages"].each do |e| %>
+                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %><label><%=e[1]%></label></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-group col-12">
-                        <div class="collapse multi-collapse" data-provider="AWS" id="multiCollapseExample1">
-                          <ul id = "AWS-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-                          </ul>
-                        </div>
-
-                        <div class="collapse multi-collapse" data-provider="Google Cloud" id="multiCollapseExample2">
-                          <ul id = "GOOGLECLOUD-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-                          </ul>
-                        </div>
-
-                        <div class="collapse multi-collapse" id="multiCollapseExample3" data-provider="MS Azure">
-                          <ul id = "MSAZURE-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-                          </ul>
-                        </div>
-
-                        <div class="collapse multi-collapse" id="multiCollapseExample4" data-provider="Programing Languages">
-                          <ul id = "PROGRAMINGLANGUAGES-list" class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
-                          </ul>
-                        </div>
-                       </div>
                     </div>
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('certifications')%></h4>
                     <div id='certifications' class="certifications-nested-fields">
@@ -89,7 +118,7 @@
                         <%= render 'certification_fields', :f => certification %>
                       <% end %>
                       <div class='add-btn text-center'>
-                        <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn   btn-warning"} %>
+                        <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn    btn-warning"} %>
                       </div>
                     </div>
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('work_experiences')%></h4>
@@ -98,7 +127,7 @@
                         <%= render 'work_experience_fields', :f => work_experience %>
                       <% end %>
                       <div class='add-btn text-center'>
-                        <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn   btn-warning"} %>
+                        <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn  btn-warning"} %>
                       </div>
                     </div>
                     <hr>

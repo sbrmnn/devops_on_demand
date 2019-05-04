@@ -91,7 +91,6 @@ $( document ).ready(function() {
 function init() {
     getSelectedPill();
     getEntityTypeFields();
-
 }
 
 
@@ -100,6 +99,28 @@ function displayMissingFields(data){
     $('.bank-account-error').remove();
     data.forEach(function(element) {
         $("." + element.split('.').join('_') + "> label").append("<span class='text-danger bank-account-error px-1'>required</span>");
+    });
+}
+
+function createJob(e){
+    e.preventDefault();
+    $(".card-errors").empty();
+    var custData = {
+        name: $('.credit-card-name').val(),
+        address_line1: $('.credit-card-line1').val(),
+        address_line2: $('.credit-card-line2').val(),
+        address_city: $('.credit-card-city').val(),
+        address_state: $('.credit-card-state').val(),
+        address_zip: $('.credit-card-zip').val(),
+        address_country: $('.credit-card-country').val()
+    };
+    stripe.createToken(card, custData).then(function(result) {
+        if (result.error) {
+            var errorElement = $(e.target).find(".card-errors");
+            errorElement.text(result.error.message);
+        }else{
+            $(e.target).find(".credit-card-token").val(result.token.id);
+        }
     });
 }
 
@@ -159,23 +180,11 @@ $(document).on(click_event,'.freelancer-signup-btn', function(e){
     return false;
 });
 
-
-$(document).on(click_event,'.save_card_btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $(".card-errors").empty()
-    getCreditCardToken("#job-form" + $(this).data("freelancer"));
-
-    return false;
-});
-
 $(document).on(click_event,'.card-element', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     if ($(this).children().length === 0) {
-        $(this).closest("form").find(".save_card_btn").removeClass("d-none")
         mountCreditCardElement("#" + $(this).attr("id"));
-
     }
 
     return false;
@@ -186,7 +195,6 @@ $(document).on("change",'.different-card-checkbox', function(e){
     e.stopImmediatePropagation();
     if ($(this).is(":checked") === true){
         $(this).closest(".form-row").siblings(".new-card-section").removeClass('d-none');
-        //mountCreditCardElement("#card-element-for-freelancer-" + $(this).data('freelancer'))
     }else{
         $(this).closest(".form-row").siblings(".new-card-section").addClass('d-none')
     }
@@ -228,7 +236,6 @@ $(document).on(click_event,'.chatroom-list-elem', function(e){
     renderChatRoomMessages($(this).data('chatroom_id'));
     return false;
 });
-
 
 $(document).on(click_event,'.reject-btn', function(e){
     e.preventDefault();
@@ -283,11 +290,12 @@ $(document).on(click_event,'.msg_send_btn', function(){
     broadcastMessage($(this).data('chatroom'), $(this))
 });
 
-function bindScrollFunctionToForm(){
-     $('form').submit(function() {
-         $('.fa-spin').removeClass('d-none')
-     });
-}
+
+
+$(document).on('submit','form', function(e){
+    $('.fa-spin').removeClass('d-none')
+});
+
 
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
 
@@ -304,7 +312,6 @@ function getSelectedPill(){
         }
     }
 }
-
 
 $(document).on(click_event,'a[data-toggle="pill"]', function(e){
     window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
@@ -340,4 +347,3 @@ $(document).on('change','#payout_identity_legal_entity_attributes_dob', function
         $("#payout_identity_legal_entity_attributes_dob_day").val(null);
     }
 });
-

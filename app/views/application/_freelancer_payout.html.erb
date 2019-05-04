@@ -5,7 +5,7 @@
         <div class="card rounded-0 shadow-sm">
       <div class="card-body">
 
-            <%= form_with(model: freelancer_presenter.payout_identity, url: "/freelancers/payout_identities/#{freelancer_presenter.payout_identity.id}", remote: true) do |f| %>
+            <%= form_with(model: freelancer_presenter.payout_identity, html: {onsubmit: "return submitPayoutForm(event);"}, url: "/freelancers/payout_identities/#{freelancer_presenter.payout_identity.id}", local: true) do |f| %>
                   <%= f.hidden_field :external_account, class: :'form-control', id: 'payout_identity_external_account'  %>
                   <%= f.fields_for :legal_entity, f.object.legal_entity.present? ?  f.object.legal_entity : f.object.build_legal_entity do |legal_entity| %>
                   <h2><%=t('freelancer_payout_form') %></h2>
@@ -163,11 +163,7 @@
                       </div>
                     <% end%>
                   </div>
-                  <div class="form-row">
-                    <div class="col-md-12 text-center">
-                      <button type="button" onclick="externalAccountToken()" class="btn btn-md btn-info p-2 save_bank_account_btn"><%= t('save_bank_account') %></button>
-                    </div>
-                  </div>
+
                   <hr>
                   <div class="card payout-success-card d-none mb-2">
                     <div class="card-header bg-success text-light">
@@ -175,7 +171,7 @@
                   </div>
                   <div class="form-row">
                     <div class="col-md-12 text-right">
-                      <button class="submit btn btn-lg  btn-primary">Save</button>
+                      <button class="submit btn btn-lg  btn-primary"><i class="d-none fa fa-circle-notch fa-spin mr-2"></i>Save</button>
                     </div>
                   </div>
             <% end %>

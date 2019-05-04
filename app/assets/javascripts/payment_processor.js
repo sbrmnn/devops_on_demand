@@ -36,7 +36,6 @@ $(document).on('keyup change input paste','#personal_id_number_text', function(e
 function setOutcome(result) {
     $('.bank-account-error').remove();
 
-
     var token = result.token;
 
     if (result.token) {
@@ -57,28 +56,6 @@ function setOutcome(result) {
       $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid number</span>");
     }
 }
-
-function externalAccountToken(){
-    var country = $('#payout_identity_legal_entity_attributes_address_country').val();
-    var bankAccountParams = {
-        country: country,
-        currency: $('#bank_account_currency').val()   ,
-        account_number: $('#checking_account_number').val().trim(),
-        account_holder_name: $('#account_name').val().trim(),
-        account_holder_type: $('#account_type').val().trim()
-    };
-    var routingNumber = $('#bank_routing_number');
-    if (routingNumber.length > 0) {
-        bankAccountParams['routing_number'] = routingNumber.val();
-    }
-    var transitNumber = $('#transit_number');
-    var institutional_number = $('#institutional_number');
-    if (transitNumber.length > 0 && institutional_number.length > 0){
-        bankAccountParams['routing_number'] = transitNumber.val().trim() + institutional_number.val().trim()
-    }
-    stripe.createToken('bank_account', bankAccountParams).then(setOutcome);
-}
-
 
 $(document).on('change', '#payout_identity_legal_entity_attributes_type', function(e){
     var individualTags = $('.individual-id-tags');
@@ -208,5 +185,85 @@ function stripeTokenHandler(token) {
     });
 
 }
+
+
+function submitPayoutForm(e){
+    e.preventDefault();
+    var token = $('#payout_identity_external_account').val().trim();
+    var account_number =  $('#checking_account_number').val().trim() ;
+    var account_holder_name = $('#account_name').val().trim() ;
+    var account_holder_type = $('#account_type').val().trim();
+    if (!token || account_number || account_holder_name || account_holder_type){
+
+        var country = $('#payout_identity_legal_entity_attributes_address_country').val();
+        var currency =  $('#bank_account_currency').val();
+        var bankAccountParams = {
+            country: country,
+            currency: currency   ,
+            account_number: account_number,
+            account_holder_name: account_holder_name,
+            account_holder_type: account_holder_type
+        };
+        var routingNumber = $('#bank_routing_number');
+        if (routingNumber.length > 0) {
+            bankAccountParams['routing_number'] = routingNumber.val();
+        }
+        var transitNumber = $('#transit_number');
+        var institutional_number = $('#institutional_number');
+        if (transitNumber.length > 0 && institutional_number.length > 0){
+            bankAccountParams['routing_number'] = transitNumber.val().trim() + institutional_number.val().trim()
+        }
+        stripe.createToken('bank_account', bankAccountParams).then(function(result){
+            $('.bank-account-error').remove();
+
+            var token = result.token;
+
+            if (result.token) {
+                $('#payout_identity_external_account').val(token.id);
+                $.ajax({
+                    type: 'POST',
+                    url: $(e.target).attr('action'),
+                    data: $(e.target).serialize(),
+                    dataType: 'script',
+                    async: false
+                });
+            }else if(result.error.param === 'bank_account[routing_number]' && result.error.code === 'parameter_invalid_empty'){
+                if ($('#bank_routing_number').length > 0){
+                    $('#bank_routing_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+                }else if($('#transit_number').length > 0 && $('#institutional_number').length > 0){
+                    $('#transit_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+                    $('#institutional_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+                }
+            }else if(result.error.param === 'bank_account[routing_number]' && result.error.code === 'routing_number_invalid'){
+                if ($('#bank_routing_number').length > 0){
+                    $('#bank_routing_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid</span>");
+                }else if($('#transit_number').length > 0 && $('#institutional_number').length > 0){
+                    $('#transit_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid</span>");
+                    $('#institutional_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid</span>");
+                }
+            }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'parameter_invalid_empty'){
+                $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+            }else if(result.error.param === "bank_account[account_holder_type]" && result.error.type === 'invalid_request_error'){
+                $('#account_type').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
+            }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'account_number_invalid'){
+                $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid number</span>");
+            }
+        });
+
+
+    }else{
+        $.ajax({
+            type: 'POST',
+            url: $(e.target).attr('action'),
+            data: $(e.target).serialize(),
+            dataType: 'script',
+            async: true
+        });
+    }
+
+
+    return false;
+}
+
 
 

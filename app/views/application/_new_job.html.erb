@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row p-0">
         <div class="col-12 p-0">
-            <%= form_with(model: [user, job], class: "#{freelancer_id} new-job-form", remote: true) do |form| %>
+            <%= form_with(model: [user, job], html: {onsubmit: "return createJob(event);"} ,class: "new-job-form-#{freelancer_id}", local: true) do |form| %>
             <div class="modal-body">
               <div class="basic-info-nested-fields mb-2">
                 <div class="form-row">
@@ -94,11 +94,7 @@
                     <%= form.select(:country, stripe_countries, {include_blank: 'Select Your Country'}, {prompt: 'Select Country', class: "credit-card-country form-control"})%>
                   </div>
                 </div>
-                  <div class="form-row">
-                  <div class="col-md-12 text-center">
-                    <button type="button" data-freelancer="<%= freelancer_id %>"   class="btn d-none btn-md btn-info p-2 save_card_btn">+ Save Card</button>
-                  </div>
-                  </div>
+
                 </div>
 
 

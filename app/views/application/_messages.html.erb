@@ -20,10 +20,10 @@
             <img src="https://via.placeholder.com/105">
           <% end %>
         </div>
-        <div class="port-item px-3 freelancer-basic-info  w-100" data-toggle="collapse" data-target="#resume">
+        <div class="port-item px-3   freelancer-basic-info  w-100" data-toggle="collapse" data-target="#resume">
           <% if freelancer %>
             <h6><%= freelancer.user_name %></h6>
-            <ul class="list-inline  border-top border-bottom mb-1 text-dark">
+            <ul class="my-3 list-inline  border-top border-bottom mb-1 text-dark">
               <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign mr-1"></i><strong><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%></strong></li>
               <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
               <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>

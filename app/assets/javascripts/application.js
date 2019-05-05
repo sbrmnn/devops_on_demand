@@ -287,16 +287,7 @@ $(document).on('change paste keyup','.work-experience-achievements', function(e)
     }
 });
 
-$(document).on(click_event,'.chatroom-list-elem', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $('.chatroom-list-elem').removeClass('active_chat');
-    $(this).removeClass('new_msg');
-    $(this).addClass('active_chat');
-    $('.type_msg').show();
-    renderChatRoomMessages($(this).data('chatroom_id'));
-    return false;
-});
+
 
 $(document).on(click_event,'.reject-btn', function(e){
     e.preventDefault();

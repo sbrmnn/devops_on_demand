@@ -51,7 +51,7 @@
                   <%= form.hidden_field  :total,  class: "job-total-#{freelancer_id}  form-control" %>
                   <div class="form-row mt-1">
                   <div class="col-md-6 form-group">
-                    <label>Card Holder Name</label>
+                    <label>Full Name</label>
                     <%= form.text_field :name, class: 'credit-card-name form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
@@ -111,7 +111,9 @@
             <div class="modal-footer">
               <div class="pull-right">
                 <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
-                <%= form.button class: "btn btn-primary btn-lg " %>
+                <%= form.button class: "btn btn-primary btn-lg " do %>
+                  <i class="fa fa-circle-notch d-none fa-spin mr-2"></i>Save
+                <% end %>
               </div>
             </div>
             <% end %>

@@ -94,12 +94,22 @@ function init() {
 }
 
 
-
 function displayMissingFields(data){
     $('.bank-account-error').remove();
     data.forEach(function(element) {
         $("." + element.split('.').join('_') + "> label").append("<span class='text-danger bank-account-error px-1'>required</span>");
     });
+}
+
+
+function creditCardValueOrError(className){
+    var val = $(className).val().trim();
+    if (val || className === '.credit-card-line2'){
+      return val
+    }else {
+        $(className).siblings('label').append("<span class='text-danger label-error-msgs ml-1'>can\'t be blank</span>")
+        return ""
+    }
 }
 
 function createJob(e){
@@ -109,22 +119,36 @@ function createJob(e){
         $(".label-error-msgs").remove();
         if (card._isMounted()){
             $(".card-errors").empty();
+            $(".credit-card-error").addClass('d-none');
 
+            var creditCardName = creditCardValueOrError('.credit-card-name');
+            var addressLine1 =  creditCardValueOrError('.credit-card-line1');
+            var addressLine2 = creditCardValueOrError('.credit-card-line2');
+            var city = creditCardValueOrError('.credit-card-city');
+            var state = creditCardValueOrError('.credit-card-state');
+            var zip = creditCardValueOrError('.credit-card-zip');
+            var country = creditCardValueOrError('.credit-card-country');
+
+            if ($('.label-error-msgs').length > 0){
+                $('.fa-spin').addClass('d-none');
+                return;
+            }
 
             var custData = {
-                name: $('.credit-card-name').val(),
-                address_line1: $('.credit-card-line1').val(),
-                address_line2: $('.credit-card-line2').val(),
-                address_city: $('.credit-card-city').val(),
-                address_state: $('.credit-card-state').val(),
-                address_zip: $('.credit-card-zip').val(),
-                address_country: $('.credit-card-country').val()
+                name: creditCardName,
+                address_line1: addressLine1,
+                address_line2: addressLine2,
+                address_city: city,
+                address_state: state,
+                address_zip: zip,
+                address_country: country
             };
 
             stripe.createToken(card, custData).then(function(result) {
                 if (result.error) {
                     var errorElement = $(e.target).find(".card-errors");
                     errorElement.text(result.error.message);
+                    $('.fa-spin').addClass('d-none')
                 }else{
                     $(e.target).find(".credit-card-token").val(result.token.id);
                     $.ajax({
@@ -132,12 +156,14 @@ function createJob(e){
                         url: $(e.target).attr('action'),
                         data: $(e.target).serialize(),
                         dataType: 'script',
-                        async: false
+                        async: true
                     });
+
                 }
             });
         }else{
             $(e.target).find(".card-number-label").append("<span class='text-danger label-error-msgs ml-1'>can\'t be blank</span>")
+            $('.fa-spin').addClass('d-none')
         }
 
     }else{
@@ -146,7 +172,7 @@ function createJob(e){
             url: $(e.target).attr('action'),
             data: $(e.target).serialize(),
             dataType: 'script',
-            async: false
+            async: true
         });
     }
 }
@@ -161,7 +187,7 @@ $(document).on('change paste keyup','.work-experience-title', function(e){
 
 $(document).on('keyup input','.job-total', function(e){
     console.log('h5.' + $(this).attr('total_field'));
-    var total = $(this).val() * $(this).attr('rate')
+    var total = $(this).val() * $(this).attr('rate');
     $('h5.' + $(this).attr('total_field')).text('$'+ total);
     $("." + $(this).attr('total_field') + "[type='hidden']").val(total * 100)
 });
@@ -191,6 +217,12 @@ $(document).on('change paste keyup','.certificate-number', function(e){
     }
 });
 
+
+$(document).on(click_event,':submit', function(e){
+    $(this).find('.fa-spin').removeClass('d-none')
+
+});
+
 $(document).on(click_event,'.billing-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -206,6 +238,8 @@ $(document).on(click_event,'.freelancer-signup-btn', function(e){
     $('#pills-freelancer-registration-tab').click();
     return false;
 });
+
+
 
 $(document).on(click_event,'.card-element', function(e){
     e.preventDefault();
@@ -319,9 +353,7 @@ $(document).on(click_event,'.msg_send_btn', function(){
 
 
 
-$(document).on('submit','form', function(e){
-    $('.fa-spin').removeClass('d-none')
-});
+
 
 
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');

@@ -17,7 +17,7 @@
           <% if freelancer.try(:profile_photo) %>
             <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105,  radius: :max, crop: :scale)) %>">
           <% else %>
-            <img src="https://via.placeholder.com/105">
+            <img class="round-img" src="https://via.placeholder.com/105">
           <% end %>
         </div>
         <div class="port-item px-3   freelancer-basic-info  w-100" data-toggle="collapse" data-target="#resume">

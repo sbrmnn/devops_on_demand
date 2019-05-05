@@ -40,7 +40,9 @@
             </div>
             <div class="row mt-4">
               <div class="col-12 text-right">
-                <%= form.submit t('update_settings') , class: 'btn btn-lg  btn-primary' %>
+                <%= form.button class: "btn btn-primary btn-lg " do %>
+                  <i class="fa fa-circle-notch d-none fa-spin mr-2"></i>Save
+                <% end %>
               </div>
             </div>
           <% end %>

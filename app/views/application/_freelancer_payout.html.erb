@@ -171,8 +171,10 @@
                   </div>
                   <div class="form-row">
                     <div class="col-md-12 text-right">
-                      <button class="submit btn btn-lg  btn-primary"><i class="d-none fa fa-circle-notch fa-spin mr-2"></i>Save</button>
-                    </div>
+                      <%= f.button class: "btn btn-primary btn-lg " do %>
+                        <i class="fa fa-circle-notch d-none fa-spin mr-2"></i>Save
+                      <% end %>
+                     </div>
                   </div>
             <% end %>
         </div>

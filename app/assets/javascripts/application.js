@@ -114,20 +114,22 @@ function creditCardValueOrError(className){
 
 function createJob(e){
     e.preventDefault();
-
+    $(".card-errors").empty();
+    $(".credit-card-error").addClass('d-none');
+    $(".label-error-msgs").remove();
     if ($(e.target).find(".different-card-checkbox").is(":checked") || $(e.target).find('.first-card').length > 0 ){
-        $(".label-error-msgs").remove();
-        if (card._isMounted()){
-            $(".card-errors").empty();
-            $(".credit-card-error").addClass('d-none');
 
-            var creditCardName = creditCardValueOrError('.credit-card-name');
-            var addressLine1 =  creditCardValueOrError('.credit-card-line1');
-            var addressLine2 = creditCardValueOrError('.credit-card-line2');
-            var city = creditCardValueOrError('.credit-card-city');
-            var state = creditCardValueOrError('.credit-card-state');
-            var zip = creditCardValueOrError('.credit-card-zip');
-            var country = creditCardValueOrError('.credit-card-country');
+        var creditCardName = creditCardValueOrError('.credit-card-name');
+        var addressLine1 =  creditCardValueOrError('.credit-card-line1');
+        var addressLine2 = creditCardValueOrError('.credit-card-line2');
+        var city = creditCardValueOrError('.credit-card-city');
+        var state = creditCardValueOrError('.credit-card-state');
+        var zip = creditCardValueOrError('.credit-card-zip');
+        var country = creditCardValueOrError('.credit-card-country');
+
+
+        if (card._isMounted()){
+
 
             if ($('.label-error-msgs').length > 0){
                 $('.fa-spin').addClass('d-none');
@@ -341,11 +343,6 @@ $(document).on(click_event,'a.toggle_message_box', function(e){
 $(document).on(click_event,'.msg_send_btn', function(){
     broadcastMessage($(this).data('chatroom'), $(this))
 });
-
-
-
-
-
 
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
 

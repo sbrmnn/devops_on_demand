@@ -33,30 +33,6 @@ $(document).on('keyup change input paste','#personal_id_number_text', function(e
     }
 });
 
-function setOutcome(result) {
-    $('.bank-account-error').remove();
-
-    var token = result.token;
-
-    if (result.token) {
-        $('.save_bank_account_btn').text('Saved!');
-        $('#payout_identity_external_account').val(token.id)
-    }else if(result.error.param === 'bank_account[routing_number]' && result.error.code === 'parameter_invalid_empty'){
-        if ($('#bank_routing_number').length > 0){
-            $('#bank_routing_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-        }else if($('#transit_number').length > 0 && $('#institutional_number').length > 0){
-            $('#transit_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-            $('#institutional_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-        }
-    }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'parameter_invalid_empty'){
-      $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-    }else if(result.error.param === "bank_account[account_holder_type]" && result.error.type === 'invalid_request_error'){
-      $('#account_type').siblings("label").append("<span class='text-danger bank-account-error px-1'>can\'t be blank</span>");
-    }else if (result.error.param === 'bank_account[account_number]' && result.error.code === 'account_number_invalid'){
-      $('#checking_account_number').siblings("label").append("<span class='text-danger bank-account-error px-1'>invalid number</span>");
-    }
-}
-
 $(document).on('change', '#payout_identity_legal_entity_attributes_type', function(e){
     var individualTags = $('.individual-id-tags');
     var businessTags = $('.business-id-tags');
@@ -73,8 +49,6 @@ $(document).on('change', '#payout_identity_legal_entity_attributes_type', functi
         individualTags.addClass('d-none');
     }
 });
-
-
 
 $(document).on('change', '#payout_identity_legal_entity_attributes_entity_type' ,function() {
     if (this.value === 'individual') {
@@ -129,28 +103,6 @@ var style = {
         iconColor: '#fa755a'
     }
 };
-
-function getCreditCardToken(jobform){
-    var custData = {
-        name: $('.credit-card-name').val(),
-        address_line1: $('.credit-card-line1').val(),
-        address_line2: $('.credit-card-line2').val(),
-        address_city: $('.credit-card-city').val(),
-        address_state: $('.credit-card-state').val(),
-        address_zip: $('.credit-card-zip').val(),
-        address_country: $('.credit-card-country').val()
-    };
-
-    stripe.createToken(card, custData).then(function (result) {
-        if (result.error) {
-          var errorElement = $(jobform).find(".card-errors");
-          errorElement.text(result.error.message);
-        }else{
-            $(jobform).find(".credit-card-token").val(result.token.id);
-            $(jobform).find('.save_card_btn').text("Saved!")
-        }
-    });
-}
 
 function mountCreditCardElement(jobform) {
 // Create an instance of the card Element.

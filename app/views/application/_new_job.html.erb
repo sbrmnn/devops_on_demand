@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row p-0">
         <div class="col-12 p-0">
-            <%= form_with(model: [user, job], html: {onsubmit: "return createJob(event);"} ,class: "new-job-form-#{freelancer_id}", local: true) do |form| %>
+            <%= form_with(model: [user, job], html: {onsubmit: "return createJob(event);"}, freelancer: freelancer_id, class: "new-job-form-#{freelancer_id}", local: true) do |form| %>
             <div class="modal-body">
               <div class="basic-info-nested-fields mb-2">
                 <div class="form-row">
@@ -46,7 +46,7 @@
                 <% end %>
 
 
-                <div class = "new-card-section <%= last_4.present? ? "d-none" : '' %>">
+                <div class = "new-card-section <%= last_4.present? ? "d-none" : 'first-card' %>">
                   <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
                   <%= form.hidden_field  :total,  class: "job-total-#{freelancer_id}  form-control" %>
                   <div class="form-row mt-1">
@@ -55,7 +55,7 @@
                     <%= form.text_field :name, class: 'credit-card-name form-control'  %>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>Card Number</label>
+                    <label class="card-number-label" for="card-element-for-freelancer-<%= freelancer_id %>">Card Number</label>
                     <div id="card-element-for-freelancer-<%= freelancer_id %>" class="card-element form-control">
                       <!-- A Stripe Element will be inserted here. -->
                     </div>

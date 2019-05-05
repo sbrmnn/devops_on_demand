@@ -104,24 +104,51 @@ function displayMissingFields(data){
 
 function createJob(e){
     e.preventDefault();
-    $(".card-errors").empty();
-    var custData = {
-        name: $('.credit-card-name').val(),
-        address_line1: $('.credit-card-line1').val(),
-        address_line2: $('.credit-card-line2').val(),
-        address_city: $('.credit-card-city').val(),
-        address_state: $('.credit-card-state').val(),
-        address_zip: $('.credit-card-zip').val(),
-        address_country: $('.credit-card-country').val()
-    };
-    stripe.createToken(card, custData).then(function(result) {
-        if (result.error) {
-            var errorElement = $(e.target).find(".card-errors");
-            errorElement.text(result.error.message);
+
+    if ($(e.target).find(".different-card-checkbox").is(":checked") || $(e.target).find('.first-card').length > 0 ){
+        $(".label-error-msgs").remove();
+        if (card._isMounted()){
+            $(".card-errors").empty();
+
+
+            var custData = {
+                name: $('.credit-card-name').val(),
+                address_line1: $('.credit-card-line1').val(),
+                address_line2: $('.credit-card-line2').val(),
+                address_city: $('.credit-card-city').val(),
+                address_state: $('.credit-card-state').val(),
+                address_zip: $('.credit-card-zip').val(),
+                address_country: $('.credit-card-country').val()
+            };
+
+            stripe.createToken(card, custData).then(function(result) {
+                if (result.error) {
+                    var errorElement = $(e.target).find(".card-errors");
+                    errorElement.text(result.error.message);
+                }else{
+                    $(e.target).find(".credit-card-token").val(result.token.id);
+                    $.ajax({
+                        type: 'POST',
+                        url: $(e.target).attr('action'),
+                        data: $(e.target).serialize(),
+                        dataType: 'script',
+                        async: false
+                    });
+                }
+            });
         }else{
-            $(e.target).find(".credit-card-token").val(result.token.id);
+            $(e.target).find(".card-number-label").append("<span class='text-danger label-error-msgs ml-1'>can\'t be blank</span>")
         }
-    });
+
+    }else{
+        $.ajax({
+            type: 'POST',
+            url: $(e.target).attr('action'),
+            data: $(e.target).serialize(),
+            dataType: 'script',
+            async: false
+        });
+    }
 }
 
 $(document).on('change paste keyup','.work-experience-title', function(e){

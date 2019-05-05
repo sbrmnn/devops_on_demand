@@ -3,7 +3,7 @@
   $(".credit-card-success.<%= @job.freelancer_id %>").addClass('d-none')
   $(".label-error-msgs").remove()
   <% @job.errors.try(:messages).try(:each) do |key, val| %>
-     $(".new-job-form.<%= @job.freelancer_id %>").find("label[for='job_<%= key.to_s %>']").append("<span class='text-danger label-error-msgs ml-1'><%= raw val.first %></span>")
+     $(".new-job-form-<%= @job.freelancer_id %>").find("label[for='job_<%= key.to_s %>']").append("<span class='text-danger label-error-msgs ml-1'><%= raw val.first %></span>")
   <% end %>
 <% else %>
   $(".credit-card-error.<%= @job.freelancer_id %>").addClass('d-none')

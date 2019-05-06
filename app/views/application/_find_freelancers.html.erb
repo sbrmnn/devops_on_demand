@@ -1,11 +1,81 @@
+<% sl = GetListOfSkillsFromFreelancers.call %>
 <div class="container-fluid px-5 py-3">
   <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
-    <div class="input-group">
-      <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
-      <div class="input-group-append">
-        <%= button_tag :submit, class: 'btn btn-dark' do %>
-          <i class="d-none fa fa-circle-notch fa-spin mr-2"></i>Search
-        <% end %>
+    <div class="form-row">
+      <div class="form-group col-12" id="Skills">
+        <div class="input-group">
+          <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
+          <div class="input-group-append">
+            <%= button_tag :submit, class: 'btn btn-dark' do %>
+              <i class="d-none fa fa-circle-notch fa-spin mr-2"></i>Search
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-12" id="Skills">
+        <p>
+          <% if sl["AWS"] %>
+            <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseAWS" role="button" aria-expanded="false" aria-controls="collapseAWS">
+              AWS
+            </a>
+          <% end %>
+          <% if sl["MS Azure"] %>
+            <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseAzure" role="button" aria-expanded="false" aria-controls="collapseAzure">
+              MS Azure
+            </a>
+          <% end %>
+          <% if sl["Google Cloud"] %>
+            <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseGoogle" role="button" aria-expanded="false" aria-controls="collapseGoogle">
+              Google Cloud
+            </a>
+          <% end %>
+          <% if sl["Programing Languages"] %>
+            <a class="btn  btn-info my-1" data-toggle="collapse" href="#collapseProgrammingLanguage" role="button" aria-expanded="false" aria-controls="collapseGoogle">
+              Programming Languages
+            </a>
+          <% end %>
+        </p>
+
+        <div class="collapse" id="collapseAWS" data-parent="#Skills">
+          <div class="card p-1 card-body">
+            <div class="d-flex flex-wrap">
+              <% sl["AWS"]&.each do |e| %>
+                <div class="p-2"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], false, id: nil, class: 'mr-1' %>  <label><%=e[1]%></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="collapse" id="collapseAzure" data-parent="#Skills">
+          <div class="card p-1 card-body">
+            <div class="d-flex flex-wrap">
+              <% sl["MS Azure"]&.each do |e| %>
+                <div class="p-2"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], false, id: nil, class: 'mr-1' %>  <label><%=e[1]%></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapse" id="collapseGoogle" data-parent="#Skills">
+          <div class="card p-1 card-body">
+            <div class="d-flex flex-wrap">
+              <% sl["Google Cloud"]&.each do |e| %>
+                <div class="p-2"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], false, id: nil, class: 'mr-1' %>  <label><%=e[1]%></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="collapse" id="collapseProgrammingLanguage" data-parent="#Skills">
+          <div class="card p-1 card-body">
+            <div class="d-flex flex-wrap">
+              <% sl["Programing Languages"]&.each do |e| %>
+                <div class="p-2"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], false, id: nil, class: 'mr-1' %>  <label><%=e[1]%></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

@@ -2,8 +2,6 @@ class ChatroomsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_freelancer
 
-
-
   def create
     chatrooms = current_user.chatrooms
     @chatroom = ChatroomUser.find_by(chatroom: chatrooms, user_id: chatroom_params[:freelancer_user]).try(:chatroom)
@@ -12,10 +10,6 @@ class ChatroomsController < ApplicationController
      @chatroom.chatroom_users << [ChatroomUser.new(user: current_user, chatroom: @chatroom), [ChatroomUser.new(user: User.find_by_id(chatroom_params[:freelancer_user]), chatroom: @chatroom)]]
     end
   end
-
-
-
-
 
   private
 

@@ -1,7 +1,6 @@
 class ApproveJob
   include Callable
 
-
   def initialize(job)
     @job = job
   end
@@ -11,7 +10,6 @@ class ApproveJob
     charge_credit_card(@job)
     @job.reload
   end
-
 
   private
 

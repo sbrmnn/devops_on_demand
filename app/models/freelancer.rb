@@ -35,9 +35,12 @@ class Freelancer < ApplicationRecord
 
   def search_data
     attributes.merge(
-        achievements: work_experiences(&:achievements),
+      achievements: work_experiences(&:achievements),
+      cloud_services_ids:  cloud_services.map(&:id)
     )
   end
+
+
 
   def create_skills
     skills_array = []

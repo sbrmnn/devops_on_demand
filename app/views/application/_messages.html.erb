@@ -32,9 +32,7 @@
             <h6><%= UserPresenter.new(participant).full_name %></h6>
           <% end %>
           <% if freelancer %>
-
             <%= render 'profile', freelancer: freelancer %>
-
           <% end %>
           <div class="mt-2">
             <button data-chatroom="<%= cp.id %>" class="view-messages-btn btn btn-info" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
@@ -46,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="collapse" id="collapse<%= cp.id %>">
+      <div class="collapse collapse-<%= cp.id %>" id="collapse<%= cp.id %>">
         <%= render 'chatbox_id', cp: cp %>
       </div>
       <% if freelancer %>

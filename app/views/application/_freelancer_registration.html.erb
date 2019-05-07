@@ -75,39 +75,39 @@
                         </p>
                         <div class="collapse" id="collapseAWS" data-parent="#Skills">
                           <div class="card p-2 card-body">
-                            <ul  class="list-inline bg-light p-2 text-secondary" style="min-height:110%;">
+                            <div class="d-flex flex-wrap">
                               <% CloudServices.instance.services["AWS"].each do |e| %>
-                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></li>
+                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
                               <% end %>
-                            </ul>
+                             </div>
                            </div>
                         </div>
                         <div class="collapse" id="collapseAzure" data-parent="#Skills">
                           <div class="card p-2 card-body">
-                            <ul  class="list-inline bg-light p-2 text-secondary">
+                            <div class="d-flex flex-wrap">
                               <% CloudServices.instance.services["MS Azure"].each do |e| %>
-                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></li>
+                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
                               <% end %>
-                            </ul>
+                            </div>
                           </div>
                         </div>
 
                         <div class="collapse" id="collapseGoogle" data-parent="#Skills">
                           <div class="card p-2 card-body">
-                            <ul  class="list-inline bg-light p-2 text-secondary">
+                            <div class="d-flex flex-wrap">
                               <% CloudServices.instance.services["Google Cloud"].each do |e| %>
-                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></li>
+                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
                               <% end %>
-                            </ul>
+                            </div>
                           </div>
                         </div>
                         <div class="collapse" id="collapseProgrammingLanguage" data-parent="#Skills">
                           <div class="card p-2 card-body">
-                            <ul  class="list-inline bg-light p-2 text-secondary">
+                            <div class="d-flex flex-wrap">
                               <% CloudServices.instance.services["Programing Languages"].each do |e| %>
-                                <li class='col-12 list-inline-item px-0 my-2'> <%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %><label><%=e[1]%></label></li>
+                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
                               <% end %>
-                            </ul>
+                            </div>
                           </div>
                         </div>
                       </div>

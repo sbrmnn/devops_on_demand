@@ -1,7 +1,8 @@
 function UnSubscribeToRoom(chatroomId){
     var roomName = 'room' + chatroomId;
     if (typeof App[roomName] !== 'undefined') {
-        App.cable.subscriptions.remove(App[roomName])
+        App.cable.subscriptions.remove(App[roomName]);
+        App[roomName] = undefined
     }
 }
 

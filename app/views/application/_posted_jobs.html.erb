@@ -1,4 +1,4 @@
-<% jobs = user.jobs.where(acceptance: [true, nil]).order(:id) %>
+<% jobs = JobPresenter.wrap(user.jobs.where(acceptance: [true, nil]).order(:id))%>
 <div class="container-fluid px-5 py-3">
   <% jobs.each do |job| %>
     <div class="card mb-2 rounded-0">
@@ -16,13 +16,11 @@
           <p class="card-text lead text-justify bg-light" style="color:black"><%= job.description %></p>
         </div>
         <div class="approval-col text-right bg-light  px-2 py-2 approval-col-job-<%= job.id %>">
-
-            <% if job.acceptance %>
-              <a href="/freelancers/job_approvals/<%= job.id%>" class="btn-danger  btn" >Dispute</a>
-            <% else %>
-              <a href="/freelancers/job_approvals/<%= job.id%>" class="btn-danger  btn" >Cancel</a>
-            <% end %>
-
+          <% if job.canceled.blank? %>
+            <a href="/freelancers/job_approvals/<%= job.id%>" class="btn-danger job-cancel-btn btn" >Cancel</a>
+          <% else %>
+            <p class="text-danger m-0">Canceled</p>
+          <% end %>
         </div>
       </div>
     </div>

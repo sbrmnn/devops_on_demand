@@ -58,10 +58,11 @@ $(document).on('change', '#payout_identity_legal_entity_attributes_entity_type' 
     if (this.value === 'company') {
         $('.business-id-tags').removeClass('d-none');
         $('.individual-id-tags').addClass('d-none');
-        if (this.value === '') {
-            $('.business-id-tags').addClass('d-none');
-            $('.individual-id-tags').addClass('d-none');
-        }
+    }
+
+    if (this.value === '') {
+        $('.business-id-tags').addClass('d-none');
+        $('.individual-id-tags').addClass('d-none');
     }
 });
 
@@ -75,10 +76,10 @@ function getEntityTypeFields(){
     if (value === 'company') {
         $('.business-id-tags').removeClass('d-none');
         $('.individual-id-tags').addClass('d-none');
-        if (value === '') {
-            $('.business-id-tags').addClass('d-none');
-            $('.individual-id-tags').addClass('d-none');
-        }
+    }
+    if (value === '') {
+        $('.business-id-tags').addClass('d-none');
+        $('.individual-id-tags').addClass('d-none');
     }
 }
 

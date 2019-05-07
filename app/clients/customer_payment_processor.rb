@@ -50,6 +50,11 @@ class CustomerPaymentProcessor
                            })
   end
 
+
+  def refund_source(charge_id)
+     Stripe::Refund.create({charge: charge_id})
+  end
+
   private
 
   def add_customer(email)

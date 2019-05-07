@@ -21,7 +21,7 @@ module StrongParameterizable
         setting: [:newsletter_subscription, :chat_notification_subscription],
         chatrooms: [:freelancer_user],
         job: [:freelancer_id, :description, :hours, :from, :total, :front_end_token, :name, :line1, :line2, :city, :state, :zip, :country],
-        job_approvals: [:acceptance]
+        job_approvals: [:acceptance, :canceled]
 
     }[controller_name]
   end

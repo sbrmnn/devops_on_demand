@@ -1,4 +1,4 @@
-<% jobs = JobPresenter.wrap(user.freelancer&.jobs.order(:id))%>
+<% jobs = JobPresenter.wrap(user.freelancer&.jobs.where(canceled: false).order(:id))%>
 <div class="container-fluid px-5 py-3">
   <% jobs.each do |job_presenter| %>
     <div class="card mb-2 rounded-0">
@@ -22,10 +22,10 @@
             <% if job_presenter.acceptance.nil? %>
               <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-success accept-btn btn" >Accept</a>
               <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger reject-btn btn" >Reject</a>
-            <% elsif job_presenter.acceptance %>
+            <% elsif job_presenter.acceptance && job_presenter.canceled.blank?  %>
               <p class="text-success m-0">Approved</p>
             <% else %>
-              <p class="text-danger m-0">Rejected</p>
+              <p class="text-danger m-0">Canceled</p>
             <% end %>
 
         </div>

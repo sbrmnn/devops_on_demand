@@ -304,6 +304,20 @@ $(document).on(click_event,'.reject-btn', function(e){
     return false;
 });
 
+
+$(document).on(click_event,'.job-cancel-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $.ajax({
+        type: 'PUT',
+        url: $(this).attr('href'),
+        data: {job_approvals: {canceled: true}},
+        dataType: 'script',
+        async: false
+    });
+    return false;
+});
+
 $(document).on(click_event,'.accept-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();

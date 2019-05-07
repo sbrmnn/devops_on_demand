@@ -13,6 +13,10 @@ class JobPresenter < ApplicationPresenter
     model.acceptance
   end
 
+  def canceled
+    model.canceled
+  end
+
   def from
     model.from
   end

@@ -12,9 +12,9 @@
       <% skill =  GetListOfSkillsFromFreelancers.call %>
       <% GetListOfSkillsFromFreelancers.call&.keys&.sort&.each_with_index do |k,i| %>
         <div class="card">
-          <div class="card-header bg-danger p-0" id="headingOne">
+          <div class="card-header bg-light p-0" id="headingOne">
             <h5 class="mb-0">
-              <button class="btn btn-link text-light" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapseOne">
                 Search by <%= k %>
               </button>
             </h5>

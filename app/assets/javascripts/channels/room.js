@@ -1,3 +1,10 @@
+function UnSubscribeToRoom(chatroomId){
+    var roomName = 'room' + chatroomId;
+    if (typeof App[roomName] !== 'undefined') {
+        App.cable.subscriptions.remove(App[roomName])
+    }
+}
+
 function subscribeToRoom(chatroomId){
     var roomName = 'room' + chatroomId;
     if (typeof App[roomName] === 'undefined') {
@@ -18,7 +25,6 @@ function subscribeToRoom(chatroomId){
                 setTimeout(function () {
                     $("#connection-error-alert").show();
                 }, 2000);
-
             },
 
             connected: function () {

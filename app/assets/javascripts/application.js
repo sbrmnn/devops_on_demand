@@ -366,6 +366,15 @@ $(document).on(click_event,'a[data-toggle="pill"]', function(e){
 
 
 $(document).on('show.bs.tab','a[data-toggle="pill"]', function(e){
+     if ($(e.target).attr('href') !== "#messages"){
+         var chatroomNames = $(".chat-box");
+         if (chatroomNames.length){
+             chatroomNames.each(function() {
+                 UnSubscribeToRoom(($( this ).data('chatroom')));
+             });
+             chatroomNames.remove()
+         }
+     }
     $($(e.target).attr('href')).empty()
 });
 

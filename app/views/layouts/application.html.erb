@@ -57,13 +57,15 @@
             </li>
 
               <li class="nav-item dropdown py-2 pr-4">
-                <a class="nav-link freelancer-registration-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-cog  "></i> <% if freelancer? %> Freelancer Settings <% else %> Freelancer Registration<% end %></a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false">Profile</a>
-                  <% if freelancer? %>
+                <% if freelancer? %>
+                  <a class="nav-link freelancer-registration-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-cog  "></i> Freelancer Settings</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false">Profile</a>
                     <a class="dropdown-item" id="pills-freelancer-payout-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-payout-tab" href="#freelancer-payout" aria-selected="false">Payout</a>
-                  <% end %>
-                </div>
+                  </div>
+                <% else %>
+                  <a class="nav-link" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false"><i class="fas fa-user-plus mr-1"></i>Freelancer Registration</a>
+              <% end %>
               </li>
 
             <li class="nav-item py-2 pr-4">

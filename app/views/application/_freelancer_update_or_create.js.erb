@@ -11,7 +11,7 @@
      freelancerErrorCard.addClass('d-none')
      freelancerSuccessCard.removeClass('d-none')
      freelancerSuccessCard.html("<div class=\"card-header bg-success text-light\"><%= t('saved') %></div>")
-
+     location.reload()
  <% end %>
  <% @freelancer.errors.messages.each do |key ,values| %>
 

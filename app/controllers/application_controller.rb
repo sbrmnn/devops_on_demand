@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user
-    gon.current_user_id = user.try(:id) || nil
+    gon.current_user_id = current_user_id
+  end
+
+  def current_user_id
+    @current_user_id ||= user.try(:id) || nil
   end
 
   def set_freelancer_id

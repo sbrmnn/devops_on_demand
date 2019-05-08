@@ -89,3 +89,5 @@ gem 'searchkick',  '~> 3.1.0'
 
 gem 'stripe', '~> 4.5.0'
 
+
+

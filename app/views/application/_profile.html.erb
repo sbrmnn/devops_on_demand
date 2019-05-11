@@ -1,7 +1,7 @@
 <article class="profile   pr-2 text-justify">
 
     <div class="about_me">
-      <p class="lead mb-0"> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
+      <p class="my-1 mb-0"> <span class="font-underline about-header d-none pb-1">About me</span> <%= freelancer.about_me %></p>
     </div>
     <% if freelancer.source_control_url.present? %>
       <div class="source_control mb-4">
@@ -25,7 +25,7 @@
             <li>
                 <div class=" mb-1">
                   <div class="d-flex flex-column flex-md-row">
-                    <h5 class="text-dark font-weight-bold"><%= we.title %></h5>
+                    <em><h5 class="text-dark"><%= we.title %></h5></em>
                   </div><!--//row-->
                   <div class="d-flex flex-column flex-md-row">
                     <h4 class="resume-position-title text-dark"><%= we.employer %></h4>
@@ -49,7 +49,7 @@
           <% freelancer.certification_names.group_by(&:provider).each do |k, v| %>
 
             <li>
-                 <h5 class="text-dark font-weight-bold mb-1"><%= k %></h5>
+              <em><h5 class="text-dark mb-1"><%= k %></h5></em>
 
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
@@ -72,7 +72,7 @@
         <ul class="px-3 mb-0">
           <% freelancer.cloud_services.group_by(&:provider).each do |k, v| %>
             <li>
-              <h5 class="text-dark font-weight-bold mb-1"><%= k %></h5>
+              <em><h5 class="text-dark  mb-1"><%= k %></h5></em>
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
                   <li class="list-inline-item">

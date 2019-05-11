@@ -1,3 +1,21 @@
+<% unless user_signed_in? %>
+  <header class="jumbotron  p-5  bg-red rounded-0  ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 p-0">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 p-0">
+          <h1 >DevOps On Demand</h1>
+          <p class="lead">Hire cloud engineers around the world by the hour, week, or sprint.</p>
+          <a href="#" class="btn btn-light btn-lg">Search for Engineers</a>
+        </div>
+      </div>
+    </div>
+  </header>
+<% end %>
 <div class="tab-content" id="pills-tabContent">
   <% if false %>
     <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">

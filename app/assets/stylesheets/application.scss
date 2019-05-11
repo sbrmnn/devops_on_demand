@@ -14,8 +14,20 @@
 @import "_pills_underline";
 
 
+.bg-red{
+  background-color: #f53030;
 
+}
 
+.jumbotron{
+
+  color: whitesmoke;
+
+}
+
+.featured-list{
+  margin-top: -200px;
+}
 
 .cloudinary-fileupload {
   height: auto; // This css code fixes a UI issue  where the file selector on Firefox extends past its border. https://stackoverflow.com/questions/22049739/fix-for-firefox-file-input-using-bootstrap-3-1

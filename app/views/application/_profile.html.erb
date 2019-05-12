@@ -25,7 +25,7 @@
             <li>
                 <div class=" mb-1">
                   <div class="d-flex flex-column flex-md-row">
-                    <em><h5 class="text-dark"><%= we.title %></h5></em>
+                     <h5 class="text-dark"><%= we.title %></h5>
                   </div><!--//row-->
                   <div class="d-flex flex-column flex-md-row">
                     <h4 class="resume-position-title text-dark"><%= we.employer %></h4>
@@ -49,7 +49,7 @@
           <% freelancer.certification_names.group_by(&:provider).each do |k, v| %>
 
             <li>
-              <em><h5 class="text-dark mb-1"><%= k %></h5></em>
+               <h5 class="text-dark mb-1"><%= k %></h5>
 
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
@@ -72,7 +72,7 @@
         <ul class="px-3 mb-0">
           <% freelancer.cloud_services.group_by(&:provider).each do |k, v| %>
             <li>
-              <em><h5 class="text-dark  mb-1"><%= k %></h5></em>
+               <h5 class="text-dark  mb-1"><%= k %></h5> 
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
                   <li class="list-inline-item">

@@ -365,7 +365,7 @@ function getSelectedPill(){
     var preSelectedChatroom = preSelectChatroom();
     if (!preSelectedChatroom) {
         var activePillId = window.localStorage.getItem('activeTabId');
-        if (activePillId){
+        if (activePillId && gon.current_user_id){
             $('#' + activePillId).tab('show');
             window.localStorage.removeItem("activeTab");
         }else{

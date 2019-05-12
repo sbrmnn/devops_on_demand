@@ -10,7 +10,8 @@
         <div class="col-lg-12 p-0">
           <h1 >DevOps On Demand</h1>
           <p class="lead">Hire cloud engineers around the world by the hour, week, or sprint.</p>
-          <a href="#" class="btn btn-light btn-lg">Search for Engineers</a>
+          <%= link_to( t('signup'), new_registration_path('user'), class: "btn btn-light btn-lg")  %>
+          <%= link_to( t('login'), new_user_session_path, class: "btn btn-warning btn-lg")  %>
         </div>
       </div>
     </div>

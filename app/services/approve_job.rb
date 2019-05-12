@@ -7,7 +7,7 @@ class ApproveJob
 
   def call
     return if @job.canceled.present?
-    @job.update_attributes(acceptance: true)
+    @job.lock!.update_attributes(acceptance: true)
     charge_credit_card(@job)
     @job.reload
   end

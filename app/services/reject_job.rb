@@ -7,7 +7,7 @@ class RejectJob
   end
 
   def call
-    @job.update_attributes(acceptance: false)
+    @job.lock!.update_attributes(acceptance: false)
     @job.reload
   end
 end

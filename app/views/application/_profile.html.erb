@@ -72,7 +72,7 @@
         <ul class="px-3 mb-0">
           <% freelancer.cloud_services.group_by(&:provider).each do |k, v| %>
             <li>
-               <h5 class="text-dark  mb-1"><%= k %></h5> 
+               <h5 class="text-dark  mb-1"><%= k %></h5>
               <ul class="list-inline pl-0 mb-3">
                 <% v.each do |cert| %>
                   <li class="list-inline-item">

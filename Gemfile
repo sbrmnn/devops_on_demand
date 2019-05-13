@@ -18,7 +18,7 @@ gem 'devise', '~> 4.5.0'
 
 gem 'csv'
 
-gem 'cocoon'
+
 
 gem 'gon'
 

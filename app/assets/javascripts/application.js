@@ -11,12 +11,11 @@
 // about supported directives.
 //
 
-//= require rails-ujs
-//= require turbolinks
+
+
 //= require cloudinary
-//= require cocoon
 //= require payment_processor
-//= require readmore
+
 //= require_tree .
 
 $.ajaxSetup({

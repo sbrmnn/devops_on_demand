@@ -1,6 +1,6 @@
 <div class="container-fluid px-5 py-3">
   <%unless user_signed_in?%>
-    <h2 class="rounded pl-1 py-2 text-dark mb-2">Search for Engineers</h2>
+    <h4 class="rounded mb-2 text-dark ">Search for Engineers</h4>
   <% end %>
   <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
     <div class="input-group">

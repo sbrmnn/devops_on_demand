@@ -28,10 +28,9 @@ function bindChatroomToRecieveMessages(){
         viewMsgBtns.each(function() {
             var target = $(this).data('target');
             var chatroomId = $(this).data('chatroom');
-            $(document).on('show.bs.collapse', target, function () {
-                $(".collapse-" + chatroomId)[0].scrollIntoView(false);
-            });
+
             $(document).on('shown.bs.collapse', target, function () {
+                renderChatRoomMessages(chatroomId)
                 $(".collapse-" + chatroomId)[0].scrollIntoView(false);
             });
         });

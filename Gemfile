@@ -21,7 +21,7 @@ gem 'csv'
 
 gem 'cocoon'
 
-gem 'gon'
+
 
 # Fast Universal Google Analytics setup for Rails.
 # This gem is mostly intended for small to medium websites with a simple analytics strategy.
@@ -82,7 +82,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'honeycomb-beeline'
 gem 'redis', '~> 4.0.3'
 gem 'whenever', require: false
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'

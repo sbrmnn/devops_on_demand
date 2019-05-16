@@ -15,7 +15,7 @@
     </div>
     <div class="accordion mt-1" id="skillsAccordion">
       <% skill =  GetListOfSkillsFromFreelancers.call %>
-      <% GetListOfSkillsFromFreelancers.call&.keys&.sort&.each_with_index do |k,i| %>
+      <% skill&.keys&.sort&.each_with_index do |k,i| %>
         <div class="card">
           <div class="card-header bg-light p-0" id="headingOne">
             <h5 class="mb-0">

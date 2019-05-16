@@ -16,7 +16,7 @@
           <% if  user_signed_in?  %>
             <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
           <% else %>
-            <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= link_to( t('login'), new_user_session_path, class: "text-dark nav-link")  %>Login for Contact Info</strong></li>
+            <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= link_to( t('login'), new_user_session_path, class: "text-dark")  %> for Contact Info</strong></li>
           <% end %>
           <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
         </ul>

@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_user
-  before_action :set_freelancer_id
 
   include StrongParameterizable
 
@@ -18,18 +16,6 @@ class ApplicationController < ActionController::Base
 
   def user
     @user ||= current_user
-  end
-
-  def set_user
-    gon.current_user_id = current_user_id
-  end
-
-  def current_user_id
-    @current_user_id ||= user.try(:id) || nil
-  end
-
-  def set_freelancer_id
-    gon.freelancer_id = user.try(:freelancer).try(:id) || nil
   end
 
   def set_chatroom

@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevopsOnDemand</title>
   <%= csrf_meta_tags %>
-  <%= Gon::Base.render_data %>
+
+  <script>
+      window.gon={};
+     <% if user_signed_in? %>
+       gon.current_user_id=<%= current_user.try(:id) %>
+       gon.freelancer_id= <%= current_user.try(:freelancer).try(:id) || nil %>;
+     <% else %>
+       gon.current_user_id= null;
+       gon.freelancer_id= null;
+     <% end %>
+  </script>
   <script src="https://js.stripe.com/v3/"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -14,6 +24,9 @@
   <script src="https://cdn.jsdelivr.net/npm/cocoon-rails@1/src/cocoon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/readmore-js@2/readmore.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">

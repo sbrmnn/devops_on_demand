@@ -21,7 +21,7 @@
           <li class="list-inline-item py-1"> <i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %> </li>
         </ul>
         <%= render 'profile', freelancer: freelancer %>
-        <% if show_buttons.present? && user_signed_in?  %>
+        <% if user_signed_in? && show_buttons.present?   %>
           <div class="mt-2">
             <a data-freelancer= "<%= freelancer.id%>" data-freelancer-user= "<%= freelancer.user.id %>" data-messagebox= "message_box_freelancer_<%= freelancer.id %>" class="btn-info btn text-light   toggle_message_box">Chat</a>
             <% if freelancer %>

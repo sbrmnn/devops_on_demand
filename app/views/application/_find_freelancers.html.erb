@@ -1,7 +1,7 @@
 <div class="container-fluid px-5 py-3">
   <%unless user_signed_in?%>
     <div>
-      <h3 class="text-dark ml-1 ">Search for Engineers</h3>
+      <h3 class="text-dark">Search for Engineers</h3>
     </div>
   <% end %>
   <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>

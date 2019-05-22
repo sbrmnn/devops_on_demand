@@ -1,12 +1,8 @@
-<div class="container-fluid px-5 py-3">
-  <%unless user_signed_in?%>
-    <div>
-      <h3 class="text-dark">Search for Engineers</h3>
-    </div>
-  <% end %>
+<div class="container-fluid bg-white-smoke px-5 py-3">
+  <h2  class="section-header py-2">Search for Engineers</h2>
   <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
     <div class="input-group">
-      <%= text_field_tag(:value, nil, class:"form-control", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
+      <%= text_field_tag(:value, nil, class:"form-control   form-control-lg", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>
       <div class="input-group-append">
         <%= button_tag :submit, class: 'btn btn-dark' do %>
           <i class="d-none fa fa-circle-notch fa-spin mr-2"></i>Search
@@ -41,6 +37,6 @@
 
 
 
-<div class="freelancer-search-results">
+<div class="bg-white-smoke freelancer-search-results">
 </div>
 

@@ -368,6 +368,7 @@ function getSelectedPill(){
             $('#' + activePillId).tab('show');
             window.localStorage.removeItem("activeTab");
         }else{
+
             $('#pills-find-freelancers-tab').tab('show');
         }
     }

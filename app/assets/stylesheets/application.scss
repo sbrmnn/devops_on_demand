@@ -5,7 +5,7 @@
 @import "users";
 @import "subscription_settings";
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&display=swap');
 @import "find-freelancers";
 @import "blog";
 @import "_pills_underline";
@@ -16,11 +16,48 @@
 
 }
 
-.jumbotron{
-  background-image: url("https://s3.amazonaws.com/devops-on-demand/cubes.png");
-  color: whitesmoke;
+
+.hero{
+  min-height: 100vh;
+   background-image: url("/devopsdarken.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
+
+.hero-title{
+  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 5em;
+  color: white;
+  font-variant-ligatures: common-ligatures;
+}
+
+.hero-subtitle{
+  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 100;
+  font-size: 2.5em;
+  color: white;
+  font-variant-ligatures: common-ligatures;
+}
+
+.section-header{
+  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .featured-list{
   margin-top: -200px;
@@ -50,7 +87,7 @@ body {
  }
 
 .users_show, .subscription_settings_show, .dashboard_show {
-  background-color: whitesmoke;
+  background-color: whitesmoke ;
 }
 
 .navbar{

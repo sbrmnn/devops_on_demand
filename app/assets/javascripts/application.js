@@ -90,6 +90,17 @@ $( document ).ready(function() {
 function init() {
     getSelectedPill();
     getEntityTypeFields();
+    getFeaturedEngineers();
+}
+
+
+function getFeaturedEngineers(){
+    $.ajax({
+        type: 'GET',
+        url: '/featured_engineers',
+        dataType: 'script',
+        async: true
+    });
 }
 
 
@@ -351,6 +362,12 @@ $(document).on(click_event,'a.toggle_message_box', function(e){
     }
 
     return false;
+});
+
+
+
+$(document).on(click_event,'.find-freelancer-btn', function(){
+    $(".search-for-engineers")[0].scrollIntoView(true)
 });
 
 $(document).on(click_event,'.msg_send_btn', function(){

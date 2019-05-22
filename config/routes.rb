@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'featured_engineers/index'
+
   resources :tabs, only: :index
 
   resources :cloud_services, only: :index
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'profile_preview', controller: "profile_preview", action: "index"
 
-
+  resources :featured_engineers, only: [:index]
   resources :certification_names, only: [:index]
 
   resources :healthcheck, only: [:index]

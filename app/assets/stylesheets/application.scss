@@ -17,19 +17,15 @@
 }
 
 
-.hero{
-  min-height: 100vh;
-   background-image: url("https://s3.amazonaws.com/devops-on-demand/img/devopsdarken-min.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+.cubes{
+  background-image: url("/cubes.png");
 
 }
-
 .hero-title{
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
   font-weight: 300;
   font-size: 3.236em;
-  color: white;
+  color: black;
   font-variant-ligatures: common-ligatures;
 }
 
@@ -37,16 +33,18 @@
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
   font-weight: 100;
   font-size: 2em;
-  color: white;
+  color: black;
   font-variant-ligatures: common-ligatures;
 }
 
 .section-header{
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
 
-
+.freelancer-search-results{
+  height: 50vh;
+}
 
 
 

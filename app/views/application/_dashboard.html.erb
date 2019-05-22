@@ -1,17 +1,30 @@
 <% unless user_signed_in? %>
 
-  <div class="container-fluid hero px-5 py-4">
 
+
+  <div class="container-fluid cubes border-bottom   px-5 py-4">
 
     <div class="row">
       <div class="col-md-8">
-         <h1 class=" mt-5   hero-title ">DevOps On Demand</h1>
+         <h1 class=" mt-2   hero-title ">DevOps On Demand</h1>
          <p class="  py-2  hero-subtitle ">Hire freelance cloud engineers from around the world by the hour, week, or sprint.   </p>
+         <button class=" find-freelancer-btn btn btn-lg btn-warning">Search for Engineers</button>
+
       </div>
     </div>
+   </div>
 
-     <button class="mt-2 btn btn-lg btn-warning">Search for Engineers</button>
+  <div class="container-fluid    px-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="section-header mt-4 mb-3">Featured Engineers</h2>
+      </div>
+    </div>
   </div>
+
+  <div class="bg-white-smoke pb-2 border-bottom  freelancer-featured-results bg-white-smoke  ">
+  </div>
+
 
 
 

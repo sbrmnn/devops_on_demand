@@ -4,7 +4,7 @@ class User < ApplicationRecord
   before_save :generate_unsub_token, if: lambda{ unsub_token.blank? }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
+  attr_accessor :terms_of_service
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
   has_many :messages
@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :transactions
 
   validates_presence_of :first_name, :last_name
+  validates :terms_of_service, acceptance: true
 
 
   has_one :payout_identity, through: :freelancer

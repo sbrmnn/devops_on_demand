@@ -4,7 +4,6 @@
 @import "freelancers";
 @import "users";
 @import "subscription_settings";
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&display=swap');
 @import "find-freelancers";
 @import "blog";
@@ -18,7 +17,7 @@
 
 
 .cubes{
-  background-image: url("/cubes.png");
+  background-image: url("https://s3.amazonaws.com/devops-on-demand/img/cubes.png");
 
 }
 .hero-title{
@@ -86,6 +85,7 @@ body {
 
 .users_show, .subscription_settings_show, .dashboard_show {
   background-color: whitesmoke ;
+  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
 }
 
 .navbar{

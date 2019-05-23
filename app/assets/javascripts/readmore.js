@@ -30,7 +30,7 @@
             speed: 100,
             collapsedHeight: 200,
             heightMargin: 16,
-            moreLink: '<a href="#">Read More</a>',
+            moreLink: '<a href="#">Read Profile</a>',
             lessLink: '<a href="#">Close</a>',
             embedCSS: true,
             blockCSS: 'display: block; width: 100%;',

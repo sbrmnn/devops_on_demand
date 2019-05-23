@@ -367,7 +367,8 @@ $(document).on(click_event,'a.toggle_message_box', function(e){
 
 
 $(document).on(click_event,'.find-freelancer-btn', function(){
-    $(".search-for-engineers")[0].scrollIntoView(true)
+    $("html, body").animate({ scrollTop: $(".search-for-engineers").position().top }, 1000);
+    
 });
 
 $(document).on(click_event,'.msg_send_btn', function(){

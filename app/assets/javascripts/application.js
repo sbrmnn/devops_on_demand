@@ -95,12 +95,15 @@ function init() {
 
 
 function getFeaturedEngineers(){
-    $.ajax({
-        type: 'GET',
-        url: '/featured_engineers',
-        dataType: 'script',
-        async: true
-    });
+    if(!gon.current_user_id){
+        $.ajax({
+            type: 'GET',
+            url: '/featured_engineers',
+            dataType: 'script',
+            async: true
+        });
+    }
+
 }
 
 

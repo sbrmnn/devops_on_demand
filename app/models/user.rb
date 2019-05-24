@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :transactions
 
   validates_presence_of :first_name, :last_name
-  validates :terms_of_service, acceptance: true
+  validates :terms_of_service, acceptance: true, on: :create
 
 
   has_one :payout_identity, through: :freelancer

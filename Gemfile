@@ -87,7 +87,7 @@ gem 'whenever', require: false
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 gem 'cloudinary'
 gem 'searchkick',  '~> 3.1.0'
-
+gem "recaptcha"
 
 gem 'stripe', '~> 4.5.0'
 

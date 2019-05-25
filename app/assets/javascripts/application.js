@@ -82,9 +82,8 @@ function preSelectChatroom(){
 var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
-$( document ).ready(function() {
+$( document ).on('turbolinks:load', function(e) {
     init();
-
 });
 
 function init() {
@@ -93,9 +92,8 @@ function init() {
     getFeaturedEngineers();
 }
 
-
 function getFeaturedEngineers(){
-    if(!gon.current_user_id){
+    if($('.freelancer-featured-results').length != 0){
         $.ajax({
             type: 'GET',
             url: '/featured_engineers',

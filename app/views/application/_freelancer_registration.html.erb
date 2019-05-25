@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-12">
               <div class="rounded">
-                  <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user.freelancer, url: [user, @freelancer], remote: true) do |form| %>
+                  <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user.freelancer || user.build_freelancer, url: [user, @freelancer], remote: true) do |form| %>
                   <% cs = form.object.cloud_services.pluck(:id) %>
 
                   <h2><%=t('freelancer_registration_form') %></h2>

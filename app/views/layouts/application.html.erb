@@ -7,11 +7,21 @@
   <%= csrf_meta_tags %>
 
   <script>
+
       window.gon={};
      <% if user_signed_in? %>
-       gon.current_user_id=<%= current_user.try(:id) %>
-       gon.freelancer_id= <%= current_user.try(:freelancer).try(:id) || nil %>;
-     <% else %>
+            <% if current_user.try(:id) %>
+              gon.current_user_id= <%= current_user.id %>
+           <% else %>
+               gon.current_user_id= null;
+           <% end %>
+
+           <% if current_user.try(:freelancer) %>
+              gon.freelancer_id = <%= current_user.freelancer.id %>
+           <% else %>
+                gon.freelancer_id = null;
+           <% end %>
+      <% else %>
        gon.current_user_id= null;
        gon.freelancer_id= null;
      <% end %>
@@ -76,7 +86,7 @@
                     <a class="dropdown-item" id="pills-freelancer-payout-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-payout-tab" href="#freelancer-payout" aria-selected="false">Payout</a>
                   </div>
                 <% else %>
-                  <a class="nav-link" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false"><i class="fas fa-user-plus mr-1"></i>Freelancer Registration</a>
+                  <a class="nav-link freelancer-registration-link" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false"><i class="fas fa-user-plus mr-1"></i>Freelancer Registration</a>
               <% end %>
               </li>
 
@@ -90,6 +100,21 @@
   </nav>
  <% end %>
 <%= yield %>
+
+
+ <!-- Footer -->
+ <footer class="page-footer font-small bg-white">
+
+   <!-- Copyright -->
+   <div class="footer-copyright text-center py-1">© <%= Date.today.year %>
+       YumFog LLC
+   </div>
+   <!-- Copyright -->
+   <div class="footer-privacy-policy text-center py-1">
+     <a href="">Privacy Policy</a>
+   </div>
+ </footer>
+ <!-- Footer -->
 
 </body>
 

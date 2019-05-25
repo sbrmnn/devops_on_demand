@@ -2,6 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = current_user
+    redirect_to dashboard_url
   end
 end

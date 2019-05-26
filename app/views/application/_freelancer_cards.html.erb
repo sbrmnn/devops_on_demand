@@ -1,9 +1,9 @@
 <div class="container-fluid px-5">
   <% freelancers.each do |freelancer| %>
     <div  class="mb-2 d-flex bars flex-row p-4 text-dark card" style="visibility: hidden">
-      <div class="port-item text-center pb-3 flex-shrink-1">
+      <div class="port-item text-center  p-2  flex-shrink-1">
         <% if freelancer.try(:profile_photo) %>
-          <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105, radius: :max, crop: :scale)) %>">
+          <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 115, height: 115, radius: :max, crop: :scale)) %>">
         <% else %>
           <img src="https://via.placeholder.com/100">
         <% end %>

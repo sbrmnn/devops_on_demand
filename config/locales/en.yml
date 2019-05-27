@@ -52,7 +52,7 @@ en:
   contact: "Contact"
   search: "Search"
   messages: "Messages"
-  search_placeholder: "Search for engineers by keywords (Docker, Puppet, Linux)"
+  search_placeholder: "Search for engineers by keywords (Docker, Puppet, Linux) or wildcard (*)"
   chatrooms: "Chatrooms"
   select_chatroom_msg: "Select a chatroom from the left to view messages."
   type_message: "Type a message"

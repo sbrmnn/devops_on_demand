@@ -44,9 +44,15 @@
   font-weight: 300;
 }
 
-.tab-content,.freelancer-search-results{
+.tab-content, .freelancer-search-results{
   min-height: 80vh;
+
 }
+
+.tab-content {
+  background-image: url("https://devops-on-demand.s3.amazonaws.com/img/dark-stripes-light.png");
+
+ }
 
 .featured-list{
   margin-top: -200px;

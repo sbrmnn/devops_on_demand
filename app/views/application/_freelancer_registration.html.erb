@@ -60,13 +60,13 @@
                      <div class="form-row">
                       <div class="form-group col-12" id="Skills">
                         <p>
-                          <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseAWS" role="button" aria-expanded="false" aria-controls="collapseAWS">
+                          <a class="btn  btn-lg btn-info my-1" data-toggle="collapse" href="#collapseAWS" role="button" aria-expanded="false" aria-controls="collapseAWS">
                             AWS
                           </a>
-                          <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseAzure" role="button" aria-expanded="false" aria-controls="collapseAzure">
+                          <a class="btn btn-lg  btn-info my-1" data-toggle="collapse" href="#collapseAzure" role="button" aria-expanded="false" aria-controls="collapseAzure">
                             MS Azure
                           </a>
-                          <a class="btn   btn-info my-1" data-toggle="collapse" href="#collapseGoogle" role="button" aria-expanded="false" aria-controls="collapseGoogle">
+                          <a class="btn  btn-lg btn-info my-1" data-toggle="collapse" href="#collapseGoogle" role="button" aria-expanded="false" aria-controls="collapseGoogle">
                             Google
                           </a>
                           <a class="btn  btn-info my-1" data-toggle="collapse" href="#collapseProgrammingLanguage" role="button" aria-expanded="false" aria-controls="collapseGoogle">
@@ -118,7 +118,7 @@
                         <%= render 'certification_fields', :f => certification %>
                       <% end %>
                       <div class='add-btn text-center'>
-                        <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn    btn-warning"} %>
+                        <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn  btn-lg  btn-warning"} %>
                       </div>
                     </div>
                     <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('work_experiences')%></h4>
@@ -127,7 +127,7 @@
                         <%= render 'work_experience_fields', :f => work_experience %>
                       <% end %>
                       <div class='add-btn text-center'>
-                        <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn  btn-warning"} %>
+                        <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-warning"} %>
                       </div>
                     </div>
                     <hr>

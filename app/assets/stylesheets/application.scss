@@ -20,8 +20,12 @@
 }
 
 
-.cubes{
-  background-image: url("https://s3.amazonaws.com/devops-on-demand/img/cubes.png");
+.beard{
+  background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
+  background-size: cover;
+  background-position: 50% 85%;
+  min-height: 80vh;
+
 }
 .hero-title{
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
@@ -82,7 +86,7 @@ body {
  }
 
 .users_show, .subscription_settings_show, .dashboard_show {
-  background-color: whitesmoke ;
+
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
 }
 

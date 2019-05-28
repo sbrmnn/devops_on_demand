@@ -1,6 +1,6 @@
 <div class="container-fluid px-5">
   <% freelancers.each do |freelancer| %>
-    <div  class="mb-2 d-flex bars flex-row p-4 text-dark card" style="visibility: hidden">
+    <div  class="mb-2 d-flex bars flex-row px-2 py-4 text-dark card" style="visibility: hidden">
       <div class="port-item text-center  p-2  flex-shrink-1">
         <% if freelancer.try(:profile_photo) %>
           <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 115, height: 115, radius: :max, crop: :scale)) %>">
@@ -8,11 +8,11 @@
           <img src="https://via.placeholder.com/100">
         <% end %>
       </div>
-      <div class="port-item px-3 mx-1   freelancer-basic-info  w-100">
+      <div class="port-item px-3  freelancer-basic-info  w-100">
         <h6><%= freelancer.user_name %></h6>
         <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
-        <ul class="my-1 list-inline border-top border-bottom mb-0 text-dark">
-          <li class="list-inline-item py-1"><i class="fas fa-dollar-sign "></i><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%> </li>
+        <ul class="my-2 list-inline border-top border-bottom mb-0 text-dark">
+          <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1 "></i><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%> </li>
           <% if  user_signed_in?  %>
             <li class="list-inline-item py-1"><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></li>
           <% else %>

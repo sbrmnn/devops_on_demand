@@ -30,6 +30,9 @@ class Freelancer < ApplicationRecord
   before_save :create_skills
 
 
+  before_save :calculate_platform_rate
+
+
 
 
 
@@ -43,14 +46,21 @@ class Freelancer < ApplicationRecord
 
 
   def create_skills
-    skills_array = []
-    self.cloud_service_array&.map{|l|
-      skills_array  << Skill.new(cloud_service_id: l.to_i)
-    }
-    self.skills = skills_array
+    unless cloud_service_array.nil?
+      skills_array = []
+      self.cloud_service_array&.map{|l|
+        skills_array  << Skill.new(cloud_service_id: l.to_i)
+      }
+      self.skills = skills_array
+    end
   end
 
   def create_user_name
     self.user_name = UserPresenter.new(self.user).full_name if user.present?
+  end
+
+
+  def calculate_platform_rate
+    self.platform_rate = CalculatePlatformRate.call(rate) if platform_rate.blank?
   end
 end

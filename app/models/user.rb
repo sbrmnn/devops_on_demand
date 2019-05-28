@@ -5,22 +5,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   attr_accessor :terms_of_service
-  has_many :chatroom_users
-  has_many :chatrooms, through: :chatroom_users
-  has_many :messages
-  has_many :jobs
-  has_one :setting
-  has_one :freelancer
-  has_many :credit_cards
-  has_many :transactions
+
+  has_many :chatroom_users, dependent: :destroy
+  has_many :chatrooms, through: :chatroom_users, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :jobs, dependent: :destroy
+  has_one :setting, dependent: :destroy
+  has_one :freelancer, dependent: :destroy
+  has_many :credit_cards, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+  has_one :payout_identity, through: :freelancer, dependent: :destroy
+  has_one :tos_acceptance, dependent: :destroy
 
   validates_presence_of :first_name, :last_name
   validates :terms_of_service, acceptance: true, on: :create
-
-
-  has_one :payout_identity, through: :freelancer
-  has_one :tos_acceptance
-
+  
   before_save :configure_settings
   before_save :generate_relay_user_name
   before_save :downcase_email
@@ -39,9 +38,9 @@ class User < ApplicationRecord
 
   def generate_relay_user_name
     if relay_user_name.blank?
-      self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com".downcase
+      self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@relay.yumfog.com".downcase
       while User.exists?(relay_user_name: relay_user_name)
-        self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@mail.yumfog.com".downcase
+        self.relay_user_name = "#{first_name}#{SecureRandom.hex(2)}@relay.yumfog.com".downcase
       end
     end
   end

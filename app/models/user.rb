@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   validates_presence_of :first_name, :last_name
   validates :terms_of_service, acceptance: true, on: :create
-  
+
   before_save :configure_settings
   before_save :generate_relay_user_name
   before_save :downcase_email

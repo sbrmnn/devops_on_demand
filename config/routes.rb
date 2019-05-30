@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :webhooks
 
-  devise_for :users, controllers: { confirmations: 'confirmations', registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :revenues
   resource :reservations, only: [:new, :create, :update]

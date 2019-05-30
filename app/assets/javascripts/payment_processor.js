@@ -1,3 +1,4 @@
+if (gon.current_user_id){
 var stripe = Stripe('pk_test_W0NqkO9ids4x1iZNvTEMNQ8n');
 
 $(document).on('keyup change input paste','#personal_id_number_text', function(e){
@@ -218,5 +219,5 @@ function submitPayoutForm(e){
     return false;
 }
 
-
+}
 

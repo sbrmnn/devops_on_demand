@@ -83,7 +83,10 @@ $( document ).on('turbolinks:load', function(e) {
 
 function init() {
     getSelectedPill();
-    getEntityTypeFields();
+    if (gon.current_user_id){
+        getEntityTypeFields();
+    }
+
     getFeaturedEngineers();
 }
 

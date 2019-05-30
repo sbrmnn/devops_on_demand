@@ -21,13 +21,12 @@
     </div>
     <div class="accordion my-2" id="skillsAccordion">
       <% skill =  GetListOfSkillsFromFreelancers.call %>
-      <h5>Search by</h5>
       <% skill&.keys&.sort&.each_with_index do |k,i| %>
         <div class="card">
           <div class="card-header exp-header bg-light p-0">
             <h6 class="mb-0">
               <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapseOne">
-                 <%= k %> Experience
+                 Search by <%= k %> Experience
               </button>
             </h6>
           </div>

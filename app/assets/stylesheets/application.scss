@@ -19,13 +19,7 @@
   font-size: 1.05em;
 }
 
-.beard{
-  background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
-  background-size: 100% auto;
-  background-position: 50% 35%;
-  min-height: 80vh;
 
-}
 .hero-title{
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
   font-weight: 500;
@@ -392,14 +386,41 @@ body {
   .port-item {
     width: 100%;
   }
-}
 
-
-@media screen and (max-width: 700px) {
+  .about_me > p {
+    text-align: center !important;
+  }
   .freelancer-basic-info {
     text-align: center !important;
   }
+
+  .beard{
+
+    background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 80vh;
+
+  }
 }
+
+
+
+@media screen and (min-width: 768px) {
+
+  .beard{
+    background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
+    background-size: 100% auto;
+    background-position: 50% 35%;
+    min-height: 80vh;
+
+  }
+}
+
+
+
+
+
 
 .round-img{
   border-radius: 50%;

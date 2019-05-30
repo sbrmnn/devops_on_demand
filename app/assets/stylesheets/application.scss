@@ -9,6 +9,9 @@
 @import "blog";
 @import "_pills_underline";
 
+body{
+  overflow-x:hidden;
+}
 
 .bg-red{
   background-color: #f53030;

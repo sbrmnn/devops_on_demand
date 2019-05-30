@@ -24,12 +24,7 @@ $.ajaxSetup({
     }
 });
 
-$(document).keyup(function (e) {
-    if ($(".write_msg").is(':focus') && (e.keyCode === 13)) {
-        var chatroomId = $(document.activeElement).data("chatroom");
-        broadcastMessage(chatroomId, $(document.activeElement).closest('.msg-input-grp').find('.msg_send_btn'))
-    }
-});
+
 
 $.fn.scrollToBottom = function() {
     return this.each(function (i, element) {
@@ -338,27 +333,7 @@ $(document).on(click_event,'.accept-btn', function(e){
 });
 
 
-$(document).on(click_event,'a.toggle_message_box', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var self = $(this);
-    var chatbox = $('.'+self.data('messagebox'));
-    if (chatbox.hasClass('d-none')){
-        $.ajax({
-            type: 'POST',
-            url: '/chatrooms',
-            data: {chatrooms: {freelancer_user: $(this).data('freelancer-user')}},
-            dataType: 'script',
-            async: false
-        });
-        chatbox.removeClass('d-none');
-        chatbox[0].scrollIntoView(false);
-    }else{
-        chatbox.addClass('d-none');
-    }
 
-    return false;
-});
 
 
 
@@ -367,9 +342,7 @@ $(document).on(click_event,'.find-freelancer-btn', function(){
 
 });
 
-$(document).on(click_event,'.msg_send_btn', function(){
-    broadcastMessage($(this).data('chatroom'), $(this))
-});
+
 
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
 
@@ -393,18 +366,7 @@ $(document).on(click_event,'a[data-toggle="pill"]', function(e){
 });
 
 
-$(document).on('show.bs.tab','a[data-toggle="pill"]', function(e){
-     if ($(e.target).attr('href') !== "#messages"){
-         var chatroomNames = $(".chat-box");
-         if (chatroomNames.length){
-             chatroomNames.each(function() {
-                 UnSubscribeToRoom(($( this ).data('chatroom')));
-             });
-             chatroomNames.remove()
-         }
-     }
-    $($(e.target).attr('href')).empty()
-});
+
 
 $(document).on('shown.bs.tab','a[data-toggle="pill"]', function(e){
 

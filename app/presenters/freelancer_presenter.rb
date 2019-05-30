@@ -17,7 +17,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def rate
-    "#{model.rate}"
+    "#{model.platform_rate}"
   end
 
   def location

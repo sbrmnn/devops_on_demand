@@ -12,7 +12,7 @@
         <h6><%= freelancer.user_name %></h6>
         <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
         <ul class="my-2 list-inline border-top border-bottom mb-0 text-dark">
-          <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1 "></i><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%> </li>
+          <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1 "></i><%= "#{freelancer.platform_rate} HOUR #{freelancer.platform_rate * 8} DAY"%> </li>
           <% if  user_signed_in?  %>
             <li class="list-inline-item py-1"><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></li>
           <% else %>
@@ -47,7 +47,7 @@
               <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
             </div>
             <div class="new_job-<%=freelancer.id%>">
-              <%= render 'new_job', {user: current_user, job: Job.new, freelancer_rate: freelancer.rate, freelancer_id: freelancer.id}  %>
+              <%= render 'new_job', {user: current_user, job: Job.new, freelancer_rate: freelancer.platform_rate, freelancer_id: freelancer.id}  %>
             </div>
           </div>
         </div>

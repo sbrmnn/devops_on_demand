@@ -104,7 +104,9 @@
                     <a class="dropdown-item" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false">Profile</a>
                     <a class="dropdown-item" id="pills-freelancer-payout-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-payout-tab" href="#freelancer-payout" aria-selected="false">Payout</a>
                   </div>
-               <% end %>
+                <% else %>
+                  <a class="nav-link freelancer-registration-link" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false"><i class="fas fa-user-plus mr-1"></i>Freelancer Registration</a>
+              <% end %>
               </li>
 
             <li class="nav-item py-2 pr-4">

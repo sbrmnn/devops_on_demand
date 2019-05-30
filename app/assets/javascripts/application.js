@@ -245,12 +245,7 @@ $(document).on(click_event,'.billing-btn', function(e){
 });
 
 
-$(document).on(click_event,'.freelancer-signup-btn', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $('#pills-freelancer-registration-tab').click();
-    return false;
-});
+
 
 
 

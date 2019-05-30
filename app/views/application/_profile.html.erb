@@ -22,13 +22,13 @@
 
           <% freelancer.work_experiences.each do |we| %>
 
-            <li>
+            <li class="mb-2">
                 <div class=" mb-1">
                   <div class="d-flex flex-column flex-md-row">
                      <h5 class="text-dark"><%= we.title %></h5>
                   </div><!--//row-->
                   <div class="d-flex flex-column flex-md-row">
-                    <h4 class="resume-position-title text-dark"><%= we.employer %></h4>
+                    <h4 class="resume-position-title text-dark"><u><%= we.employer %></u></h4>
                   </div><!--//row-->
                 </div><!--//resume-timeline-item-header-->
                 <div class="resume-timeline-item-desc">

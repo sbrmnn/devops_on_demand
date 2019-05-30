@@ -3,7 +3,7 @@
     <div class="about_me">
       <p class="mb-0 lead"><%= freelancer.about_me %></p>
     </div>
-    <% if freelancer.source_control_url.present? %>
+    <% if freelancer.source_control_url.present? && user_signed_in? %>
       <div class="source_control mb-4">
         <h4 class="font-weight-bold font-underline my-3">Source Control</h4>
         <div>

@@ -77,9 +77,11 @@ function preSelectChatroom(){
 var months = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 
-$( document ).on('turbolinks:load', function(e) {
+
+$( document ).ready(function() {
     init();
 });
+
 
 function init() {
     getSelectedPill();

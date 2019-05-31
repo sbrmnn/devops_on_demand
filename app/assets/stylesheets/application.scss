@@ -403,10 +403,14 @@ body {
   .beard{
 
     background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
-    background-size: 100% 100%;
+    background-size: auto 100%;
     background-repeat: no-repeat;
     min-height: 80vh;
 
+  }
+
+  .searchby-btn{
+    font-size: 12px;
   }
 }
 

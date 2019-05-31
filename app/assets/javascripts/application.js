@@ -246,6 +246,14 @@ $(document).on(click_event,'.billing-btn', function(e){
 });
 
 
+$(document).on(click_event,'.register-btn', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.localStorage.setItem('activeTabId', 'pills-freelancer-profile-tab');
+    window.location.href = "/users/sign_up";
+    return false;
+});
+
 
 
 
@@ -354,17 +362,17 @@ var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\
 
 
 function getSelectedPill(){
-    var preSelectedChatroom = preSelectChatroom();
-    if (!preSelectedChatroom) {
-        var activePillId = window.localStorage.getItem('activeTabId');
-        if (activePillId && gon.current_user_id){
-            $('#' + activePillId).tab('show');
-            window.localStorage.removeItem("activeTab");
-        }else{
 
-            $('#pills-find-freelancers-tab').tab('show');
-        }
+
+    var activePillId = window.localStorage.getItem('activeTabId');
+    if (activePillId && gon.current_user_id){
+        $('#' + activePillId).tab('show');
+        window.localStorage.removeItem("activeTab");
+    }else{
+
+        $('#pills-find-freelancers-tab').tab('show');
     }
+
 }
 
 $(document).on(click_event,'a[data-toggle="pill"]', function(e){

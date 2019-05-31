@@ -9,7 +9,9 @@
         <% end %>
       </div>
       <div class="port-item px-3  freelancer-basic-info  w-100">
-        <h6><%= freelancer.user_name %></h6>
+        <% if user_signed_in?  %>
+          <h6><%= freelancer.user_name %></h6>
+        <% end %>
         <h5 class="font-weight-bold"><%= freelancer.headline %></h5>
         <ul class="my-2 list-inline border-top border-bottom mb-0 text-dark">
           <li class="list-inline-item py-1"><i class="fas fa-dollar-sign mr-1 "></i><%= "#{freelancer.rate} HOUR #{freelancer.rate.to_i * 8} DAY"%> </li>

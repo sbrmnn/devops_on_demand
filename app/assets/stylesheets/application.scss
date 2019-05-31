@@ -381,7 +381,7 @@ body {
   border-radius: 15px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .bars {
     flex-direction: column !important;
   }
@@ -396,15 +396,18 @@ body {
     text-align: center !important;
   }
 
+  .hero-elements{
+    text-align: center;
+  }
+
   body{
     width: 100vw;
   }
 
   .beard{
 
-    background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
-    background-size: auto 100%;
-    background-repeat: no-repeat;
+    background-color: #6a6a6a;
+
     min-height: 80vh;
 
   }
@@ -416,12 +419,13 @@ body {
 
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
 
   .beard{
     background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
     background-size: 100% auto;
     background-position: 50% 35%;
+    background-repeat: no-repeat;
     min-height: 80vh;
 
   }

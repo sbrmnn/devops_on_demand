@@ -444,8 +444,8 @@ body {
 
   .beard{
     background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
-    background-size: 100% auto;
-    background-position: 50% 35%;
+    background-size:  cover;
+
     background-repeat: no-repeat;
     min-height: 85vh;
 

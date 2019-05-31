@@ -22,21 +22,7 @@
 
 
 
-.hero-title{
-  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 500;
-  font-size: 4.025em;
-  color: black;
-  font-variant-ligatures: common-ligatures;
-}
 
-.hero-subtitle{
-  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 300;
-  font-size: 2.5em;
-  color: black;
-  font-variant-ligatures: common-ligatures;
-}
 
 .section-header{
   font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
@@ -382,6 +368,23 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+
+  .hero-title{
+    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 500;
+    font-size: 3.5em;
+    color: black;
+    font-variant-ligatures: common-ligatures;
+  }
+
+  .hero-subtitle{
+    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 2em;
+    color: black;
+    font-variant-ligatures: common-ligatures;
+  }
+  
   .bars {
     flex-direction: column !important;
   }
@@ -408,18 +411,36 @@ body {
 
     background-color: #6a6a6a;
 
-    min-height: 85vh;
+    min-height: 100vh;
 
   }
 
   .searchby-btn{
     font-size: 12px;
   }
+
+
 }
 
 
 
 @media screen and (min-width: 600px) {
+
+  .hero-title{
+    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 500;
+    font-size: 4.025em;
+    color: black;
+    font-variant-ligatures: common-ligatures;
+  }
+
+  .hero-subtitle{
+    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 2.5em;
+    color: black;
+    font-variant-ligatures: common-ligatures;
+  }
 
   .beard{
     background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");

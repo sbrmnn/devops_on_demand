@@ -6,8 +6,10 @@ class CancelJob
   end
 
   def call
-    @job.lock!.update_attributes(canceled: true)
-    refund_credit_card(@job)
+    @job.with_lock do
+      @job.update_attributes(canceled: true)
+      refund_credit_card(@job)
+    end
     @job.reload
   end
 

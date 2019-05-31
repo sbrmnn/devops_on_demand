@@ -1,7 +1,7 @@
 <div class="container-fluid px-5">
   <% freelancers.each do |freelancer| %>
     <div  class="mb-2 d-flex bars flex-row px-2 py-4 text-dark card" style="visibility: hidden">
-      <div class="port-item text-center  px-2  flex-shrink-1">
+      <div class="port-item text-center  px-2 pb-2 flex-shrink-1">
         <% if freelancer.try(:profile_photo) %>
           <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 115, height: 115, radius: :max, crop: :scale)) %>">
         <% else %>

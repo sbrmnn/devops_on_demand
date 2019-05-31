@@ -93,14 +93,15 @@ function init() {
 }
 
 function getFeaturedEngineers(){
-    if($('.freelancer-featured-results').length != 0){
+
         $.ajax({
             type: 'GET',
-            url: '/featured_engineers',
+            url: '/freelancer_searches',
+            data: {freelancer_searches:{value: ''}} ,
             dataType: 'script',
             async: true
         });
-    }
+
 
 }
 

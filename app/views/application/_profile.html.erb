@@ -67,7 +67,7 @@
 
     <% if freelancer.cloud_services.present? %>
       <div class="source_control mb-4">
-        <h4 class="font-underline font-weight-bold my-3">Skills</h4>
+        <h4 class="font-underline font-weight-bold my-3">Cloud Service Experience</h4>
         <ul class="px-3 mb-0">
           <% freelancer.cloud_services.group_by(&:provider).each do |k, v| %>
             <li>

@@ -443,9 +443,8 @@ body {
   }
 
   .beard{
-    background-image: url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
     background-size:  cover;
-
     background-repeat: no-repeat;
     min-height: 85vh;
 

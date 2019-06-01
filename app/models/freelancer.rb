@@ -61,6 +61,6 @@ class Freelancer < ApplicationRecord
 
 
   def calculate_platform_rate
-    self.platform_rate = CalculatePlatformRate.call(rate) if platform_rate.blank?
+    self.platform_rate = CalculatePlatformRate.call(rate) if platform_rate.blank? || rate_changed?
   end
 end

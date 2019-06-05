@@ -2,13 +2,6 @@
   <% unless user_signed_in? %>
   <h2  class="section-header search-for-engineers  pt-4 pb-3">Search for Engineers</h2>
   <% end %>
-  <% if user_signed_in? %>
-    <div class="alert alert-light" role="alert">
-      <p> All email communications must be made through the email relay system. You are allowed to use third party tools for other modes of communication such as video chat or voice calls.</p>
-      <hr>
-      <p class="mb-0">Lastly, procurement of engineering time must be made through the YumFog payment platform.</p>
-    </div>
-  <% end %>
   <%= form_tag("/freelancer_searches", remote: true ,method: "get") do %>
     <div class="input-group">
       <%= text_field_tag(:value, nil, class:"form-control   form-control-lg", placeholder: t('search_placeholder'), name: "freelancer_searches[value]") %>

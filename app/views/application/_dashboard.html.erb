@@ -1,11 +1,29 @@
 <% unless user_signed_in? %>
+  <div class="beard rounded mt-3 ml-5">
+  <div class="d-flex flex-row">
+    <div class="p-2">Flex item 1</div>
+    <div class="p-2">Flex item 2</div>
+    <div class="p-2">Flex item 3</div>
+  </div>
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">Flex item 1</div>
+    <div class="p-2">Flex item 2</div>
+    <div class="p-2">Flex item 3</div>
+  </div>
+  </div>
+
+  <div class="d-inline-flex flex-col beard m-2 justify-content-start">
+    <h1 class=" mt-2  text-light hero-title "><span class="px-1">DevOps On Demand</span></h1>
+    <p class="text-light hero-subtitle "><span class=" px-1">Hire freelance cloud engineers from around the world by the hour, week, or sprint.</span></p>
+    <button class=" mt-2 find-freelancer-btn btn btn-lg btn-warning"><i class="fas fa-search pr-2"></i>Search for Engineers</button>
+    <button class=" mt-2 register-btn btn btn-lg btn-light"><i class="fas fa-user-plus pr-2"></i>Engineering Registration</button>
+  </div>
+
+  <div class="container-fluid">
 
 
-
-  <div class="container-fluid beard     px-5 py-4">
-
-    <div class="row">
-      <div class="col-md-12 hero-elements">
+    <div class="row" >
+      <div class="col-md-8 col-offset-4 rounded beard hero-elements">
         <h1 class=" mt-2  text-light hero-title "><span class="px-1">DevOps On Demand</span></h1>
         <p class="text-light hero-subtitle "><span class=" px-1">Hire freelance cloud engineers from around the world by the hour, week, or sprint.</span></p>
          <button class=" mt-2 find-freelancer-btn btn btn-lg btn-warning"><i class="fas fa-search pr-2"></i>Search for Engineers</button>

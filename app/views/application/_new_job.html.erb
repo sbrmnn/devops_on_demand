@@ -2,35 +2,12 @@
     <div class="container">
       <div class="row p-0">
         <div class="col-12 p-0">
+
             <%= form_with(model: [user, job], html: {onsubmit: "return createJob(event);"}, freelancer: freelancer_id, class: "new-job-form-#{freelancer_id}", local: true) do |form| %>
             <div class="modal-body">
               <div class="basic-info-nested-fields mb-2">
                 <div class="form-row">
                   <%= form.hidden_field :freelancer_id, class:"job-form-freelancer-id", value: freelancer_id %>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <%= form.label :description %>
-                    <%= form.text_area :description, class: "form-control  whitesmoke-border" %>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <%= form.label :hours, "Job Duration (hrs)" %>
-                    <%= form.number_field :hours, total_field: "job-total-#{freelancer_id}", rate: "#{freelancer_rate}" , class: "form-control job-total  whitesmoke-border", min: 1, max: 80 %>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <%= form.label :total, "Total Due" %>
-                    <h5 class="job-total-<%= freelancer_id %>">$0</h5>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <%= form.label :from, "Job Start Date" %>
-                    <%= form.date_field(:from, class: "form-control", min: Date.today, max: 1.year.from_now ,id: nil )%>
-                   </div>
                 </div>
                 <% last_4 = user.credit_cards.last.try(:last_4) %>
                 <% if last_4.present? %>
@@ -50,11 +27,11 @@
                   <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
                   <%= form.hidden_field  :total,  class: "job-total-#{freelancer_id}  form-control" %>
                   <div class="form-row mt-1">
-                  <div class="col-md-6 form-group">
-                    <label>Full Name</label>
+                  <div class="col-md-12 form-group">
+                    <label>Cardholder Name</label>
                     <%= form.text_field :name, class: 'credit-card-name form-control'  %>
                   </div>
-                  <div class="col-md-6 form-group">
+                  <div class="col-md-12 form-group">
                     <label class="card-number-label" for="card-element-for-freelancer-<%= freelancer_id %>">Card Number</label>
                     <div id="card-element-for-freelancer-<%= freelancer_id %>" class="card-element form-control">
                       <!-- A Stripe Element will be inserted here. -->

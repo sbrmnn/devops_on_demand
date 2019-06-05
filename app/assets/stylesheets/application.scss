@@ -407,13 +407,7 @@ body {
     width: 100vw;
   }
 
-  .beard{
 
-    background-color: #6a6a6a;
-
-    min-height: 100vh;
-
-  }
 
   .searchby-btn{
     font-size: 12px;
@@ -446,7 +440,8 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(189, 182, 139, 0.5)), url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
     background-size:  cover;
     background-repeat: no-repeat;
-    min-height: 85vh;
+    max-width: 70vw;
+    min-height: 50vh;
 
   }
 }

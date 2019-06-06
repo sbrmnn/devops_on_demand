@@ -48,21 +48,22 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-<body class=<%= "#{controller.controller_name}_#{controller.action_name}" %> >
+<body class= pt-5 <%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
-    <nav class="navbar navbar-light navbar-expand-lg">
-      <div class="container-fluid py-3 px-5">
-        <a href="/" class="navbar-brand d-flex text-dark align-items-center">
-          <strong>YumFog</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <%= render 'login_logout' %>
-        </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">YumFog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <%= render 'login_logout' %>
       </div>
-    </nav>
+    </div>
+  </nav>
+
   <% end %>
   <% if controller.controller_name == 'dashboard' %>
     <nav class="navbar d-flex flex-row subnav bg-white navbar-expand" >

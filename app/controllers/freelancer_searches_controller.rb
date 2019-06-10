@@ -2,7 +2,7 @@ class FreelancerSearchesController < ApplicationController
 
 
   def index
-    @freelancer_searches = Freelancer.search(query, where: where_hash , includes: [:cloud_services, :certification_names, :work_experiences], operator: :or, misspellings: {edit_distance: 3}, match: :word )
+    @product_searches = Product.search(query, where: where_hash, operator: :or, misspellings: {edit_distance: 3}, match: :word )
   end
 
   private

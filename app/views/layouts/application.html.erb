@@ -3,27 +3,9 @@
 <head>
   <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YumFog - Hire freelance AWS, Azure, & Google Cloud engineers.</title>
-  <meta name="description" content="YumFog is a freelance service marketplace where experienced cloud engineers can help with one-off corporate projects by the hour, week, or sprint." />
-  <% if Rails.env.production? %>
-    <script>
-        window['_fs_debug'] = false;
-        window['_fs_host'] = 'fullstory.com';
-        window['_fs_org'] = 'M86A8';
-        window['_fs_namespace'] = 'FS';
-        (function(m,n,e,t,l,o,g,y){
-            if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
-            g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
-            o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_host+'/s/fs.js';
-            y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
-            g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
-            g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
-            g.consent=function(a){g("consent",!arguments.length||a)};
-            g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
-            g.clearUserCookie=function(){};
-        })(window,document,window['_fs_namespace'],'script','user');
-    </script>
-  <% end %>
+  <title>YumFog - <%= @product.present? ? "#{@product.headline}" : "Marketplace for half-finished code - Prebuilt features and templates that you can use for your minimum viable product." %></title>
+  <meta name="description" content="<%= @product.present? ? "#{@product.description}" : "Buy & Sell prototypes, half-finished code, unused dockers " %>" />
+
   <%= csrf_meta_tags %>
 
 
@@ -48,64 +30,95 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-<body class= pt-5 <%= "#{controller.controller_name}_#{controller.action_name}" %> >
+<body class= <%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">YumFog</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <%= render 'login_logout' %>
+    <a class="navbar-brand" href="#">YumFog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link" id="pills-add-product-tab" data-toggle="pill" href="#add-product" role="tab" aria-controls="pills-add-product" aria-selected="false"><i class="fa fa-plus mr-1"></i>Add Product</a>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item pr-4">
+          <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('account_settings') %></a>
+        </li>
+      <% end %>
+    </ul>
+
+
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "text-dark nav-link") %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to( t('signup'), new_registration_path('user'), class: "text-dark nav-link")  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to( t('login'), new_user_session_path, class: "text-dark nav-link")  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    </div>
+  </nav>
+<div class="search-section border-top bg-light py-3 px-5">
+  <div class="container">
+    <div class="input-group" id="adv-search">
+      <input type="text" class="border-0 form-control" placeholder="Search for snippets" />
+      <div class="input-group-btn">
+        <div class="btn-group" role="group">
+          <div class="dropdown dropdown-lg">
+            <button type="button" class="btn rounded-0 btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+            <div class="dropdown-menu dropdown-menu-right" role="menu">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="filter">Filter by</label>
+                  <select class="form-control">
+                    <option value="0" selected>All Snippets</option>
+                    <option value="1">Featured</option>
+                    <option value="2">Most popular</option>
+                    <option value="3">Top rated</option>
+                    <option value="4">Most commented</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="contain">Author</label>
+                  <input class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                  <label for="contain">Contains the words</label>
+                  <input class="form-control" type="text" />
+                </div>
+                <button type="submit" class="btn  h-100 btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+              </form>
+            </div>
+          </div>
+          <button type="button" class="btn btn-warning search-btn text-dark"><span class="glyphicon glyphicon-search" aria-hidden="true">Search</span></button>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</div>
+
+
 
   <% end %>
-  <% if controller.controller_name == 'dashboard' %>
-    <nav class="navbar d-flex flex-row subnav bg-white navbar-expand" >
-      <div class="container-fluid border-bottom px-5 <%= !user_signed_in? ? 'd-none' : '' %>" >
-          <ul  class="nav nav-pills nav-pills-underline nav-fill" id="pills-tab" role="tablist">
-            <li class="nav-item py-2">
-              <a class="nav-link d-none" id="pills-freelancer-registration-tab" data-toggle="pill" href="#freelancer-registration" role="tab" aria-controls="pills-create-profile" aria-selected="false"><i class="fa fa-user-circle mr-1"></i><%= t('register_as_a_freelancer') %></a>
-            </li>
 
-            <li class="nav-item py-2 pr-4">
-              <a class="nav-link" id="pills-find-freelancers-tab" data-toggle="pill" href="#find-freelancers" role="tab" aria-controls="pills-find-freelancers" aria-selected="false"><i class="fa fa-search mr-1"></i><%= t('find_freelancers') %></a>
-            </li>
-            <% if user_signed_in? %>
-            <li class="nav-item dropdown py-2 pr-4">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-briefcase mr-1" aria-hidden="true"></i>Jobs</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" id="pills-posted-jobs-tab" data-toggle="pill" role="tab" aria-controls="pills-posted-jobs-tab" href="#posted-jobs" aria-selected="false">Posted</a>
-                <a class="dropdown-item" id="pills-received-jobs-tab" data-toggle="pill" role="tab" aria-controls="pills-received-jobs-tab" href="#received-jobs" aria-selected="false">Received</a>
-              </div>
-            </li>
 
-              <li class="nav-item dropdown py-2 pr-4">
-                <% if freelancer? %>
-                  <a class="nav-link freelancer-registration-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-cog  "></i> Freelancer Settings</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false">Profile</a>
-                    <a class="dropdown-item" id="pills-freelancer-payout-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-payout-tab" href="#freelancer-payout" aria-selected="false">Payout</a>
-                  </div>
-                <% else %>
-                  <a class="nav-link freelancer-registration-link" id="pills-freelancer-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-freelancer-profile-tab" href="#freelancer-registration" aria-selected="false"><i class="fas fa-user-plus mr-1"></i>Freelancer Registration</a>
-              <% end %>
-              </li>
 
-            <li class="nav-item py-2 pr-4">
-              <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('account_settings') %></a>
-            </li>
-          <% end %>
-        </ul>
 
-    </div>
-  </nav>
- <% end %>
+
 <%= yield %>
 
 
@@ -122,8 +135,9 @@
    </div>
  </footer>
  <!-- Footer -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/rails-ujs@5/lib/assets/compiled/rails-ujs.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/cocoon-rails@1/src/cocoon.min.js"></script>

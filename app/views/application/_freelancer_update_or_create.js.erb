@@ -6,7 +6,7 @@ $(".fa-circle-notch").addClass("d-none")
   freelancerErrorCard.removeClass('d-none')
   freelancerSuccessCard.addClass('d-none')
 <% else %>
-    $("#freelancer-registration").html("<%= escape_javascript(render partial: 'freelancer_registration', locals: { user: @user } ) %>");
+    $("#add-product").html("<%= escape_javascript(render partial: 'add_product', locals: { user: @user } ) %>");
     _freelancerRegistrationInit()
     var freelancerSuccessCard =  $('.freelancer-success-card')
      var freelancerErrorCard = $('.freelancer-error-card')

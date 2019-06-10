@@ -1,0 +1,27 @@
+
+
+<div class="container">
+
+
+
+  <div class="row bg-light m-0">
+    <% products.each do |product| %>
+
+      <div class="col-lg-3 col-sm-6 p-0 mb-4">
+        <div class="card m-2 h-100">
+          <a href="/products/<%= product.id %>"><img class="card-img-top" src="<%= cl_image_path(ProductPresenter.new(product).image_public_id, width: 105, height: 105,  radius: :max, crop: :scale) %>" alt=""></a>
+          <div class="card-body" style="height: 150px">
+            <h4 class="card-title"><a class="product-description" href="/products/<%= product.id %>"><%=product.description.truncate(54)%></a></h4>
+          </div>
+          <div class="card-footer p-2 d-flex">
+            <div class="mr-auto"></div>
+
+            <div><h5>$<%=product.platform_cost%></h5></div>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>

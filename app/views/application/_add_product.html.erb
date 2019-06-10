@@ -2,14 +2,14 @@
     _freelancerRegistrationInit();
 </script>
 
-<div id="freelancer-registration" class="rounded-0">
-  <div class="container-fluid px-5 py-3">
+<div id="add-product" class="rounded-0">
+  <div class="container py-3">
      <div class="card rounded-0 shadow-sm">
       <div class="card-body">
           <div class="row">
             <div class="col-12">
               <div class="rounded">
-                  <%= form_with(html: {id: 'freelancer-registration-form'}, model: @freelancer = user.freelancer || user.build_freelancer, url: [user, @freelancer], remote: true) do |form| %>
+                  <%= form_with(html: {id: 'add-product-form'}, model: @freelancer = user.freelancer || user.build_freelancer, url: [user, @freelancer], remote: true) do |form| %>
                   <% cs = form.object.cloud_services.pluck(:id) %>
 
                   <h2><%=t('freelancer_registration_form') %></h2>

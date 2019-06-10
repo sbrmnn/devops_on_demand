@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
 
+  get 'products/show'
+
   get 'featured_engineers/index'
 
   resources :tabs, only: :index
 
   resources :cloud_services, only: :index
+
+  resources :products, only: :show
 
   resource :chatrooms, only: :create
 

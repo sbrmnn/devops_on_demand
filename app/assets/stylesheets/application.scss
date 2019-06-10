@@ -4,11 +4,39 @@
 @import "freelancers";
 @import "users";
 @import "subscription_settings";
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Assistant&display=swap');
 @import "find-freelancers";
 @import "blog";
 @import "_pills_underline";
 
+
+
+////
+
+body{
+  font-family: 'Assistant', Georgia, "Times New Roman", serif;
+}
+
+.container{
+  max-width: 1000px;
+}
+
+.search-section{
+  background-color: #242424;
+ }
+
+#intro-card{
+  background-color: mintcream;
+  background-image: url("https://devops-on-demand.s3.amazonaws.com/img/dark-stripes-light.png");
+
+}
+
+.search-btn{
+  height: 38px;
+}
+
+///
 
 .bg-red{
   background-color: #f53030;
@@ -19,13 +47,8 @@
   font-size: 1.05em;
 }
 
-
-
-
-
-
 .section-header{
-  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Playfair Display', 'Helvetica', 'Arial', sans-serif;
   font-weight: 300;
 }
 
@@ -34,10 +57,7 @@
 
 }
 
-.tab-content {
-  background-image: url("https://devops-on-demand.s3.amazonaws.com/img/dark-stripes-light.png");
 
- }
 
 .featured-list{
   margin-top: -200px;
@@ -61,46 +81,19 @@ input::-ms-value{ // Extra input styling for IE browsers.
   background-color: #FCBB43 !important;
 }
 
-body {
-  font-family: 'Arial', sans-serif !important;
-  overflow-y: overlay;
- }
 
-.users_show, .subscription_settings_show, .dashboard_show {
 
-  font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+.product-description{
+  font-size: 0.75em;
+  color: black;
+
 }
 
-.navbar{
-  padding: 0 !important;
+.product-description:hover{
+  font-size: 0.75em;
+  text-decoration: underline;
+  color: #ff9044;
 }
-
-// colors
-.bg-yumfog-orange{
-  background-color: #FCBB43 !important;
-}
-
-.bg-chat-header{
-  background-color: whitesmoke;
-  color: whitesmoke;
-}
-
-.bg-white-smoke{
-  background-color: whitesmoke;
-}
-
-.bg-green{
-  background-color: #2fb15f;
-}
-
-.bg-blue{
-  background-color: #6fa4ad;
-}
-
-.text-yumfog-orange {
-  color: #FCBB43
-}
-
 
 
 // <-- colors
@@ -161,9 +154,6 @@ body {
   background-color: #3a3838;
 }
 
-.blackborder{
- // border-left: 4px solid black;
-}
 
 .freelancer-profile-entry{
   border-style: solid;
@@ -176,140 +166,9 @@ body {
   text-decoration: underline;
 }
 
-
-.profile, .job-description, .profile-chat {
-  overflow: hidden !important;
-}
-
-
-.resume-wrapper {
-  padding-top: 30px;
-  padding-bottom: 60px;
-}
-
-.resume-wrapper-inner {
-  max-width: 1000px;
-}
-
-.resume-header {
-  background: #434E5E;
-  color: rgba(255, 255, 255, 0.9);
-  height: 250px;
-}
-
-.resume-header .picture {
-  width: 250px;
-}
-.resume-header .hire-contact-btns{
-  position: relative;
-  bottom: 0px;
-}
-
-.resume-header .name {
-  font-size: 2.25rem;
-  letter-spacing: 0.175rem;
-  font-weight: 900;
-}
-
-.resume-header .rate{
-  font-size: large;
-}
-
-.resume-header .title {
-  font-size: 1.5rem;
-}
-
-.resume-header a {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.resume-header a:hover {
-  color: white;
-}
-
-.resume-social {
-  font-size: 0.875rem;
-}
-
-.resume-social .fa-container {
-  font-size: 1rem;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border-radius: 0.125rem;
-  background: white;
-  color: #434E5E;
-}
-
-.resume-section-title {
-  font-size: 1.25rem;
-  position: relative;
-  color: #434E5E;
-}
-
-.resume-section-title:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1.5px;
-  background: #8d9aad;
-}
-
-.resume-section-content {
-  color: #58677c;
-}
-
-.resume-progress {
-  height: 0.6rem;
-}
-
-.resume-company-name {
-  color: #58677c;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.resume-position-time {
-  font-size: 0.875rem;
-  color: #aab4c3;
-}
-
-.resume-position-title {
-  font-size: 1.125rem;
-  color: #434E5E;
-}
-
-.resume-timeline-item-desc-heading {
-  font-size: 1rem;
-}
-
-
-
-
-
-
-@media (max-width: 767.98px) {
-  .resume-wrapper {
-    padding-top: 0;
-  }
-  .resume-header {
-    height: auto;
-  }
-  .resume-header .picture {
-    width: 120px;
-    border-radius: 4px;
-  }
-
-}
-
 .font-underline{
   text-decoration: underline;
 }
-
-
-
 
 #new-job{
   overflow: scroll;
@@ -327,8 +186,6 @@ body {
   font-weight: bold !important;
 }
 
-
-
 .badge-info-size{
   font-size: .9rem;
 }
@@ -340,13 +197,6 @@ body {
 .fa-times-circle{
   color: red;
 }
-
-
-
-
-
-
-
 
 .subnav{
   border-top:1px solid lightgrey;
@@ -370,7 +220,7 @@ body {
 @media screen and (max-width: 600px) {
 
   .hero-title{
-    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Playfair Display', 'Helvetica', 'Arial', sans-serif;
     font-weight: 500;
     font-size: 3.5em;
     color: black;
@@ -378,7 +228,7 @@ body {
   }
 
   .hero-subtitle{
-    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Playfair Display', 'Helvetica', 'Arial', sans-serif;
     font-weight: 300;
     font-size: 2em;
     color: black;
@@ -421,7 +271,7 @@ body {
 @media screen and (min-width: 600px) {
 
   .hero-title{
-    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Playfair Display', 'Helvetica', 'Arial', sans-serif;
     font-weight: 500;
     font-size: 4.025em;
     color: black;
@@ -429,19 +279,17 @@ body {
   }
 
   .hero-subtitle{
-    font-family: 'Roboto Slab', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Playfair Display', 'Helvetica', 'Arial', sans-serif;
     font-weight: 300;
     font-size: 2.5em;
     color: black;
     font-variant-ligatures: common-ligatures;
   }
 
-  .beard{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(189, 182, 139, 0.5)), url("https://devops-on-demand.s3.amazonaws.com/img/adult-city-full-beard-480.jpg");
-    background-size:  cover;
-    background-repeat: no-repeat;
-    max-width: 70vw;
-    min-height: 50vh;
+  .dark-stripes{
+    background-color: #6c757d;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-stripes.png");    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+     min-height: 45vh;
 
   }
 }

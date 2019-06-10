@@ -376,6 +376,8 @@ function getSelectedPill(){
 }
 
 $(document).on(click_event,'a[data-toggle="pill"]', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
     window.localStorage.setItem('activeTabId', $(e.target).attr('id'));
 });
 
@@ -407,3 +409,6 @@ $(document).on('change','#payout_identity_legal_entity_attributes_dob', function
         $("#payout_identity_legal_entity_attributes_dob_day").val(null);
     }
 });
+
+
+ 

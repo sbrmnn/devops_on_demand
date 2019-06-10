@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :jobs, dependent: :destroy
   has_one :setting, dependent: :destroy
+  has_many :products, dependent: :destroy
   has_one :freelancer, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
   has_many :transactions, dependent: :destroy

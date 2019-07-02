@@ -8,11 +8,11 @@ module ApplicationHelper
   end
 
   def stripe_countries
-    FreelancerPaymentProcessor.adapter.supported_countries.map{|k,v| [v , k]}
+    ProductPaymentProcessor.adapter.supported_countries.map{|k,v| [v , k]}
   end
 
-  def freelancer?
-    current_user.try(:freelancer).present?
+  def product?
+    current_user.try(:product).present?
   end
 
 

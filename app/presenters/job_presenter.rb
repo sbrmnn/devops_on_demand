@@ -42,8 +42,8 @@ class JobPresenter < ApplicationPresenter
   end
 
 
-  def freelancer
-    model.freelancer
+  def product
+    model.product
   end
 
 

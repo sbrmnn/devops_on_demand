@@ -15,6 +15,7 @@
 
 //= require cloudinary
 //= require payment_processor
+//= require animated-text
 
 //= require_tree .
 
@@ -84,20 +85,15 @@ $( document ).ready(function() {
 
 
 function init() {
-    getSelectedPill();
-    if (gon.current_user_id){
-        getEntityTypeFields();
-    }
-
-    getFeaturedEngineers();
+    getFeaturedProducts();
 }
 
-function getFeaturedEngineers(){
+function getFeaturedProducts(){
 
         $.ajax({
             type: 'GET',
-            url: '/freelancer_searches',
-            data: {freelancer_searches:{value: ''}} ,
+            url: '/product_searches',
+            data: {product_searches:{value: ''}} ,
             dataType: 'script',
             async: true
         });
@@ -249,7 +245,7 @@ $(document).on(click_event,'.billing-btn', function(e){
 $(document).on(click_event,'.register-btn', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    window.localStorage.setItem('activeTabId', 'pills-freelancer-profile-tab');
+    window.localStorage.setItem('activeTabId', 'pills-product-profile-tab');
     window.location.href = "/users/sign_up";
     return false;
 });
@@ -351,7 +347,7 @@ $(document).on(click_event,'.accept-btn', function(e){
 
 
 
-$(document).on(click_event,'.find-freelancer-btn', function(){
+$(document).on(click_event,'.find-product-btn', function(){
     $("html, body").animate({ scrollTop: $(".search-for-engineers").position().top }, 1000);
 
 });
@@ -361,19 +357,7 @@ $(document).on(click_event,'.find-freelancer-btn', function(){
 var date = new RegExp('((02\\/[0-2]\\d)|((01|[0][3-9]|[1][0-2])\\/(31|30|[0-2]\\d)))\\/[12]\\d{3}');
 
 
-function getSelectedPill(){
 
-
-    var activePillId = window.localStorage.getItem('activeTabId');
-    if (activePillId && gon.current_user_id){
-        $('#' + activePillId).tab('show');
-        window.localStorage.removeItem("activeTab");
-    }else{
-
-        $('#pills-find-freelancers-tab').tab('show');
-    }
-
-}
 
 $(document).on(click_event,'a[data-toggle="pill"]', function(e){
     e.preventDefault();

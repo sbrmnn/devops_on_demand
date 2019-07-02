@@ -1,2 +1,0 @@
-module Chatrooms::MessagesHelper
-end

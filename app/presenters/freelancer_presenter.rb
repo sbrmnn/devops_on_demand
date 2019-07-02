@@ -1,4 +1,4 @@
-class FreelancerPresenter < ApplicationPresenter
+class ProductPresenter < ApplicationPresenter
 
   def user_name
     "#{model.user_name}"
@@ -25,15 +25,15 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def full_name_location
-    FreelancerPaymentProcessor.adapter.supported_countries[location.to_sym]
+    ProductPaymentProcessor.adapter.supported_countries[location.to_sym]
   end
 
-  def profile_photo
-    model.profile_photo
+  def photo
+    model.photo
   end
 
   def image_public_id
-    model&.profile_photo&.split("/")&.last&.split(".")&.first
+    model&.photo&.split("/")&.last&.split(".")&.first
   end
 
   def skill
@@ -73,7 +73,7 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def settlement_currency
-    FreelancerPaymentProcessor.new(model).settlement_currency
+    ProductPaymentProcessor.new(model).settlement_currency
   end
 
   def source_control_url
@@ -85,11 +85,11 @@ class FreelancerPresenter < ApplicationPresenter
   end
 
   def url
-    @url ||= "/freelancers/#{model.id}"
+    @url ||= "/products/#{model.id}"
   end
 
   def missing_payout_fields
-    @missing_payout_fields ||= FreelancerPaymentProcessor.new(model).payout_identity_missing_fields
+    @missing_payout_fields ||= ProductPaymentProcessor.new(model).payout_identity_missing_fields
   end
 
   private

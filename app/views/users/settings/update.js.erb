@@ -1,3 +1,4 @@
+$('.fa-spin').addClass('d-none');
 <% if @setting.errors.present? %>
   $('.settings-success-card').addClass('d-none')
   $('.settings-error-card').removeClass('d-none')
@@ -5,4 +6,12 @@
   $("#settings").html("<%= escape_javascript(render partial: 'settings', locals: { user: @user } ) %>");
   $('.settings-error-card').addClass('d-none')
   $('.settings-success-card').removeClass('d-none')
+  setTimeout(function(){
+      $('.settings-success-card').addClass('d-none')
+      $('.settings-error-card').addClass('d-none')
+
+  }, 3000);
 <% end %>
+
+
+

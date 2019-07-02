@@ -3,7 +3,7 @@ class CreateEducations < ActiveRecord::Migration[5.1]
     create_table :educations do |t|
       t.string :name
       t.integer :graduation_year
-      t.belongs_to :freelancer
+      t.belongs_to :product
       t.timestamps
     end
   end

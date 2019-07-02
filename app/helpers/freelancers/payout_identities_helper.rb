@@ -1,2 +1,0 @@
-module Freelancers::PayoutIdentitiesHelper
-end

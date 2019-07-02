@@ -11,16 +11,16 @@ module StrongParameterizable
 
   def permitted_params(controller_name, preview)
     {
-        freelancer: [:headline, :about_me, :source_control_url ,:rate, :location ,:profile_photo,  skill_attributes: [:types],
+        product: [:headline, :about_me, :source_control_url ,:rate, :location ,:photo,  skill_attributes: [:types],
                      certifications_attributes:   whitelist_certifications_attributes(preview),
                      work_experiences_attributes: whitelist_work_experiences_attributes(preview),
                      cloud_service_array: []],
-        freelancer_searches: [:value, cloud_service_array: []],
+        product_searches: [:value, cloud_service_array: []],
         credit_card: [:front_end_token, :name, :line1, :line2, :city, :state, :zip, :country],
         payout_identity: [:external_account, :account_name, :account_type, legal_entity_attributes: legal_entity_attributes],
         setting: [:newsletter_subscription, :chat_notification_subscription],
-        chatrooms: [:freelancer_user],
-        job: [:freelancer_id, :description, :hours, :from, :total, :front_end_token, :name, :line1, :line2, :city, :state, :zip, :country],
+        chatrooms: [:product_user],
+        job: [:product_id, :description, :hours, :from, :total, :front_end_token, :name, :line1, :line2, :city, :state, :zip, :country],
         job_approvals: [:acceptance, :canceled]
 
     }[controller_name]

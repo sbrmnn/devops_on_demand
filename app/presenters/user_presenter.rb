@@ -1,7 +1,7 @@
 class UserPresenter < ApplicationPresenter
 
-  def freelancer
-    model.freelancer.present? ? model.freelancer : model.build_freelancer
+  def product
+    model.product.present? ? model.product : model.build_product
   end
 
   def setting

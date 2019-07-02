@@ -1,0 +1,2 @@
+module Products::PayoutIdentitiesHelper
+end

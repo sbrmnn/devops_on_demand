@@ -14,8 +14,8 @@ class CloudServicesController < ApplicationController
 
 
   def get_cloud_services_skills
-    if params[:freelancer].present?
-      @cloud_services_skills = Skill.where(freelancer: params[:freelancer]).pluck(:cloud_service_id)
+    if params[:product].present?
+      @cloud_services_skills = Skill.where(product: params[:product]).pluck(:cloud_service_id)
     end
   end
 end

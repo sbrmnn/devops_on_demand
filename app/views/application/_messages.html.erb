@@ -10,57 +10,57 @@
 <div class="container-fluid px-5 py-3">
   <% ChatroomPresenter.wrap(user.chatrooms).each do |cp| %>
     <% participant = cp.participants_excluding_user(current_user) %>
-      <% freelancer = participant.try(:freelancer) %>
+      <% product = participant.try(:product) %>
       <% if participant %>
       <div style="visibility: hidden" class="mb-2 d-flex bars flex-row p-4 text-dark card rounded-0  <%= cp.latest_message_type_for_user(current_user) %>  bg-white">
-        <% if freelancer.try(:profile_photo) %>
+        <% if product.try(:photo) %>
           <div class="port-item text-center flex-shrink-1 pb-3" data-toggle="collapse" data-target="#home">
-            <img src="<%= cl_image_path(cl_image_path(FreelancerPresenter.new(freelancer).image_public_id, width: 105, height: 105,  radius: :max, crop: :scale)) %>">
+            <img src="<%= cl_image_path(cl_image_path(ProductPresenter.new(product).image_public_id, width: 105, height: 105,  radius: :max, crop: :scale)) %>">
           </div>
-          <div class="port-item px-3   freelancer-basic-info  w-100" data-toggle="collapse" data-target="#resume">
-            <% if freelancer %>
-              <h6><%= freelancer.user_name %></h6>
+          <div class="port-item px-3   product-basic-info  w-100" data-toggle="collapse" data-target="#resume">
+            <% if product %>
+              <h6><%= product.user_name %></h6>
               <ul class="my-2 list-inline  border-top border-bottom mb-1 text-dark">
-                <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign "></i> <%= "#{freelancer.platform_rate} HOUR #{freelancer.platform_rate.to_i * 8} DAY"%> </li>
-                <li class="list-inline-item py-1"><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %> </li>
-                <li class="list-inline-item py-1"><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %> </li>
+                <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign "></i> <%= "#{product.platform_rate} HOUR #{product.platform_rate.to_i * 8} DAY"%> </li>
+                <li class="list-inline-item py-1"><i class="fa mr-1 fa-envelope"></i><%= product.user.relay_user_name %> </li>
+                <li class="list-inline-item py-1"><i class="fa mr-1 fa-location-arrow"></i><%= ProductPresenter.new(product).full_name_location %> </li>
               </ul>
             <% else %>
               <h6><%= UserPresenter.new(participant).full_name %></h6>
             <% end %>
-            <% if freelancer %>
-              <%= render 'profile', freelancer: freelancer %>
+            <% if product %>
+              <%= render 'profile', product: product %>
             <% end %>
             <div class="mt-2">
               <button data-chatroom="<%= cp.id %>" class="view-messages-btn btn btn-info" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
                 <%= t('view_messages') %>
               </button>
-              <% if freelancer %>
-                <button class="btn-success btn" data-toggle="modal" data-target="#msg-job-form-<%=freelancer.id%>" >Hire Me</button>
+              <% if product %>
+                <button class="btn-success btn" data-toggle="modal" data-target="#msg-job-form-<%=product.id%>" >Hire Me</button>
               <% end %>
             </div>
           </div>
          <% else %>
-          <div class="port-item freelancer-basic-info  w-100" data-toggle="collapse" data-target="#resume">
-            <% if freelancer %>
-              <h6><%= freelancer.user_name %></h6>
+          <div class="port-item product-basic-info  w-100" data-toggle="collapse" data-target="#resume">
+            <% if product %>
+              <h6><%= product.user_name %></h6>
               <ul class="my-2 list-inline  border-top border-bottom mb-1 text-dark">
-                <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign "></i><strong><%= "#{freelancer.platform_rate} HOUR #{freelancer.platform_rate.to_i * 8} DAY"%></strong></li>
-                <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= freelancer.user.relay_user_name %></strong></li>
-                <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= FreelancerPresenter.new(freelancer).full_name_location %></strong></li>
+                <li class="list-inline-item pb-1"><i class="fas fa-dollar-sign "></i><strong><%= "#{product.platform_rate} HOUR #{product.platform_rate.to_i * 8} DAY"%></strong></li>
+                <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-envelope"></i><%= product.user.relay_user_name %></strong></li>
+                <li class="list-inline-item py-1"><strong><i class="fa mr-1 fa-location-arrow"></i><%= ProductPresenter.new(product).full_name_location %></strong></li>
               </ul>
             <% else %>
               <h6><%= UserPresenter.new(participant).full_name %></h6>
             <% end %>
-            <% if freelancer %>
-              <%= render 'profile', freelancer: freelancer %>
+            <% if product %>
+              <%= render 'profile', product: product %>
             <% end %>
             <div class="mt-2">
               <button data-chatroom="<%= cp.id %>" class="view-messages-btn btn btn-info" type="button" data-toggle="collapse" data-target="#collapse<%= cp.id %>" aria-expanded="false" aria-controls="#collapse<%= cp.id %>">
                 <%= t('view_messages') %>
               </button>
-              <% if freelancer %>
-                <button class="btn-success btn" data-toggle="modal" data-target="#msg-job-form-<%=freelancer.id%>" >Hire Me</button>
+              <% if product %>
+                <button class="btn-success btn" data-toggle="modal" data-target="#msg-job-form-<%=product.id%>" >Hire Me</button>
               <% end %>
             </div>
           </div>
@@ -69,16 +69,16 @@
       <div class="collapse collapse-<%= cp.id %>" id="collapse<%= cp.id %>">
         <%= render 'chatbox_id', cp: cp %>
       </div>
-      <% if freelancer %>
-        <div id="msg-job-form-<%=freelancer.id%>"  class="modal fade" tabindex="-1" role="dialog">
+      <% if product %>
+        <div id="msg-job-form-<%=product.id%>"  class="modal fade" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title w-75">Purchasing <%= freelancer.user_name %> </h5>
+                <h5 class="modal-title w-75">Purchasing <%= product.user_name %> </h5>
                 <button type="button" class="btn btn-light btn-circle " data-dismiss="modal">X</button>
               </div>
-              <div class="new_job-<%=freelancer.id%>">
-                <%= render 'new_job', user: current_user, job: Job.new, freelancer_id: freelancer.id, freelancer_rate: freelancer.platform_rate %>
+              <div class="new_job-<%=product.id%>">
+                <%= render 'new_job', user: current_user, job: Job.new, product_id: product.id, product_rate: product.platform_rate %>
               </div>
             </div>
           </div>

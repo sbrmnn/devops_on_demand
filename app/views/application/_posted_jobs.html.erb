@@ -6,7 +6,7 @@
         <div class="bg-secondary text-center text-light">
           <ul class="list-inline m-0">
             <li class="list-inline-item px-3 py-2">Job #<%= job.id %></li>
-            <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i> <%= job.freelancer.user_name %> (<%= job.freelancer.user.relay_user_name %>) </li>
+            <li class="list-inline-item px-3 py-2"><i class="fa fa-user mr-1"></i> <%= job.product.user_name %> (<%= job.product.user.relay_user_name %>) </li>
             <li class="list-inline-item px-3 py-2"><i class="fa fa-calendar mr-1"></i><%= job.from %></li>
             <li class="list-inline-item px-3 py-2"> <i class="fa fa-stopwatch mr-1"></i><%= job.hours.to_i %> hours</li>
             <li class="list-inline-item px-3 py-2"> <i class="fa fa-dollar-sign "></i><%= job.total %> Total</li>
@@ -17,7 +17,7 @@
         </div>
         <div class="approval-col text-right bg-light  px-2 py-2 approval-col-job-<%= job.id %>">
           <% if job.canceled.blank? %>
-            <a href="/freelancers/job_approvals/<%= job.id%>" class="btn-danger job-cancel-btn btn" >Cancel</a>
+            <a href="/products/job_approvals/<%= job.id%>" class="btn-danger job-cancel-btn btn" >Cancel</a>
           <% else %>
             <p class="text-danger m-0">Canceled</p>
           <% end %>

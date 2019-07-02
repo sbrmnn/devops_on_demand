@@ -12,10 +12,9 @@ class User < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_one :setting, dependent: :destroy
   has_many :products, dependent: :destroy
-  has_one :freelancer, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
   has_many :transactions, dependent: :destroy
-  has_one :payout_identity, through: :freelancer, dependent: :destroy
+  has_one :payout_identity, through: :product, dependent: :destroy
   has_one :tos_acceptance, dependent: :destroy
 
   validates_presence_of :first_name, :last_name

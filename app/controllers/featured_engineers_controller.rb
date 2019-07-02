@@ -1,5 +1,5 @@
 class FeaturedEngineersController < ApplicationController
   def index
-    @freelancers = Freelancer.all
+    @products = Product.all
   end
 end

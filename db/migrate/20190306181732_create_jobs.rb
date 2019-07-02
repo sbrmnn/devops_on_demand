@@ -2,7 +2,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
   def change
     create_table :jobs do |t|
       t.belongs_to :user
-      t.belongs_to :freelancer
+      t.belongs_to :product
       t.text :description
       t.decimal :hours, precision: 10, scale: 2
       t.string :credit_card_transaction

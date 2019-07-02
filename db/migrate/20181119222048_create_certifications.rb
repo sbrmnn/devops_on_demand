@@ -3,7 +3,7 @@ class CreateCertifications < ActiveRecord::Migration[5.1]
     create_table :certifications do |t|
       t.string :provider
       t.string :name
-      t.belongs_to :freelancer
+      t.belongs_to :product
       t.timestamps
     end
   end

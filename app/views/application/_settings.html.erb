@@ -1,11 +1,8 @@
-<div class="container py-3">
-  <div  class="card  rounded-0 shadow-sm">
-    <div class="card-body">
+
         <% present(user) do |user_presenter| %>
           <%= form_with(model: user_presenter.setting, url: "/users/#{user_presenter.id}/settings", remote: true) do |form| %>
-            <h2><%=t('settings') %></h2>
-            <hr class="mb-2">
-            <div class="row mt-4 ">
+
+            <div class="row">
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
@@ -47,6 +44,4 @@
             </div>
           <% end %>
         <% end %>
-      </div>
-  </div>
-</div>
+

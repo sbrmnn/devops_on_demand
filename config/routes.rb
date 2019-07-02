@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resource :chatrooms, only: :create
 
-  get 'freelancer_searches',  controller: "freelancer_searches", action: "index"
+  get 'product_searches',  controller: "product_searches", action: "index"
 
   get 'profile_preview', controller: "profile_preview", action: "index"
 
@@ -41,22 +41,16 @@ Rails.application.routes.draw do
 
   resources :users do
     scope module: :users do
-      resources :freelancers
+      resources :products
       resource :settings, only: [:create, :update]
       resource :credit_cards, only: [:show, :create, :update]
       resource :jobs, only: [:new, :show, :create, :update]
     end
   end
 
-  resources :freelancers
+  resources :products
 
 
-  resource :freelancers do
-    scope module: :freelancers do
-      resources :payout_identities, only: [:update, :create]
-      resources :job_approvals, only: :update
-    end
-  end
 
   resources :messages
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

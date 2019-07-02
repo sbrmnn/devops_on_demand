@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Hi <%= @freelancer_name %>,</p>
+<p>Hi <%= @product_name %>,</p>
 <p>We need more information from you to further establish your identity in accordance to government laws.</p>
 <ul>
   <li>Go to <a href="https://www.yumfog.com/users/1">https://www.yumfog.com/users/<%= @user.id%></a>.</li>

@@ -1,6 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :user
-  belongs_to :freelancer
+  belongs_to :product
   has_many :transactions
   has_many :credit_cards, through: :user
   attr_accessor :front_end_token, :name, :line1, :line2, :city, :state, :zip, :country
@@ -20,7 +20,7 @@ class Job < ApplicationRecord
   end
 
   def validate_total
-    if hours && (hours * freelancer.rate * 100 != total)
+    if hours && (hours * product.rate * 100 != total)
       errors.add(:total, :error, message: "error")
     end
   end

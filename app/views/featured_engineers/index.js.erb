@@ -1,6 +1,6 @@
-var freelancerSearchResultsDiv = $('.freelancer-featured-results')
-freelancerSearchResultsDiv.empty()
-freelancerSearchResultsDiv.html("<%= escape_javascript render(:partial => 'product_cards', :locals => { show_buttons: true ,freelancers: FreelancerPresenter.wrap(@freelancers) }) %>")
+var productSearchResultsDiv = $('.product-featured-results')
+productSearchResultsDiv.empty()
+productSearchResultsDiv.html("<%= escape_javascript render(:partial => 'product_cards', :locals => { show_buttons: true ,products: ProductPresenter.wrap(@products) }) %>")
 
 
 // There was an issue of readmore.js cutting of text in each of the profile cards. This might've been caused by the fact that the

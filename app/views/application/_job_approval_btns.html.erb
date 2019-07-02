@@ -1,9 +1,9 @@
 
 <% if cancel_btn.present? && job_presenter.canceled.blank? %>
-    <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger job-cancel-btn  btn" >Cancel</a>
+    <a href="/products/job_approvals/<%=job_presenter.id%>" class="btn-danger job-cancel-btn  btn" >Cancel</a>
 <% elsif job_presenter.acceptance.nil? && job_presenter.canceled.blank?  %>
-  <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-success accept-btn btn" >Accept</a>
-  <a href="/freelancers/job_approvals/<%=job_presenter.id%>" class="btn-danger reject-btn btn" >Reject</a>
+  <a href="/products/job_approvals/<%=job_presenter.id%>" class="btn-success accept-btn btn" >Accept</a>
+  <a href="/products/job_approvals/<%=job_presenter.id%>" class="btn-danger reject-btn btn" >Reject</a>
 <% elsif job_presenter.acceptance && job_presenter.canceled.blank? %>
   <p class="text-success m-0">Approved</p>
 <% else %>

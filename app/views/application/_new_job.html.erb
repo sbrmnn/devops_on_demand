@@ -3,11 +3,11 @@
       <div class="row p-0">
         <div class="col-12 p-0">
 
-            <%= form_with(model: [user, job], html: {onsubmit: "return createJob(event);"}, freelancer: freelancer_id, class: "new-job-form-#{freelancer_id}", local: true) do |form| %>
+            <%= form_with(model: [user, job], html: {onsubmit: "return createJob(event);"}, product: product_id, class: "new-job-form-#{product_id}", local: true) do |form| %>
             <div class="modal-body">
               <div class="basic-info-nested-fields mb-2">
                 <div class="form-row">
-                  <%= form.hidden_field :freelancer_id, class:"job-form-freelancer-id", value: freelancer_id %>
+                  <%= form.hidden_field :product_id, class:"job-form-product-id", value: product_id %>
                 </div>
                 <% last_4 = user.credit_cards.last.try(:last_4) %>
                 <% if last_4.present? %>
@@ -16,7 +16,7 @@
                       <%= form.label :credit_card %>
                       <%= form.text_field :credit_cards, class: 'form-control', disabled: true, value: "**** **** **** #{last_4}" %>
                       <div class="checkbox mt-3">
-                        <label><input type="checkbox" data-freelancer="<%= freelancer_id %>" class="different-card-checkbox mr-2" value="">Use Different Card</label>
+                        <label><input type="checkbox" data-product="<%= product_id %>" class="different-card-checkbox mr-2" value="">Use Different Card</label>
                       </div>
                     </div>
                   </div>
@@ -25,15 +25,15 @@
 
                 <div class = "new-card-section <%= last_4.present? ? "d-none" : 'first-card' %>">
                   <%= form.hidden_field  :front_end_token,  class: :'credit-card-token form-control' %>
-                  <%= form.hidden_field  :total,  class: "job-total-#{freelancer_id}  form-control" %>
+                  <%= form.hidden_field  :total,  class: "job-total-#{product_id}  form-control" %>
                   <div class="form-row mt-1">
                   <div class="col-md-12 form-group">
                     <label>Cardholder Name</label>
                     <%= form.text_field :name, class: 'credit-card-name form-control'  %>
                   </div>
                   <div class="col-md-12 form-group">
-                    <label class="card-number-label" for="card-element-for-freelancer-<%= freelancer_id %>">Card Number</label>
-                    <div id="card-element-for-freelancer-<%= freelancer_id %>" class="card-element form-control">
+                    <label class="card-number-label" for="card-element-for-product-<%= product_id %>">Card Number</label>
+                    <div id="card-element-for-product-<%= product_id %>" class="card-element form-control">
                       <!-- A Stripe Element will be inserted here. -->
                     </div>
                     <div class="card-errors" role="alert"></div>
@@ -75,12 +75,12 @@
                 </div>
 
 
-                <div class="card credit-card-error <%= freelancer_id %> d-none  mb-2">
+                <div class="card credit-card-error <%= product_id %> d-none  mb-2">
                   <div class="card-header bg-danger text-light">
                     <%= t('form_error_msg') %>
                   </div>
                 </div>
-                <div class="card credit-card-success <%= freelancer_id %> d-none mb-2">
+                <div class="card credit-card-success <%= product_id %> d-none mb-2">
                   <div class="card-header bg-success text-light"><%= t('saved') %></div>
                 </div>
               </div>

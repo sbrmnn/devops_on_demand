@@ -1,7 +1,7 @@
 <% partial = params[:target_div][1..-1]&.gsub('-', '_') %>
 $('<%= params[:target_div] %>').html("<%= escape_javascript render(partial: partial, locals: { user:  @user }) %>")
 
-<% if params[:target_div] == '#find-freelancers'  %>
+<% if params[:target_div] == '#find-products'  %>
   $('.profile').readmore({
       speed: 75,
       collapsedHeight: 30,

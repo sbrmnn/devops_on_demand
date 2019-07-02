@@ -6,7 +6,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.string :merchant_id
       t.integer :amount
       t.integer :amount_refunded
-      t.belongs_to :freelancer
+      t.belongs_to :product
       t.belongs_to :user
       t.timestamps
     end

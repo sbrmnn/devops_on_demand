@@ -19,7 +19,7 @@ class ApproveJob
   def charge_credit_card(job)
     credit_card = job.credit_cards.last
     if credit_card.present?
-      tr = Transaction.create(credit_card: credit_card, job: job,  amount: job.total, freelancer: job.freelancer, user: job.user)
+      tr = Transaction.create(credit_card: credit_card, job: job,  amount: job.total, product: job.product, user: job.user)
       if tr.persisted?
         charge = CustomerPaymentProcessor.new(job.user).charge_source(job.total, "Job ##{job.id}")
         tr.update_attributes(merchant_id: charge.id, amount_refunded: charge.amount_refunded )

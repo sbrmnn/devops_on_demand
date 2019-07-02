@@ -1,12 +1,12 @@
 class LegalEntity < ApplicationRecord
   belongs_to :payout_identity
-  has_one :freelancer, through: :payout_identity
+  has_one :product, through: :payout_identity
   attr_accessor :verification_image, :dob
   before_save :update_legal_entity_with_payment_provider
 
 
   def update_legal_entity_with_payment_provider
-    account_info = FreelancerPaymentProcessor.new(freelancer).update_legal_entity(self)
+    account_info = ProductPaymentProcessor.new(product).update_legal_entity(self)
     self.dob_day   =  account_info.legal_entity.dob.day
     self.dob_year  = account_info.legal_entity.dob.year
     self.dob_month = account_info.legal_entity.dob.month

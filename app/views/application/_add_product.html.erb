@@ -1,158 +1,61 @@
-<script>
-    _freelancerRegistrationInit();
-</script>
-
 <div id="add-product" class="rounded-0">
-  <div class="container py-3">
-     <div class="card rounded-0 shadow-sm">
-      <div class="card-body">
-          <div class="row">
-            <div class="col-12">
-              <div class="rounded">
-                  <%= form_with(html: {id: 'add-product-form'}, model: @freelancer = user.freelancer || user.build_freelancer, url: [user, @freelancer], remote: true) do |form| %>
-                  <% cs = form.object.cloud_services.pluck(:id) %>
 
-                  <h2><%=t('freelancer_registration_form') %></h2>
-                    <hr class="mb-2">
-                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">About me</h4>
-                    <div class="basic-info-nested-fields mb-2">
-                      <div class="form-row">
-                        <div class="form-group col-12">
-                          <%= form.label :headline %>
-                          <%= form.text_field :headline, class: "form-control  whitesmoke-border" %>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-12">
-                          <%= form.label :about_me, "Describe your skills" %>
-                          <%= form.text_area :about_me, class: "form-control  whitesmoke-border" %>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-12">
-                          <%= form.label :rate %>
-                          <%= form.number_field :rate, class: "form-control  whitesmoke-border" %>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-12">
-                          <%= form.label :location %>
-                          <%= form.select(:location, stripe_countries, {include_blank: 'Select Your Country'}, {:prompt => 'Select Country', class: "form-control"})%>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-12">
-                          <%= form.label :source_control_url, "Source Control/Portfolio URL" %>
-                          <%= form.text_field :source_control_url, class: "form-control  whitesmoke-border" %>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-12">
-                          <%= form.hidden_field :profile_photo, id: 'freelancer_profile_photo' ,"data-public-id": ImageProcessorClient.get_public_id(form.object.profile_photo) %>
-                          <%= form.label :profile_photo %>
-                          <%= form.cl_image_upload(:profile_photo, {html: {class: "form-control", accept: ".png,.jpg,.jpeg"}} ) %>
-                          <div class="mt-3 profile-image-preview">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder">Skills</h4>
-                     <div class="form-row">
-                      <div class="form-group col-12" id="Skills">
-                        <p>
-                          <a class="btn  btn-lg btn-info my-1" data-toggle="collapse" href="#collapseAWS" role="button" aria-expanded="false" aria-controls="collapseAWS">
-                            AWS
-                          </a>
-                          <a class="btn btn-lg  btn-info my-1" data-toggle="collapse" href="#collapseAzure" role="button" aria-expanded="false" aria-controls="collapseAzure">
-                            MS Azure
-                          </a>
-                          <a class="btn  btn-lg btn-info my-1" data-toggle="collapse" href="#collapseGoogle" role="button" aria-expanded="false" aria-controls="collapseGoogle">
-                            Google
-                          </a>
-                          <a class="btn  btn-lg btn-info my-1" data-toggle="collapse" href="#collapseProgrammingLanguage" role="button" aria-expanded="false" aria-controls="collapseGoogle">
-                            Programming Languages
-                          </a>
-                        </p>
-                        <div class="collapse" id="collapseAWS" data-parent="#Skills">
-                          <div class="card p-2 card-body">
-                            <div class="d-flex flex-wrap">
-                              <% CloudServices.instance.services["AWS"].each do |e| %>
-                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
-                              <% end %>
-                             </div>
-                           </div>
-                        </div>
-                        <div class="collapse" id="collapseAzure" data-parent="#Skills">
-                          <div class="card p-2 card-body">
-                            <div class="d-flex flex-wrap">
-                              <% CloudServices.instance.services["MS Azure"].each do |e| %>
-                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="collapse" id="collapseGoogle" data-parent="#Skills">
-                          <div class="card p-2 card-body">
-                            <div class="d-flex flex-wrap">
-                              <% CloudServices.instance.services["Google Cloud"].each do |e| %>
-                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="collapse" id="collapseProgrammingLanguage" data-parent="#Skills">
-                          <div class="card p-2 card-body">
-                            <div class="d-flex flex-wrap">
-                              <% CloudServices.instance.services["Programing Languages"].each do |e| %>
-                                <div class="m-2 p-1 rounded bg-light shadow-sm text-dark"><%= check_box_tag 'freelancer[cloud_service_array][]', e[0], cs.include?(e[0]), id: nil, class: 'mr-1' %>  <label><%=e[1]%></label></div>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('certifications')%></h4>
-                    <div id='certifications' class="certifications-nested-fields">
-                      <%= form.fields_for :certifications do |certification| %>
-                        <%= render 'certification_fields', :f => certification %>
-                      <% end %>
-                      <div class='add-btn text-center'>
-                        <%= link_to_add_association "#{t('add_cert_btn')}", form, :certifications, {class:"btn  btn-lg  btn-warning"} %>
-                      </div>
-                    </div>
-                    <h4 class="bg-light mb-4 pt-3 pl-2 pb-3 blackborder"><%= t('work_experiences')%></h4>
-                    <div id='work-experiences' class="work-experiences-nested-fields">
-                      <%= form.fields_for :work_experiences do |work_experience| %>
-                        <%= render 'work_experience_fields', :f => work_experience %>
-                      <% end %>
-                      <div class='add-btn text-center'>
-                        <%= link_to_add_association "#{t('add_experience_btn')}", form, :work_experiences, {class:"btn btn-lg btn-warning"} %>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="card freelancer-error-card d-none mb-2">
-                      <div class="card-header bg-danger text-light">
-                        <%= t('form_error_msg') %>
-                      </div>
-                    </div>
-                    <div class="card freelancer-success-card d-none mb-2">
-                    </div>
-                    <div class="text-right">
-                      <%= form.button class: "btn btn-primary btn-lg " do %>
-                        <i class="fa fa-circle-notch d-none fa-spin mr-2"></i>Save
-                      <% end %>
-
-                    </div>
-                  <% end %>
-
+  <div class="row">
+    <div class="col-12">
+      <div class="rounded">
+          <%= form_with(html: {id: 'add-product-form'}, model: @product =  user.products.new, url: [user, @product], remote: true) do |form| %>
+            <div class="basic-info-nested-fields mb-2">
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <%= form.label :headline %>
+                  <%= form.text_field :headline, class: "form-control  whitesmoke-border" %>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <%= form.label :description %>
+                  <%= form.text_area :description, class: "form-control  whitesmoke-border" %>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <%= form.label :cost, "Cost Per Item" %>
+                  <%= form.number_field :cost, class: "form-control  whitesmoke-border" %>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <%= form.hidden_field :photo, id: 'product_photo' ,"data-public-id": ImageProcessorClient.get_public_id(form.object.photo) %>
+                  <%= form.label :photo %>
+                  <%= form.cl_image_upload(:photo, {html: {class: "form-control", accept: ".png,.jpg,.jpeg"}} ) %>
+                  <div class="mt-3 profile-image-preview">
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+            <hr>
+            <div class="card product-error-card d-none mb-2">
+              <div class="card-header bg-danger text-light">
+                <%= t('form_error_msg') %>
+              </div>
+            </div>
+            <div class="card product-success-card d-none mb-2">
+            </div>
+            <div class="text-right">
+              <%= form.button class: "btn btn-primary btn-lg " do %>
+                <i class="fa fa-circle-notch d-none fa-spin mr-2"></i>Save
+              <% end %>
+
+            </div>
+          <% end %>
 
       </div>
     </div>
   </div>
+
+
+
+
 </div>
 
 

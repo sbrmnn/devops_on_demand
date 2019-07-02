@@ -1,26 +1,26 @@
 <article class="profile   pr-2 text-justify">
 
     <div class="about_me">
-      <p class="mb-0 lead"><%= freelancer.about_me %></p>
+      <p class="mb-0 lead"><%= product.about_me %></p>
     </div>
-    <% if freelancer.source_control_url.present? && user_signed_in? %>
+    <% if product.source_control_url.present? && user_signed_in? %>
       <div class="source_control mb-4">
         <h4 class="font-weight-bold font-underline my-3">Source Control</h4>
         <div>
           <ul class="px-3 mb-0">
             <li>
-              <a href="<%= freelancer.source_control_url %>"><%= freelancer.source_control_url %></a>
+              <a href="<%= product.source_control_url %>"><%= product.source_control_url %></a>
             </li>
           </ul>
         </div>
       </div>
     <% end %>
-    <% if freelancer.work_experiences.present? %>
+    <% if product.work_experiences.present? %>
       <div class="work_experience mb-4">
         <h4 class="font-underline font-weight-bold my-3">Work Experience</h4>
         <ul class="px-3 mb-0">
 
-          <% freelancer.work_experiences.each do |we| %>
+          <% product.work_experiences.each do |we| %>
 
             <li class="mb-4">
                 <div class=" mb-1">
@@ -41,11 +41,11 @@
     <% end %>
 
 
-    <% if freelancer.certification_names.present? %>
+    <% if product.certification_names.present? %>
       <div class="certifications mb-4">
         <h4 class="font-underline font-weight-bold my-3">Certifications</h4>
         <ul class="px-3 mb-0">
-          <% freelancer.certification_names.group_by(&:provider).each do |k, v| %>
+          <% product.certification_names.group_by(&:provider).each do |k, v| %>
 
             <li>
                <h5 class="text-dark mb-1"><%= k %></h5>
@@ -65,11 +65,11 @@
     <% end %>
 
 
-    <% if freelancer.cloud_services.present? %>
+    <% if product.cloud_services.present? %>
       <div class="source_control mb-4">
         <h4 class="font-underline font-weight-bold my-3">Cloud Service Experience</h4>
         <ul class="px-3 mb-0">
-          <% freelancer.cloud_services.group_by(&:provider).each do |k, v| %>
+          <% product.cloud_services.group_by(&:provider).each do |k, v| %>
             <li>
                <h5 class="text-dark  mb-1"><%= k %></h5>
               <ul class="list-inline pl-0 mb-3">

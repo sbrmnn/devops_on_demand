@@ -17,14 +17,14 @@
       window.gon={};
       <% if user_signed_in? %>
       gon.current_user_id= <%= current_user.id %>
-          <% if current_user.try(:freelancer) %>
-          gon.freelancer_id = <%= current_user.freelancer.id %>
+          <% if current_user.try(:product) %>
+          gon.product_id = <%= current_user.product.id %>
               <% else %>
-              gon.freelancer_id = null;
+              gon.product_id = null;
       <% end %>
       <% else %>
       gon.current_user_id= null;
-      gon.freelancer_id= null;
+      gon.product_id= null;
       <% end %>
   </script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -32,31 +32,23 @@
 </head>
 <body class= <%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
-
-
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <div class="container">
     <a class="navbar-brand" href="#">YumFog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-
-    <ul class="navbar-nav">
-      <li>
-        <a class="nav-link" id="pills-add-product-tab" data-toggle="pill" href="#add-product" role="tab" aria-controls="pills-add-product" aria-selected="false"><i class="fa fa-plus mr-1"></i>Add Product</a>
-      </li>
-      <% if user_signed_in? %>
-        <li class="nav-item pr-4">
-          <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false"><i class="fa fa-cog mr-1"></i><%= t('account_settings') %></a>
-        </li>
-      <% end %>
-    </ul>
-
-
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
+          <%= render 'add_product_modal', user: current_user %>
+          <%= render 'settings_modal', user: current_user %>
+          <li>
+            <a class="nav-link text-dark" id="pills-add-product-tab"   style="cursor:pointer"  data-toggle="modal" data-target="#addProductModal" aria-controls="add-product" aria-selected="false"><i class="fas fa-plus mr-1"></i>Add Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" id="pills-settings-tab"  style="cursor:pointer" data-toggle="modal" data-target="#settingsModal" aria-controls="settings" aria-selected="false"><i class="fa fa-cog mr-1"></i>Account Settings</a>
+          </li>
           <li>
             <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "text-dark nav-link") %>
           </li>
@@ -72,44 +64,6 @@
     </div>
     </div>
   </nav>
-<div class="search-section border-top bg-light py-3 px-5">
-  <div class="container">
-    <div class="input-group" id="adv-search">
-      <input type="text" class="border-0 form-control" placeholder="Search for snippets" />
-      <div class="input-group-btn">
-        <div class="btn-group" role="group">
-          <div class="dropdown dropdown-lg">
-            <button type="button" class="btn rounded-0 btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-            <div class="dropdown-menu dropdown-menu-right" role="menu">
-              <form class="form-horizontal" role="form">
-                <div class="form-group">
-                  <label for="filter">Filter by</label>
-                  <select class="form-control">
-                    <option value="0" selected>All Snippets</option>
-                    <option value="1">Featured</option>
-                    <option value="2">Most popular</option>
-                    <option value="3">Top rated</option>
-                    <option value="4">Most commented</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="contain">Author</label>
-                  <input class="form-control" type="text" />
-                </div>
-                <div class="form-group">
-                  <label for="contain">Contains the words</label>
-                  <input class="form-control" type="text" />
-                </div>
-                <button type="submit" class="btn  h-100 btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-              </form>
-            </div>
-          </div>
-          <button type="button" class="btn btn-warning search-btn text-dark"><span class="glyphicon glyphicon-search" aria-hidden="true">Search</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

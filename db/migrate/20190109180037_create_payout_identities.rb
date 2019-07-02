@@ -1,7 +1,7 @@
 class CreatePayoutIdentities < ActiveRecord::Migration[5.1]
   def change
     create_table :payout_identities do |t|
-      t.belongs_to  :freelancer
+      t.belongs_to  :product
       t.string   "external_account"
       t.datetime "created_at",                                                                                                                                                                                                                                                                                                                                                                                                                       null: false
       t.datetime "updated_at",                                                                                                                                                                                                                                                                                                                                                                                                                       null: false

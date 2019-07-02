@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10">
-        <h2 class="cd-headline clip is-full-width mb-4 ">
+        <h2 class="cd-headline clip is-full-width mb-4 text-light ">
           Buy and Sell<br>
           <span class="cd-words-wrapper text-color">
                         <b class="is-visible">Minimum Viable Products (MVPs). </b>
@@ -11,7 +11,7 @@
                         <b>Customization Services.</b>
                     </span>
         </h2>
-        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain <br>was born and I will give you a complete account of the system</p>
+        <p class="lead">I must explain to you how all this mistaken idea of denouncing pleasure and praising pain <br>was born and I will give you a complete account of the system</p>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
 <!-- POrtfolio start -->
 <section class="portfolio ">
   <div class="container">
-    <div class="row mb-5">
+    <div class="row py-3">
       <div class="col-10">
         <div class="btn-group btn-group-toggle " data-toggle="buttons">
           <label class="btn active ">
@@ -43,8 +43,8 @@
         </div>
       </div>
     </div>
-
-    <div class="row py-3 bg-dark d-none">
+  </div>
+    <div class="row   d-none">
       <div class="col-12">
         <div class="input-group" id="adv-search">
           <input type="text" class="border-0 form-control" placeholder="Search for snippets" />
@@ -56,64 +56,30 @@
         </div>
       </div>
     </div>
+  <div class="bg-secondary">
+  <div class="container">
+      <div class="row py-3">
+          <% ProductPresenter.featured.each do |product| %>
 
-
-    <div class="row py-4  bg-secondary">
-
-
-
-        <% ProductPresenter.featured.each do |product| %>
-
-        <div class="col-md-3">
-          <div class="card">
-            <% if product.image_public_id %>
-              <a href="/products/<%= product.id %>"><img class="card-img-top" src="<%= cl_image_path(product.image_public_id, width: 105, height: 105,  radius: :max, crop: :scale) %>" alt="<%= product.headline %>"></a>
-            <% end %>
-            <div class="card-body">
-              <h4 class="card-title"><a class="product-description" href="/products/<%= product.id %>"><%= product.headline %></a></h4>
-              <p class="card-text"><%= product.description(true) %></p>
-              <a href="#" class="float-right">Read more <i class="fas fa-angle-double-right"></i></a>
+          <div class="col-md-3">
+            <div class="card">
+              <% if product.image_public_id %>
+                <a href="/products/<%= product.id %>"><img class="card-img-top" src="<%= cl_image_path(product.image_public_id, width: 105, height: 105,  radius: :max, crop: :scale) %>" alt="<%= product.headline %>"></a>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><a class="product-description" href="/products/<%= product.id %>"><%= product.headline %></a></h4>
+                <p class="card-text"><%= product.description(true) %></p>
+              </div>
             </div>
           </div>
-        </div>
-        <% end %>
-    </div>
+          <% end %>
+      </div>
+  </div>
   </div>
 </section>
 <!-- Portfolio End -->
 
 
-
-
-  <div class="product-search-results">
-  </div>
-
-
-  <div class="tab-content pb-4" id="pills-tabContent">
-  <div class="tab-pane fade"  id="find-products"  role="tabpanel" aria-labelledby="find_products-tab">
-
-  </div>
-
-  <div class="tab-pane fade"  id="product-payout" role="tabpanel" aria-labelledby="settings-tab">
-
-  </div>
-
-  <div class="tab-pane fade"  id="settings" role="tabpanel" aria-labelledby="settings-tab">
-
-  </div>
-
-  <div class="tab-pane fade"  id="posted-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-
-  </div>
-
-  <div class="tab-pane fade"  id="received-jobs" role="tabpanel" aria-labelledby="jobs-tab">
-
-  </div>
-
-  <div class="tab-pane fade" id="add-product" role="tabpanel" aria-labelledby="add-product-tab">
-
-  </div>
-</div>
 
 
 

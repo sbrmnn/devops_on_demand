@@ -22,4 +22,16 @@ class ProductPresenter < ApplicationPresenter
   def headline
     model.headline
   end
+
+  def user
+    @user ||= model.user
+  end
+
+  def creator
+    @creator ||= user.first_name
+  end
+
+  def tags
+    model.tags.pluck(:name)
+  end
 end

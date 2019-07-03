@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190609031851) do
+ActiveRecord::Schema.define(version: 20190702161323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 20190609031851) do
   end
 
   create_table "certifications", force: :cascade do |t|
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "certification_name_id"
     t.string "vendor_identifier"
     t.index ["certification_name_id"], name: "index_certifications_on_certification_name_id"
-    t.index ["product_id"], name: "index_certifications_on_product_id"
+    t.index ["freelancer_id"], name: "index_certifications_on_freelancer_id"
   end
 
   create_table "chatroom_users", force: :cascade do |t|
@@ -84,20 +84,20 @@ ActiveRecord::Schema.define(version: 20190609031851) do
   create_table "educations", force: :cascade do |t|
     t.string "school_name"
     t.integer "graduation_year"
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_educations_on_product_id"
+    t.index ["freelancer_id"], name: "index_educations_on_freelancer_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "freelancers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "headline"
     t.string "about_me"
     t.integer "rate", default: 30, null: false
-    t.string "photo"
+    t.string "profile_photo"
     t.string "location"
     t.string "user_name"
     t.string "merchant_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20190609031851) do
 
   create_table "jobs", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.text "description"
     t.decimal "hours", precision: 10, scale: 2
     t.string "credit_card_transaction"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20190609031851) do
     t.boolean "acceptance"
     t.integer "total"
     t.boolean "canceled", default: false
-    t.index ["product_id"], name: "index_jobs_on_product_id"
+    t.index ["freelancer_id"], name: "index_jobs_on_freelancer_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -168,13 +168,13 @@ ActiveRecord::Schema.define(version: 20190609031851) do
   end
 
   create_table "payout_identities", force: :cascade do |t|
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.string "external_account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "routing_number"
     t.string "account_number_last_4"
-    t.index ["product_id"], name: "index_payout_identities_on_product_id"
+    t.index ["freelancer_id"], name: "index_payout_identities_on_freelancer_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -219,11 +219,20 @@ ActiveRecord::Schema.define(version: 20190609031851) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cloud_service_id"
-    t.index ["product_id"], name: "index_skills_on_product_id"
+    t.index ["freelancer_id"], name: "index_skills_on_freelancer_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "taggable_type"
+    t.bigint "taggable_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["taggable_type", "taggable_id"], name: "index_tags_on_taggable_type_and_taggable_id"
   end
 
   create_table "tos_acceptances", force: :cascade do |t|
@@ -241,12 +250,12 @@ ActiveRecord::Schema.define(version: 20190609031851) do
     t.string "charge_identifier"
     t.integer "amount"
     t.integer "amount_refunded"
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["credit_card_id"], name: "index_transactions_on_credit_card_id"
-    t.index ["product_id"], name: "index_transactions_on_product_id"
+    t.index ["freelancer_id"], name: "index_transactions_on_freelancer_id"
     t.index ["job_id"], name: "index_transactions_on_job_id", unique: true
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
@@ -285,10 +294,10 @@ ActiveRecord::Schema.define(version: 20190609031851) do
     t.string "title", null: false
     t.string "employer"
     t.string "achievements"
-    t.bigint "product_id"
+    t.bigint "freelancer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_work_experiences_on_product_id"
+    t.index ["freelancer_id"], name: "index_work_experiences_on_freelancer_id"
   end
 
   add_foreign_key "chatroom_users", "chatrooms"

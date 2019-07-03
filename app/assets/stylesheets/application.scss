@@ -24,9 +24,29 @@ VERSION:	1.0
 @import url("https://fonts.googleapis.com/css?family=Lato:400,600,700|Work+Sans:400,700,800");
 html {
   overflow-x: hidden;
+  height: 100%;
+  box-sizing: border-box;
+
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+
+.dashboard_show{
+  background-color: #fdfdfd;
+}
+
+
 body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -34,16 +54,22 @@ body {
   letter-spacing: 0.166667px;
   line-height: 1.7em;
   color: #818385;
+
 }
 
 .banner{
-  background-color: #0d0b0b;
-  background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+  background-color: #000000;
+  background-image: url("https://devops-on-demand.s3.amazonaws.com/img/45-degree-fabric-light.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
 }
 
 p {
   color: #818385;
+}
+
+.jumbotron-lead{
+  color: whitesmoke !important;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -86,7 +112,7 @@ h6, .h6 {
 }
 
 .section {
-  padding: 120px 0px;
+  padding: 100px 0px;
 }
 
 .section-sm {
@@ -806,8 +832,14 @@ textarea.form-control {
 }
 
 .footer {
-  padding: 60px 0px;
-  background: #000;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #6a6a6a;
+
 }
 
 .footer-widget a {
@@ -818,6 +850,8 @@ textarea.form-control {
 .footer-widget a:hover {
   color: #f44336;
 }
+
+
 
 
 

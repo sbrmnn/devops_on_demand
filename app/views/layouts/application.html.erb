@@ -32,9 +32,9 @@
 </head>
 <body class= <%= "#{controller.controller_name}_#{controller.action_name}" %> >
   <% if render_navbar_and_footer? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-    <a class="navbar-brand" href="#">YumFog</a>
+    <a class="navbar-brand mx-1" href="#">YumFog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -75,20 +75,18 @@
 
 <%= yield %>
 
+  <section class="footer">
+    <div class="container">
+      <div class="row ">
+        <div class="col-lg-6">
+          <p class="mb-0 text-light ">Copyrights © <%= Date.today.year %>. YumFog</p>
+          <a class="text-light" href="https://s3.amazonaws.com/devops-on-demand/text/PRIVACY+POLICY.txt">Privacy Policy</a>
+         </div>
+      </div>
+    </div>
+  </section>
 
- <!-- Footer -->
- <footer class="page-footer py-2 font-small bg-white">
 
-   <!-- Copyright -->
-   <div class="footer-copyright text-center py-1">© <%= Date.today.year %>
-       YumFog LLC
-   </div>
-   <!-- Copyright -->
-   <div class="footer-privacy-policy text-center py-1">
-     <a href="https://s3.amazonaws.com/devops-on-demand/text/PRIVACY+POLICY.txt">Privacy Policy</a>
-   </div>
- </footer>
- <!-- Footer -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>

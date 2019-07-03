@@ -9,15 +9,14 @@
     </div>
 
     <div class="col-md-4">
-      <h3 class="mb-3">Prototype of <%= @product.headline %></h3>
+      <h1 class="mb-3"><%= @product.headline %></h1>
       <button class="mb-2 btn-success btn btn-lg">Buy ($<%= @product.platform_cost %>)</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+      <p><%= @product.description %></p>
       <h3 class="my-3">Project Details</h3>
       <ul>
-        <li>Lorem Ipsum</li>
-        <li>Dolor Sit Amet</li>
-        <li>Consectetur</li>
-        <li>Adipiscing Elit</li>
+        <% @product.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <% end %>
       </ul>
     </div>
 

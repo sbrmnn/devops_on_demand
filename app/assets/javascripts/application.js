@@ -16,7 +16,7 @@
 //= require cloudinary
 //= require payment_processor
 //= require animated-text
-
+//= require users
 //= require_tree .
 
 $.ajaxSetup({
@@ -85,7 +85,8 @@ $( document ).ready(function() {
 
 
 function init() {
-    getFeaturedProducts();
+    bindCloudinaryElement()
+    //getFeaturedProducts();
 }
 
 function getFeaturedProducts(){
